@@ -13,8 +13,9 @@ This project is about creating a simple shell.
 
 ## Content
 - [Historic :clock7:](#historic-clock7)
-- [Sources :link:](#sources-link)
 - [ToDo :dart:](#todo-dart)
+- [Externals Functions](#externals-functions)
+- [Sources :link:](#sources-link)
 
 
 ## Historic :clock7:
@@ -72,171 +73,171 @@ tgetnum, tgetstr, tgoto, tputs
 ```
 
 ### readline
-:mag: 
+:mag: To learn 
 
 ### rl\_clear\_history
-:mag: 
+:mag: To learn 
 
 ### rl\_on\_new\_line
-:mag: 
+:mag: To learn 
 
 ### rl\_replace\_line
-:mag: 
+:mag: To learn 
 
 ### rl\_redisplay
-:mag: 
+:mag: To learn 
 
 ### add\_history
-:mag: 
+:mag: To learn 
 
 ### printf
-:mag: 
+:mag: To learn 
 
 ### malloc
-:mag: 
+:mag: To learn 
 
 ### free
-:mag: 
+:mag: To learn 
 
 ### write
-:mag: 
+:mag: To learn 
 
 ### access
-:mag: Use to check permission right on object (files/directory).
-:video\_game: pipex
+:mag: Use to check permission right on object (files/directory) 
+:video\_game: pipex 
 
 ### open
-:mag: 
+:mag: To learn 
 
 ### read
-:mag: 
+:mag: To learn 
 
 ### close
-:mag: 
+:mag: To learn 
 
 ### fork
 :mag: Use to clone the active process to a child process
-:video\_game: pipex
+:video\_game: pipex 
 
 ### wait
 :mag: Use to wait a specific process
-:video\_game: pipex
+:video\_game: pipex 
 
 ### waitpid
 :mag: Use to wait a specific process
-:video\_game: pipex
+:video\_game: pipex 
 
 ### wait3
-:mag: 
+:mag: To learn 
 
 ### wait4
-:mag: 
+:mag: To learn 
 
 ### signal
-:mag: 
+:mag: To learn 
 
 ### sigaction
-:mag: 
+:mag: To learn 
 
 ### sigemptyset
-:mag: 
+:mag: To learn 
 
 ### sigaddset
-:mag: 
+:mag: To learn 
 
 ### kill
-:mag: 
+:mag: To learn 
 
 ### exit
-:mag:
+:mag: To learn
 
 ### getcwd
-:mag: 
+:mag: To learn 
 
 ### chdir
-:mag: 
+:mag: To learn 
 
 ### stat
-:mag: 
+:mag: To learn 
 
 ### lstat
-:mag: 
+:mag: To learn 
 
 ### fstat
-:mag: 
+:mag: To learn 
 
 ### unlink
-:mag: 
+:mag: To learn 
 
 ### execve
-:mag: Use to execute a command
-:video\_game: pipex
+:mag: Use to execute a command 
+:video\_game: pipex 
 
 ### dup
-:mag: Use to create a new file descriptor according to an existing one
-:video\_game: pipex
+:mag: Use to create a new file descriptor according to an existing one 
+:video\_game: pipex 
 
 ### dup2
-:mag: Use to "replace" an existing file descriptor from another existing one
-:video\_game: pipex
+:mag: Use to "replace" an existing file descriptor from another existing one 
+:video\_game: pipex 
 
 ### pipe
-:mag: Use to create two new file descriptor which can communicate through different process
-:video\_game: pipex
+:mag: Use to create two new file descriptor which can communicate through different process 
+:video\_game: pipex 
 
 ### opendir
-:mag: 
+:mag: To learn 
 
 ### readir
-:mag: 
+:mag: To learn 
 
 ### closedir
-:mag: 
+:mag: To learn 
 
 ### strerror
-:mag: 
+:mag: To learn 
 
 ### perror
-:mag: 
+:mag: To learn 
 
 ### isatty
-:mag: 
+:mag: To learn 
 
 ### ttyname
-:mag: 
+:mag: To learn 
 
 ### ttyslot
-:mag: 
+:mag: To learn 
 
 ### ioctl
-:mag: 
+:mag: To learn 
 
 ### getenv
-:mag:
+:mag: To learn
 
 ### tcsetattr
-:mag: 
+:mag: To learn 
 
 ### tcgetattr
-:mag: 
+:mag: To learn 
 
 ### tgetent
-:mag: 
+:mag: To learn 
 
 ### tgetflag
-:mag: 
+:mag: To learn 
 
 ### tgetnum
-:mag: 
+:mag: To learn 
 
 ### tgetstr
-:mag: 
+:mag: To learn 
 
 ### tgoto
-:mag: 
+:mag: To learn 
 
 ### tputs
-:mag: 
+:mag: To learn 
 
 ## Sources :link:
 [Go to content](#content)
