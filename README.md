@@ -105,6 +105,7 @@ tgetnum, tgetstr, tgoto, tputs
 ### access
 :mag: Use to check permission right on object (files/directory) 
 :video\_game: pipex 
+[Link](https://man7.org/linux/man-pages/man2/access.2.html)
 
 ### open
 :mag: To learn 
@@ -118,32 +119,39 @@ tgetnum, tgetstr, tgoto, tputs
 ### fork
 :mag: Use to clone the active process to a child process
 :video\_game: pipex 
+[Link](https://man7.org/linux/man-pages/man2/fork.2.html)
 
 ### wait
 :mag: Use to wait a specific process
 :video\_game: pipex 
+[Link](https://man7.org/linux/man-pages/man3/wait.3p.html)
 
 ### waitpid
 :mag: Use to wait a specific process
 :video\_game: pipex 
+[Link](https://man7.org/linux/man-pages/man3/waitpid.3p.html)
 
 ### wait3
-:mag: To learn 
+:mag: Obsolete
 
 ### wait4
-:mag: To learn 
+:mag: Obsolete
 
 ### signal
-:mag: To learn 
+:mag: Overview of signals
+[Link](https://man7.org/linux/man-pages/man7/signal.7.html)
 
 ### sigaction
-:mag: To learn 
+:mag: Examine and change a signal action
+[Link](https://man7.org/linux/man-pages/man2/sigaction.2.html)
 
 ### sigemptyset
-:mag: To learn 
+:mag: Initialize and empty a signal set
+[Link](https://man7.org/linux/man-pages/man3/sigemptyset.3p.html)
 
 ### sigaddset
-:mag: To learn 
+:mag: Add a signal to a signal set
+[Link](https://man7.org/linux/man-pages/man3/sigaddset.3p.html) 
 
 ### kill
 :mag: To learn 
@@ -201,43 +209,45 @@ tgetnum, tgetstr, tgoto, tputs
 :mag: To learn 
 
 ### isatty
-:mag: To learn 
+:mag: Test whether a file descriptor refers to a terminal
 
 ### ttyname
-:mag: To learn 
+:mag: Return name of a terminal
 
 ### ttyslot
-:mag: To learn 
+:mag: Find the slot of the current user's terminal in some file
 
 ### ioctl
-:mag: To learn 
+:mag: Control device. To learn 
 
 ### getenv
-:mag: To learn
+:mag: Get an environment variable
 
 ### tcsetattr
-:mag: To learn 
+:mag: Set the parameters associated with the terminal
+[Link](https://man7.org/linux/man-pages/man3/tcsetattr.3p.html)
 
 ### tcgetattr
-:mag: To learn 
+:mag: Get the parameters associated with the terminal
+[Link](https://man7.org/linux/man-pages/man3/tcgetattr.3p.html)
 
 ### tgetent
-:mag: To learn 
+:mag: To learn --\>WTF ? 
 
 ### tgetflag
-:mag: To learn 
+:mag: To learn  --\>WTF ? 
 
 ### tgetnum
-:mag: To learn 
+:mag: To learn --\>WTF ? 
 
 ### tgetstr
-:mag: To learn 
+:mag: To learn --\>WTF ? 
 
 ### tgoto
-:mag: To learn 
+:mag: To learn --\>WTF ? 
 
 ### tputs
-:mag: To learn 
+:mag: To learn --\>WTF ? 
 
 ## Sources :link:
 [Go to content](#content)
@@ -249,6 +259,9 @@ tgetnum, tgetstr, tgoto, tputs
 
 ## Git
 - https://github.com/BarrierAntho/Survivor_Note/tree/main/git 
+
+## Parser
+- 
 
 ## Shell
 - https://explainshell.com/ 
