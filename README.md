@@ -1,7 +1,6 @@
 # minishell
 This project is about creating a simple shell.
 
-
 ## Team name  
 **SMBASH**  
 
@@ -61,5 +60,9 @@ This project is about creating a simple shell.
 ## Sources :link:
 [Go to content](#content)
 
+## Our notes
+
 ### Bash
 - https://www.gnu.org/software/bash/manual/html_node/index.html
+(Alicia's note)
+- https://docs.google.com/document/d/1JvIKhy3i1cJG7dyi9wVg6Ks37Vdw3P4Qb6tJsEYOMFg/edit
