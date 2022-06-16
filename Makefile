@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/06/16 12:28:22 by amarchan         ###   ########.fr        #
+#    Updated: 2022/06/16 19:03:43 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,14 +21,28 @@ NM_BIN = nm
 DIR_LIBFT = libft/
 
 SRCS =	srcs/main.c \
-		srcs/parsing/parsing_1.c \
+		srcs/parsing/parsing.c \
+		srcs/parsing/ft_panic.c \
+		srcs/parsing/sort_inputs.c \
+		srcs/parsing/store_built_ins.c \
+		srcs/parsing/create_list.c \
+		srcs/parsing/print_lst.c \
+		srcs/parsing/handle_unknown_command.c \
 		srcs/built-in/echo.c \
+		srcs/built-in/cd.c \
+		srcs/built-in/pwd.c \
+		srcs/built-in/export.c \
+		srcs/built-in/unset.c \
+		srcs/built-in/env.c\
+		srcs/built-in/exit.c\
+		srcs/execute_commands/read_command.c \
+		srcs/execute_commands/execute_command.c \
 
-CC = cc
+CC = clang
 
 OBJS := ${SRCS:.c=.o}
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -g3
 
 RM = rm -rf
 
