@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 08:04:38 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/16 11:36:17 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/16 16:14:51 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@
 
 typedef struct s_list
 {
-	void			*content;
+	char			*str;
+	int				index;
+	struct s_list	*prev;
 	struct s_list	*next;
 }	t_list;
 
@@ -68,8 +70,7 @@ long long	ft_atoll(const char *str);
 int			ft_isspace(int c);
 
 
-
-t_list	*ft_lstnew(void *content);
+t_list	*ft_lstnew(char *str, int i);
 void	ft_lstadd_front(t_list **alst, t_list *new);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);

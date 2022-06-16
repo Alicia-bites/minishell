@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarchan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 19:19:20 by amarchan          #+#    #+#             */
-/*   Updated: 2021/12/09 10:12:29 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/16 16:26:56 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	{
 		prev = iterator;
 		iterator = iterator->next;
-		del(prev->content);
+		del(prev->str);
 		free(prev);
 	}
 	*lst = NULL;
