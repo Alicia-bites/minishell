@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/16 18:41:03 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/17 13:32:28 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,33 @@
 
 #define MALLOC_FAILURE -42
 #define WRONG_CMD 127
+
+typedef enum e_toktype {
+	TOK_WORD,
+	TOK_PIPE,
+	TOK_DQUOTE,
+	TOK_QUOTE,
+	TOK_DOLLAR,
+	TOK_L_REDIR,
+	TOK_R_REDIR,
+	TOK_DR_REDIR,
+	TOK_LR_REDIR,
+}
+
+typedef enum e_chartype {
+	CH_WORD,
+	CH_PIRE,
+	CH_SINGLE_QUOTE,
+	CH_DOUBLE_QUOTE,
+	CH_DOLLAR,
+	CH_L_REDIR,
+	CH_R_REDIR,
+	CH_DR_REDIR,
+	CH_LR_REDIR,
+	CH_EQUAL,
+	CH_INTPOINT,
+	
+}
 
 //main.c
 int					main(void);
