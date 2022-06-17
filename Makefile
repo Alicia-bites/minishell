@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/06/16 19:03:43 by amarchan         ###   ########.fr        #
+#    Updated: 2022/06/17 14:39:54 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRCS =	srcs/main.c \
 		srcs/built-in/exit.c\
 		srcs/execute_commands/read_command.c \
 		srcs/execute_commands/execute_command.c \
+		srcs/tokenizer/tokenizer.c \
 
 CC = clang
 
