@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:17:17 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/16 18:34:07 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/17 14:42:33 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,14 @@ int	get_input(void)
 	while (42)
 	{
 		str = readline("prompt: ");
-		ft_parse(str);
-		// printf("%s\n", str);
-		add_history(str);
+		if (!str)
+			return (0);
+		if (str[0] != 0)
+		{
+			// printf("%s\n", str);
+			ft_parse(str);
+			add_history(str);
+		}
 	}
 	return (0);
 }
