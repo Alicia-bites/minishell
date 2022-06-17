@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 18:14:01 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/16 18:52:40 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/17 12:28:17 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,15 @@ int	read_command(t_list *inputs_lst, char **built_ins)
 	cmd_notfound = 0;
 	while (it)
 	{
-		while (!ft_strcmp(it->str, built_ins[i]))
+		while (i < 8)
 		{
-			if (it->next)
-				execute_command(it->next->str, i);
-			else
-				execute_command(0, i);
+			if (!ft_strcmp(it->str, built_ins[i]))
+			{
+				if (it->next)
+					execute_command(it->next->str, i);				
+				else
+					execute_command("", i);
+			}
 			i++;
 		}
 		it = it->next;
