@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 08:04:38 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/16 16:14:51 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/17 15:53:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,25 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+typedef enum e_toktype {
+	TOK_UNKNOWN,
+	TOK_WORD,
+	TOK_SEP,
+	TOK_PIPE,
+	TOK_DQUOTE,
+	TOK_QUOTE,
+	TOK_DOLLAR,
+	TOK_L_REDIR,
+	TOK_R_REDIR,
+	TOK_DR_REDIR,
+	TOK_LR_REDIR,
+} e_toktype;
+
 typedef struct s_list
 {
-	char			*str;
 	int				index;
+	e_toktype		toktype;
+	char			*token;
 	struct s_list	*prev;
 	struct s_list	*next;
 }	t_list;
