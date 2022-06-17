@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/17 13:32:28 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/17 14:45:05 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef enum e_toktype {
 	TOK_R_REDIR,
 	TOK_DR_REDIR,
 	TOK_LR_REDIR,
-}
+} e_toktype;
 
 typedef enum e_chartype {
 	CH_WORD,
@@ -46,8 +46,12 @@ typedef enum e_chartype {
 	CH_LR_REDIR,
 	CH_EQUAL,
 	CH_INTPOINT,
-	
-}
+} e_chartype;
+
+typedef struct s_chartype {
+	char		character;
+	e_chartype	type;
+} t_chartype;
 
 //main.c
 int					main(void);
@@ -75,4 +79,8 @@ int					do_exit();
 //execute_command
 int					read_command(t_list *inputs_lst, char **built_ins);
 int					execute_command(char *str, int i);
+
+//tokenizer
+int					tokenize(t_chartype *input_list);
+int					is_charword(char c);
 #endif
