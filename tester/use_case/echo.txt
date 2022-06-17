@@ -1,3 +1,19 @@
+echo 
 echo ""
 echo "Hello"
+echo "'Hello'"
+echo '"Hello"'
+echo ""Hello""
+echo ''Hello''
+echo '"''"''"'"'"'"'"'""Hello""'"'"'"'"'"'
+#
+test="Hello"; echo $test
+test="Hello"; echo "$test"
+test="Hello"; echo '$test'
+#
 echo -n "Hello"
+echo -n "Hello"
+echo -n "Hello"
+echo -n "Hello"
+echo -n "Hello"
+echo -n -n -n -nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn 123456789
