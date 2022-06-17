@@ -1,0 +1,3 @@
+cat 
+cat file1
+<< EOF | cat
