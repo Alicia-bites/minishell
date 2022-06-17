@@ -22,6 +22,7 @@ This project is about creating a simple shell.
 [Go to content](#content)
 |Date _YYYY-MM-DD_|Description|
 |:-|:-|
+|2022-06-17|methodology alignment|
 |2022-06-15|init README|
 
 
