@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:49:49 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/17 14:41:58 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/17 15:44:37 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,13 @@ char	*ft_parse(char *str)
 		input_list[i].character = str[i];
 		i++;
 	}
-	while (i != -1)
-	{
-		printf("%c", input_list[i].character);
-		i--;
-	}
+	//FOR DEBUG
+	// while (i != -1)
+	// {
+	// 	printf("%c", input_list[i].character);
+	// 	i--;
+	// }
+	//END
 	puts("");
 	tokenize(input_list);
 	// sort_input(input_list);
