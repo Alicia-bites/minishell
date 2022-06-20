@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 18:14:01 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/17 12:28:17 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:53:28 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ int	read_command(t_list *inputs_lst, char **built_ins)
 	{
 		while (i < 8)
 		{
-			if (!ft_strcmp(it->str, built_ins[i]))
+			if (!ft_strcmp(it->token, built_ins[i]))
 			{
 				if (it->next)
-					execute_command(it->next->str, i);				
+					execute_command(it->next->token, i);				
 				else
 					execute_command("", i);
 			}

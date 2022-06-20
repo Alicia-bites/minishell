@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 10:08:16 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/16 16:27:02 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/20 12:52:53 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 		iterator = lst;
 		while (iterator)
 		{
-			f(iterator->str);
+			f(iterator->token);
 			iterator = iterator->next;
 		}
 	}
