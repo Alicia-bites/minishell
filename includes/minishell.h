@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/17 15:53:59 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/20 13:57:32 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef enum e_chartype {
 
 typedef struct s_chartype {
 	char		character;
+	int			length;
 	e_chartype	type;
 } t_chartype;
 
