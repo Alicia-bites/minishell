@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:07:44 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/20 14:55:58 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/20 18:05:28 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,23 @@
 static int is_char_word(char c)
 {
 	if (ft_isalnum(c) || c == ';' || c == ',' || c == ':' || c == '.'
-		|| c == '_' || c == '-')
+		|| c == '_' || c == '-' || c == '!' || c == '=' || c == '~'
+		|| c == '#' || c == '+' || c == '-' || c == '*' || c == '&'
+		|| c == '`' || c == '^' || c == '|' || c == '\\' || c == '/'
+		|| c == '@' || c == '_' || c == ')' || c == '(' || c == '%')
+		// || c == '€' || (long long unsigned) c == '£' || c == '¬')
 			return (1);
 	return (0);
 }
 
-char *built_token(t_chartype *input_list, int end)
+char *built_token(t_chartype *input_list, int start, int end)
 {
 	int			len;
-	static int	start = 0;
 	int			k;
 	char 		*token;
 	
 	len = end - start;
+	// printf("start = %d\n", start);
 	token = malloc(sizeof(char) * (len + 1));
 	if (!token)
 	{
@@ -44,50 +48,159 @@ char *built_token(t_chartype *input_list, int end)
 	}
 	token[k++] = '\0';
 	start = end;
-	printf("%s\n", token);
+	// printf("end = %d\n", end);
+	printf("token = %s\n", token);
 	return (0);
+}
+
+void	is_word(t_chartype *input_list, int *start, int *end)
+{
+	if (input_list[*end].type == CH_WORD)
+	{
+		while (input_list[*end].type == CH_WORD)
+			(*end)++;
+		built_token(input_list, *start, *end);
+		*start = *end;
+	}
+}
+
+void	is_space(t_chartype *input_list, int *start, int *end)
+{
+	if (input_list[*end].type == CH_SPACE)
+	{
+		while (input_list[*end].type == CH_SPACE)
+			(*end)++;
+		built_token(input_list, *start, *end);
+		*start = *end;
+	}
+}
+
+void	is_pipe(t_chartype *input_list, int *start, int *end)
+{
+	if (input_list[*end].type == CH_PIPE)
+	{
+		(*end)++;
+		built_token(input_list, *start, *end);
+		*start = *end;
+	}
+}
+
+void	is_s_quote(t_chartype *input_list, int *start, int *end)
+{
+	if (input_list[*end].type == CH_S_QUOTE)
+	{
+		(*end)++;
+		built_token(input_list, *start, *end);
+		*start = *end;
+	}
+}
+
+void	is_d_quote(t_chartype *input_list, int *start, int *end)
+{
+	if (input_list[*end].type == CH_D_QUOTE)
+	{
+		(*end)++;
+		built_token(input_list, *start, *end);
+		*start = *end;
+	}
+}
+
+void	is_envcall(t_chartype *input_list, int *start, int *end)
+{
+	if (input_list[*end].type == CH_DOLLAR
+		&& input_list[*end + 1].type == CH_WORD)
+	{
+		*end += 1;
+		while (input_list[*end].type == CH_WORD)
+			(*end)++;
+		built_token(input_list, *start, *end);
+		*start = *end;
+	}
+}
+
+void	is_l_redir(t_chartype *input_list, int *start, int *end)
+{
+	if (input_list[*end].type == CH_L_REDIR
+		&& input_list[*end + 1].type != CH_L_REDIR)
+	{
+		(*end)++;
+		built_token(input_list, *start, *end);
+		*start = *end;
+	}
+}
+
+void	is_r_redir(t_chartype *input_list, int *start, int *end)
+{
+	if (input_list[*end].type == CH_R_REDIR
+		&& input_list[*end + 1].type != CH_R_REDIR)
+	{
+		(*end)++;
+		built_token(input_list, *start, *end);
+		*start = *end;
+	}
+}
+
+void	is_dl_redir(t_chartype *input_list, int *start, int *end)
+{
+	if (input_list[*end].type == CH_L_REDIR
+		&& input_list[*end + 1].type == CH_L_REDIR)
+	{
+		(*end) += 2;
+		built_token(input_list, *start, *end);
+		*start = *end;
+	}
+}
+
+void	is_dr_redir(t_chartype *input_list, int *start, int *end)
+{
+	if (input_list[*end].type == CH_R_REDIR
+		&& input_list[*end + 1].type == CH_R_REDIR)
+	{
+		(*end) += 2;
+		built_token(input_list, *start, *end);
+		*start = *end;
+	}
+}
+
+void	is_intpoint(t_chartype *input_list, int *start, int *end)
+{
+	if (input_list[*end].type == CH_DOLLAR
+		&& input_list[*end + 1].type == CH_INTPOINT)
+	{
+		(*end) += 2;
+		built_token(input_list, *start, *end);
+		*start = *end;
+	}
+	
+	else if (input_list[*end].type == CH_INTPOINT)
+	{
+		(*end)++;
+		built_token(input_list, *start, *end);
+		*start = *end;
+	}
+		
 }
 
 int	get_token(t_chartype *input_list)
 {
-	int	i;
+	int	start;
+	int	end;
 
-	i = 0;
-	while (i < input_list[i].length)
+	start = 0;
+	end = 0;
+	while (start < input_list[start].length)
 	{
-		while (input_list[i].type == CH_WORD)
-			i++;
-		built_token(input_list, i);
-		while (input_list[i].type == CH_SPACE)
-			i++;
-		built_token(input_list, i);
-		while (input_list[i].type == CH_PIPE)
-			i++;
-		built_token(input_list, i);
-		while (input_list[i].type == CH_S_QUOTE)
-			i++;
-		built_token(input_list, i);
-		while (input_list[i].type == CH_D_QUOTE)
-			i++;
-		built_token(input_list, i);
-		if (input_list[i].type == CH_DOLLAR)
-		{
-			
-			i++;			
-		}
-		built_token(input_list, i);
-		while (input_list[i].type == CH_L_REDIR)
-			i++;
-		built_token(input_list, i);
-		while (input_list[i].type == CH_R_REDIR)
-			i++;
-		built_token(input_list, i);
-		while (input_list[i].type == CH_EQUAL)
-			i++;
-		built_token(input_list, i);
-		while (input_list[i].type == CH_INTPOINT)
-					i++;
-		built_token(input_list, i);
+		is_word(input_list, &start, &end);
+		is_space(input_list, &start, &end);
+		is_pipe(input_list, &start, &end);
+		is_s_quote(input_list, &start, &end);
+		is_d_quote(input_list, &start, &end);
+		is_envcall(input_list, &start, &end);
+		is_l_redir(input_list, &start, &end);
+		is_r_redir(input_list, &start, &end);
+		is_dl_redir(input_list, &start, &end);
+		is_dr_redir(input_list, &start, &end);
+		is_intpoint(input_list, &start, &end);
 	}
 	return (0);
 }
@@ -140,7 +253,7 @@ int	get_chartype(t_chartype **input_list)
 int	tokenize(t_chartype *input_list)
 {
 	get_chartype(&input_list);
-	print_chartype(input_list);
+	// print_chartype(input_list);
 	get_token(input_list);
 	return (0);
 }
