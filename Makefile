@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/06/17 14:39:54 by amarchan         ###   ########.fr        #
+#    Updated: 2022/06/20 18:23:13 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,17 @@ SRCS =	srcs/main.c \
 		srcs/execute_commands/read_command.c \
 		srcs/execute_commands/execute_command.c \
 		srcs/tokenizer/tokenizer.c \
+		srcs/tokenizer/is_space.c \
+		srcs/tokenizer/is_pipe.c \
+		srcs/tokenizer/is_s_quote.c \
+		srcs/tokenizer/is_d_quote.c \
+		srcs/tokenizer/is_envcall.c \
+		srcs/tokenizer/is_l_redir.c \
+		srcs/tokenizer/is_r_redir.c \
+		srcs/tokenizer/is_dl_redir.c \
+		srcs/tokenizer/is_dr_redir.c \
+		srcs/tokenizer/is_intpoint.c \
+		srcs/tokenizer/is_word.c \
 
 CC = clang
 

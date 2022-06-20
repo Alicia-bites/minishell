@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/20 13:57:32 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/20 18:22:53 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,22 @@ int					execute_command(char *str, int i);
 
 //tokenizer
 int					tokenize(t_chartype *input_list);
+int					get_chartype(t_chartype **input_list);
+static void			print_chartype(t_chartype *input_list);
+int					get_token(t_chartype *input_list);
 int					is_charword(char c);
+char				*built_token(t_chartype *input_list, int start, int end);
+static int			is_char_word(char c);
+void				is_word(t_chartype *input_list, int *start, int *end);
+void				is_space(t_chartype *input_list, int *start, int *end);
+void				is_pipe(t_chartype *input_list, int *start, int *end);
+void				is_s_quote(t_chartype *input_list, int *start, int *end);
+void				is_d_quote(t_chartype *input_list, int *start, int *end);
+void				is_envcall(t_chartype *input_list, int *start, int *end);
+void				is_l_redir(t_chartype *input_list, int *start, int *end);
+void				is_r_redir(t_chartype *input_list, int *start, int *end);
+void				is_dl_redir(t_chartype *input_list, int *start, int *end);
+void				is_dr_redir(t_chartype *input_list, int *start, int *end);
+void				is_intpoint(t_chartype *input_list, int *start, int *end);
+
 #endif
