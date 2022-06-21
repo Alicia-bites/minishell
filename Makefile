@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/06/21 11:36:19 by amarchan         ###   ########.fr        #
+#    Updated: 2022/06/21 13:57:21 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRCS =	srcs/main.c \
 		srcs/parsing/print_lst.c \
 		srcs/parsing/is_not_clone.c \
 		srcs/parsing/is_not_empty.c \
+		srcs/parsing/count_quotes.c \
 		srcs/parsing/handle_unknown_command.c \
 		srcs/built-in/echo.c \
 		srcs/built-in/cd.c \

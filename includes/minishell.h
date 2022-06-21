@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/21 11:25:03 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/21 13:57:50 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void				ft_panic(int errcode, char *str);
 int					handle_unknown_command(t_list *inputs_lst);
 int					is_not_clone(char *str);
 int					is_not_empty(char *str);
-
+void				count_quotes(char *str, t_chartype *input_list);
 //built-in
 int					do_echo(char *str);
 int					do_echo_n(char *str);

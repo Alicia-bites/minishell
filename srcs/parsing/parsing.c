@@ -6,13 +6,12 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:49:49 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/20 13:57:41 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/21 13:56:49 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-// Parse arguments and return input_list(s)
 char	*ft_parse(char *str)
 {	
 	t_chartype	*input_list;
@@ -25,6 +24,7 @@ char	*ft_parse(char *str)
 	if (!input_list)
 		return (NULL);
 	ft_bzero(input_list, sizeof(t_chartype) * (length + 1));
+	count_quotes(str, input_list);
 	while (i < length)
 	{
 		input_list[i].character = str[i];
