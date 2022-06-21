@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 18:11:16 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/20 12:53:02 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/21 16:36:01 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ void	print_lst(t_list *lst)
 	while (iterator)
 	{
 		printf("index = %d\n", iterator->index);
-		printf("%s\n", iterator->token);
+		printf("token = %s\n", iterator->token);
+		printf("toktype = %u\n", iterator->toktype);
+		puts("-----------------------------------------");
 		iterator = iterator->next;		
 	}
 	puts("\n");

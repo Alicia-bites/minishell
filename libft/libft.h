@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 08:04:38 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/21 11:31:21 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/21 16:09:30 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef enum e_toktype {
 	TOK_R_REDIR,
 	TOK_DL_REDIR,
 	TOK_DR_REDIR,
-	TOK_INTPOINT,
 } e_toktype;
 
 typedef struct s_list
@@ -88,7 +87,7 @@ long long	ft_atoll(const char *str);
 int			ft_isspace(int c);
 
 
-t_list	*ft_lstnew(char *str, int i);
+t_list	*ft_lstnew(char *str, int i, e_toktype toktype);
 void	ft_lstadd_front(t_list **alst, t_list *new);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);

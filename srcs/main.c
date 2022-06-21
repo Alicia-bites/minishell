@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:17:17 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/21 11:14:17 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/21 16:58:41 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	get_input(void)
 
 	while (42)
 	{
-		str = readline("prompt: ");
+		str = readline("$: ");
 		if (!str)
 			return (0);
 		if (str[0] != 0)

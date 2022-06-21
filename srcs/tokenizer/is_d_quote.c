@@ -6,14 +6,16 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:14:42 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/21 15:19:54 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/21 17:19:41 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	is_d_quote(t_chartype *input_list, int *start, int *end)
+t_list	*is_d_quote(t_chartype *input_list, int *start, int *end)
 {
+	t_list	*token_list;
+
 	if (input_list[*end].type == CH_D_QUOTE)
 	{
 		(*end)++;
@@ -35,7 +37,8 @@ void	is_d_quote(t_chartype *input_list, int *start, int *end)
 				(*end)++;
 			input_list->n_double--;
 		}
-		built_token(input_list, *start, *end);
+		token_list = built_token(input_list, *start, *end);
 		*start = *end;
 	}
+	return (token_list);
 }

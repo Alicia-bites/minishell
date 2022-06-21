@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/21 13:57:50 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/21 17:26:44 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int					get_input(void);
 char 				*ft_parse(char *str);
 void				sort_inputs(char **inputs);
 char				**store_built_ins(void);
-t_list				*create_list(char *str, int i);
+t_list				*create_list(char *str, int i, e_toktype e_toktype);
 void				print_lst(t_list *lst);
 void				ft_panic(int errcode, char *str);
 int					handle_unknown_command(t_list *inputs_lst);
@@ -77,20 +77,21 @@ int					execute_command(char *str, int i);
 int					tokenize(t_chartype *input_list);
 int					get_chartype(t_chartype **input_list);
 static void			print_chartype(t_chartype *input_list);
-int					get_token(t_chartype *input_list);
+t_list				*get_token(t_chartype *input_list);
 int					is_charword(char c);
-char				*built_token(t_chartype *input_list, int start, int end);
+t_list				*built_token(t_chartype *input_list, int start, int end);
+void				add_token_to_list(char *token, t_list **token_list);
 static int			is_char_word(char c);
-void				is_word(t_chartype *input_list, int *start, int *end);
-void				is_space(t_chartype *input_list, int *start, int *end);
-void				is_pipe(t_chartype *input_list, int *start, int *end);
-void				is_s_quote(t_chartype *input_list, int *start, int *end);
-void				is_d_quote(t_chartype *input_list, int *start, int *end);
-void				is_envcall(t_chartype *input_list, int *start, int *end);
-void				is_l_redir(t_chartype *input_list, int *start, int *end);
-void				is_r_redir(t_chartype *input_list, int *start, int *end);
-void				is_dl_redir(t_chartype *input_list, int *start, int *end);
-void				is_dr_redir(t_chartype *input_list, int *start, int *end);
-void				is_intpoint(t_chartype *input_list, int *start, int *end);
+t_list				*is_word(t_chartype *input_list, int *start, int *end);
+t_list				*is_space(t_chartype *input_list, int *start, int *end);
+t_list				*is_pipe(t_chartype *input_list, int *start, int *end);
+t_list				*is_s_quote(t_chartype *input_list, int *start, int *end);
+t_list				*is_d_quote(t_chartype *input_list, int *start, int *end);
+// t_list				*is_envcall(t_chartype *input_list, int *start, int *end);
+t_list				*is_l_redir(t_chartype *input_list, int *start, int *end);
+t_list				*is_r_redir(t_chartype *input_list, int *start, int *end);
+t_list				*is_dl_redir(t_chartype *input_list, int *start, int *end);
+t_list				*is_dr_redir(t_chartype *input_list, int *start, int *end);
+t_list				*is_intpoint(t_chartype *input_list, int *start, int *end);
 
 #endif
