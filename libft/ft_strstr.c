@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:29:09 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/21 13:28:57 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/21 14:16:50 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ char	*ft_strstr(const char *big, const char *little)
 			return ((char *)&a[i]);
 		i++;
 	}
-	return ((char *)&a[i]);
+	return (0);
 }
