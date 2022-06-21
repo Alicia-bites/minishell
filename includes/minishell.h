@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/21 17:26:44 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/21 18:34:24 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,18 @@ typedef struct s_chartype {
 	e_chartype	type;
 } t_chartype;
 
+
+typedef struct s_global {
+	int	list_cleared;
+} t_global;
+
+
 //main.c
 int					main(void);
 int					get_input(void);
 
 //parsing
-char 				*ft_parse(char *str);
+void				ft_parse(char *str, t_list **token_list);
 void				sort_inputs(char **inputs);
 char				**store_built_ins(void);
 t_list				*create_list(char *str, int i, e_toktype e_toktype);
@@ -74,14 +80,14 @@ int					read_command(t_list *inputs_lst, char **built_ins);
 int					execute_command(char *str, int i);
 
 //tokenizer
-int					tokenize(t_chartype *input_list);
+void				tokenize(t_chartype *input_list, t_list **token_list);
 int					get_chartype(t_chartype **input_list);
-static void			print_chartype(t_chartype *input_list);
-t_list				*get_token(t_chartype *input_list);
+// static void			print_chartype(t_chartype *input_list);
+void				get_token(t_chartype *input_list, t_list **token_list);
 int					is_charword(char c);
 t_list				*built_token(t_chartype *input_list, int start, int end);
 void				add_token_to_list(char *token, t_list **token_list);
-static int			is_char_word(char c);
+// static int			is_char_word(char c);
 t_list				*is_word(t_chartype *input_list, int *start, int *end);
 t_list				*is_space(t_chartype *input_list, int *start, int *end);
 t_list				*is_pipe(t_chartype *input_list, int *start, int *end);
