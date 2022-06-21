@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/20 18:22:53 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/21 11:23:41 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ typedef enum e_chartype {
 typedef struct s_chartype {
 	char		character;
 	int			length;
+	int			n_double;
+	int			n_single;
 	e_chartype	type;
 } t_chartype;
 
@@ -54,6 +56,8 @@ t_list				*create_list(char *str, int i);
 void				print_lst(t_list *lst);
 void				ft_panic(int errcode, char *str);
 int					handle_unknown_command(t_list *inputs_lst);
+int					is_not_clone(str);
+int					is_not_empty(str);
 
 //built-in
 int					do_echo(char *str);
