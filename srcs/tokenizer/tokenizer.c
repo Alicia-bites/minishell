@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:07:44 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/20 18:27:58 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/21 14:41:47 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static int is_char_word(char c)
 		|| c == '#' || c == '+' || c == '-' || c == '*' || c == '&'
 		|| c == '`' || c == '^' || c == '|' || c == '\\' || c == '/'
 		|| c == '@' || c == '_' || c == ')' || c == '(' || c == '%'
-		|| c == '?')
-		// || c == '€' || (long long unsigned) c == '£' || c == '¬')
+		|| c == '$')
+		// || c == '?'|| c == '€' || (long long unsigned) c == '£' || c == '¬')
 			return (1);
 	return (0);
 }
@@ -93,8 +93,13 @@ static void	print_chartype(t_chartype *input_list)
 int	get_chartype(t_chartype **input_list)
 {
 	int	i;
+	int	c_single;
+	int	c_double;
 
 	i = 0;
+
+	
+	
 	while ((*input_list)[i].character)
 	{
 		if (is_char_word((*input_list)[i].character))
@@ -103,12 +108,16 @@ int	get_chartype(t_chartype **input_list)
 			(*input_list)[i].type = CH_SPACE;
 		if ((*input_list)[i].character == '|')
 			(*input_list)[i].type = CH_PIPE;
-		if ((*input_list)[i].character == 39)
+		if ((*input_list)[i].character == '\'' && (*input_list)->n_single == 1)
+			(*input_list)[i].type = CH_WORD;
+		else if ((*input_list)[i].character == '\'' && (*input_list)->n_single > 1)
 			(*input_list)[i].type = CH_S_QUOTE;
-		if ((*input_list)[i].character == '"')
+		if ((*input_list)[i].character == '"' && (*input_list)->n_double == 1)
+			(*input_list)[i].type = CH_WORD;
+		else if ((*input_list)[i].character == '"' && (*input_list)->n_double > 1)
 			(*input_list)[i].type = CH_D_QUOTE;
-		if ((*input_list)[i].character == '$')
-			(*input_list)[i].type = CH_DOLLAR;
+		// if ((*input_list)[i].character == '$')
+		// 	(*input_list)[i].type = CH_DOLLAR;
 		if ((*input_list)[i].character == '<')
 			(*input_list)[i].type = CH_L_REDIR;
 		if ((*input_list)[i].character == '>')
@@ -119,7 +128,7 @@ int	get_chartype(t_chartype **input_list)
 		// 	(*input_list)[i].type = CH_INTPOINT;
 		i++;
 	}
-	// print_chartype(*input_list);
+	print_chartype(*input_list);
 	return (i);
 }
 
