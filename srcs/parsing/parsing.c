@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:49:49 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/21 14:44:00 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/21 18:01:49 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 // 	}
 // }
 
-char	*ft_parse(char *str)
+void	ft_parse(char *str, t_list **token_list)
 {	
 	t_chartype	*input_list;
 	int			i;
@@ -38,7 +38,7 @@ char	*ft_parse(char *str)
 	length = ft_strlen(str);
 	input_list = malloc(sizeof(t_chartype) * (length + 1));
 	if (!input_list)
-		return (NULL);
+		return ;
 	ft_bzero(input_list, sizeof(t_chartype) * (length + 1));
 	// handle_dollar(str, input_list);
 	count_quotes(str, input_list);
@@ -55,8 +55,7 @@ char	*ft_parse(char *str)
 	// 	i--;
 	// }
 	//END
-	puts("");
-	tokenize(input_list);
+	tokenize(input_list, token_list);
+	// print_lst(token_list);
 	// sort_input(input_list);
-	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:07:44 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/21 17:31:35 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/21 18:38:04 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,12 @@ static int is_char_word(char c)
 
 void	add_token_to_list(char *token, t_list **token_list)
 {
+	extern	t_global	*g_global;
 	static int	i = 0;
 	
+	printf("list_cleared = %d\n", g_global->list_cleared);
+	if (g_global->list_cleared)
+		i = 0;
 	*token_list = create_list(token, i++, 0);
 	// print_lst(*token_list);
 }
@@ -64,28 +68,26 @@ t_list *built_token(t_chartype *input_list, int start, int end)
 	return (token_list);
 }
 
-t_list	*get_token(t_chartype *input_list)
+void	get_token(t_chartype *input_list, t_list **token_list)
 {
 	int	start;
 	int	end;
-	t_list	*token_list;
 
 	start = 0;
 	end = 0;
 	while (start < input_list[start].length)
 	{
-		token_list = is_word(input_list, &start, &end);
-		token_list = is_space(input_list, &start, &end);
-		token_list = is_pipe(input_list, &start, &end);
-		token_list = is_s_quote(input_list, &start, &end);
-		token_list = is_d_quote(input_list, &start, &end);
-		token_list = is_l_redir(input_list, &start, &end);
-		token_list = is_r_redir(input_list, &start, &end);
-		token_list = is_dl_redir(input_list, &start, &end);
-		token_list = is_dr_redir(input_list, &start, &end);
-		token_list = is_intpoint(input_list, &start, &end);
+		*token_list = is_word(input_list, &start, &end);
+		*token_list = is_space(input_list, &start, &end);
+		*token_list = is_pipe(input_list, &start, &end);
+		*token_list = is_s_quote(input_list, &start, &end);
+		*token_list = is_d_quote(input_list, &start, &end);
+		*token_list = is_l_redir(input_list, &start, &end);
+		*token_list = is_r_redir(input_list, &start, &end);
+		*token_list = is_dl_redir(input_list, &start, &end);
+		*token_list = is_dr_redir(input_list, &start, &end);
+		*token_list = is_intpoint(input_list, &start, &end);
 	}
-	return (token_list);
 }
 
 static void	print_chartype(t_chartype *input_list)
@@ -131,19 +133,16 @@ int	get_chartype(t_chartype **input_list)
 	return (i);
 }
 
-t_list	*get_toktype(t_list *token_list)
-{
-	print_lst(token_list);
-	return (token_list);
-}
+// t_list	*get_toktype(t_list **token_list)
+// {
+// 	// print_lst(token_list);
+// }
 
-int	tokenize(t_chartype *input_list)
+void	tokenize(t_chartype *input_list, t_list **token_list)
 {
-	t_list	*token_list;
 	
 	get_chartype(&input_list);
 	// print_chartype(input_list);
-	token_list = get_token(input_list);
-	token_list = get_toktype(token_list);
-	return (0);
+	get_token(input_list, token_list);
+	// get_toktype(token_list);
 }
