@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/06/21 13:57:21 by amarchan         ###   ########.fr        #
+#    Updated: 2022/06/23 19:53:40 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,17 @@ SRCS =	srcs/main.c \
 		srcs/parsing/is_not_empty.c \
 		srcs/parsing/count_quotes.c \
 		srcs/parsing/handle_unknown_command.c \
+		srcs/parsing/expansions/create_dollar_list.c \
+		srcs/parsing/expansions/find_expansions.c \
+		srcs/parsing/expansions/ft_lstclear_back.c \
+		srcs/parsing/expansions/get_expanded.c \
+		srcs/parsing/expansions/insert_expansions.c \
+		srcs/parsing/expansions/print_dollar_lst.c \
+		srcs/parsing/expansions/expand_dollar.c \
+		srcs/parsing/expansions/ft_lstadd_back_dollar.c \
+		srcs/parsing/expansions/ft_lstnew_dollar.c \
+		srcs/parsing/expansions/get_full_size.c \
+		srcs/parsing/expansions/malloc_varname.c \
 		srcs/built-in/echo.c \
 		srcs/built-in/cd.c \
 		srcs/built-in/pwd.c \
