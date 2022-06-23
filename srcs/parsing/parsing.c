@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:49:49 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/23 13:06:51 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/23 14:25:26 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,23 +71,25 @@ char	*malloc_varname(char *str, int start, int end)
 {
 	char	*new_str;
 	int		i;
+	int		len;
 
 	printf("start = %d\n", start);
 	printf("end = %d\n", end);
-	new_str = malloc(sizeof(char) * (end - start) + 1);
+	len = end - start;
+	new_str = malloc(sizeof(char) * end + 1);
 	if (!new_str)
 	{
 		ft_panic(MALLOC_FAILURE, 0);
 		return (NULL);
 	}
 	i = 0;
-	while (i <= (end + 1))
+	while (i <= len - 1)
 	{
 		new_str[i] = str[start];
 		i++;
 		start++;
 	}
-	new_str[(end - start) + 1] = '\0';
+	new_str[i] = '\0';
 	printf("new_str = %s\n", new_str);
 	return (new_str);
 }
