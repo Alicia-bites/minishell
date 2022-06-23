@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:07:44 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/21 18:38:04 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/23 10:26:11 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static int is_char_word(char c)
 		|| c == '#' || c == '+' || c == '-' || c == '*' || c == '&'
 		|| c == '`' || c == '^' || c == '|' || c == '\\' || c == '/'
 		|| c == '@' || c == '_' || c == ')' || c == '(' || c == '%'
-		|| c == '$')
-		// || c == '?'|| c == '€' || (long long unsigned) c == '£' || c == '¬')
+		|| c == '$'|| c == '?')
+		//|| c == '€' || (long long unsigned) c == '£' || c == '¬')
 			return (1);
 	return (0);
 }
@@ -30,11 +30,12 @@ void	add_token_to_list(char *token, t_list **token_list)
 	extern	t_global	*g_global;
 	static int	i = 0;
 	
-	printf("list_cleared = %d\n", g_global->list_cleared);
-	if (g_global->list_cleared)
+	if (g_global->list_cleared && i > 0)
+	{
 		i = 0;
+		g_global->list_cleared = 0;		
+	}
 	*token_list = create_list(token, i++, 0);
-	// print_lst(*token_list);
 }
 
 t_list *built_token(t_chartype *input_list, int start, int end)
