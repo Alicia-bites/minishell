@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:17:17 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/21 18:34:31 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/23 10:28:44 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	get_input(void)
 			return (0);
 		if (str[0] != 0)
 		{
-			// printf("%s\n", str);
 			ft_parse(str, &token_list);
 			print_lst(token_list);
 			// execute_command(token_list);
