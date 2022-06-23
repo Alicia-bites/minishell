@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 13:56:31 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/21 13:59:47 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/23 10:24:49 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,6 @@ void	count_quotes(char *str, t_chartype *input_list)
 {
 	input_list->n_single = count_single(str);
 	input_list->n_double = count_double(str);	
-	printf("n_single = %d\n", input_list->n_single);
-	printf("n_double = %d\n", input_list->n_double);
+	// printf("n_single = %d\n", input_list->n_single);
+	// printf("n_double = %d\n", input_list->n_double);
 }
