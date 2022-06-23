@@ -6,13 +6,13 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 13:56:31 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/23 10:24:49 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/23 12:52:43 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static int	count_single(char *str)
+int	count_single(char *str)
 {
 	int		n_single;
 	char	*loc;
@@ -32,7 +32,7 @@ static int	count_single(char *str)
 	return (n_single);
 }	
 
-static int	count_double(char *str)
+int	count_double(char *str)
 {
 	int		n_double;
 	char	*loc;
