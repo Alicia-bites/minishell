@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:49:04 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/23 19:50:14 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/24 14:33:56 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*insert_expansions(int full_size, t_expanded *expanded_list, char *str)
 				new_str[i++] = expanded_list->expanded[j++];
 			expanded_list = expanded_list->next;
 			k++;
-			while (ft_isalnum(str[k]))
+			while (ft_isalnum(str[k]) || str[k] == '{' || str[k] == '}')
 				k++;				
 		}
 		new_str[i++] = str[k++];

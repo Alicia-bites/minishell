@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:47:29 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/23 19:50:47 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/24 13:45:19 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	find_expansions(char *str, t_expanded **expanded_list, int *full_size)
 {
-	int			i;
-	int			varsize;
+	int	i;
+	int	varsize;
 	
 	varsize = 0;
 	i = 0;

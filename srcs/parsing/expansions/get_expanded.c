@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:48:34 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/23 20:08:29 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/24 14:25:38 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,18 @@ void	get_expanded(char *str, t_expanded **expanded_list, int i, int *varsize)
 			j++;
 		var = malloc_varname(str, i, j);
 		*varsize = ft_strlen(var) + 1;
-		expanded = getenv(var);
-		if (!expanded)
-		{
-			printf("unknown variable\n");
-			return ;			
-		}
+		expanded = getenv(var);		
 		*expanded_list = create_dollar_list(expanded, index++);
+	}
+	else if (str[i + 1] == '{')
+	{
+		i += 2;
+		j = i;
+		while (str[j] != '}')
+			j++;
+		var = malloc_varname(str, i, (j));
+		*varsize = ft_strlen(var) + 2;
+		expanded = getenv(var);		
+		*expanded_list = create_dollar_list(expanded, index++);			
 	}
 }
