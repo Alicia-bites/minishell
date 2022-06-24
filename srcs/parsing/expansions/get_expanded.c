@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:48:34 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/24 14:53:59 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/24 14:56:54 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,6 @@ void	get_expanded(char *str, t_expanded **expanded_list, int i, int *varsize)
 {
 	extern	t_global	*g_global;
 	static int			index = 0;
-	int					j;
-	char 				*var;
-	char				*expanded;
 
 	if (g_global->expansions_list_cleared)
 	{
