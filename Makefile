@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/06/23 19:53:40 by amarchan         ###   ########.fr        #
+#    Updated: 2022/06/24 14:54:41 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SRCS =	srcs/main.c \
 		srcs/parsing/expansions/ft_lstnew_dollar.c \
 		srcs/parsing/expansions/get_full_size.c \
 		srcs/parsing/expansions/malloc_varname.c \
+		srcs/parsing/expansions/is_varname.c \
 		srcs/built-in/echo.c \
 		srcs/built-in/cd.c \
 		srcs/built-in/pwd.c \
