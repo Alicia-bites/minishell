@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 08:04:38 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/21 17:46:07 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/24 17:17:03 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef enum e_toktype {
 	TOK_R_REDIR,
 	TOK_DL_REDIR,
 	TOK_DR_REDIR,
+	TOK_BN,
 } e_toktype;
 
 typedef struct s_list
@@ -96,4 +97,5 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst);
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
 #endif

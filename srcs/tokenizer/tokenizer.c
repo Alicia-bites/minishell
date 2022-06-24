@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:07:44 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/23 12:54:28 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/24 17:22:24 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,8 @@ void	get_token(t_chartype *input_list, t_list **token_list)
 		*token_list = is_r_redir(input_list, &start, &end);
 		*token_list = is_dl_redir(input_list, &start, &end);
 		*token_list = is_dr_redir(input_list, &start, &end);
-		*token_list = is_intpoint(input_list, &start, &end);
+		*token_list = is_bn(input_list, &start, &end);
+		// *token_list = is_intpoint(input_list, &start, &end);
 	}
 }
 
@@ -128,6 +129,9 @@ int	get_chartype(t_chartype **input_list)
 			(*input_list)[i].type = CH_L_REDIR;
 		if ((*input_list)[i].character == '>')
 			(*input_list)[i].type = CH_R_REDIR;
+		if ((*input_list)[i].character == '\n')
+			(*input_list)[i].type = CH_BN;
+		
 		i++;
 	}
 	// print_chartype(*input_list);

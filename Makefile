@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/06/24 16:02:05 by amarchan         ###   ########.fr        #
+#    Updated: 2022/06/24 17:24:54 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,6 +63,7 @@ SRCS =	srcs/main.c \
 		srcs/tokenizer/is_r_redir.c \
 		srcs/tokenizer/is_dl_redir.c \
 		srcs/tokenizer/is_dr_redir.c \
+		srcs/tokenizer/is_bn.c \
 		srcs/tokenizer/is_intpoint.c \
 		srcs/tokenizer/is_word.c \
 

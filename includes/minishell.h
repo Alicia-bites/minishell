@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/24 16:03:01 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/24 17:25:13 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef enum e_chartype {
 	CH_R_REDIR,
 	CH_EQUAL,
 	CH_INTPOINT,
+	CH_BN,
 } e_chartype;
 
 typedef struct s_chartype {
@@ -123,6 +124,7 @@ t_list				*is_l_redir(t_chartype *input_list, int *start, int *end);
 t_list				*is_r_redir(t_chartype *input_list, int *start, int *end);
 t_list				*is_dl_redir(t_chartype *input_list, int *start, int *end);
 t_list				*is_dr_redir(t_chartype *input_list, int *start, int *end);
+t_list				*is_bn(t_chartype *input_list, int *start, int *end);
 t_list				*is_intpoint(t_chartype *input_list, int *start, int *end);
 
 #endif
