@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/24 13:44:50 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/24 16:03:01 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void				ft_lstadd_back_dollar(t_expanded **alst, t_expanded *new);
 int 				is_varname(char c);
 void				print_dollar_lst(t_expanded *lst);
 void				ft_lstclear_back(t_expanded **lst);
+void				ft_lstclear_dollar(t_expanded **lst);
 
 //built-in
 int					do_echo(char *str);

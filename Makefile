@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/06/24 14:54:41 by amarchan         ###   ########.fr        #
+#    Updated: 2022/06/24 16:02:05 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRCS =	srcs/main.c \
 		srcs/parsing/handle_unknown_command.c \
 		srcs/parsing/expansions/create_dollar_list.c \
 		srcs/parsing/expansions/find_expansions.c \
+		srcs/parsing/expansions/ft_lstclear_dollar.c \
 		srcs/parsing/expansions/ft_lstclear_back.c \
 		srcs/parsing/expansions/get_expanded.c \
 		srcs/parsing/expansions/insert_expansions.c \
