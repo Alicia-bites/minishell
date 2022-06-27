@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:14:51 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/27 15:55:59 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/27 17:16:53 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	is_envcall(t_chartype *input_list, int *start, int *end,
 		*end += 1;
 		while (input_list[*end].type == CH_WORD)
 			(*end)++;
-		built_token(input_list, *start, *end);
+		built_token(input_list, *start, *end, token_list);
 		*start = *end;
 	}
 }
