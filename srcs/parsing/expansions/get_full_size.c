@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   get_full_size.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/29 10:51:17 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/20 16:33:44 by amarchan         ###   ########.fr       */
+/*   Created: 2022/06/23 19:48:51 by amarchan          #+#    #+#             */
+/*   Updated: 2022/06/23 19:50:35 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../../includes/minishell.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+int	get_full_size(t_expanded *expanded_list)
 {
-	char	*dest;
-	int		i;
-	int		j;
-	int		len;
+	t_expanded *it;
+	int			length;
 
-	if (!s1 || !s2)
-		return (NULL);
-	len = ft_strlen(s1) + ft_strlen(s2);
-	dest = (char *)malloc(sizeof(char) * (len + 1));
-	if (!dest)
-		return (NULL);
-	i = -1;
-	while (s1[++i])
-		dest[i] = s1[i];
-	j = 0;
-	while (s2[j])
+	it = expanded_list;
+	length = 0;
+	while (it)
 	{
-		dest[i + j] = s2[j];
-		j++;
+		length += ft_strlen(it->expanded);
+		it = it->next;
 	}
-	dest[i + j] = '\0';
-	return (dest);
+	return (length);
 }

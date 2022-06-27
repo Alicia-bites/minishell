@@ -1,39 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   is_l_redir.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/29 10:51:17 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/20 16:33:44 by amarchan         ###   ########.fr       */
+/*   Created: 2022/06/20 18:14:56 by amarchan          #+#    #+#             */
+/*   Updated: 2022/06/21 17:19:48 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/minishell.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+t_list	*is_l_redir(t_chartype *input_list, int *start, int *end)
 {
-	char	*dest;
-	int		i;
-	int		j;
-	int		len;
+	t_list	*token_list;
 
-	if (!s1 || !s2)
-		return (NULL);
-	len = ft_strlen(s1) + ft_strlen(s2);
-	dest = (char *)malloc(sizeof(char) * (len + 1));
-	if (!dest)
-		return (NULL);
-	i = -1;
-	while (s1[++i])
-		dest[i] = s1[i];
-	j = 0;
-	while (s2[j])
+	if (input_list[*end].type == CH_L_REDIR
+		&& input_list[*end + 1].type != CH_L_REDIR)
 	{
-		dest[i + j] = s2[j];
-		j++;
+		(*end)++;
+		token_list = built_token(input_list, *start, *end);
+		*start = *end;
 	}
-	dest[i + j] = '\0';
-	return (dest);
+	return (token_list);
 }

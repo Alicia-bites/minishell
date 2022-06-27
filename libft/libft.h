@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 08:04:38 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/16 16:14:51 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/24 17:17:03 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,27 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+typedef enum e_toktype {
+	TOK_UNKNOWN,
+	TOK_WORD,
+	TOK_SPACE,
+	TOK_PIPE,
+	TOK_SQUOTE,
+	TOK_DQUOTE,
+	TOK_ENV_NAME,
+	TOK_ENV_CALL,
+	TOK_L_REDIR,
+	TOK_R_REDIR,
+	TOK_DL_REDIR,
+	TOK_DR_REDIR,
+	TOK_BN,
+} e_toktype;
+
 typedef struct s_list
 {
-	char			*str;
 	int				index;
+	e_toktype		toktype;
+	char			*token;
 	struct s_list	*prev;
 	struct s_list	*next;
 }	t_list;
@@ -37,6 +54,7 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 size_t	ft_strlcat(char *dest, const char *src, size_t size);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
+char	*ft_strstr(const char *big, const char *little);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
@@ -70,13 +88,14 @@ long long	ft_atoll(const char *str);
 int			ft_isspace(int c);
 
 
-t_list	*ft_lstnew(char *str, int i);
+t_list	*ft_lstnew(char *str, int i, e_toktype toktype);
 void	ft_lstadd_front(t_list **alst, t_list *new);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_back(t_list **alst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(void*));
-void	ft_lstclear(t_list **lst, void (*del)(void*));
+void	ft_lstclear(t_list **lst);
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
 #endif

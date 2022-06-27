@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execute_command.c                                  :+:      :+:    :+:   */
+/*   is_intpoint.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/16 18:15:18 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/17 12:10:12 by amarchan         ###   ########.fr       */
+/*   Created: 2022/06/20 18:14:53 by amarchan          #+#    #+#             */
+/*   Updated: 2022/06/21 17:13:53 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-// Indicate which action should be taken
-int	execute_command(char *str, int i)
+t_list	*is_intpoint(t_chartype *input_list, int *start, int *end)
 {
-	if (i == 0)
-		do_echo(str);
-	if (i == 1)
-		do_echo_n(str);
-	if (i == 2)
-		do_cd(str);
-	if (i == 3)
-		do_pwd();
-	if (i == 4)
-		do_export(str);
-	if (i == 5)
-		do_unset(str);
-	if (i == 6)
-		do_env(str);
-	if (i == 7)
-		do_exit();
-	return (0);
+	t_list	*token_list;
+
+	if (input_list[*end].type == CH_DOLLAR
+		&& input_list[*end + 1].type == CH_INTPOINT)
+	{
+		(*end) += 2;
+		token_list = built_token(input_list, *start, *end);
+		*start = *end;
+	}
+	
+	else if (input_list[*end].type == CH_INTPOINT)
+	{
+		(*end)++;
+		token_list = built_token(input_list, *start, *end);
+		*start = *end;
+	}
+	return (token_list);
 }

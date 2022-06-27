@@ -28,6 +28,9 @@
 *.so.*
 *.dylib
 
+# vs code stuff
+.vscode
+
 # Executables
 minishell
 *.exe

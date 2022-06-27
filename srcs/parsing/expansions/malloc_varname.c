@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   malloc_varname.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/29 10:51:17 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/20 16:33:44 by amarchan         ###   ########.fr       */
+/*   Created: 2022/06/23 19:49:14 by amarchan          #+#    #+#             */
+/*   Updated: 2022/06/23 19:50:25 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../../includes/minishell.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*malloc_varname(char *str, int start, int end)
 {
-	char	*dest;
+	char	*new_str;
 	int		i;
-	int		j;
 	int		len;
 
-	if (!s1 || !s2)
-		return (NULL);
-	len = ft_strlen(s1) + ft_strlen(s2);
-	dest = (char *)malloc(sizeof(char) * (len + 1));
-	if (!dest)
-		return (NULL);
-	i = -1;
-	while (s1[++i])
-		dest[i] = s1[i];
-	j = 0;
-	while (s2[j])
+	len = end - start;
+	new_str = malloc(sizeof(char) * end + 1);
+	if (!new_str)
 	{
-		dest[i + j] = s2[j];
-		j++;
+		ft_panic(MALLOC_FAILURE, 0);
+		return (NULL);
 	}
-	dest[i + j] = '\0';
-	return (dest);
+	i = 0;
+	while (i <= len - 1)
+		new_str[i++] = str[start++];
+	new_str[i] = '\0';
+	return (new_str);
 }
