@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/16 18:41:03 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/27 09:10:21 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 #define WRONG_CMD 127
 
 //main.c
-int					main(void);
+//int					main(void);
 int					get_input(void);
 
 //parsing
@@ -42,8 +42,8 @@ int					do_cd(char *str);
 int					do_pwd(void);
 int					do_export(char *str);
 int					do_unset(char *str);
-int					do_env(char *str);
-int					do_exit();
+int					do_env(char **envp);
+void				do_exit(int exit_number);
 
 //execute_command
 int					read_command(t_list *inputs_lst, char **built_ins);
