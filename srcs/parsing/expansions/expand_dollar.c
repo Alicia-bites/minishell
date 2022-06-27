@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:47:06 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/27 15:46:45 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/27 17:50:24 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 char	*expand_dollar(char *str, t_chartype *input_list)
 {
-	extern	t_global	*g_global;
 	char 				*new_str;
 	int					full_size;
 	t_expanded			*expanded_list;
@@ -28,6 +27,5 @@ char	*expand_dollar(char *str, t_chartype *input_list)
 	new_str = insert_expansions(full_size, expanded_list, str);
 	ft_lstclear_dollar(&expanded_list);
 	ft_lstclear_back(&expanded_list);
-	// g_global->expansions_list_cleared = 1;
 	return (new_str);
 }

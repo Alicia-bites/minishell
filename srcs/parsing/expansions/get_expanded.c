@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:48:34 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/27 15:39:05 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/27 17:50:13 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,10 @@ static void	handle_dollar_brackets(int i, char *str, int *varsize,
 
 void	get_expanded(char *str, t_expanded **expanded_list, int i, int *varsize)
 {
-	// extern	t_global	*g_global;
 	static int			index = 0;
 
 	if (!*expanded_list)
-	{
 		index = 0;
-		// g_global->expansions_list_cleared = 0;
-	}
 	if (ft_isdigit(str[i + 1]))
 		handle_dollar_number(str, expanded_list, &index, i);
 	else if (is_varname(str[i + 1]) || str[i + 1] == '<')

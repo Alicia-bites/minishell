@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:07:44 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/27 17:46:47 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/27 17:49:24 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,10 @@ static int is_char_word(char c)
 
 void	add_token_to_list(char *token, t_list **token_list)
 {
-	// extern	t_global	*g_global;
 	static int	i = 0;
 	
-	// printf("token_list = %p\n", *token_list);
 	if (!*token_list)
-	{
 		i = 0;
-		// g_global->list_cleared = 0;		
-	}
 	*token_list = create_list(token, i++, 0);
 }
 

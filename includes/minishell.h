@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/27 17:46:38 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/27 17:49:02 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ typedef struct s_chartype {
 
 
 typedef struct s_global {
-	int	list_cleared;
-	int	expansions_list_cleared;
 } t_global;
 
 typedef struct s_expanded {
