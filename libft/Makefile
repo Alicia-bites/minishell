@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/30 09:51:13 by amarchan          #+#    #+#              #
-#    Updated: 2022/06/16 16:28:26 by amarchan         ###   ########.fr        #
+#    Updated: 2022/06/21 11:31:32 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ FILES =	ft_isalpha \
 		ft_strchr \
 		ft_strrchr \
 		ft_strnstr \
+		ft_strstr \
 		ft_strncmp \
 		ft_atoi \
 		ft_isdigit \

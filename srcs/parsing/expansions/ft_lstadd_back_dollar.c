@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_back_dollar.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/29 10:51:17 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/20 16:33:44 by amarchan         ###   ########.fr       */
+/*   Created: 2022/06/23 19:47:46 by amarchan          #+#    #+#             */
+/*   Updated: 2022/06/23 19:54:32 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../../includes/minishell.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void	ft_lstadd_back_dollar(t_expanded **alst, t_expanded *new)
 {
-	char	*dest;
-	int		i;
-	int		j;
-	int		len;
+	t_expanded	*iterator;
 
-	if (!s1 || !s2)
-		return (NULL);
-	len = ft_strlen(s1) + ft_strlen(s2);
-	dest = (char *)malloc(sizeof(char) * (len + 1));
-	if (!dest)
-		return (NULL);
-	i = -1;
-	while (s1[++i])
-		dest[i] = s1[i];
-	j = 0;
-	while (s2[j])
+	iterator = *alst;
+	if (alst && new)
 	{
-		dest[i + j] = s2[j];
-		j++;
+		if (!*alst)
+			*alst = new;
+		else
+		{	
+			while (iterator->next)
+				iterator = iterator->next;
+			iterator->next = new;
+		}
 	}
-	dest[i + j] = '\0';
-	return (dest);
 }

@@ -1,43 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_command.c                                     :+:      :+:    :+:   */
+/*   is_word.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/16 18:14:01 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/20 12:53:28 by amarchan         ###   ########.fr       */
+/*   Created: 2022/06/20 18:10:26 by amarchan          #+#    #+#             */
+/*   Updated: 2022/06/25 19:04:22 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-// Find in built_ins what command is invoked
-int	read_command(t_list *inputs_lst, char **built_ins)
+t_list	*is_word(t_chartype *input_list, int *start, int *end)
 {
-	t_list	*it;
-	int		i;
-	int		cmd_notfound;
+	t_list	*token_list;
 	
-	it = inputs_lst;
-	i = 0;
-	cmd_notfound = 0;
-	while (it)
+	if (input_list[*end].type == CH_WORD)
 	{
-		while (i < 8)
+		while (input_list[*end].type == CH_WORD)
 		{
-			if (!ft_strcmp(it->token, built_ins[i]))
-			{
-				if (it->next)
-					execute_command(it->next->token, i);				
-				else
-					execute_command("", i);
-			}
-			i++;
+			if (input_list[*end + 1].type == CH_SPACE
+				&& input_list[*end + 2].character == '-'
+				&& input_list[*end + 3].character == 'n')
+					(*end) += 3;
+			(*end)++;			
 		}
-		it = it->next;
+		token_list = built_token(input_list, *start, *end);
+		*start = *end;
 	}
-	if (i == 0)
-		handle_unknown_command(inputs_lst);
-	return (0);
+	return (token_list);
 }

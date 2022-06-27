@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/06/16 19:03:43 by amarchan         ###   ########.fr        #
+#    Updated: 2022/06/24 17:24:54 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,23 @@ SRCS =	srcs/main.c \
 		srcs/parsing/store_built_ins.c \
 		srcs/parsing/create_list.c \
 		srcs/parsing/print_lst.c \
+		srcs/parsing/is_not_clone.c \
+		srcs/parsing/is_not_empty.c \
+		srcs/parsing/count_quotes.c \
 		srcs/parsing/handle_unknown_command.c \
+		srcs/parsing/expansions/create_dollar_list.c \
+		srcs/parsing/expansions/find_expansions.c \
+		srcs/parsing/expansions/ft_lstclear_dollar.c \
+		srcs/parsing/expansions/ft_lstclear_back.c \
+		srcs/parsing/expansions/get_expanded.c \
+		srcs/parsing/expansions/insert_expansions.c \
+		srcs/parsing/expansions/print_dollar_lst.c \
+		srcs/parsing/expansions/expand_dollar.c \
+		srcs/parsing/expansions/ft_lstadd_back_dollar.c \
+		srcs/parsing/expansions/ft_lstnew_dollar.c \
+		srcs/parsing/expansions/get_full_size.c \
+		srcs/parsing/expansions/malloc_varname.c \
+		srcs/parsing/expansions/is_varname.c \
 		srcs/built-in/echo.c \
 		srcs/built-in/cd.c \
 		srcs/built-in/pwd.c \
@@ -37,6 +53,19 @@ SRCS =	srcs/main.c \
 		srcs/built-in/exit.c\
 		srcs/execute_commands/read_command.c \
 		srcs/execute_commands/execute_command.c \
+		srcs/tokenizer/tokenizer.c \
+		srcs/tokenizer/is_space.c \
+		srcs/tokenizer/is_pipe.c \
+		srcs/tokenizer/is_s_quote.c \
+		srcs/tokenizer/is_d_quote.c \
+		srcs/tokenizer/is_envcall.c \
+		srcs/tokenizer/is_l_redir.c \
+		srcs/tokenizer/is_r_redir.c \
+		srcs/tokenizer/is_dl_redir.c \
+		srcs/tokenizer/is_dr_redir.c \
+		srcs/tokenizer/is_bn.c \
+		srcs/tokenizer/is_intpoint.c \
+		srcs/tokenizer/is_word.c \
 
 CC = clang
 

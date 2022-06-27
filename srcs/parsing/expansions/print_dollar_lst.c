@@ -1,39 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   print_dollar_lst.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/29 10:51:17 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/20 16:33:44 by amarchan         ###   ########.fr       */
+/*   Created: 2022/06/23 19:49:23 by amarchan          #+#    #+#             */
+/*   Updated: 2022/06/23 19:50:30 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../../includes/minishell.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void	print_dollar_lst(t_expanded *lst)
 {
-	char	*dest;
-	int		i;
-	int		j;
-	int		len;
+	t_expanded *iterator;
 
-	if (!s1 || !s2)
-		return (NULL);
-	len = ft_strlen(s1) + ft_strlen(s2);
-	dest = (char *)malloc(sizeof(char) * (len + 1));
-	if (!dest)
-		return (NULL);
-	i = -1;
-	while (s1[++i])
-		dest[i] = s1[i];
-	j = 0;
-	while (s2[j])
+	iterator = lst;
+	while (iterator)
 	{
-		dest[i + j] = s2[j];
-		j++;
+		printf("index = %d\n", iterator->index);
+		printf("expanded = %s\n", iterator->expanded);
+		puts("-----------------------------------------");
+		iterator = iterator->next;		
 	}
-	dest[i + j] = '\0';
-	return (dest);
 }

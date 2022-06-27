@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarchan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 08:48:26 by amarchan          #+#    #+#             */
-/*   Updated: 2021/12/06 14:40:46 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/21 16:11:31 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 char	*ft_strchr(const char *s, int c)

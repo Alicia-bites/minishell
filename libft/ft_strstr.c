@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/29 10:51:17 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/20 16:33:44 by amarchan         ###   ########.fr       */
+/*   Created: 2022/06/21 11:29:09 by amarchan          #+#    #+#             */
+/*   Updated: 2022/06/21 14:16:50 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strstr(const char *big, const char *little)
 {
-	char	*dest;
-	int		i;
-	int		j;
-	int		len;
+	size_t	i;
+	size_t	j;
+	size_t	n;
+	char	*a;
 
-	if (!s1 || !s2)
-		return (NULL);
-	len = ft_strlen(s1) + ft_strlen(s2);
-	dest = (char *)malloc(sizeof(char) * (len + 1));
-	if (!dest)
-		return (NULL);
-	i = -1;
-	while (s1[++i])
-		dest[i] = s1[i];
-	j = 0;
-	while (s2[j])
+	i = 0;
+	a = (char *)big;
+	n = ft_strlen(little);
+	if (n == 0 || little == big)
+		return (a);
+	while (a[i])
 	{
-		dest[i + j] = s2[j];
-		j++;
+		j = 0;
+		while (a[i + j] && little[j] && a[i + j] == little[j])
+			j++;
+		if (j == n)
+			return ((char *)&a[i]);
+		i++;
 	}
-	dest[i + j] = '\0';
-	return (dest);
+	return (0);
 }

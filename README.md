@@ -57,6 +57,9 @@ This project is about creating a simple shell.
 	- [ ] env with no options or arguments
 	- [ ] exit with no options
 
+## ToDo (officiO)
+- [ ] '?' '-' don't consider as word when exporting
+
 > :warning: **_The readline() function can cause memory leaks. You don’t have to fix them. But that doesn’t mean your own code, yes the code you wrote, can have memory leaks._**
 
 ## Externals functions
