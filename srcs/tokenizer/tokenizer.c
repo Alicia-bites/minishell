@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:07:44 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/24 17:22:24 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/25 16:14:51 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,42 +138,36 @@ int	get_chartype(t_chartype **input_list)
 	return (i);
 }
 
-// //replace "$?" by the exit status of the last pipeline
-// void	execute_dollarint(t_list **token_list)
-// {
-// 	printf("execute $?");
-// }
-
-// void	parse_dollar(t_chartype *input_list, t_list **token_list, char *token)
-// {
-// 	int	i;
-
-// 	if (input_list->n_double == 0 && input_list->n_single == 0)
-// 	{
-// 		if (token[i] == '$' && token[i + 1] == '?')
-// 			execute_dollar(token_list);
-// 		if (token[i] == '$')
-// 		{
-// 			i++;
-// 			while (token[i] == )
-// 		}
-		
-// 	}
-// }
-
-// t_list	*get_toktype(t_chartype *input_list, t_list **token_list)
-// {
-// 	t_list *it;
+void	get_toktype(t_chartype *input_list, t_list **token_list)
+{
+	t_list	*it;
+	int		i;
+	int		cmd_notfound;
+	char 	**built_ins;
 	
-// 	it = *token_list;
-// 	while (it->next)
-// 	{
-// 		if (ft_strstr(it->token, "$"))
-// 			parse_dollar(input_list, token_list, it->token);
-			
-// 	}
-// 	print_lst(*token_list);
-// }
+	it = *token_list;
+	i = 0;
+	cmd_notfound = 0;
+	built_ins = store_built_ins();
+	while (it)
+	{
+		while (i < 8)
+		{
+			if (!ft_strcmp(it->token, built_ins[i]))
+			{
+				if (it->next)
+					execute_command(it->next->token, i);				
+				else
+					execute_command("", i);
+			}
+			i++;
+		}
+		it = it->next;
+	}
+	if (i == 0)
+		handle_unknown_command(*token_list);
+	print_lst(*token_list);
+}
 
 void	tokenize(t_chartype *input_list, t_list **token_list)
 {
@@ -181,5 +175,5 @@ void	tokenize(t_chartype *input_list, t_list **token_list)
 	get_chartype(&input_list);
 	// print_chartype(input_list);
 	get_token(input_list, token_list);
-	// get_toktype(input_list, token_list);
+	get_toktype(input_list, token_list);
 }
