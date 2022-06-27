@@ -19,8 +19,6 @@ UC_P=${ORI_P}/use_case
 RES_P=${ORI_P}/result
 RES_ORI=${RES_P}/result_ori
 
-
-
 function	exec_test
 {
 	echo "exec test"

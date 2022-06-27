@@ -1,0 +1,6 @@
+export ANTHO=test ; env | grep -E 'ANTHO' ; unset ANTHO ; echo "~~~~~~~" ; env | grep -E 'ANTHO'
+export ANTHO=test ; env | grep -E 'ANTHO' ; unset "ANTHO" ; echo "~~~~~~~" ; env | grep -E 'ANTHO'
+export ANTHO=test ; env | grep -E 'ANTHO' ; unset 'ANTHO' ; echo "~~~~~~~" ; env | grep -E 'ANTHO'
+export ANTHO=test ; env | grep -E 'ANTHO' ; unset $ANTHO ; echo "~~~~~~~" ; env | grep -E 'ANTHO'
+export ANTHO=test ; env | grep -E 'ANTHO' ; unset "$ANTHO" ; echo "~~~~~~~" ; env | grep -E 'ANTHO'
+export ANTHO=test ; env | grep -E 'ANTHO' ; unset '$ANTHO' ; echo "~~~~~~~" ; env | grep -E 'ANTHO'

@@ -1,0 +1,3 @@
+hello|prout
+hello > file1
+hello >> file1

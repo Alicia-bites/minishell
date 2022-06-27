@@ -17,3 +17,21 @@ echo -n "Hello"
 echo -n "Hello"
 echo -n "Hello"
 echo -n -n -n -nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn 123456789
+#
+echo $TERM
+echo "$TERM"
+echo '$TERM'
+echo "$TERM
+echo $"TERM
+echo $"TERM"
+echo "$TERM'"
+echo '$TERM"'
+echo "'$TERM"
+echo '"$TERM'
+echo ""$TERM""
+echo "'$TERM'"
+echo ''$TERM''
+echo '"$TERM"'
+#
+echo "Salut" $TERM cat
+#
