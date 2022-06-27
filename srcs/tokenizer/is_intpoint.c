@@ -6,15 +6,15 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:14:53 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/21 17:13:53 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/27 15:58:55 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-t_list	*is_intpoint(t_chartype *input_list, int *start, int *end)
+void	*is_intpoint(t_chartype *input_list, int *start, int *end,
+	t_list **token_list)
 {
-	t_list	*token_list;
 
 	if (input_list[*end].type == CH_DOLLAR
 		&& input_list[*end + 1].type == CH_INTPOINT)
@@ -27,7 +27,7 @@ t_list	*is_intpoint(t_chartype *input_list, int *start, int *end)
 	else if (input_list[*end].type == CH_INTPOINT)
 	{
 		(*end)++;
-		token_list = built_token(input_list, *start, *end);
+		built_token(input_list, *start, *end, token_list);
 		*start = *end;
 	}
 	return (token_list);

@@ -1,0 +1,10 @@
+echo "alicia"
+echo 'alicia'
+echo "alicia" ""
+echo 'alicia' ''
+echo "alicia" "
+echo 'alicia' '
+echo 'al' icia''
+echo "al" icia""
+echo "al""cia"
+echo 'al''cia'

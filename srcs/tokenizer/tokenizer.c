@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:07:44 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/25 16:14:51 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/27 16:03:09 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,73 @@ void	add_token_to_list(char *token, t_list **token_list)
 	extern	t_global	*g_global;
 	static int	i = 0;
 	
-	if (g_global->list_cleared && i > 0)
+	printf("token_list = %p\n", *token_list);
+	if (!*token_list)
 	{
 		i = 0;
-		g_global->list_cleared = 0;		
+		// g_global->list_cleared = 0;		
 	}
 	*token_list = create_list(token, i++, 0);
 }
 
-t_list *built_token(t_chartype *input_list, int start, int end)
+void	remove_squotes(t_chartype *input_list, int *start, int *end)
+{
+	int	quotes;
+	int	i;
+
+	quotes = 0;
+	i = *start;
+	while (i < *end)
+	{
+		if (input_list[i].character == '\'')
+		{
+			quotes++;
+		}
+		i++;
+	}
+	if (quotes == 2)
+	{
+		(*start) += 1;
+		(*end)   -= 1;
+	}
+}
+
+void	remove_dquotes(t_chartype *input_list, int *start, int *end)
+{
+	int	quotes;
+	int	i;
+
+	quotes = 0;
+	i = *start;
+	while (i < *end)
+	{
+		if (input_list[i].character == '\"')
+		{
+			quotes++;
+		}
+		i++;
+	}
+	if (quotes == 2)
+	{
+		(*start) += 1;
+		(*end)   -= 1;
+	}
+}
+
+void	remove_quotes(t_chartype *input_list, int *start, int *end)
+{
+	remove_squotes(input_list, start, end);
+	remove_dquotes(input_list, start, end);
+}
+
+t_list *built_token(t_chartype *input_list, int start, int end, t_list **token_list)
 {
 	int			len;
 	int			k;
 	char 		*token;
-	t_list		*token_list;
-	
+
+	remove_quotes(input_list, &start, &end);
 	len = end - start;
-	// printf("start = %d\n", start);
 	token = malloc(sizeof(char) * (len + 1));
 	if (!token)
 	{
@@ -55,18 +105,10 @@ t_list *built_token(t_chartype *input_list, int start, int end)
 	}
 	k = 0;
 	while (k < len)
-	{
-		// printf("char = %c\n", input_list[start].character);
-		token[k] = input_list[start].character;
-		start++;
-		k++;
-	}
+		token[k++] = input_list[start++].character;
 	token[k++] = '\0';
 	start = end;
-	// printf("end = %d\n", end);
-	// printf("token = %s\n", token);
-	add_token_to_list(token, &token_list);
-	return (token_list);
+	add_token_to_list(token, token_list);
 }
 
 void	get_token(t_chartype *input_list, t_list **token_list)
@@ -78,16 +120,16 @@ void	get_token(t_chartype *input_list, t_list **token_list)
 	end = 0;
 	while (start < input_list[start].length)
 	{
-		*token_list = is_word(input_list, &start, &end);
-		*token_list = is_space(input_list, &start, &end);
-		*token_list = is_pipe(input_list, &start, &end);
-		*token_list = is_s_quote(input_list, &start, &end);
-		*token_list = is_d_quote(input_list, &start, &end);
-		*token_list = is_l_redir(input_list, &start, &end);
-		*token_list = is_r_redir(input_list, &start, &end);
-		*token_list = is_dl_redir(input_list, &start, &end);
-		*token_list = is_dr_redir(input_list, &start, &end);
-		*token_list = is_bn(input_list, &start, &end);
+		*token_list = is_word(input_list, &start, &end, token_list);
+		*token_list = is_space(input_list, &start, &end, token_list);
+		*token_list = is_pipe(input_list, &start, &end, token_list);
+		*token_list = is_s_quote(input_list, &start, &end, token_list);
+		*token_list = is_d_quote(input_list, &start, &end, token_list);
+		*token_list = is_l_redir(input_list, &start, &end, token_list);
+		*token_list = is_r_redir(input_list, &start, &end, token_list);
+		*token_list = is_dl_redir(input_list, &start, &end, token_list);
+		*token_list = is_dr_redir(input_list, &start, &end, token_list);
+		*token_list = is_bn(input_list, &start, &end, token_list);
 		// *token_list = is_intpoint(input_list, &start, &end);
 	}
 }
@@ -166,7 +208,7 @@ void	get_toktype(t_chartype *input_list, t_list **token_list)
 	}
 	if (i == 0)
 		handle_unknown_command(*token_list);
-	print_lst(*token_list);
+	// print_lst(*token_list);
 }
 
 void	tokenize(t_chartype *input_list, t_list **token_list)

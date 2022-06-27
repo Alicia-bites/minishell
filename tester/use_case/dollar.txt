@@ -1,3 +1,8 @@
 echo "$LANG'alicia"
 echo "alicia$LANG"
 echo "$LANGalicia"
+echo $LANG
+echo '$LANG'
+echo "$LANG"
+echo $LANG $TERM $PATH
+echo ${LANG} ${TERM} ${PATH}
