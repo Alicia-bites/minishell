@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:49:49 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/24 17:12:17 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/25 16:15:26 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_parse(char *str, t_list **token_list)
 	length = 0;
 	if (ft_strstr(str, "$") && !count_single(str))
 		str = expand_dollar(str, input_list);
-	printf("str = %s\n", str);
+	// printf("str = %s\n", str);
 	length = ft_strlen(str);
 	input_list = malloc(sizeof(t_chartype) * (length + 1));
 	if (!input_list)
@@ -44,6 +44,6 @@ void	ft_parse(char *str, t_list **token_list)
 		// printf("%c", input_list[i++].character);
 	//END
 	tokenize(input_list, token_list);
-	print_lst(*token_list);
+	// print_lst(*token_list);
 	// sort_input(input_list);
 }
