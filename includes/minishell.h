@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/27 16:04:53 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/27 17:46:38 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int					get_chartype(t_chartype **input_list);
 // static void			print_chartype(t_chartype *input_list);
 void				get_token(t_chartype *input_list, t_list **token_list);
 int					is_charword(char c);
-t_list				*built_token(t_chartype *input_list, int start, int end, t_list **token_list);
+void				built_token(t_chartype *input_list, int start, int end, t_list **token_list);
 void				add_token_to_list(char *token, t_list **token_list);
 // static int			is_char_word(char c);
 void				is_word(t_chartype *input_list, int *start, int *end, t_list **token_list);
