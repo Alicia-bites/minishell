@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 18:15:18 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/27 12:44:57 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/27 19:31:03 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 // Indicate which action should be taken
 int	execute_command(char *str, int i)
 {
-	// if (i == 0)
-	// 	do_echo(str);
-	// if (i == 1)
-	// 	do_echo_n(str);
+	if (i == 0)
+		do_echo(str);
+	if (i == 1)
+		do_echo_n(str);
 	// if (i == 2)
 	// 	do_cd(str);
 	// if (i == 3)
