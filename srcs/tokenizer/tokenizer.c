@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:07:44 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/28 15:04:14 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/28 18:38:39 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,21 @@ void	remove_squotes(t_chartype *input_list, int *start, int *end)
 void	remove_dquotes(t_chartype *input_list, int *start, int *end)
 {
 	int	quotes;
+	int	tricky_case;
 	int	i;
 
+	tricky_case = 0;
 	quotes = 0;
 	i = *start;
 	while (i < *end)
 	{
-		if (input_list[i].character == '\"')
+		if (i > 0 && input_list[i].character == '\"'
+			&& input_list[i + 1].character == '\"')
+		{
+			quotes++;
+			tricky_case = 1;
+		}
+		else if (input_list[i].character == '\"')
 		{
 			quotes++;
 		}
@@ -74,7 +82,8 @@ void	remove_dquotes(t_chartype *input_list, int *start, int *end)
 	if (quotes == 2)
 	{
 		(*start) += 1;
-		(*end)   -= 1;
+		if (!tricky_case)
+			(*end) -= 1;
 	}
 }
 
@@ -100,9 +109,19 @@ void built_token(t_chartype *input_list, int start, int end, t_list **token_list
 	}
 	k = 0;
 	while (k < len)
+	{
+		if (input_list[start - 1].character == '"'
+			&& input_list[start].character == '\\'
+			&& (input_list[start + 1].character == '"'
+			|| input_list[start + 1].character == '\\'))
+			{
+				start++;
+				len--;			
+			}
 		token[k++] = input_list[start++].character;
+	}
 	token[k++] = '\0';
-	start = end;
+	// start = end;
 	add_token_to_list(token, token_list);
 }
 
@@ -113,7 +132,7 @@ void	get_token(t_chartype *input_list, t_list **token_list)
 
 	start = 0;
 	end = 0;
-	while (start < input_list[start].length)
+	while (start < (input_list[start].length - 1))
 	{
 		is_word(input_list, &start, &end, token_list);
 		is_space(input_list, &start, &end, token_list);
