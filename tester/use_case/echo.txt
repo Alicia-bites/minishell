@@ -35,3 +35,23 @@ echo '"$TERM"'
 #
 echo "Salut" $TERM cat
 #
+echo """
+echo """"
+echo "a""b"
+echo "a" "b"
+echo "hey""you"
+echo "outthere" "in the dark"
+echo "\""
+echo "\'"
+echo '\"'
+echo '\''
+echo '\\'
+echo "\\"
+echo '\a'
+echo "\a"
+echo '$'
+echo "$"
+echo $
+echo \\
+echo \
+
