@@ -24,6 +24,10 @@ function	exec_test
 	echo "exec test"
 	for i in ${1}/*.txt
 	do
+		if [ ! -z ${3} ] && [ ${i} != ${1}/${3}.txt ]
+		then
+			continue
+		fi
 		echo "file name: ${i}"
 		while read -r line
 		do
@@ -86,8 +90,8 @@ function	main
 		exit 1
 	fi
 	init_dir ${RES_P}
-	exec_test ${UC_P} ${RES_ORI}
+	exec_test ${UC_P} ${RES_ORI} ${1}
 	exit 0
 }
 
-main
+main ${1}

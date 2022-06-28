@@ -6,21 +6,21 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/27 17:49:02 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/28 16:40:58 by antho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-#include <stdio.h>
-#include <readline/readline.h>
-#include <readline/history.h>
+# include <stdio.h>
+# include <readline/readline.h>
+# include <readline/history.h>
 
-#include "../libft/libft.h"
+# include "libft.h"
 
-#define MALLOC_FAILURE -42
-#define WRONG_CMD 127
+# define MALLOC_FAILURE -42
+# define WRONG_CMD 127
 
 typedef enum e_chartype {
 	CH_UNKNOWN,
@@ -57,7 +57,7 @@ typedef struct s_expanded {
 } t_expanded;
 
 //main.c
-//int					main(void);
+int					main(void);
 int					get_input(void);
 
 //parsing
@@ -66,7 +66,7 @@ void				sort_inputs(char **inputs);
 char				**store_built_ins(void);
 t_list				*create_list(char *str, int i, e_toktype e_toktype);
 void				print_lst(t_list *lst);
-void				ft_panic(int errcode, char *str);
+//void				ft_panic(int errcode, char *str);
 int					handle_unknown_command(t_list *inputs_lst);
 int					is_not_clone(char *str);
 int					is_not_empty(char *str);

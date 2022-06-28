@@ -6,95 +6,141 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/30 09:51:13 by amarchan          #+#    #+#              #
-#    Updated: 2022/06/21 11:31:32 by amarchan         ###   ########.fr        #
+#    Updated: 2022/06/28 12:04:35 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+NAME 		:=	libft.a
+CC 		:=	cc
+CFLAGS		:=	-MMD -Wall -Wextra -Werror
+CFLAGSADD	:=	-g3
 
-CC = cc
+AR		:=	ar rcs
+RM		:=	rm -rf
 
-CFLAGS = -Wall -Wextra -Werror
+IPATH		:=	include
+OPATH		:=	obj
 
-AR = ar rcs
+CHAR_PATH	:=	chartype
+CONV_PATH	:=	convert
+LIST_PATH	:=	list
+MEM_PATH	:=	memory
+MSG_PATH	:=	message
+PUT_PATH	:=	put
+STR_PATH	:=	string
 
-RM = rm -f
+CHAR_SRCS	:=	ft_isalnum.c\
+			ft_isalpha.c\
+			ft_isascii.c\
+			ft_isdigit.c\
+			ft_isinteger.c\
+			ft_isprint.c\
+			ft_isspace.c
 
-FILES =	ft_isalpha \
-		ft_memset \
-		ft_bzero \
-		ft_memcpy \
-		ft_memmove \
-		ft_memchr \
-		ft_memcmp \
-		ft_strcmp \
-		ft_strlen \
-		ft_strlcpy \
-		ft_strlcat \
-		ft_strchr \
-		ft_strrchr \
-		ft_strnstr \
-		ft_strstr \
-		ft_strncmp \
-		ft_atoi \
-		ft_isdigit \
-		ft_isalnum \
-		ft_isascii \
-		ft_isprint \
-		ft_toupper \
-		ft_tolower \
-		ft_calloc \
-		ft_strdup \
-		ft_substr \
-		ft_strjoin \
-		ft_strtrim \
-		ft_itoa \
-		ft_split \
-		ft_strmapi \
-		ft_striteri \
-		ft_putchar_fd \
-		ft_putstr_fd \
-		ft_putendl_fd \
-		ft_putnbr_fd \
-		ft_isspace \
-		ft_rstrip \
-		ft_lstrip \
-		ft_strip \
-		isinteger \
-		ft_atoll \
-		ft_lstnew \
-		ft_lstadd_front \
-		ft_lstsize \
-	 	ft_lstlast \
-	  	ft_lstadd_back \
-	  	ft_lstdelone \
-	  	ft_lstclear \
-	  	ft_lstiter \
+CONV_SRCS	:=	ft_atoi.c\
+			ft_atoll.c\
+			ft_itoa.c\
+			ft_tolower.c\
+			ft_toupper.c
 
-SRCS_DIR = ./
-SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
+LIST_SRCS	:=	ft_lst_append.c\
+			ft_lst_clear.c\
+			ft_lst_delbyobj.c\
+			ft_lst_free.c\
+			ft_lst_func_lst.c\
+			ft_lst_init.c\
+			ft_lst_last.c\
+			ft_lst_new.c\
+			ft_lst_size.c\
+			ft_lstadd_back.c\
+			ft_lstadd_front.c\
+			ft_lstclear.c\
+			ft_lstdelone.c\
+			ft_lstiter.c\
+			ft_lstlast.c\
+			ft_lstnew.c\
+			ft_lstsize.c
 
-OBJS_DIR = ./
-OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES)))
+MEM_SRCS	:=	ft_calloc.c\
+			ft_memchr.c\
+			ft_memcmp.c\
+			ft_memcpy.c\
+			ft_memmove.c\
+			ft_memset.c
 
-.c.o: $(SRCS)
-	$(CC) $(CFLAGS) -c -o $@ $<
+MSG_SRCS	:=	ft_panic.c
 
-$(NAME): $(OBJS)
-	$(AR) $@ $^
+PUT_SRCS	:=	ft_putchar_fd.c\
+			ft_putendl_fd.c\
+			ft_putnbr_fd.c\
+			ft_putstr_fd.c
 
-so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS)
-	gcc -nostartfiles -shared -o libft.so $(OBJS)
+STR_SRCS	:=	ft_bzero.c\
+			ft_left_strip.c\
+			ft_right_strip.c\
+			ft_split.c\
+			ft_strchr.c\
+			ft_strcmp.c\
+			ft_strdup.c\
+			ft_strip.c\
+			ft_striteri.c\
+			ft_strjoin.c\
+			ft_strlcat.c\
+			ft_strlcpy.c\
+			ft_strlen.c\
+			ft_strmapi.c\
+			ft_strncmp.c\
+			ft_strnstr.c\
+			ft_strrchr.c\
+			ft_strstr.c\
+			ft_strtrim.c\
+			ft_substr.c
 
-all: $(NAME)
+SRCS		=	$(CHAR_SRCS)\
+			$(CONV_SRCS)\
+			$(LIST_SRCS)\
+			$(MEM_SRCS)\
+			$(MSG_SRCS)\
+			$(PUT_SRCS)\
+			$(STR_SRCS)
+
+OBJS		=	$(addprefix $(OPATH)/, $(SRCS:.c=.o))
+DEPS		=	$(OBJS:.o=.d)
+
+vpath %.h =	$(IPATH)
+vpath %.c =	$(CHAR_PATH)\
+		$(CONV_PATH)\
+		$(LIST_PATH)\
+		$(MEM_PATH)\
+		$(MSG_PATH)\
+		$(PUT_PATH)\
+		$(STR_PATH)
+vpath %.o =	$(OPATH)
+
+all:		$(NAME)
+
+$(OPATH)/%.o:	%.c
+		$(CC) $(CFLAGS) $(CFLAGSADD) -I $(IPATH) -c $< -o $@
+
+$(NAME):	$(OBJS)
+		$(AR) $@ $^
+
+$(OBJS):	| $(OPATH)
+
+$(OPATH):
+		mkdir -p $(OPATH)
 
 clean: 
-	$(RM) $(OBJS)
+		$(RM) $(OPATH)
 
-fclean: clean
-	$(RM) $(NAME)
+fclean:
+		make clean
+		$(RM) $(NAME)
 
-re: clean all
+re:
+		make clean
+		make all
+
+-include $(DEPS)
 
 .PHONY: bonus all clean fclean re

@@ -6,107 +6,187 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/06/24 17:24:54 by amarchan         ###   ########.fr        #
+#    Updated: 2022/06/28 14:06:02 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = minishell
+# libft settings
+FTPATH		:=	libft
+IFT		:=	include
+FT_NAME		:=	libft.a
+FT		:=	ft
 
-NAME_LIBFT = libft.a
+# project settings
+NAME 		:=	minishell
+NORMINETTE_BIN 	:= 	norminette
+NM_BIN		:=	nm
+CC		:=	cc
+CFLAGS		:=	-MMD -Wall -Wextra -Werror
+#CFLAGS		:=	-MMD
+CFLAGSADD	:=	-g3
 
-NORMINETTE_BIN = norminette
+IPATH		:=	includes
+OPATH		:=	obj
 
-NM_BIN = nm
+SRCS_PATH	:=	srcs
+BUILT_PATH	:=	built-in
+ENV_PATH	:=	env
+EXEC_PATH	:=	execute_commands
+PARSING_PATH	:=	parsing
+EXP_PATH	:=	expansions
+TOK_PATH	:=	tokenizer
 
-DIR_LIBFT = libft/
+RM		:=	rm -rf
 
-SRCS =	srcs/main.c \
-		srcs/parsing/parsing.c \
-		srcs/parsing/ft_panic.c \
-		srcs/parsing/sort_inputs.c \
-		srcs/parsing/store_built_ins.c \
-		srcs/parsing/create_list.c \
-		srcs/parsing/print_lst.c \
-		srcs/parsing/is_not_clone.c \
-		srcs/parsing/is_not_empty.c \
-		srcs/parsing/count_quotes.c \
-		srcs/parsing/handle_unknown_command.c \
-		srcs/parsing/expansions/create_dollar_list.c \
-		srcs/parsing/expansions/find_expansions.c \
-		srcs/parsing/expansions/ft_lstclear_dollar.c \
-		srcs/parsing/expansions/ft_lstclear_back.c \
-		srcs/parsing/expansions/get_expanded.c \
-		srcs/parsing/expansions/insert_expansions.c \
-		srcs/parsing/expansions/print_dollar_lst.c \
-		srcs/parsing/expansions/expand_dollar.c \
-		srcs/parsing/expansions/ft_lstadd_back_dollar.c \
-		srcs/parsing/expansions/ft_lstnew_dollar.c \
-		srcs/parsing/expansions/get_full_size.c \
-		srcs/parsing/expansions/malloc_varname.c \
-		srcs/parsing/expansions/is_varname.c \
-		srcs/built-in/echo.c \
-		srcs/built-in/cd.c \
-		srcs/built-in/pwd.c \
-		srcs/built-in/export.c \
-		srcs/built-in/unset.c \
-		srcs/built-in/env.c\
-		srcs/built-in/exit.c\
-		srcs/execute_commands/read_command.c \
-		srcs/execute_commands/execute_command.c \
-		srcs/tokenizer/tokenizer.c \
-		srcs/tokenizer/is_space.c \
-		srcs/tokenizer/is_pipe.c \
-		srcs/tokenizer/is_s_quote.c \
-		srcs/tokenizer/is_d_quote.c \
-		srcs/tokenizer/is_envcall.c \
-		srcs/tokenizer/is_l_redir.c \
-		srcs/tokenizer/is_r_redir.c \
-		srcs/tokenizer/is_dl_redir.c \
-		srcs/tokenizer/is_dr_redir.c \
-		srcs/tokenizer/is_bn.c \
-		srcs/tokenizer/is_intpoint.c \
-		srcs/tokenizer/is_word.c \
+BUILT_SRCS	:=	cd.c\
+			echo.c\
+			env.c\
+			exit.c\
+			export.c\
+			pwd.c\
+			unset.c
 
-CC = clang
+EXEC_SRCS	:=	execute_command.c\
+			read_command.c
 
-OBJS := ${SRCS:.c=.o}
+PARSING_SRCS	:=	count_quotes.c\
+			create_list.c\
+			ft_panic.c\
+			handle_unknown_command.c\
+			is_not_clone.c\
+			is_not_empty.c\
+			parsing.c\
+			print_lst.c\
+			sort_inputs.c\
+			store_built_ins.c\
 
-CFLAGS = -g3
+EXP_SRCS	:=	create_dollar_list.c\
+			expand_dollar.c\
+			find_expansions.c\
+			ft_lstadd_back_dollar.c\
+			ft_lstclear_back.c\
+			ft_lstclear_dollar.c\
+			ft_lstnew_dollar.c\
+			get_expanded.c\
+			get_full_size.c\
+			insert_expansions.c\
+			is_varname.c\
+			malloc_varname.c\
+			print_dollar_lst.c
 
-RM = rm -rf
+TOK_SRCS	:=	is_bn.c\
+			is_dl_redir.c\
+			is_d_quote.c\
+			is_dr_redir.c\
+			is_envcall.c\
+			is_intpoint.c\
+			is_l_redir.c\
+			is_pipe.c\
+			is_r_redir.c\
+			is_space.c\
+			is_s_quote.c\
+			is_word.c\
+			tokenizer.c
 
-INC_DIR = includes
+SRCS		:=	main.c\
+			$(BUILT_SRCS)\
+			$(EXEC_SRCS)\
+			$(PARSING_SRCS)\
+			$(EXP_SRCS)\
+			$(TOK_SRCS)\
 
-INC_LIBFT = libft
+#SRCS 		:=	main.c \
+#			parsing.c \
+#			ft_panic.c \
+#			sort_inputs.c \
+#			store_built_ins.c \
+#			create_list.c \
+#			print_lst.c \
+#			is_not_clone.c \
+#			is_not_empty.c \
+#			count_quotes.c \
+#			handle_unknown_command.c \
+#			create_dollar_list.c \
+#			find_expansions.c \
+#			ft_lstclear_dollar.c \
+#			ft_lstclear_back.c \
+#			get_expanded.c \
+#			insert_expansions.c \
+#			print_dollar_lst.c \
+#			expand_dollar.c \
+#			ft_lstadd_back_dollar.c \
+#			ft_lstnew_dollar.c \
+#			get_full_size.c \
+#			malloc_varname.c \
+#			is_varname.c \
+#			echo.c \
+#			cd.c \
+#			pwd.c \
+#			export.c \
+#			unset.c \
+#			env.c\
+#			exit.c\
+#			ead_command.c \
+#			execute_command.c \
+#			tokenizer.c \
+#			is_space.c \
+#			is_pipe.c \
+#			is_s_quote.c \
+#			is_d_quote.c \
+#			is_envcall.c \
+#			is_l_redir.c \
+#			is_r_redir.c \
+#			is_dl_redir.c \
+#			is_dr_redir.c \
+#			is_bn.c \
+#			is_intpoint.c \
+#			is_word.c \
 
-.c.o: $(SRCS) minishell.h
-	$(CC) $(CFLAGS) -c -I ${INC_DIR} -I ${INC_LIBFT} $< -o ${<:.c=.o}
+OBJS		:=	$(addprefix $(OPATH)/, $(SRCS:.c=.o))
+DEPS		:=	$(OBJS:.o=.d)
 
-all: $(NAME_LIBFT) $(NAME) 
+vpath %.h $(IPATH)
+vpath %.c $(SRCS_PATH)\
+	$(SRCS_PATH)/$(BUILT_PATH)\
+	$(SRCS_PATH)/$(ENV_PATH)\
+	$(SRCS_PATH)/$(EXEC_PATH)\
+	$(SRCS_PATH)/$(PARSING_PATH)\
+	$(SRCS_PATH)/$(PARSING_PATH)/$(EXP_PATH)\
+	$(SRCS_PATH)/$(TOK_PATH)
+vpath %.o $(OPATH)
 
-$(NAME_LIBFT):
-	make -C $(DIR_LIBFT)
-	cp $(DIR_LIBFT)libft.a .
-	
-$(NAME): ${OBJS}
-	$(CC) $(CFLAGS) -lreadline -o $(NAME) $(OBJS) $(NAME_LIBFT)
+all:			$(NAME)
+
+$(OPATH)/%.o:		%.c
+			$(CC) $(CFLAGS) $(CFLAGSADD) -I $(IPATH) -I $(FTPATH)/$(IFT) -c $< -o $@
+
+$(NAME):		$(OBJS)
+			make -C $(FTPATH)
+			$(CC) $(CFLAGS) $(CFLAGSADD) $(OBJS) -I $(IPATH) -I $(FTPATH)/$(IFT) -L$(FTPATH) -l$(FT) -o $(NAME)
+
+$(OBJS):		| $(OPATH)
+
+$(OPATH):
+			mkdir -p $(OPATH)
 
 clean:
-	${RM} ${OBJS}
-	make -C $(DIR_LIBFT) clean
+			make clean -C $(FTPATH)
+			$(RM) $(OPATH)
 
 fclean:
-	make clean
-	$(RM) $(NAME) ${NAME_LIBFT} 
+			make clean
+			$(RM) $(NAME) $(FT_NAME)
   
 re:
-	make fclean
-	make all
+			make fclean
+			make all
 
 norme:
-	${NORMINETTE_BIN} ${SRCS}
+			$(NORMINETTE_BIN) $(SRCS)
 
 sym:
-	${NM_BIN} -Dgu $(NAME)
+			$(NM_BIN) -Dgu $(NAME)
+
+-include $(DEPS)
 
 .PHONY: all clean fclean re norme sym
