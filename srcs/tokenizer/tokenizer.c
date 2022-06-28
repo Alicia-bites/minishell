@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:07:44 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/28 12:33:43 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/28 12:44:24 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -242,6 +242,7 @@ void	get_toktype(t_chartype *input_list, t_list **token_list)
 		}
 		*token_list = (*token_list)->next;
 	}
+	*token_list = it;
 	// print_lst(*token_list);
 }
 
@@ -251,6 +252,6 @@ void	tokenize(t_chartype *input_list, t_list **token_list)
 	get_chartype(&input_list);
 	// print_chartype(input_list);
 	get_token(input_list, token_list);
-	print_lst(*token_list);
+	// print_lst(*token_list);
 	get_toktype(input_list, token_list);
 }
