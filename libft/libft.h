@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 08:04:38 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/24 17:17:03 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/28 12:08:23 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@
 
 typedef enum e_toktype {
 	TOK_UNKNOWN,
-	TOK_WORD,
+	TOK_BUILTIN,
 	TOK_SPACE,
+	TOK_CMD,
+	TOK_ARG,
 	TOK_PIPE,
 	TOK_SQUOTE,
 	TOK_DQUOTE,
