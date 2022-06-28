@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/06/28 14:06:02 by abarrier         ###   ########.fr        #
+#    Updated: 2022/06/28 18:42:14 by antho            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,8 @@ NAME 		:=	minishell
 NORMINETTE_BIN 	:= 	norminette
 NM_BIN		:=	nm
 CC		:=	cc
-CFLAGS		:=	-MMD -Wall -Wextra -Werror
-#CFLAGS		:=	-MMD
+#CFLAGS		:=	-MMD -Wall -Wextra -Werror
+CFLAGS		:=	-MMD
 CFLAGSADD	:=	-g3
 
 IPATH		:=	includes
@@ -45,6 +45,14 @@ BUILT_SRCS	:=	cd.c\
 			export.c\
 			pwd.c\
 			unset.c
+
+ENV_SRCS	:=	env_free.c\
+			env_init.c\
+			env_init_key.c\
+			env_init_value.c\
+			env_lst_set.c\
+			env_lst_show.c\
+			env_show.c
 
 EXEC_SRCS	:=	execute_command.c\
 			read_command.c
@@ -90,6 +98,7 @@ TOK_SRCS	:=	is_bn.c\
 
 SRCS		:=	main.c\
 			$(BUILT_SRCS)\
+			$(ENV_SRCS)\
 			$(EXEC_SRCS)\
 			$(PARSING_SRCS)\
 			$(EXP_SRCS)\
