@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/28 16:40:58 by antho            ###   ########.fr       */
+/*   Updated: 2022/06/28 19:58:35 by antho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define MINISHELL_H
 
 # include <stdio.h>
+# include <stdlib.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 
@@ -21,6 +22,12 @@
 
 # define MALLOC_FAILURE -42
 # define WRONG_CMD 127
+
+# define ENV_SEP '='
+# define ENV_FIELD_SEP ':'
+# define ENV_PATH_NAME "PATH="
+# define DIR_SEP "/"
+# define ARG_SEP ' '
 
 typedef enum e_chartype {
 	CH_UNKNOWN,
@@ -45,7 +52,6 @@ typedef struct s_chartype {
 	e_chartype	type;
 } t_chartype;
 
-
 typedef struct s_global {
 } t_global;
 
@@ -56,8 +62,14 @@ typedef struct s_expanded {
 	struct s_expanded	*next;
 } t_expanded;
 
+typedef struct s_env {
+	char	*fullname;
+	char	*key;
+	char	*value;
+}	t_env;
+
 //main.c
-int					main(void);
+//int					main(void);
 int					get_input(void);
 
 //parsing
@@ -124,5 +136,15 @@ void				is_dl_redir(t_chartype *input_list, int *start, int *end, t_list **token
 void				is_dr_redir(t_chartype *input_list, int *start, int *end, t_list **token_list);
 void				is_bn(t_chartype *input_list, int *start, int *end, t_list **token_list);
 void				is_intpoint(t_chartype *input_list, int *start, int *end, t_list **token_list);
+
+//environment list
+
+void    env_free(void *content);
+t_env   *env_init(char *env_fullname);
+char    *env_init_key(t_env *env, char *fullname);
+char    *env_init_value(t_env *env);
+int     env_lst_set(char **envp, t_ulist **env_lst);
+void    env_lst_show(t_ulist **list);
+void    env_show(void *content);
 
 #endif
