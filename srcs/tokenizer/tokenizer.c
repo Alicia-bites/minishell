@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:07:44 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/28 13:30:10 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/28 14:00:13 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -232,11 +232,11 @@ void	get_toktype(t_chartype *input_list, t_list **token_list)
 		// {
 			// (*token_list)->toktype = "command";
 		// }
-		// else if ((*token_list)->prev->toktype == TOK_BUILTIN
-			// || (*token_list)->prev->toktype == TOK_CMD)
-		// {
-			// (*token_list)->toktype = TOK_ARG;				
-		// }
+		else if ((*token_list)->prev->toktype == TOK_BUILTIN
+			/*|| (*token_list)->prev->toktype == TOK_CMD*/)
+		{
+			(*token_list)->toktype = TOK_ARG;				
+		}
 		else if (is_operator((*token_list)->token))
 		{
 			(*token_list)->toktype = is_operator((*token_list)->token);				
