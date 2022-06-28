@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/30 09:51:13 by amarchan          #+#    #+#              #
-#    Updated: 2022/06/28 12:04:35 by abarrier         ###   ########.fr        #
+#    Updated: 2022/06/28 18:05:28 by antho            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,6 +76,7 @@ PUT_SRCS	:=	ft_putchar_fd.c\
 			ft_putstr_fd.c
 
 STR_SRCS	:=	ft_bzero.c\
+			ft_index.c\
 			ft_left_strip.c\
 			ft_right_strip.c\
 			ft_split.c\

@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 11:41:10 by abarrier          #+#    #+#             */
-/*   Updated: 2022/06/28 11:59:23 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/06/28 18:06:06 by antho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 
 void	ft_bzero(void *s, size_t n);
+int		ft_index(const char *s, int c);
 void		ft_left_strip(char *s);
 void		ft_right_strip(char *s);
 char	**ft_split(char const *s, char c);
