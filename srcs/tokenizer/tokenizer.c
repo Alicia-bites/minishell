@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:07:44 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/28 11:30:06 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/28 12:33:43 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,6 +175,32 @@ int	get_chartype(t_chartype **input_list)
 	return (i);
 }
 
+e_toktype	is_operator(char *str)
+{
+	if (str)
+	{
+		if (!ft_strstr(str, "|"))
+			return (TOK_PIPE);
+		if (!ft_strstr(str, "<"))
+			return (TOK_L_REDIR);
+		if (!ft_strstr(str, ">"))
+			return (TOK_R_REDIR);
+		if (!ft_strstr(str, "<<"))
+			return (TOK_DL_REDIR);
+		if (!ft_strstr(str, ">>"))
+			return (TOK_DR_REDIR);
+	}
+	return (0);
+}
+
+int	is_char_space(char c)
+{
+	if (c == ' ' || c == '\f' || c == '\n'
+		|| c == '\r' || c == '\t' || c == '\v')
+		return (1);
+	return (0);
+}
+
 void	get_toktype(t_chartype *input_list, t_list **token_list)
 {
 	t_list	*it;
@@ -186,23 +212,36 @@ void	get_toktype(t_chartype *input_list, t_list **token_list)
 	i = 0;
 	cmd_notfound = 0;
 	built_ins = store_built_ins();
-	while (it)
+	while (*token_list)
 	{
 		while (i < 8)
 		{
-			if (!ft_strcmp(it->token, built_ins[i]))
+			if (!ft_strcmp((*token_list)->token, built_ins[i]))
 			{
-				if (it->next->next)
-					execute_command(it->next->next->token, i);
-				else
-					execute_command("", i);
+				(*token_list)->toktype = TOK_BUILTIN;
+			}
+			else if (is_char_space((*token_list)->token[0]))
+			{
+				(*token_list)->toktype = TOK_SPACE;
+			}
+			//aller chercher cette fonction dans pipex
+			// else if (ft_iscommand((*token_list)->token))
+			// {
+				// (*token_list)->toktype = "command";
+			// }
+			// else if ((*token_list)->prev->toktype == TOK_BUILTIN
+				// || (*token_list)->prev->toktype == TOK_CMD)
+			// {
+				// (*token_list)->toktype = TOK_ARG;				
+			// }
+			else if (is_operator((*token_list)->token))
+			{
+				(*token_list)->toktype = is_operator((*token_list)->token);				
 			}
 			i++;
 		}
-		it = it->next;
+		*token_list = (*token_list)->next;
 	}
-	if (i == 0)
-		handle_unknown_command(*token_list);
 	// print_lst(*token_list);
 }
 
@@ -212,5 +251,6 @@ void	tokenize(t_chartype *input_list, t_list **token_list)
 	get_chartype(&input_list);
 	// print_chartype(input_list);
 	get_token(input_list, token_list);
+	print_lst(*token_list);
 	get_toktype(input_list, token_list);
 }
