@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:07:44 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/28 14:00:13 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/28 15:04:14 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,12 +205,10 @@ void	get_toktype(t_chartype *input_list, t_list **token_list)
 {
 	t_list	*it;
 	int		i;
-	int		cmd_notfound;
 	char 	**built_ins;
 	
 	it = *token_list;
 	i = 0;
-	cmd_notfound = 0;
 	built_ins = store_built_ins();
 	while (*token_list)
 	{
@@ -232,7 +230,8 @@ void	get_toktype(t_chartype *input_list, t_list **token_list)
 		// {
 			// (*token_list)->toktype = "command";
 		// }
-		else if ((*token_list)->prev->toktype == TOK_BUILTIN
+		else if ((*token_list)->index >= 2
+			&& (*token_list)->prev->prev->toktype == TOK_BUILTIN
 			/*|| (*token_list)->prev->toktype == TOK_CMD*/)
 		{
 			(*token_list)->toktype = TOK_ARG;				
