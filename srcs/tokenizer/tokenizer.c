@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:07:44 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/28 12:44:24 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/28 13:30:10 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,15 +179,15 @@ e_toktype	is_operator(char *str)
 {
 	if (str)
 	{
-		if (!ft_strstr(str, "|"))
+		if (ft_strstr(str, "|"))
 			return (TOK_PIPE);
-		if (!ft_strstr(str, "<"))
+		if (ft_strstr(str, "<"))
 			return (TOK_L_REDIR);
-		if (!ft_strstr(str, ">"))
+		if (ft_strstr(str, ">"))
 			return (TOK_R_REDIR);
-		if (!ft_strstr(str, "<<"))
+		if (ft_strstr(str, "<<"))
 			return (TOK_DL_REDIR);
-		if (!ft_strstr(str, ">>"))
+		if (ft_strstr(str, ">>"))
 			return (TOK_DR_REDIR);
 	}
 	return (0);
@@ -214,31 +214,32 @@ void	get_toktype(t_chartype *input_list, t_list **token_list)
 	built_ins = store_built_ins();
 	while (*token_list)
 	{
-		while (i < 8)
+		if (!ft_strcmp((*token_list)->token, built_ins[i]))
 		{
-			if (!ft_strcmp((*token_list)->token, built_ins[i]))
+			while (i < 8)
 			{
-				(*token_list)->toktype = TOK_BUILTIN;
+				if (!ft_strcmp((*token_list)->token, built_ins[i]))
+					(*token_list)->toktype = TOK_BUILTIN;
+				i++;
 			}
-			else if (is_char_space((*token_list)->token[0]))
-			{
-				(*token_list)->toktype = TOK_SPACE;
-			}
-			//aller chercher cette fonction dans pipex
-			// else if (ft_iscommand((*token_list)->token))
-			// {
-				// (*token_list)->toktype = "command";
-			// }
-			// else if ((*token_list)->prev->toktype == TOK_BUILTIN
-				// || (*token_list)->prev->toktype == TOK_CMD)
-			// {
-				// (*token_list)->toktype = TOK_ARG;				
-			// }
-			else if (is_operator((*token_list)->token))
-			{
-				(*token_list)->toktype = is_operator((*token_list)->token);				
-			}
-			i++;
+		}
+		else if (is_char_space((*token_list)->token[0]))
+		{
+			(*token_list)->toktype = TOK_SPACE;
+		}
+		//aller chercher cette fonction dans pipex
+		// else if (ft_iscommand((*token_list)->token))
+		// {
+			// (*token_list)->toktype = "command";
+		// }
+		// else if ((*token_list)->prev->toktype == TOK_BUILTIN
+			// || (*token_list)->prev->toktype == TOK_CMD)
+		// {
+			// (*token_list)->toktype = TOK_ARG;				
+		// }
+		else if (is_operator((*token_list)->token))
+		{
+			(*token_list)->toktype = is_operator((*token_list)->token);				
 		}
 		*token_list = (*token_list)->next;
 	}
