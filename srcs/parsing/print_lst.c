@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 18:11:16 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/28 15:15:24 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/28 15:43:47 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ void	print_lst(t_list *lst)
 	t_list	*iterator;
 	int		i;
 
-	i = 0;
 	iterator = lst;
 	while (iterator)
 	{
 		printf("index = %d\n", iterator->index);
 		if (ft_isspace(iterator->token[0]))
 		{
+			i = 0;
 			while (iterator->token[i])
 				printf("%d ", iterator->token[i++]);
 			printf("\n");
