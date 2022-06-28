@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:07:44 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/27 17:49:24 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/28 11:30:06 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,8 +192,8 @@ void	get_toktype(t_chartype *input_list, t_list **token_list)
 		{
 			if (!ft_strcmp(it->token, built_ins[i]))
 			{
-				if (it->next)
-					execute_command(it->next->token, i);				
+				if (it->next->next)
+					execute_command(it->next->next->token, i);
 				else
 					execute_command("", i);
 			}

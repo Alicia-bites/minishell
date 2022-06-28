@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 09:56:41 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/16 18:18:31 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/28 11:25:17 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	do_echo(char *str)
 {
-	printf("%s\n", str);
+	if (str)
+		printf("%s\n", str);		
 	return (0);
 }
 
