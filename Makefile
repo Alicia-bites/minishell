@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/06/24 17:24:54 by amarchan         ###   ########.fr        #
+#    Updated: 2022/06/29 15:05:36 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,15 @@ SRCS =	srcs/main.c \
 		srcs/tokenizer/is_bn.c \
 		srcs/tokenizer/is_intpoint.c \
 		srcs/tokenizer/is_word.c \
+		srcs/tokenizer/get_chartype.c \
+		srcs/tokenizer/get_token.c \
+		srcs/tokenizer/built_token.c \
+		srcs/tokenizer/remove_quotes.c \
+		srcs/tokenizer/add_token_to_list.c \
+		srcs/tokenizer/is_char_word.c \
+		srcs/tokenizer/get_toktype.c \
+		srcs/tokenizer/is_char_space.c \
+		srcs/tokenizer/is_operator.c \
 
 CC = clang
 

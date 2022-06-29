@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/27 17:49:02 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/29 15:04:34 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,11 +106,21 @@ int					execute_command(char *str, int i);
 //tokenizer
 void				tokenize(t_chartype *input_list, t_list **token_list);
 int					get_chartype(t_chartype **input_list);
-// static void			print_chartype(t_chartype *input_list);
 void				get_token(t_chartype *input_list, t_list **token_list);
-int					is_charword(char c);
 void				built_token(t_chartype *input_list, int start, int end, t_list **token_list);
+void				remove_quotes(t_chartype *input_list, int *start, int *end);
+void				remove_dquotes(t_chartype *input_list, int *start, int *end);
+void				remove_squotes(t_chartype *input_list, int *start, int *end);
 void				add_token_to_list(char *token, t_list **token_list);
+int					is_char_word(char c);
+
+//get_toktype
+void				get_toktype(t_chartype *input_list, t_list **token_list);
+int					is_char_space(char c);
+e_toktype			is_operator(char *str);
+
+// int					is_charword(char c);
+
 // static int			is_char_word(char c);
 void				is_word(t_chartype *input_list, int *start, int *end, t_list **token_list);
 void				is_space(t_chartype *input_list, int *start, int *end, t_list **token_list);

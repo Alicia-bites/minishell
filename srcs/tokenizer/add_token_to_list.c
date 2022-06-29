@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tokenizer.c                                        :+:      :+:    :+:   */
+/*   add_token_to_list.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/17 12:07:44 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/29 15:02:11 by amarchan         ###   ########.fr       */
+/*   Created: 2022/06/29 14:57:54 by amarchan          #+#    #+#             */
+/*   Updated: 2022/06/29 14:59:37 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	tokenize(t_chartype *input_list, t_list **token_list)
+void	add_token_to_list(char *token, t_list **token_list)
 {
+	static int	i = 0;
 	
-	get_chartype(&input_list);
-	get_token(input_list, token_list);
-	// print_lst(*token_list);
-	get_toktype(input_list, token_list);
+	if (!*token_list)
+		i = 0;
+	*token_list = create_list(token, i++, 0);
 }
