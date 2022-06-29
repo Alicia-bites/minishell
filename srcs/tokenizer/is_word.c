@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:10:26 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/29 16:35:00 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/29 17:31:19 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,33 @@ void	echo_special_treatment(t_chartype *input_list, int *start, int *end)
 {
 	(*end) += 5;
 	while (input_list[*end].character == '-'
-		&& input_list[*end + 1].character == 'n'
-		&& input_list[*end + 2].type == CH_SPACE
-		&& input_list[*end + 3].character == '-')
+		&& input_list[*end + 1].character == 'n')
 		{
-			(*end) += 3;
+			(*end)++;
+			while (input_list[*end].character == 'n')
+				(*end)++;
+			while (input_list[*end].type == CH_SPACE)
+				(*end)++;
 		}
-	(*end) -= 2;
 }
 
 void	is_word(t_chartype *input_list, int *start, int *end,
 	t_list **token_list)
 {	
+	int	echo;
+	
+	echo = 0;
 	if (input_list[*end].type == CH_WORD)
 	{
 		while (input_list[*end].type == CH_WORD)
 		{
 			if (echo_n(input_list, *end))
+			{
 				echo_special_treatment(input_list, start, end);
+				echo = 1;				
+			}
+			if (echo == 1)
+				break ;
 			(*end)++;
 		}
 		// printf("end = %d\n", *end);
