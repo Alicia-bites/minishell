@@ -62,6 +62,31 @@ This project is about creating a simple shell.
 
 > :warning: **_The readline() function can cause memory leaks. You don’t have to fix them. But that doesn’t mean your own code, yes the code you wrote, can have memory leaks._**
 
+## Export
+### Syntax
+```
+export
+export ENV_NAME=value
+export ENV_NAME=$EXISTING_ENV:value
+```
+
+### Rules
+1. If no ENV\_NAME ==> Display env list as following `declare -x ENV_NAME=value`  
+2. ENV\_NAME must start by [a-z;A-Z;\_]
+3. ENV\_NAME must finish by [a-z;A-Z;0-9;\_]
+4. ENV\_NAME can have escape character [\\]
+5. ENV\_NAME can have expansion process
+```
+export antho=cia
+export al$antho=tata
+env | sort | grep 'al'
+alicia=tata
+```
+6. ENV\_NAME value can be appended by using expansion process and only with field separator [@-:.,]
+
+> :warning: **_ENV\_NAME is case sensitive_**  
+> :warning: **_append existing variable which does not exist will create it_**  
+
 ## Externals functions
 ```
 readline, rl_clear_history, rl_on_new_line,
