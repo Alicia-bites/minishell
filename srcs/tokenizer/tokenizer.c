@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:07:44 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/28 18:38:39 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/29 14:47:23 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,10 @@ void built_token(t_chartype *input_list, int start, int end, t_list **token_list
 			&& (input_list[start + 1].character == '"'
 			|| input_list[start + 1].character == '\\'))
 			{
+				if (input_list[start - 1].character == '"'
+					&& input_list[start].character == '\\'
+					&& input_list[start + 1].character == '"')
+					start--; 
 				start++;
 				len--;			
 			}
