@@ -60,3 +60,4 @@ echo -nnnnnnnnnnnnnnnnnn Hello
 echo -n -n Hello
 echo -nnnn -nnnn Hello
 echo -n-n-n-n-n-n Hello
+echo -n -n -b
