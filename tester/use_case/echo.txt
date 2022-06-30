@@ -64,3 +64,10 @@ echo -n -n -b
 echo -n     -nnn -nnn
 echo     -n -nnnn
 echo-n
+"echo -n"
+echo "-n" hello
+echo '-n' hello
+echo "-nnnnn""-nnnn" hello
+echo "-""n" hello
+echo '-nnnnnnn' '-nnnnn' alicia
+echo '-nnnnnnn''-nnnnn' alicia

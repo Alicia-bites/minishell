@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:58:04 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/29 15:00:28 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/30 11:11:21 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	get_token(t_chartype *input_list, t_list **token_list)
 
 	start = 0;
 	end = 0;
-	while (start < (input_list[start].length - 1))
+	while (start < input_list[start].length)
 	{
 		is_word(input_list, &start, &end, token_list);
 		is_space(input_list, &start, &end, token_list);
