@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:10:26 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/30 15:48:10 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/30 16:14:01 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static void	echo_special_treatment(t_chartype *input_list, int *start,
 			while (input_list[*end].type == CH_SPACE)
 			{
 				if (!(*space))
-					break;
+					break ;					
 				(*end)++;
 			}
 			while (input_list[*end].type == CH_D_QUOTE
@@ -114,7 +114,10 @@ void	is_word(t_chartype *input_list, int *start, int *end,
 				echo_special_treatment(input_list, start, end, &space);
 				built_echo(token_list, space);
 				if (!space)
+				{
 					*start = *start + 5;
+					*end = *start;					
+				}
 				else
 					*start = *end;
 				return ;
