@@ -6,7 +6,7 @@
 /*   By: antho <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 17:19:53 by antho             #+#    #+#             */
-/*   Updated: 2022/06/28 19:16:21 by antho            ###   ########.fr       */
+/*   Updated: 2022/06/30 16:00:48 by antho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	env_lst_set(char **envp, t_ulist **env_lst)
 	i = 0;
 	while (envp[i])
 	{
-		printf("envp[%d]: %s\n", i, envp[i]);
 		env = env_init(envp[i]);
 		if (!env)
 			return (1);
