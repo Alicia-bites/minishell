@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:10:26 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/30 11:14:13 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/30 11:20:15 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	echo_special_treatment(t_chartype *input_list, int *start,
 		}
 }
 
-void	handle_echo(t_list **token_list)
+static void	built_echo(t_list **token_list)
 {
 	char *token;
 	
@@ -69,15 +69,11 @@ void	is_word(t_chartype *input_list, int *start, int *end,
 			if (echo_n(input_list, *end, &spaces))
 			{
 				echo_special_treatment(input_list, start, end, spaces);
-				(*end)--;
-			}
-			if (spaces)
-			{
-				// printf(" input_list[*end].character = %c\n", input_list[*end].character);
-				handle_echo(token_list);
-				*start = (*end);
+				built_echo(token_list);
+				*start = (*end)--;
 				return ;
 			}
+
 			(*end)++;
 		}
 		built_token(input_list, *start, *end, token_list);
