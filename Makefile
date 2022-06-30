@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/06/28 18:42:14 by antho            ###   ########.fr        #
+#    Updated: 2022/06/30 15:54:11 by antho            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ OPATH		:=	obj
 
 SRCS_PATH	:=	srcs
 BUILT_PATH	:=	built-in
+BUILT_ENV_PATH	:=	do_env
 ENV_PATH	:=	env
 EXEC_PATH	:=	execute_commands
 PARSING_PATH	:=	parsing
@@ -40,7 +41,8 @@ RM		:=	rm -rf
 
 BUILT_SRCS	:=	cd.c\
 			echo.c\
-			env.c\
+			do_env.c\
+			do_env_show.c\
 			exit.c\
 			export.c\
 			pwd.c\
@@ -157,6 +159,7 @@ DEPS		:=	$(OBJS:.o=.d)
 vpath %.h $(IPATH)
 vpath %.c $(SRCS_PATH)\
 	$(SRCS_PATH)/$(BUILT_PATH)\
+	$(SRCS_PATH)/$(BUILT_PATH)/$(BUILT_ENV_PATH)\
 	$(SRCS_PATH)/$(ENV_PATH)\
 	$(SRCS_PATH)/$(EXEC_PATH)\
 	$(SRCS_PATH)/$(PARSING_PATH)\

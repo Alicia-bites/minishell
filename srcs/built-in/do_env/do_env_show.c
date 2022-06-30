@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   do_env_show.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: antho <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/16 18:22:05 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/27 08:53:24 by abarrier         ###   ########.fr       */
+/*   Created: 2022/06/30 15:49:59 by antho             #+#    #+#             */
+/*   Updated: 2022/06/30 15:55:55 by antho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int	do_env(char **envp)
+void	do_env_show(void *content)
 {
-	int	i;
+	t_env	*env;
 
-	i = 0;
-	if (!envp)
-		return (1);
-	while (envp[i])
-	{
-		printf("%s\n", envp[i]);
-		i++;
-	}
-	return (0);
+	if (!content)
+		return ;
+	env = (t_env *)content;
+	printf("%s\n", env->fullname);
 }
-/*
-int	main(int argc, char **argv, char **envp)
-{
-	(void)argc;
-	(void)argv;
-
-	return (do_env(envp));
-}*/

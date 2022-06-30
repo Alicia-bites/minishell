@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/28 19:58:35 by antho            ###   ########.fr       */
+/*   Updated: 2022/06/30 16:35:18 by antho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,16 @@ typedef struct s_env {
 	char	*value;
 }	t_env;
 
+typedef struct s_cmd
+{
+	char	*arg;
+	char	**fullcmd;
+	char	*fullpath;
+	int		fd_r;
+	int		fd_w;
+	int		access;
+}		t_cmd;
+
 //main.c
 //int					main(void);
 int					get_input(void);
@@ -108,7 +118,8 @@ int					do_cd(char *str);
 int					do_pwd(void);
 int					do_export(char *str);
 int					do_unset(char *str);
-int					do_env(char **envp);
+int					do_env(t_ulist **envp);
+void				do_env_show(void *content);
 void				do_exit(int exit_number);
 
 //execute_command
