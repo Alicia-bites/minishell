@@ -63,6 +63,12 @@ This project is about creating a simple shell.
 > :warning: **_The readline() function can cause memory leaks. You don’t have to fix them. But that doesn’t mean your own code, yes the code you wrote, can have memory leaks._**
 
 ## Env
+The command allows you to run another program in a custom environment without modifying the current one. When used without an argument it will print a list of the current environment variables.
+
+> :warning **_The command will change the env list only for the active command no matters if several pipes_**
+
+> :pushpin: **_Normal behaviour of env process if pipe due to fork which duplicates the vqriqbles before to execute the commqnd_**
+
 ### Syntax
 ```
 env
@@ -91,6 +97,16 @@ alicia=tata
 
 
 ## Export
+The command sets environment variables.
+
+> :warning **_The command will change the env list only for the active command only if several pipes. Otherwise the env list is changed_**
+
+> :pushpin: **_Normal behaviour of export process if pipe due to fork which duplicates the vqriqbles before to execute the commqnd_**
+
+> Example:
+`export ANTHO=tata`  ==> will update/create the env AMTHO into the env list
+`export ANTHO=tata | echo $ANTHO`  ==> will update/create the env ANTHO only for the active command
+
 ### Syntax
 ```
 export
@@ -314,11 +330,15 @@ tgetnum, tgetstr, tgoto, tputs
 (Alicia's note)
 - https://docs.google.com/document/d/1JvIKhy3i1cJG7dyi9wVg6Ks37Vdw3P4Qb6tJsEYOMFg/edit 
 
-## Git
+### Builtins
+- https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/
+- https://blog.doppler.com/how-to-set-environment-variables-in-linux-and-mac
+
+### Git
 - https://github.com/BarrierAntho/Survivor_Note/tree/main/git 
 
-## Parser
+### Parser
 - 
 
-## Shell
+### Shell
 - https://explainshell.com/ 
