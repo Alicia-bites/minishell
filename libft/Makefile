@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/30 09:51:13 by amarchan          #+#    #+#              #
-#    Updated: 2022/06/28 18:05:28 by antho            ###   ########.fr        #
+#    Updated: 2022/07/01 16:25:46 by antho            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,6 +94,7 @@ STR_SRCS	:=	ft_bzero.c\
 			ft_strnstr.c\
 			ft_strrchr.c\
 			ft_strstr.c\
+			ft_strstrlen.c\
 			ft_strtrim.c\
 			ft_substr.c
 
