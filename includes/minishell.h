@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/30 16:35:18 by antho            ###   ########.fr       */
+/*   Updated: 2022/07/01 12:02:58 by antho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct s_env {
 
 typedef struct s_cmd
 {
+	t_ulist	**env_lst;
 	char	*arg;
 	char	**fullcmd;
 	char	*fullpath;
