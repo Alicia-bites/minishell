@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/05 15:47:09 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/05 17:35:56 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 #define WRONG_CMD 127
 #define MALLOC_FAILURE -42
 #define MISSING_QUOTES -43
+#define MISPLACED_PIPE -44
+#define MISPLACED_REDIR -45
 
 typedef enum e_chartype {
 	CH_UNKNOWN,
