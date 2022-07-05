@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:17:17 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/27 17:49:53 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/05 14:29:15 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 int	get_input(void)
 {
 	char	*str;
+	int		err;
 	t_list	*token_list;
 	
 	token_list = NULL;
 	str = NULL;
+	err = 0;
 	while (42)
 	{
 		str = readline("$: ");
@@ -26,7 +28,7 @@ int	get_input(void)
 			return (0);
 		if (str[0] != 0)
 		{
-			ft_parse(str, &token_list);
+			err = ft_parse(str, &token_list);
 			// print_lst(token_list);
 			// execute_command(token_list);
 			ft_lstclear(&token_list);
@@ -35,7 +37,7 @@ int	get_input(void)
 				add_history(str);
 		}
 	}
-	return (0);
+	return (err);
 }
 
 int	main(void)
