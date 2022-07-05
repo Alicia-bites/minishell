@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:58:10 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/29 15:00:45 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/05 13:32:23 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,19 @@ void	get_toktype(t_chartype *input_list, t_list **token_list)
 	char 	**built_ins;
 	
 	it = *token_list;
-	i = 0;
 	built_ins = store_built_ins();
 	while (*token_list)
 	{
-		if (!ft_strcmp((*token_list)->token, built_ins[i]))
+		i = 0;
+		while (i < 8)
 		{
-			while (i < 8)
+			if (!ft_strcmp((*token_list)->token, built_ins[i++]))
 			{
-				if (!ft_strcmp((*token_list)->token, built_ins[i]))
-					(*token_list)->toktype = TOK_BUILTIN;
-				i++;
+				(*token_list)->toktype = TOK_BUILTIN;
+				break ;				
 			}
 		}
-		else if (is_char_space((*token_list)->token[0]))
+		if (is_char_space((*token_list)->token[0]))
 		{
 			(*token_list)->toktype = TOK_SPACE;
 		}
