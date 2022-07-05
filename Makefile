@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/06/29 15:05:36 by amarchan         ###   ########.fr        #
+#    Updated: 2022/07/05 14:43:46 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ DIR_LIBFT = libft/
 SRCS =	srcs/main.c \
 		srcs/parsing/parsing.c \
 		srcs/parsing/ft_panic.c \
+		srcs/parsing/create_input_list.c \
 		srcs/parsing/sort_inputs.c \
 		srcs/parsing/store_built_ins.c \
 		srcs/parsing/create_list.c \
@@ -30,6 +31,7 @@ SRCS =	srcs/main.c \
 		srcs/parsing/is_not_clone.c \
 		srcs/parsing/is_not_empty.c \
 		srcs/parsing/count_quotes.c \
+		srcs/lexer/lexer.c \
 		srcs/parsing/handle_unknown_command.c \
 		srcs/parsing/expansions/create_dollar_list.c \
 		srcs/parsing/expansions/find_expansions.c \

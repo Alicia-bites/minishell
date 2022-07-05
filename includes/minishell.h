@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/29 15:04:34 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/05 14:44:12 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@
 
 #include "../libft/libft.h"
 
-#define MALLOC_FAILURE -42
 #define WRONG_CMD 127
+#define MALLOC_FAILURE -42
+#define MISSING_QUOTES -43
 
 typedef enum e_chartype {
 	CH_UNKNOWN,
@@ -61,7 +62,8 @@ typedef struct s_expanded {
 int					get_input(void);
 
 //parsing
-void				ft_parse(char *str, t_list **token_list);
+int					ft_parse(char *str, t_list **token_list);
+void				create_input_list(t_chartype **input_list, char *str);
 void				sort_inputs(char **inputs);
 char				**store_built_ins(void);
 t_list				*create_list(char *str, int i, e_toktype e_toktype);
@@ -73,6 +75,9 @@ int					is_not_empty(char *str);
 void				count_quotes(char *str, t_chartype *input_list);
 int					count_double(char *str);
 int					count_single(char *str);
+
+//lexer
+int					lexer(char *str);
 
 //expansions
 char				*expand_dollar(char *str, t_chartype *input_list);
