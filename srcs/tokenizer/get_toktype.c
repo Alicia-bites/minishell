@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:58:10 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/05 13:32:23 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/05 15:47:04 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	get_toktype(t_chartype *input_list, t_list **token_list)
 				break ;				
 			}
 		}
-		if (is_char_space((*token_list)->token[0]))
+		if (!only_space_in_str((*token_list)->token))
 		{
 			(*token_list)->toktype = TOK_SPACE;
 		}
@@ -42,9 +42,15 @@ void	get_toktype(t_chartype *input_list, t_list **token_list)
 		// }
 		else if ((*token_list)->index >= 2
 			&& (*token_list)->prev->prev->toktype == TOK_BUILTIN
-			/*|| (*token_list)->prev->toktype == TOK_CMD*/)
-		{
+			&& (ft_strcmp((*token_list)->token, "$")
+			/*|| (*token_list)->prev->toktype == TOK_CMD*/))
 			(*token_list)->toktype = TOK_ARG;				
+		else if ((*token_list)->index >= 3)
+		{
+			if (!(ft_strcmp((*token_list)->prev->token, "$")
+			&& (*token_list)->prev->prev->prev->toktype == TOK_BUILTIN)
+				/*|| (*token_list)->prev->toktype == TOK_CMD*/)
+			(*token_list)->toktype = TOK_ARG;	
 		}
 		else if (is_operator((*token_list)->token))
 		{

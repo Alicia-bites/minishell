@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/05 14:44:12 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/05 15:47:09 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ void				remove_dquotes(t_chartype *input_list, int *start, int *end);
 void				remove_squotes(t_chartype *input_list, int *start, int *end);
 void				add_token_to_list(char *token, t_list **token_list);
 int					is_char_word(char c);
+int					only_space_in_str(char *str);
 
 //get_toktype
 void				get_toktype(t_chartype *input_list, t_list **token_list);

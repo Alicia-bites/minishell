@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/05 14:43:46 by amarchan         ###   ########.fr        #
+#    Updated: 2022/07/05 15:47:19 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,6 +77,7 @@ SRCS =	srcs/main.c \
 		srcs/tokenizer/get_toktype.c \
 		srcs/tokenizer/is_char_space.c \
 		srcs/tokenizer/is_operator.c \
+		srcs/tokenizer/only_space_in_str.c \
 
 CC = clang
 
