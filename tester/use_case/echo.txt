@@ -75,4 +75,6 @@ echo "-n            "          a
 echo "    -n" a
 echo "-n" "-n""-nalicia"
 echo "-n" "-n" "-nalicia"
+echo "           TERM"
+echo '           TERM'
 
