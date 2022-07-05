@@ -8,3 +8,4 @@ echo $LANG $TERM $PATH
 echo ${LANG} ${TERM} ${PATH}
 echo $'TERM'
 echo $"TERM"
+echo $TERM$LANG

@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:49:04 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/24 16:22:09 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/05 16:44:23 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ char	*insert_expansions(int full_size, t_expanded *expanded_list, char *str)
 			k++;
 			travel_to_next_str(&k, str);
 		}
-		new_str[i++] = str[k++];
+		if (str[k] != '$')
+			new_str[i++] = str[k++];
 	}
 	new_str[i] = '\0';
 	return (new_str);
