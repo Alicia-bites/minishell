@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/06 14:22:35 by amarchan         ###   ########.fr        #
+#    Updated: 2022/07/06 15:10:56 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,9 +82,8 @@ SRCS =	srcs/main.c \
 		srcs/tokenizer/is_char_space.c \
 		srcs/tokenizer/is_operator.c \
 		srcs/tokenizer/only_space_in_str.c \
-		srcs/signal_handling/ft_do_nothing.c \
 		srcs/signal_handling/ft_set_sigaction.c \
-		srcs/signal_handling/ft_prompt.c \
+		srcs/signal_handling/give_prompt_back.c \
 
 CC = clang
 

@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/06 14:22:50 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/06 16:48:23 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_chartype {
 
 
 typedef struct s_global {
+	int			readline;
 } t_global;
 
 typedef struct s_expanded {
@@ -155,7 +156,6 @@ void				is_intpoint(t_chartype *input_list, int *start, int *end, t_list **token
 
 //signal_handling
 int					ft_set_sigaction(void);
-void				ft_do_nothing(int signum, siginfo_t *info, void *context);
-void				ft_prompt(int signum, siginfo_t *info, void *context);
+void				give_prompt_back(int signum);
 
 #endif

@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_do_nothing.c                                    :+:      :+:    :+:   */
+/*   give_prompt_back.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 12:15:13 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/06 14:24:04 by amarchan         ###   ########.fr       */
+/*   Created: 2022/07/06 13:24:35 by amarchan          #+#    #+#             */
+/*   Updated: 2022/07/06 17:44:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	ft_do_nothing(int signum, siginfo_t *info, void *context)
+void	give_prompt_back(int signum)
 {
-	(void)info;
-	(void)context;
-	if (signum == SIGQUIT)
+	extern t_global	global;
+
+	if (signum == SIGINT)
 	{
-		puts("doing nothing");
+		global.readline = 1;
+		printf("\n");
+		rl_on_new_line();
+		rl_replace_line("", 0);
+		rl_redisplay();
 		return ;
 	}
-	return ;
 }

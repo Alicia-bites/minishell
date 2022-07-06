@@ -6,25 +6,32 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:17:17 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/06 14:08:19 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/06 17:39:57 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-t_list	*token_list;
+t_global global;
 
 int	get_input(void)
 {
 	char	*str;
 	int		err;
+	t_list	*token_list;
 	
 	token_list = NULL;
 	str = NULL;
 	err = 0;
 	while (42)
 	{
-		str = readline("$: ");
+		global.readline = 1;
+		while (global.readline)
+		{
+			global.readline = 0;
+			str = readline("$: ");
+			break ;
+		}
 		if (!str)
 		{
 			rl_clear_history();
@@ -51,7 +58,6 @@ int	main(void)
 {
 	if (ft_set_sigaction() == -1)
 		printf("Setting up sigaction failed.\n");
-	puts("sup");
 	get_input();
 	return (0);
 }
