@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/06 10:54:04 by amarchan         ###   ########.fr        #
+#    Updated: 2022/07/06 12:21:38 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ SRCS =	srcs/main.c \
 		srcs/parsing/expansions/create_dollar_list.c \
 		srcs/parsing/expansions/find_expansions.c \
 		srcs/parsing/expansions/ft_lstclear_dollar.c \
-		srcs/parsing/expansions/ft_lstclear_back.c \
+		srcs/parsing/expansions/ft_lstclear_back_dollar.c \
 		srcs/parsing/expansions/get_expanded.c \
 		srcs/parsing/expansions/insert_expansions.c \
 		srcs/parsing/expansions/print_dollar_lst.c \
@@ -82,6 +82,8 @@ SRCS =	srcs/main.c \
 		srcs/tokenizer/is_char_space.c \
 		srcs/tokenizer/is_operator.c \
 		srcs/tokenizer/only_space_in_str.c \
+		srcs/signal_handling/ft_quit.c \
+		srcs/signal_handling/ft_set_sigaction.c \
 
 CC = clang
 

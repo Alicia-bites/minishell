@@ -6,17 +6,18 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:17:17 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/05 14:29:15 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/06 12:15:40 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
+t_list	*token_list;
+
 int	get_input(void)
 {
 	char	*str;
 	int		err;
-	t_list	*token_list;
 	
 	token_list = NULL;
 	str = NULL;
@@ -42,6 +43,8 @@ int	get_input(void)
 
 int	main(void)
 {
+	if (ft_set_sigaction() == -1)
+		printf("Setting up sigaction failed.\n");
 	get_input();
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/06 10:52:41 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/06 12:17:08 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 #include <stdio.h>
 #include <readline/readline.h>
 #include <readline/history.h>
+#include <signal.h>
+#include <stdint.h>
+#include <sys/types.h>
 
 #include "../libft/libft.h"
 
@@ -56,8 +59,8 @@ typedef struct s_global {
 } t_global;
 
 typedef struct s_expanded {
-	int	index;
-	char *expanded;
+	int					index;
+	char 				*expanded;
 	struct s_expanded	*prev;
 	struct s_expanded	*next;
 } t_expanded;
@@ -99,7 +102,7 @@ t_expanded			*ft_lstnew_dollar(char *str, int i);
 void				ft_lstadd_back_dollar(t_expanded **alst, t_expanded *new);
 int 				is_varname(char c);
 void				print_dollar_lst(t_expanded *lst);
-void				ft_lstclear_back(t_expanded **lst);
+void				ft_lstclear_back_dollar(t_expanded **lst);
 void				ft_lstclear_dollar(t_expanded **lst);
 
 //built-in
@@ -148,5 +151,9 @@ void				is_dl_redir(t_chartype *input_list, int *start, int *end, t_list **token
 void				is_dr_redir(t_chartype *input_list, int *start, int *end, t_list **token_list);
 void				is_bn(t_chartype *input_list, int *start, int *end, t_list **token_list);
 void				is_intpoint(t_chartype *input_list, int *start, int *end, t_list **token_list);
+
+//signal_handling
+int			ft_set_sigaction(void);
+void				ft_quit(int signum, siginfo_t *info, void *context);
 
 #endif
