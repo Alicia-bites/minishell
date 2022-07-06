@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/30 09:51:13 by amarchan          #+#    #+#              #
-#    Updated: 2022/06/21 11:31:32 by amarchan         ###   ########.fr        #
+#    Updated: 2022/07/06 12:00:36 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,6 +69,7 @@ FILES =	ft_isalpha \
 	  	ft_lstadd_back \
 	  	ft_lstdelone \
 	  	ft_lstclear \
+	  	ft_lstclear_back \
 	  	ft_lstiter \
 
 SRCS_DIR = ./
