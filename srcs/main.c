@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:17:17 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/06 12:15:40 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/06 14:08:19 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,11 @@ int	get_input(void)
 	{
 		str = readline("$: ");
 		if (!str)
+		{
+			rl_clear_history();
+			ft_lstclear(&token_list);
 			return (0);
+		}
 		if (str[0] != 0)
 		{
 			err = ft_parse(str, &token_list);
@@ -38,6 +42,8 @@ int	get_input(void)
 				add_history(str);
 		}
 	}
+	rl_clear_history();
+	printf("err = %d\n", err);
 	return (err);
 }
 
@@ -45,6 +51,7 @@ int	main(void)
 {
 	if (ft_set_sigaction() == -1)
 		printf("Setting up sigaction failed.\n");
+	puts("sup");
 	get_input();
 	return (0);
 }
