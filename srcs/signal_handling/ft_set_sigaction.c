@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 12:14:53 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/06 12:17:11 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/06 14:21:30 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,16 @@
 int	ft_set_sigaction(void)
 {
 	struct sigaction	action;
-
-	action.sa_sigaction = ft_quit;
+	
+	//do nothing
+	action.sa_sigaction = ft_do_nothing;
+	action.sa_flags = SA_SIGINFO;
+	sigemptyset(&action.sa_mask);
+	sigaddset(&action.sa_mask, SIGQUIT);
+	if (sigaction(SIGQUIT, &action, 0) == -1)
+		return (-1);
+	//give the prompt back
+	action.sa_sigaction = ft_prompt;
 	action.sa_flags = SA_SIGINFO;
 	sigemptyset(&action.sa_mask);
 	sigaddset(&action.sa_mask, SIGINT);
