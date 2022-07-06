@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.c                                            :+:      :+:    :+:   */
+/*   lex_quote.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/05 13:52:57 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/06 10:51:46 by amarchan         ###   ########.fr       */
+/*   Created: 2022/07/06 10:50:58 by amarchan          #+#    #+#             */
+/*   Updated: 2022/07/06 10:51:22 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int	lexer(char *str)
+int	lex_quote(char *str, int *err)
 {
-	int	err;
-
-	err = 0;
-	if (lex_quote(str, &err) || lex_pipe(str, &err) || lex_redir(str, &err)
-		|| lex_sym(str, &err))
-			return (err);
-		return (err);
-	return (0);
+	if (count_single(str) % 2 != 0 || count_double(str) % 2 != 0)
+	{
+		*err = MISSING_QUOTES;
+		printf("smbash: syntax *error. Please check quotes.\n");		
+	}
+	return (*err);
 }

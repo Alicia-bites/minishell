@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/05 15:47:19 by amarchan         ###   ########.fr        #
+#    Updated: 2022/07/06 10:54:04 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,10 @@ SRCS =	srcs/main.c \
 		srcs/parsing/is_not_empty.c \
 		srcs/parsing/count_quotes.c \
 		srcs/lexer/lexer.c \
+		srcs/lexer/lex_pipe.c \
+		srcs/lexer/lex_quote.c \
+		srcs/lexer/lex_redir.c \
+		srcs/lexer/lex_sym.c \
 		srcs/parsing/handle_unknown_command.c \
 		srcs/parsing/expansions/create_dollar_list.c \
 		srcs/parsing/expansions/find_expansions.c \

@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/06 10:45:35 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/06 10:52:41 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,10 @@ int					count_single(char *str);
 
 //lexer
 int					lexer(char *str);
-
+int					lex_pipe(char *str, int *err);
+int					lex_quote(char *str, int *err);
+int					lex_redir(char *str, int *err);
+int					lex_sym(char *str, int *err);
 //expansions
 char				*expand_dollar(char *str, t_chartype *input_list);
 void				find_expansions(char *str, t_expanded **expanded_list, int *full_size);
