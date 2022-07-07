@@ -9,3 +9,7 @@ echo ${LANG} ${TERM} ${PATH}
 echo $'TERM'
 echo $"TERM"
 echo $TERM$LANG
+echo $<TERM
+echo $>TERM
+echo hey $>alicia
+echo hey $<alicia
