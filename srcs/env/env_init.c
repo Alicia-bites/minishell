@@ -16,6 +16,7 @@ t_env	*env_init(char *env_fullname)
 {
 	t_env	*env;
 	
+	env = NULL;
 	env = (t_env *)malloc(sizeof(t_env));
 	if (!env)
 	{
@@ -25,6 +26,9 @@ t_env	*env_init(char *env_fullname)
 	env->fullname = env_fullname;
 	env->key = NULL;
 	env->value = NULL;
+	env->old_fullname = NULL;
+	env->old_value = NULL;
+	env->is_new = 0;
 	if (!env_init_key(env, env_fullname))
 	{
 		free(env);

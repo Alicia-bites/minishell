@@ -66,6 +66,9 @@ typedef struct s_env {
 	char	*fullname;
 	char	*key;
 	char	*value;
+	char	*old_fullname;
+	char	*old_value;
+	int	is_new;
 }	t_env;
 
 typedef struct s_cmd
@@ -119,8 +122,13 @@ int					do_cd(char *str);
 int					do_pwd(void);
 int					do_export(char *str);
 int					do_unset(char *str);
-int					do_env(t_ulist **envp);
+//do_env
+int					do_env(t_ulist **envp, t_cmd *cmd);
+int     do_env_create_env(t_ulist **list, char *str);
+int     do_env_update_env(t_ulist *obj, char *str, int sep_pos);
+int     do_env_update_lst(t_ulist **envp, char **str);
 void				do_env_show(void *content);
+//do_exit
 void				do_exit(int exit_number);
 
 //execute_command

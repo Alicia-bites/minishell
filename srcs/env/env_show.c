@@ -24,5 +24,10 @@ void	env_show(void *content)
 		printf("key: %s\n", env->key);
 	if (env->value)
 		printf("value: %s\n", env->value);
+	if (env->old_fullname)
+		printf("old fullname: %s\n", env->old_fullname);
+	if (env->old_value)
+		printf("old value: %s\n", env->old_value);
+	printf("is_new: %d\n", env->is_new);
 	printf("%s\n", SEP_P);
 }
