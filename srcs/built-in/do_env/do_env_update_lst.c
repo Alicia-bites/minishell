@@ -23,6 +23,7 @@ int	do_env_update_lst(t_ulist **envp, char **str)
 	int	sep_pos;
 	t_ulist	*obj;
 	t_env	*env;
+	int	updated;
 
 	i = 0;
 	sep_pos = 0;
@@ -35,21 +36,25 @@ int	do_env_update_lst(t_ulist **envp, char **str)
 		if (sep_pos < 0) // if env ENV_NAME=value <command> and str[i] = <command>
 			break ;
 		updated = 0;
-		while (obj)
+		while (obj && updated == 0)
 		{
 			env = (t_env *)obj->content;
 			if (ft_strncmp(env->key, str[i], sep_pos) == 0) // env->key = PATH && str[i]= "PATH=xxx" ==> res = 0
+			{
 				if (do_env_update_env(obj, str[i], sep_pos) != 0)
 					return (2);
 				else
-				{
 					updated = 1;
-					break ;
-				}
+			}
 			obj = obj->next;
 		}
-		if (updated == 0 && do_env_create_env(envp, str[i] != 0))
+		obj = *envp;
+		env = (t_env *)obj->content;
+		if (updated == 0)
+		{
+			do_env_create_env(envp, str[i]);
 			return (3);
+		}
 		i++;
 	}
 	return (0);

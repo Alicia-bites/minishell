@@ -16,9 +16,14 @@ int	do_env_create_env(t_ulist **list, char *str)
 {
 	t_env	*env;
 
+	env = NULL;
 	env = env_init(str);
 	if (!env)
+	{
+		printf("TEST\n");
 		return (1);
+	}
+	env->is_new = 1; // set to 1 to flag the env as temporary new and to be deleted after the command
 	if (!ft_lst_append(list, (void *)env))
 	{
 		env_free((void *)env);

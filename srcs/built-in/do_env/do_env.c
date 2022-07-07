@@ -20,11 +20,10 @@ int	do_env(t_ulist **envp, t_cmd *cmd)
 		return (2);
 	else if (ft_strstrlen(cmd->fullcmd) == 1) //case: env
 		ft_lst_func_lst(envp, &do_env_show);
-	else if (ft_strstrlen(cmd->fullcmd) => 2 && ft_strchr(cmd->fullcmd, ENV_SEP)) //case: env NAME1=value
-		printf("TO BE DONE WITH SPECIFIC CASE\n"
-		"1. Update the list and UNDO the modification to the previous value\n"
-		"2. Create the env variable and display the whole list and REMOVE the new env from the list at the end of the process\n");
-	else
+	else if (ft_strstrlen(cmd->fullcmd) >= 2 && ft_strchr(cmd->arg, ENV_SEP)) //case: env NAME1=value
+	{
 		do_env_update_lst(envp, &cmd->fullcmd[1]);
+		ft_lst_func_lst(envp, &do_env_show);
+	}
 	return (0);
 }
