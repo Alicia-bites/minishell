@@ -14,11 +14,14 @@
 
 char	*env_init_value(t_env *env)
 {
-	env->value = getenv((const char *)env->key);
-	if (!env->value)
+	int		sep_pos;
+
+	sep_pos = ft_index((const char *)env->fullname, ENV_SEP);
+	if (sep_pos < 0)
 	{
 		ft_panic(-1, "ERROR TO BE DEFINED");
 		return (NULL);
 	}
+	env->value = &env->fullname[sep_pos + 1];
 	return (env->value);
 }
