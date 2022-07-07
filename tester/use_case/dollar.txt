@@ -6,9 +6,11 @@ echo '$LANG'
 echo "$LANG"
 echo $LANG $TERM $PATH
 echo ${LANG} ${TERM} ${PATH}
+echo ${LANG}${TERM}${PATH}
 echo $'TERM'
 echo $"TERM"
 echo $TERM$LANG
+echo $"TERM$LANG"
 echo $<TERM
 echo $>TERM
 echo hey $>alicia
