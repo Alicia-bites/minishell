@@ -23,7 +23,7 @@ NM_BIN		:=	nm
 CC		:=	cc
 #CFLAGS		:=	-MMD -Wall -Wextra -Werror
 CFLAGS		:=	-MMD
-CFLAGSADD	:=	-g3
+CFLAGSADD	:=	-g3 -fsanitize=address
 
 IPATH		:=	includes
 OPATH		:=	obj
@@ -42,7 +42,10 @@ RM		:=	rm -rf
 BUILT_SRCS	:=	cd.c\
 			echo.c\
 			do_env.c\
+			do_env_create_env.c\
 			do_env_show.c\
+			do_env_update_env.c\
+			do_env_update_lst.c\
 			exit.c\
 			export.c\
 			pwd.c\
@@ -174,7 +177,7 @@ $(OPATH)/%.o:		%.c
 
 $(NAME):		$(OBJS)
 			make -C $(FTPATH)
-			$(CC) $(CFLAGS) $(CFLAGSADD) $(OBJS) -I $(IPATH) -I $(FTPATH)/$(IFT) -L$(FTPATH) -l$(FT) -o $(NAME)
+			$(CC) $(CFLAGS) $(CFLAGSADD) $(OBJS) -I $(IPATH) -I $(FTPATH)/$(IFT) -L$(FTPATH) -l$(FT) -lreadline -o $(NAME)
 
 $(OBJS):		| $(OPATH)
 

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "minishell.h"
 
 int	get_input(void)
 {
@@ -21,19 +21,19 @@ int	get_input(void)
 	str = NULL;
 	while (42)
 	{
-//		str = readline("$: ");
-//		if (!str)
-//			return (0);
-//		if (str[0] != 0)
-//		{
-//			ft_parse(str, &token_list);
-//			// print_lst(token_list);
-//			// execute_command(token_list);
-//			ft_lstclear(&token_list);
-//			// printf("token_list (main) = %p\n", token_list);
-//			if (is_not_clone(str) && is_not_empty(str))
-//				add_history(str);
-//		}
+		str = readline("$: ");
+		if (!str)
+			return (0);
+		if (str[0] != 0)
+		{
+			ft_parse(str, &token_list);
+			print_lst(token_list);
+			// execute_command(token_list);
+			ft_lstclear(&token_list);
+			printf("token_list (main) = %p\n", token_list);
+			if (is_not_clone(str) && is_not_empty(str))
+				add_history(str);
+		}
 	}
 	return (0);
 }
@@ -41,6 +41,14 @@ int	get_input(void)
 int	main(int argc, char **argv, char **envp)
 {
 	t_ulist	**env_lst;
+	t_cmd	test_cmd;
+	char test_cmd_arg[] = "env ANTHO=toto test";
+	char *test_cmd_fullcmd[] = { "env", "ANTHO=toto", "test", NULL };
+	char test_cmd_path[] = "built-in";
+
+	test_cmd.arg = test_cmd_arg;
+	test_cmd.fullcmd = test_cmd_fullcmd;
+	test_cmd.fullpath = test_cmd_path;
 
 	env_lst = ft_lst_init();
 	if (!env_lst)
@@ -51,7 +59,7 @@ int	main(int argc, char **argv, char **envp)
 		return (2);
 	}
 	//env_lst_show(env_lst);
-	do_env(env_lst);
+	do_env(env_lst, &test_cmd);
 	ft_lst_free(env_lst, &env_free);
 	//get_input();
 	return (0);
