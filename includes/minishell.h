@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/06 16:48:23 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/08 16:35:47 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int					count_double(char *str);
 int					count_single(char *str);
 
 //lexer
-int					lexer(char *str);
+int					pre_lexer(char *str);
 int					lex_pipe(char *str, int *err);
 int					lex_quote(char *str, int *err);
 int					lex_redir(char *str, int *err);

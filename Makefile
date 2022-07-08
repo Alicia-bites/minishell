@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/06 15:10:56 by amarchan         ###   ########.fr        #
+#    Updated: 2022/07/08 16:36:04 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ SRCS =	srcs/main.c \
 		srcs/parsing/is_not_clone.c \
 		srcs/parsing/is_not_empty.c \
 		srcs/parsing/count_quotes.c \
-		srcs/lexer/lexer.c \
+		srcs/lexer/pre_lexer.c \
 		srcs/lexer/lex_pipe.c \
 		srcs/lexer/lex_quote.c \
 		srcs/lexer/lex_redir.c \
