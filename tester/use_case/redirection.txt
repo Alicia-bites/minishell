@@ -11,3 +11,7 @@ echo hello >> file1
 < < <
 > >
 < <
+echo hello<
+echo hello>
+<echo hello
+>echo hello
