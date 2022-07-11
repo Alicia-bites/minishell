@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/01 12:02:58 by antho            ###   ########.fr       */
+/*   Updated: 2022/07/11 10:38:08 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,13 +121,18 @@ int					do_echo_n(char *str);
 int					do_cd(char *str);
 int					do_pwd(void);
 int					do_export(char *str);
-int					do_unset(char *str);
+
 //do_env
 int					do_env(t_ulist **envp, t_cmd *cmd);
 int     do_env_create_env(t_ulist **list, char *str);
 int     do_env_update_env(t_ulist *obj, char *str, int sep_pos);
 int     do_env_update_lst(t_ulist **envp, char **str);
 void				do_env_show(void *content);
+
+//do_unset
+int	do_unset(t_ulist **envp, t_cmd *cmd);
+int     do_unset_update_lst(t_ulist **envp, char **str);
+
 //do_exit
 void				do_exit(int exit_number);
 

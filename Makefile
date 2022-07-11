@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/06/30 15:54:11 by antho            ###   ########.fr        #
+#    Updated: 2022/07/11 10:41:23 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ OPATH		:=	obj
 SRCS_PATH	:=	srcs
 BUILT_PATH	:=	built-in
 BUILT_ENV_PATH	:=	do_env
+BUILT_UNSET_PATH	:=	do_unset
 ENV_PATH	:=	env
 EXEC_PATH	:=	execute_commands
 PARSING_PATH	:=	parsing
@@ -46,10 +47,11 @@ BUILT_SRCS	:=	cd.c\
 			do_env_show.c\
 			do_env_update_env.c\
 			do_env_update_lst.c\
+			do_unset.c\
+			do_unset_update_lst.c\
 			exit.c\
 			export.c\
-			pwd.c\
-			unset.c
+			pwd.c
 
 ENV_SRCS	:=	env_free.c\
 			env_init.c\
@@ -163,6 +165,7 @@ vpath %.h $(IPATH)
 vpath %.c $(SRCS_PATH)\
 	$(SRCS_PATH)/$(BUILT_PATH)\
 	$(SRCS_PATH)/$(BUILT_PATH)/$(BUILT_ENV_PATH)\
+	$(SRCS_PATH)/$(BUILT_PATH)/$(BUILT_UNSET_PATH)\
 	$(SRCS_PATH)/$(ENV_PATH)\
 	$(SRCS_PATH)/$(EXEC_PATH)\
 	$(SRCS_PATH)/$(PARSING_PATH)\
