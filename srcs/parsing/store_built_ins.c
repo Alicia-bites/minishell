@@ -6,20 +6,23 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 17:39:15 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/16 18:10:47 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/27 19:39:12 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 // Store every built-ins we must manage in a char**
 char	**store_built_ins(void)
 {
 	char **built_ins;
 	
-	built_ins = malloc(sizeof(char*) * 9 + 1);
+	built_ins = malloc(sizeof(char*) * 8 + 1);
 	if (!built_ins)
+	{
 		ft_panic(MALLOC_FAILURE, 0);
+		return (NULL);
+	}
 	built_ins[0] = "echo";
 	built_ins[1] = "echo -n";
 	built_ins[2] = "cd";

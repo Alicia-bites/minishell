@@ -6,16 +6,15 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:15:03 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/21 17:20:40 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/27 17:43:23 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
-t_list	*is_s_quote(t_chartype *input_list, int *start, int *end)
-{
-	t_list	*token_list;
-	
+void	is_s_quote(t_chartype *input_list, int *start, int *end,
+	t_list **token_list)
+{	
 	if (input_list[*end].type == CH_S_QUOTE)
 	{
 		(*end)++;
@@ -37,8 +36,7 @@ t_list	*is_s_quote(t_chartype *input_list, int *start, int *end)
 				(*end)++;
 			input_list->n_single--;
 		}
-		token_list = built_token(input_list, *start, *end);
+		built_token(input_list, *start, *end, token_list);
 		*start = *end;
 	}
-	return (token_list);
 }

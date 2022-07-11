@@ -6,26 +6,26 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:47:06 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/24 17:14:50 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/11 12:09:25 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/minishell.h"
+#include "minishell.h"
 
-char	*expand_dollar(char *str, t_chartype *input_list)
+char	*expand_dollar(char *str)
 {
-	extern	t_global	*g_global;
 	char 				*new_str;
 	int					full_size;
 	t_expanded			*expanded_list;
 
 	full_size = 0;
+	expanded_list = NULL;
 	find_expansions(str, &expanded_list, &full_size);
 	if (!full_size)
 		return (str);
 	full_size += get_full_size(expanded_list) + ft_strlen(str);
 	new_str = insert_expansions(full_size, expanded_list, str);
-	ft_lstclear_back(&expanded_list);
-	g_global->expansions_list_cleared = 1;
+	ft_lstclear_dollar(&expanded_list);
+	ft_lstclear_back_dollar(&expanded_list);
 	return (new_str);
 }

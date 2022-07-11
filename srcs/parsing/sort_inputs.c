@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 // Place commmands and arguments in a linked list
 // void	sort_inputs(char **inputs)

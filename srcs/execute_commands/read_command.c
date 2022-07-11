@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 // Find in built_ins what command is invoked
 int	read_command(t_list *inputs_lst, char **built_ins)

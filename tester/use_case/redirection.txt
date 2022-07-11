@@ -1,3 +1,17 @@
 hello|prout
-hello > file1
-hello >> file1
+echo hello > file1
+echo hello >> file1
+<>
+< >
+><
+> <
+>>>
+<<<
+> > >
+< < <
+> >
+< <
+echo hello<
+echo hello>
+<echo hello
+>echo hello

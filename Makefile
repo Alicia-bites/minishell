@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/06/28 14:06:02 by abarrier         ###   ########.fr        #
+#    Updated: 2022/07/11 12:05:28 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,8 +32,10 @@ SRCS_PATH	:=	srcs
 BUILT_PATH	:=	built-in
 ENV_PATH	:=	env
 EXEC_PATH	:=	execute_commands
+LEX_PATH	:=	lexer
 PARSING_PATH	:=	parsing
 EXP_PATH	:=	expansions
+SIG_PATH	:=	signal_handling
 TOK_PATH	:=	tokenizer
 
 RM		:=	rm -rf
@@ -49,8 +51,15 @@ BUILT_SRCS	:=	cd.c\
 EXEC_SRCS	:=	execute_command.c\
 			read_command.c
 
+LEX_SRCS	:=	lex_pipe.c \
+				lex_quote.c \
+				lex_redir.c \
+				lex_sym.c \
+				pre_lexer.c
+
 PARSING_SRCS	:=	count_quotes.c\
 			create_list.c\
+			create_input_list.c \
 			ft_panic.c\
 			handle_unknown_command.c\
 			is_not_clone.c\
@@ -58,13 +67,13 @@ PARSING_SRCS	:=	count_quotes.c\
 			parsing.c\
 			print_lst.c\
 			sort_inputs.c\
-			store_built_ins.c\
+			store_built_ins.c
 
 EXP_SRCS	:=	create_dollar_list.c\
 			expand_dollar.c\
 			find_expansions.c\
 			ft_lstadd_back_dollar.c\
-			ft_lstclear_back.c\
+			ft_lstclear_back_dollar.c\
 			ft_lstclear_dollar.c\
 			ft_lstnew_dollar.c\
 			get_expanded.c\
@@ -74,73 +83,41 @@ EXP_SRCS	:=	create_dollar_list.c\
 			malloc_varname.c\
 			print_dollar_lst.c
 
-TOK_SRCS	:=	is_bn.c\
-			is_dl_redir.c\
-			is_d_quote.c\
-			is_dr_redir.c\
-			is_envcall.c\
-			is_intpoint.c\
-			is_l_redir.c\
-			is_pipe.c\
-			is_r_redir.c\
-			is_space.c\
-			is_s_quote.c\
-			is_word.c\
-			tokenizer.c
+SIG_SRCS	:=	ft_set_sigaction.c \
+				give_prompt_back.c
+
+TOK_SRCS	:=	add_token_to_list.c \
+				built_token.c \
+				get_chartype.c \
+				get_token.c \
+				get_toktype.c \
+				is_bn.c \
+				is_char_space.c \
+				is_char_word.c \
+				is_dl_redir.c \
+				is_d_quote.c \
+				is_dr_redir.c \
+				is_envcall.c \
+				is_intpoint.c \
+				is_l_redir.c \
+				is_operator.c \
+				is_pipe.c \
+				is_r_redir.c \
+				is_space.c \
+				is_s_quote.c \
+				is_word.c \
+				only_space_in_str.c \
+				remove_quotes.c \
+				tokenizer.c
 
 SRCS		:=	main.c\
 			$(BUILT_SRCS)\
 			$(EXEC_SRCS)\
+			$(LEX_SRCS)\
 			$(PARSING_SRCS)\
 			$(EXP_SRCS)\
+			$(SIG_SRCS)\
 			$(TOK_SRCS)\
-
-#SRCS 		:=	main.c \
-#			parsing.c \
-#			ft_panic.c \
-#			sort_inputs.c \
-#			store_built_ins.c \
-#			create_list.c \
-#			print_lst.c \
-#			is_not_clone.c \
-#			is_not_empty.c \
-#			count_quotes.c \
-#			handle_unknown_command.c \
-#			create_dollar_list.c \
-#			find_expansions.c \
-#			ft_lstclear_dollar.c \
-#			ft_lstclear_back.c \
-#			get_expanded.c \
-#			insert_expansions.c \
-#			print_dollar_lst.c \
-#			expand_dollar.c \
-#			ft_lstadd_back_dollar.c \
-#			ft_lstnew_dollar.c \
-#			get_full_size.c \
-#			malloc_varname.c \
-#			is_varname.c \
-#			echo.c \
-#			cd.c \
-#			pwd.c \
-#			export.c \
-#			unset.c \
-#			env.c\
-#			exit.c\
-#			ead_command.c \
-#			execute_command.c \
-#			tokenizer.c \
-#			is_space.c \
-#			is_pipe.c \
-#			is_s_quote.c \
-#			is_d_quote.c \
-#			is_envcall.c \
-#			is_l_redir.c \
-#			is_r_redir.c \
-#			is_dl_redir.c \
-#			is_dr_redir.c \
-#			is_bn.c \
-#			is_intpoint.c \
-#			is_word.c \
 
 OBJS		:=	$(addprefix $(OPATH)/, $(SRCS:.c=.o))
 DEPS		:=	$(OBJS:.o=.d)
@@ -150,8 +127,10 @@ vpath %.c $(SRCS_PATH)\
 	$(SRCS_PATH)/$(BUILT_PATH)\
 	$(SRCS_PATH)/$(ENV_PATH)\
 	$(SRCS_PATH)/$(EXEC_PATH)\
+	$(SRCS_PATH)/$(LEX_PATH)\
 	$(SRCS_PATH)/$(PARSING_PATH)\
 	$(SRCS_PATH)/$(PARSING_PATH)/$(EXP_PATH)\
+	$(SRCS_PATH)/$(SIG_PATH)\
 	$(SRCS_PATH)/$(TOK_PATH)
 vpath %.o $(OPATH)
 
@@ -162,7 +141,7 @@ $(OPATH)/%.o:		%.c
 
 $(NAME):		$(OBJS)
 			make -C $(FTPATH)
-			$(CC) $(CFLAGS) $(CFLAGSADD) $(OBJS) -I $(IPATH) -I $(FTPATH)/$(IFT) -L$(FTPATH) -l$(FT) -o $(NAME)
+			$(CC) $(CFLAGS) $(CFLAGSADD) $(OBJS) -I $(IPATH) -I $(FTPATH)/$(IFT) -L$(FTPATH) -l$(FT) -lreadline -o $(NAME)
 
 $(OBJS):		| $(OPATH)
 

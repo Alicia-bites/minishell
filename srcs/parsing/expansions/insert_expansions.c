@@ -6,11 +6,11 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:49:04 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/24 16:22:09 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/11 12:10:12 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/minishell.h"
+#include "minishell.h"
 
 static char	*malloc_newstr(int full_size,  t_expanded **expanded_list)
 {
@@ -48,18 +48,25 @@ char	*insert_expansions(int full_size, t_expanded *expanded_list, char *str)
 	i = 0;
 	j = 0;
 	k = 0;
+	full_size -= count_double(str);
 	while (i <= full_size)
 	{
-		if (str[k] == '$')
+		if (k < ft_strlen(str) -1)
 		{
-			j = 0;
-			while (j < ft_strlen(expanded_list->expanded))
-				new_str[i++] = expanded_list->expanded[j++];
-			expanded_list = expanded_list->next;
-			k++;
-			travel_to_next_str(&k, str);
+			if (str[k] == '$' && str[k + 1] != '"')
+			{
+				j = 0;
+				while (j < ft_strlen(expanded_list->expanded))
+					new_str[i++] = expanded_list->expanded[j++];
+				expanded_list = expanded_list->next;
+				k++;
+				travel_to_next_str(&k, str);
+			}
 		}
-		new_str[i++] = str[k++];
+		if (str[k] != '$' && str[k] != '"')
+			new_str[i++] = str[k++];
+		else if (str[k] == '$' && (str[k + 1] == '"' || str[k] == '"'))
+			k++;
 	}
 	new_str[i] = '\0';
 	return (new_str);

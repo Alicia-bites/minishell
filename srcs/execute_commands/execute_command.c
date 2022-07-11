@@ -6,11 +6,11 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 18:15:18 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/17 12:10:12 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/06/27 19:31:03 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 // Indicate which action should be taken
 int	execute_command(char *str, int i)
@@ -19,17 +19,17 @@ int	execute_command(char *str, int i)
 		do_echo(str);
 	if (i == 1)
 		do_echo_n(str);
-	if (i == 2)
-		do_cd(str);
-	if (i == 3)
-		do_pwd();
-	if (i == 4)
-		do_export(str);
-	if (i == 5)
-		do_unset(str);
-	if (i == 6)
-		do_env(str);
-	if (i == 7)
-		do_exit();
+	// if (i == 2)
+	// 	do_cd(str);
+	// if (i == 3)
+	// 	do_pwd();
+	// if (i == 4)
+	// 	do_export(str);
+	// if (i == 5)
+	// 	do_unset(str);
+	// if (i == 6)
+	// 	do_env(str);
+	// if (i == 7)
+	// 	do_exit();
 	return (0);
 }

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 // Create a linked list of inputs with indexes
 t_list	*create_list(char *str, int i, e_toktype toktype)

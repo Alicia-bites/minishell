@@ -1,0 +1,2 @@
+| cat test wc
+cat test wc |

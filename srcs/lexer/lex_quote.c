@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_back.c                                 :+:      :+:    :+:   */
+/*   lex_quote.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/23 19:48:09 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/23 19:50:44 by amarchan         ###   ########.fr       */
+/*   Created: 2022/07/06 10:50:58 by amarchan          #+#    #+#             */
+/*   Updated: 2022/07/06 10:51:22 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/minishell.h"
+#include "minishell.h"
 
-//clear the list starting from the LAST element
-void	ft_lstclear_back(t_expanded **lst)
+int	lex_quote(char *str, int *err)
 {
-	t_expanded	*iterator;
-	t_expanded	*prev;
-
-	if (*lst == NULL)
-		return ;
-	iterator = *lst;
-	prev = NULL;
-	while (iterator->prev)
+	if (count_single(str) % 2 != 0 || count_double(str) % 2 != 0)
 	{
-		prev = iterator;
-		iterator = iterator->prev;
-		free(prev);
+		*err = MISSING_QUOTES;
+		printf("smbash: syntax *error. Please check quotes.\n");		
 	}
-	free(iterator);
-	*lst = NULL;
+	return (*err);
 }

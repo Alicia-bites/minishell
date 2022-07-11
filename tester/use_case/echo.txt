@@ -35,3 +35,46 @@ echo '"$TERM"'
 #
 echo "Salut" $TERM cat
 #
+echo """
+echo """"
+echo "a""b"
+echo "a" "b"
+echo "hey""you"
+echo "outthere" "in the dark"
+echo "\""
+echo "\'"
+echo '\"'
+echo '\''
+echo '\\'
+echo "\\"
+echo '\a'
+echo "\a"
+echo '$'
+echo "$"
+echo $
+echo \\
+echo \
+#
+echo -n Hello
+echo -nnnnnnnnnnnnnnnnnn Hello
+echo -n -n Hello
+echo -nnnn -nnnn Hello
+echo -n-n-n-n-n-n Hello
+echo -n -n -b
+echo -n     -nnn -nnn
+echo     -n -nnnn
+echo-n
+"echo -n"
+echo "-n" hello
+echo '-n' hello
+echo "-nnnnn""-nnnn" hello
+echo "-""n" hello
+echo '-nnnnnnn' '-nnnnn' alicia
+echo '-nnnnnnn''-nnnnn' alicia
+echo "-n            "          a
+echo "    -n" a
+echo "-n" "-n""-nalicia"
+echo "-n" "-n" "-nalicia"
+echo "           TERM"
+echo '           TERM'
+

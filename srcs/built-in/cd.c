@@ -6,13 +6,14 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 18:16:31 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/16 18:23:43 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/11 12:05:46 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 int	do_cd(char *str)
 {
+	(void)str;
 	return (0);
 }

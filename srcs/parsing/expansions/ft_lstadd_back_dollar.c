@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/minishell.h"
+#include "minishell.h"
 
 void	ft_lstadd_back_dollar(t_expanded **alst, t_expanded *new)
 {

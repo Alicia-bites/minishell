@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/minishell.h"
+#include "minishell.h"
 
 void	find_expansions(char *str, t_expanded **expanded_list, int *full_size)
 {
