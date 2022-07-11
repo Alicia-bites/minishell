@@ -21,6 +21,7 @@ void		ft_left_strip(char *s);
 void		ft_right_strip(char *s);
 char	**ft_split(char const *s, char c);
 char	*ft_strchr(const char *s, int c);
+char	*ft_strchrset_include(const char *s, const char *chrset);
 int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_strdup(const char *str);
 void		ft_strip(char *s);

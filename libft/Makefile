@@ -81,6 +81,7 @@ STR_SRCS	:=	ft_bzero.c\
 			ft_right_strip.c\
 			ft_split.c\
 			ft_strchr.c\
+			ft_strchrset_include.c\
 			ft_strcmp.c\
 			ft_strdup.c\
 			ft_strip.c\
