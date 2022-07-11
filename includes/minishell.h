@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/11 13:51:38 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/11 18:30:39 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ typedef struct s_cmd
 
 //main.c
 //int					main(void);
-int					get_input(void);
+int					get_input(t_ulist **env_list);
 
 //parsing
 int					ft_parse(char *str, t_list **token_list);
@@ -202,5 +202,12 @@ char    *env_init_value(t_env *env);
 int     env_lst_set(char **envp, t_ulist **env_lst);
 void    env_lst_show(t_ulist **list);
 void    env_show(void *content);
+
+//command list
+void    cmd_close_fd(void *content);
+int     cmd_create_lst(t_list *tok, t_ulist **env_lst, t_ulist **cmd_lst);
+void    cmd_free(void *content);
+t_cmd   *cmd_init(t_list tok, t_ulist **env_lst);
+int     cmd_init_prop(t_cmd *cmd, t_list *tok, t_ulist **envp);
 
 #endif
