@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 /*
  * Test
@@ -20,7 +20,12 @@
  * unset 'ANTHO' ==> Ok, always return(0)
  * unset $ANTHO
  */
-int	do_unset(char *str)
+int	do_unset(t_ulist **envp, t_cmd *cmd)
 {
+	if (!cmd)
+		return (1);
+	if (ft_strstrlen(cmd->fullcmd) == 0)
+		return (2);
+	do_unset_update_lst(envp, &do_env_show);
 	return (0);
 }

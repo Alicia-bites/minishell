@@ -42,8 +42,14 @@ int	main(int argc, char **argv, char **envp)
 {
 	t_ulist	**env_lst;
 	t_cmd	test_cmd;
-	char test_cmd_arg[] = "env ANTHO=toto test";
-	char *test_cmd_fullcmd[] = { "env", "ANTHO=toto", "test", NULL };
+//	char test_cmd_arg[] = "env";
+//	char *test_cmd_fullcmd[] = { "env", NULL };
+	char test_cmd_arg[] = "env ANTHO=toto";
+	char *test_cmd_fullcmd[] = { "env", "ANTHO=toto", NULL };
+//	char test_cmd_arg[] = "env ANTHO=toto echo $ANTHO";
+//	char *test_cmd_fullcmd[] = { "env", "ANTHO=toto", "echo", "$ANTHO", NULL };
+//	char test_cmd_arg[] = "env echo $ANTHO";
+//	char *test_cmd_fullcmd[] = { "env", "echo", "$ANTHO", NULL };
 	char test_cmd_path[] = "built-in";
 
 	test_cmd.arg = test_cmd_arg;
