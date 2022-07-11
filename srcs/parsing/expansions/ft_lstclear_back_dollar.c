@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_back.c                                 :+:      :+:    :+:   */
+/*   ft_lstclear_back_dollar.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:48:09 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/06 11:58:00 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/11 16:21:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	ft_lstclear_back_dollar(t_expanded **lst)
 	{
 		prev = iterator;
 		iterator = iterator->prev;
+		if (prev->expanded)
+			free(prev->expanded);
 		free(prev);
 	}
 	free(iterator);

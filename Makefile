@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/11 13:53:51 by abarrier         ###   ########.fr        #
+#    Updated: 2022/07/11 15:30:50 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,8 @@ CC		:=	cc
 CFLAGS		:=	-MMD
 #CFLAGSADD	:=	-g3 -fsanitize=address
 CFLAGSADD	:=	-g3
+
+VALGRIND	:=	valgrind --suppressions=ignoreliberror --leak-check=full --show-leak-kinds=all --track-origins=yes
 
 IPATH		:=	includes
 OPATH		:=	obj
@@ -158,7 +160,7 @@ all:			$(NAME)
 $(OPATH)/%.o:		%.c
 			$(CC) $(CFLAGS) $(CFLAGSADD) -I $(IPATH) -I $(FTPATH)/$(IFT) -c $< -o $@
 
-$(NAME):		$(OBJS)
+$(NAME):		$(OBJS) $(FTPATH)/$(FT_NAME)
 			make -C $(FTPATH)
 			$(CC) $(CFLAGS) $(CFLAGSADD) $(OBJS) -I $(IPATH) -I $(FTPATH)/$(IFT) -L$(FTPATH) -l$(FT) -lreadline -o $(NAME)
 
@@ -184,6 +186,10 @@ norme:
 
 sym:
 			$(NM_BIN) -Dgu $(NAME)
+
+comp:
+			make
+			$(VALGRIND) ./$(NAME)
 
 -include $(DEPS)
 

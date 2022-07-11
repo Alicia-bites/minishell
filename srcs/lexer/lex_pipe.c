@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 10:50:33 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/06 10:51:52 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/11 14:49:54 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	lex_pipe(char *str, int *err)
 	int len;
 	int	i;
 	
+	if (str[0] == '\0') 
+		return (0);
 	i = 0;
 	len = ft_strlen(str);
 	if (str[0] == '|' || str[len - 1] == '|')

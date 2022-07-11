@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:58:10 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/11 12:26:41 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/11 15:09:42 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static void	is_built_in(t_list **token_list)
 			break ;				
 		}
 	}
+	free(built_ins);
 }
 
 void	get_toktype(t_list **token_list)
