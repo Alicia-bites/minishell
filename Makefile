@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/11 12:05:28 by amarchan         ###   ########.fr        #
+#    Updated: 2022/07/11 13:53:51 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,9 @@ NAME 		:=	minishell
 NORMINETTE_BIN 	:= 	norminette
 NM_BIN		:=	nm
 CC		:=	cc
-CFLAGS		:=	-MMD -Wall -Wextra -Werror
-#CFLAGS		:=	-MMD
+#CFLAGS		:=	-MMD -Wall -Wextra -Werror
+CFLAGS		:=	-MMD
+#CFLAGSADD	:=	-g3 -fsanitize=address
 CFLAGSADD	:=	-g3
 
 IPATH		:=	includes
@@ -30,6 +31,8 @@ OPATH		:=	obj
 
 SRCS_PATH	:=	srcs
 BUILT_PATH	:=	built-in
+BUILT_ENV_PATH	:=	do_env
+BUILT_UNSET_PATH	:=	do_unset
 ENV_PATH	:=	env
 EXEC_PATH	:=	execute_commands
 LEX_PATH	:=	lexer
@@ -42,11 +45,24 @@ RM		:=	rm -rf
 
 BUILT_SRCS	:=	cd.c\
 			echo.c\
-			env.c\
+			do_env.c\
+			do_env_create_env.c\
+			do_env_show.c\
+			do_env_update_env.c\
+			do_env_update_lst.c\
+			do_unset.c\
+			do_unset_update_lst.c\
 			exit.c\
 			export.c\
-			pwd.c\
-			unset.c
+			pwd.c
+
+ENV_SRCS	:=	env_free.c\
+			env_init.c\
+			env_init_key.c\
+			env_init_value.c\
+			env_lst_set.c\
+			env_lst_show.c\
+			env_show.c
 
 EXEC_SRCS	:=	execute_command.c\
 			read_command.c
@@ -112,6 +128,7 @@ TOK_SRCS	:=	add_token_to_list.c \
 
 SRCS		:=	main.c\
 			$(BUILT_SRCS)\
+			$(ENV_SRCS)\
 			$(EXEC_SRCS)\
 			$(LEX_SRCS)\
 			$(PARSING_SRCS)\
@@ -125,6 +142,8 @@ DEPS		:=	$(OBJS:.o=.d)
 vpath %.h $(IPATH)
 vpath %.c $(SRCS_PATH)\
 	$(SRCS_PATH)/$(BUILT_PATH)\
+	$(SRCS_PATH)/$(BUILT_PATH)/$(BUILT_ENV_PATH)\
+	$(SRCS_PATH)/$(BUILT_PATH)/$(BUILT_UNSET_PATH)\
 	$(SRCS_PATH)/$(ENV_PATH)\
 	$(SRCS_PATH)/$(EXEC_PATH)\
 	$(SRCS_PATH)/$(LEX_PATH)\

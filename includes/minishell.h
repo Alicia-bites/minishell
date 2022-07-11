@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/11 12:27:57 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/11 13:51:38 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define MINISHELL_H
 
 # include <stdio.h>
+# include <stdlib.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <signal.h>
@@ -30,6 +31,12 @@
 # define BACK_SLASH -46
 # define SEMICOLON -47
 # define DOUBLE_PIPE -48
+
+# define ENV_SEP '='
+# define ENV_FIELD_SEP ':'
+# define ENV_PATH_NAME "PATH="
+# define DIR_SEP "/"
+# define ARG_SEP ' '
 
 typedef enum e_chartype {
 	CH_UNKNOWN,
@@ -54,7 +61,6 @@ typedef struct s_chartype {
 	e_chartype	type;
 } t_chartype;
 
-
 typedef struct s_global {
 	int			readline;
 } t_global;
@@ -66,9 +72,28 @@ typedef struct s_expanded {
 	struct s_expanded	*next;
 } t_expanded;
 
+typedef struct s_env {
+	char	*fullname;
+	char	*key;
+	char	*value;
+	char	*old_fullname;
+	char	*old_value;
+	int	is_new;
+}	t_env;
+
+typedef struct s_cmd
+{
+	t_ulist	**env_lst;
+	char	*arg;
+	char	**fullcmd;
+	char	*fullpath;
+	int		fd_r;
+	int		fd_w;
+	int		access;
+}		t_cmd;
+
 //main.c
 //int					main(void);
-int					main();
 int					get_input(void);
 
 //parsing
@@ -113,8 +138,19 @@ int					do_echo_n(char *str);
 int					do_cd(char *str);
 int					do_pwd(void);
 int					do_export(char *str);
-int					do_unset(char *str);
-int					do_env(char **envp);
+
+//do_env
+int					do_env(t_ulist **envp, t_cmd *cmd);
+int     do_env_create_env(t_ulist **list, char *str);
+int     do_env_update_env(t_ulist *obj, char *str, int sep_pos);
+int     do_env_update_lst(t_ulist **envp, char **str);
+void				do_env_show(void *content);
+
+//do_unset
+int	do_unset(t_ulist **envp, t_cmd *cmd);
+int     do_unset_update_lst(t_ulist **envp, char **str);
+
+//do_exit
 void				do_exit(int exit_number);
 
 //execute_command
@@ -157,5 +193,14 @@ void				is_intpoint(t_chartype *input_list, int *start, int *end, t_list **token
 //signal_handling
 int					ft_set_sigaction(void);
 void				give_prompt_back(int signum);
+
+//environment list
+void    env_free(void *content);
+t_env   *env_init(char *env_fullname);
+char    *env_init_key(t_env *env, char *fullname);
+char    *env_init_value(t_env *env);
+int     env_lst_set(char **envp, t_ulist **env_lst);
+void    env_lst_show(t_ulist **list);
+void    env_show(void *content);
 
 #endif

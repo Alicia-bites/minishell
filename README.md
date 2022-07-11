@@ -62,6 +62,75 @@ This project is about creating a simple shell.
 
 > :warning: **_The readline() function can cause memory leaks. You don’t have to fix them. But that doesn’t mean your own code, yes the code you wrote, can have memory leaks._**
 
+## Env
+The command allows you to run another program in a custom environment without modifying the current one. When used without an argument it will print a list of the current environment variables.
+
+> :warning **_The command will change the env list only for the active command no matters if several pipes_**
+
+> :pushpin: **_Normal behaviour of env process if pipe due to fork which duplicates the vqriqbles before to execute the commqnd_**
+
+### Syntax
+```
+env
+env ENV_NAME=value
+env ENV_NAME=value <command>
+```
+
+### Rules
+1. If no ENV\_NAME ==> Display env list as following `ENV_NAME=value`  
+2. If ENV\_NAME is specified and already existing in env list, always store its value ==> 
+3. ENV\_NAME must start by [a-z;A-Z;0-9;\_;@] ==> To be confirmed on LINUX system
+4. ENV\_NAME must finish by [a-z;A-Z;0-9;\_;@;-] ==> To be confirmed on LINUX system
+5. ENV\_NAME can have escape character [\\;-;+] ==> To be confirmed on LINUX system
+6. ENV\_NAME can have expansion process
+```
+export antho=cia
+export al$antho=tata
+env | sort | grep 'al'
+alicia=tata
+```
+7. ENV\_NAME value can be appended by using expansion process and only with field separator [@-:.,]
+8. If ENV\_NAME is specified and already existing in env list, always reetore its original value (see step 2)
+
+> :warning: **_ENV\_NAME is case sensitive_**  
+> :warning: **_append existing variable which does not exist will create it only during the flow of command if command argument exists_**  
+
+
+## Export
+The command sets environment variables.
+
+> :warning **_The command will change the env list only for the active command only if several pipes. Otherwise the env list is changed_**
+
+> :pushpin: **_Normal behaviour of export process if pipe due to fork which duplicates the vqriqbles before to execute the commqnd_**
+
+> Example:
+`export ANTHO=tata`  ==> will update/create the env AMTHO into the env list
+`export ANTHO=tata | echo $ANTHO`  ==> will update/create the env ANTHO only for the active command
+
+### Syntax
+```
+export
+export ENV_NAME=value
+export ENV_NAME=$EXISTING_ENV:value
+```
+
+### Rules
+1. If no ENV\_NAME ==> Display env list as following `declare -x ENV_NAME=value`  
+2. ENV\_NAME must start by [a-z;A-Z;\_]
+3. ENV\_NAME must finish by [a-z;A-Z;0-9;\_]
+4. ENV\_NAME can have escape character [\\]
+5. ENV\_NAME can have expansion process
+```
+export antho=cia
+export al$antho=tata
+env | sort | grep 'al'
+alicia=tata
+```
+6. ENV\_NAME value can be appended by using expansion process and only with field separator [@-:.,]
+
+> :warning: **_ENV\_NAME is case sensitive_**  
+> :warning: **_append existing variable which does not exist will create it_**  
+
 ## Externals functions
 ```
 readline, rl_clear_history, rl_on_new_line,
@@ -261,11 +330,15 @@ tgetnum, tgetstr, tgoto, tputs
 (Alicia's note)
 - https://docs.google.com/document/d/1JvIKhy3i1cJG7dyi9wVg6Ks37Vdw3P4Qb6tJsEYOMFg/edit 
 
-## Git
+### Builtins
+- https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/
+- https://blog.doppler.com/how-to-set-environment-variables-in-linux-and-mac
+
+### Git
 - https://github.com/BarrierAntho/Survivor_Note/tree/main/git 
 
-## Parser
+### Parser
 - 
 
-## Shell
+### Shell
 - https://explainshell.com/ 

@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   do_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/16 10:49:49 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/11 13:56:01 by abarrier         ###   ########.fr       */
+/*   Created: 2022/06/16 18:22:05 by amarchan          #+#    #+#             */
+/*   Updated: 2022/07/01 17:35:49 by antho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_parse(char *str, t_list **token_list)
-{	
-	t_chartype	*input_list;
-	int			err;
-
-	err = 0;
-	input_list = NULL;
-	if (pre_lexer(str))
-		return (err);
-	if (ft_strstr(str, "$") && (!count_single(str) || count_single(str) % 2))
-		str = expand_dollar(str);
-	if (pre_lexer(str))
-		return (err);
-	create_input_list(&input_list, str);
-	tokenize(input_list, token_list);
+int	do_env(t_ulist **envp, t_cmd *cmd)
+{
+	if (!cmd)
+		return (1);
+	if (ft_strstrlen(cmd->fullcmd) == 0)
+		return (2);
+	else if (ft_strstrlen(cmd->fullcmd) == 1) //case: env
+		ft_lst_func_lst(envp, &do_env_show);
+	else if (ft_strstrlen(cmd->fullcmd) >= 2 && ft_strchr(cmd->arg, ENV_SEP)) //case: env NAME1=value
+	{
+		do_env_update_lst(envp, &cmd->fullcmd[1]);
+		ft_lst_func_lst(envp, &do_env_show);
+	}
 	return (0);
 }

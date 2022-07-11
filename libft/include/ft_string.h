@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 11:41:10 by abarrier          #+#    #+#             */
-/*   Updated: 2022/06/28 11:59:23 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/01 16:25:32 by antho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@
 # include <stdlib.h>
 
 void	ft_bzero(void *s, size_t n);
+int		ft_index(const char *s, int c);
 void		ft_left_strip(char *s);
 void		ft_right_strip(char *s);
 char	**ft_split(char const *s, char c);
 char	*ft_strchr(const char *s, int c);
+char	*ft_strchrset_include(const char *s, const char *chrset);
 int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_strdup(const char *str);
 void		ft_strip(char *s);
@@ -33,6 +35,7 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_strstr(const char *big, const char *little);
+size_t	ft_strstrlen(char **str);
 char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 

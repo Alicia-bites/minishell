@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unset.c                                            :+:      :+:    :+:   */
+/*   env_lst_show.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: antho <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/16 18:21:21 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/11 12:06:10 by amarchan         ###   ########.fr       */
+/*   Created: 2022/06/28 18:32:33 by antho             #+#    #+#             */
+/*   Updated: 2022/06/28 18:34:08 by antho            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
- * Test
- * export ANTHO=test
- * unset ANTHO ==> Ok, always return(0)
- * unset "ANTHO" ==> Ok, always return(0)
- * unset 'ANTHO' ==> Ok, always return(0)
- * unset $ANTHO
- */
-int	do_unset(char *str)
+void	env_lst_show(t_ulist **list)
 {
-	(void)str;
-	return (0);
+	ft_lst_func_lst(list, &env_show);
 }
