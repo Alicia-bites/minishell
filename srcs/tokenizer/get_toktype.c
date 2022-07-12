@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:58:10 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/12 11:26:11 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/12 11:47:10 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,9 +107,10 @@ static int	is_argument(t_list **token_list)
 				(*token_list)->toktype = TOK_ARG;
 			*token_list = (*token_list)->next;
 		}
+		if ((*token_list)->prev)
+			*token_list = (*token_list)->prev;
 	}
-	if ((*token_list)->prev)
-		*token_list = (*token_list)->prev;
+
 	return (0);	
 }
 
