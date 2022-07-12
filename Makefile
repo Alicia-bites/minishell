@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/11 15:30:50 by amarchan         ###   ########.fr        #
+#    Updated: 2022/07/12 09:10:29 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,8 @@ ENV_SRCS	:=	env_free.c\
 EXEC_SRCS	:=	execute_command.c\
 			read_command.c
 
-LEX_SRCS	:=	lex_pipe.c \
+LEX_SRCS	:=	lex_brackets.c \
+				lex_pipe.c \
 				lex_quote.c \
 				lex_redir.c \
 				lex_sym.c \
@@ -160,7 +161,7 @@ all:			$(NAME)
 $(OPATH)/%.o:		%.c
 			$(CC) $(CFLAGS) $(CFLAGSADD) -I $(IPATH) -I $(FTPATH)/$(IFT) -c $< -o $@
 
-$(NAME):		$(OBJS) $(FTPATH)/$(FT_NAME)
+$(NAME):		$(OBJS)
 			make -C $(FTPATH)
 			$(CC) $(CFLAGS) $(CFLAGSADD) $(OBJS) -I $(IPATH) -I $(FTPATH)/$(IFT) -L$(FTPATH) -l$(FT) -lreadline -o $(NAME)
 

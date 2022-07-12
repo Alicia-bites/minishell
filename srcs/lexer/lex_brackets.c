@@ -1,25 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pre_lexer.c                                        :+:      :+:    :+:   */
+/*   lex_brackets.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/05 13:52:57 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/12 09:09:55 by amarchan         ###   ########.fr       */
+/*   Created: 2022/07/12 09:05:15 by amarchan          #+#    #+#             */
+/*   Updated: 2022/07/12 09:11:14 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	pre_lexer(char *str)
+int	lex_brackets(char *str, int *err)
 {
-	int	err;
+	int	i;
+	int	r_bracket;
+	int	l_bracket;
 
-	err = 0;
-	if (lex_quote(str, &err) || lex_pipe(str, &err) || lex_redir(str, &err)
-		|| lex_sym(str, &err) || lex_brackets(str, &err))
-			return (err);
-		return (err);
+	i = 0;
+	r_bracket = 0;
+	l_bracket = 0;
+	while (str[i])
+	{
+		if (str[i] == '{')
+			l_bracket++;
+		if (str[i] == '}')
+			r_bracket++;
+		i++;
+	}
+	if (l_bracket != r_bracket)
+	{
+		*err = MISSING_BRACKET;
+		printf("smbash: syntax error. Please check pipes.\n");
+		return (*err);
+	}
 	return (0);
 }
