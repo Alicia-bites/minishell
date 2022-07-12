@@ -1,0 +1,32 @@
+# USE CASE: empty entries
+'' ''
+# RESULT:
+# first entry must be considered as command and the second entry as argument
+#----------------------------------------------------------
+# WTF USE CASE OF file with redirection
+# TO BE DISCUSSED WITH ALICIA
+#abarrier@e1r4p3:~/42_minishell/tester$ wc < file1 file2 file3
+# 1  1  6 file2
+# 1  2 23 file3
+# 2  3 29 total
+#abarrier@e1r4p3:~/42_minishell/tester$ cat < file1 file2 file3 < file1
+#Antho
+#OOOHHHH YYYYEEEAAAHHHH
+#abarrier@e1r4p3:~/42_minishell/tester$ cat < file1 file2 file3 < file1 file2
+#Antho
+#OOOHHHH YYYYEEEAAAHHHH
+#Antho
+#abarrier@e1r4p3:~/42_minishell/tester$ cat < file1 file2 file3 < sdfsdf file2
+#bash: sdfsdf: No such file or directory
+#abarrier@e1r4p3:~/42_minishell/tester$ cat < file1 file2 file3 < file1 sdfsdf
+#Antho
+#OOOHHHH YYYYEEEAAAHHHH
+#cat: sdfsdf: No such file or directory
+#abarrier@e1r4p3:~/42_minishell/tester$ cat < file1 file2 file3 < file1 safaasd
+#Antho
+#OOOHHHH YYYYEEEAAAHHHH
+#cat: safaasd: No such file or directory
+#abarrier@e1r4p3:~/42_minishell/tester$ cat < file1 file2 file3 < sfsdf file1
+#bash: sfsdf: No such file or directory
+#abarrier@e1r4p3:~/42_minishell/tester$ 
+#----------------------------------------------------------
