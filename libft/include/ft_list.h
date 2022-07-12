@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 15:17:45 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/11 13:50:33 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/12 09:37:21 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef enum e_toktype {
 	TOK_DL_REDIR,
 	TOK_DR_REDIR,
 	TOK_BN,
+	TOK_FILE,
+	TOK_HERESEP,
 } e_toktype;
 
 typedef struct s_ulist
