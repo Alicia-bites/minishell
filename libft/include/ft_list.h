@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 15:17:45 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/12 09:37:21 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/12 15:19:11 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include "ft_message.h"
+# include "ft_string.h"
 
 typedef enum e_toktype {
 	TOK_UNKNOWN,
