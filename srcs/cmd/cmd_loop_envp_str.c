@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ppx_cmd_loop_envp_str.c                            :+:      :+:    :+:   */
+/*   cmd_loop_envp_str.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 08:05:01 by abarrier          #+#    #+#             */
-/*   Updated: 2022/05/18 11:17:25 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/12 14:22:51 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "minishell.h"
 
-char	*ppx_cmd_loop_envp_str(char *cmd, char **envp, char *s)
+char	*cmd_loop_envp_str(char *cmd, char **envp, char *s)
 {
 	char	*path;
 	char	**envline;
@@ -28,10 +28,10 @@ char	*ppx_cmd_loop_envp_str(char *cmd, char **envp, char *s)
 			envline = ft_split(ft_strchr(envp[i], ENV_SEP) + 1, ENV_FIELD_SEP);
 			if (!envline)
 			{
-				ft_error("cmd_loop_envp", "envline", 0, ERR_NOOBJ);
+				ft_panic(-1, ERR_NOOBJ);
 				return (NULL);
 			}
-			path = ppx_cmd_loop_envline(cmd, envline);
+			path = cmd_loop_envline(cmd, envline);
 			ft_free_ptrptr_str(envline);
 			if (path)
 				return (path);

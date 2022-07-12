@@ -1,40 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ppx_cmd_loop_envp.c                                :+:      :+:    :+:   */
+/*   cmd_getvalidpath.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/18 08:05:01 by abarrier          #+#    #+#             */
-/*   Updated: 2022/05/18 08:29:04 by abarrier         ###   ########.fr       */
+/*   Created: 2022/05/17 15:01:09 by abarrier          #+#    #+#             */
+/*   Updated: 2022/07/12 15:58:07 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "minishell.h"
 
-char	*ppx_cmd_loop_envp(char *cmd, char **envp)
+char	*cmd_getvalidpath(t_cmd *cmd)
 {
 	char	*path;
-	char	**envline;
-	int		i;
 
 	path = NULL;
-	envline = NULL;
-	i = 0;
-	while (envp[i])
+	cmd->access = 0;
+	if (access(cmd->fullcmd[0], F_OK & X_OK) == 0)
+		path = ft_strdup(cmd->fullcmd[0]);
+	else
 	{
-		envline = ft_split(ft_strchr(envp[i], ENV_SEP) + 1, ENV_FIELD_SEP);
-		if (!envline)
-		{
-			ft_error("cmd_loop_envp", "envline", 0, ERR_NOOBJ);
-			return (NULL);
-		}
-		path = ppx_cmd_loop_envline(cmd, envline);
-		ft_free_ptrptr_str(envline);
-		envline = NULL;
+		path = cmd_loop_envp_str(cmd->fullcmd[0], cmd->env_lst,
+				ENV_PATH_NAME);
 		if (path)
 			return (path);
-		i++;
+		path = cmd_loop_envp(cmd->fullcmd[0], cmd->env_lst);
+		if (path)
+			return (path);
 	}
-	return (NULL);
+	if (!path)
+	{
+		path = ft_strdup(cmd->fullcmd[0]);
+		cmd->access = -1;
+	}
+	return (path);
 }

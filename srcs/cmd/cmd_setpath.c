@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ppx_cmd_setpath.c                                  :+:      :+:    :+:   */
+/*   cmd_setpath.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 17:59:05 by abarrier          #+#    #+#             */
-/*   Updated: 2022/05/20 11:33:07 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/12 14:24:36 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "minishell.h"
 
-char	*ppx_cmd_setpath(char *cmd, char *env)
+char	*cmd_setpath(char *cmd, char *env)
 {
 	char	*path;
 	size_t	len_env;
@@ -21,7 +21,7 @@ char	*ppx_cmd_setpath(char *cmd, char *env)
 
 	if (!env || !DIR_SEP)
 	{
-		ft_error("cdm_setpath", "env/DIR_SEP", 0, ERR_NOOBJ);
+		ft_panic(-1, ERR_NOOBJ);
 		return (NULL);
 	}
 	len_env = ft_strlen(env);
@@ -31,7 +31,7 @@ char	*ppx_cmd_setpath(char *cmd, char *env)
 				+ len_cmd + 1));
 	if (!path)
 	{
-		ft_error("cdm_setpath", "path", 0, ERR_MALLOC);
+		ft_panic(-1, ERR_MALLOC);
 		return (NULL);
 	}
 	path = ft_memmove(path, env, len_env);

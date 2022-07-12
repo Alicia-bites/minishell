@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/11 18:35:54 by abarrier         ###   ########.fr        #
+#    Updated: 2022/07/12 15:56:21 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,8 +62,18 @@ BUILT_SRCS	:=	cd.c\
 CMD_SRCS	:=	cmd_close_fd.c\
 			cmd_create_lst.c\
 			cmd_free.c\
+			cmd_getvalidpath.c\
+			cmd_getvalidpath_null.c\
 			cmd_init.c\
-			cmd_init_prop.c
+			cmd_init_prop.c\
+			cmd_init_prop_fullcmd.c\
+			cmd_init_prop_fullcmd_null.c\
+			cmd_init_prop_n_arg.c\
+			cmd_loop_envline.c\
+			cmd_loop_envp.c\
+			cmd_loop_envp_str.c\
+			cmd_setpath.c\
+			cmd_show.c
 
 ENV_SRCS	:=	env_free.c\
 			env_init.c\
@@ -132,6 +142,7 @@ TOK_SRCS	:=	add_token_to_list.c \
 				is_s_quote.c \
 				is_word.c \
 				only_space_in_str.c \
+				print_token.c \
 				remove_quotes.c \
 				tokenizer.c
 
