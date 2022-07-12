@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:17:17 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/11 18:32:16 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/12 11:06:20 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	get_input(t_ulist **env_list)
 				printf("ERRROR TO BE DEFINED, FREE TOKEN_LIST AND SO ON...\n");
 			}
 			cmd_create_lst(token_list, env_list, cmd_list);
+			ft_lst_func_lst(cmd_list, &cmd_show);
 			// execute_command(token_list);
 			ft_lstclear(&token_list);
 			//printf("token_list (main) = %p\n", token_list);
