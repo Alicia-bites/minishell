@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/12 09:10:29 by amarchan         ###   ########.fr        #
+#    Updated: 2022/07/12 18:59:04 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -99,6 +99,7 @@ EXP_SRCS	:=	create_dollar_list.c\
 			get_full_size.c\
 			insert_expansions.c\
 			is_varname.c\
+			lonely_bracket.c \
 			malloc_varname.c\
 			print_dollar_lst.c
 

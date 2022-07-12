@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/12 18:15:41 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/12 18:58:07 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ int					lex_quote(char *str, int *err);
 int					lex_redir(char *str, int *err);
 int					lex_sym(char *str, int *err);
 int					lex_brackets(char *str, int *err);
+
 //expansions
 char				*expand_dollar(char *str);
 void				find_expansions(char *str, t_expanded **expanded_list, int *full_size);
@@ -138,6 +139,7 @@ int 				is_varname(char c);
 void				print_dollar_lst(t_expanded *lst);
 void				ft_lstclear_back_dollar(t_expanded **lst);
 void				ft_lstclear_dollar(t_expanded **lst);
+char				*expand_dollar(char *str);
 
 //built-in
 int					do_echo(char *str);
