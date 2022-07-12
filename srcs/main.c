@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:17:17 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/12 11:06:20 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/12 17:51:20 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int	main(int argc, char **argv, char **envp)
  		ft_lst_free(env_lst, &env_free);
  		return (2);
  	}
- 	//env_lst_show(env_lst);
+// 	env_lst_show(env_lst);
 // 	do_env(env_lst, &test_env_cmd);
 // 	printf("%s\n", SEP_P);
 // 	do_unset(env_lst, &test_unset_cmd);
