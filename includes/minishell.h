@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/12 09:10:58 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/12 17:00:53 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,11 @@ typedef struct s_chartype {
 typedef struct s_global {
 	int			readline;
 } t_global;
+
+typedef struct s_cursor {
+	int			i;
+	int			k;
+} t_cursor;
 
 typedef struct s_expanded {
 	int					index;
