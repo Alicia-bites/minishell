@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:49:04 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/11 16:39:40 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/12 12:30:04 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char	*insert_expansions(int full_size, t_expanded *expanded_list, char *str)
 			if (str[k] == '$' && str[k + 1] != '"')
 			{
 				j = 0;
-				while (j < ft_strlen(expanded_list->expanded))
+				while (expanded_list->expanded[j])
 					new_str[i++] = expanded_list->expanded[j++];
 				expanded_list = expanded_list->next;
 				k++;
@@ -73,6 +73,10 @@ char	*insert_expansions(int full_size, t_expanded *expanded_list, char *str)
 	}
 	// printf("full_size = %d\n", full_size);
 	// // printf("i = %d\n", i);
-	new_str[i - 1] = '\0';
+	// printf("newstr[i - 2] = %c\n", new_str[i - 2]);
+	// printf("newstr[i - 1] = %c\n", new_str[i - 1]);
+	// printf("newstr[i] = %c\n", new_str[i]);
+	if (new_str[i - 1] != '\0')
+		new_str[i] = '\0';
 	return (new_str);
 }
