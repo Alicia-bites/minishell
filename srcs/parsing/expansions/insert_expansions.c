@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:49:04 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/12 18:02:31 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/12 18:54:04 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ static void	copy_expanded(char *str, t_expanded **expanded_list,
 	}
 }
 
-char	*insert_expansions(int full_size, t_expanded *expanded_list, char *str)
+char	*insert_expansions(int full_size, t_expanded *expanded_list, char *str,
+	int lb)
 {
 	t_cursor	cursor;
 	int			j;
@@ -69,13 +70,17 @@ char	*insert_expansions(int full_size, t_expanded *expanded_list, char *str)
 	while (cursor.i < full_size && cursor.k < ft_strlen(str))
 	{
 		copy_expanded(str, &expanded_list, &cursor, new_str);
-		if (str[cursor.k] != '$' && str[cursor.k] != '"')
+		if (str[cursor.k] && str[cursor.k] != '$' && str[cursor.k] != '"')
 			new_str[cursor.i++] = str[cursor.k++];
 		else if ((str[cursor.k] == '$' && str[cursor.k + 1] == '"')
 			|| str[cursor.k] == '"')
 			cursor.k++;
 	}
-	if (new_str[cursor.i - 1] != '\0')
-		new_str[cursor.i] = '\0';
+	if (lb)
+	{
+		new_str[cursor.i] = '}';
+		cursor.i++;		
+	}
+	new_str[cursor.i] = '\0';
 	return (new_str);
 }
