@@ -1,31 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   lex_brackets.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/05 19:19:20 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/12 15:26:06 by amarchan         ###   ########.fr       */
+/*   Created: 2022/07/12 09:05:15 by amarchan          #+#    #+#             */
+/*   Updated: 2022/07/12 09:11:14 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#include "minishell.h"
 
-void	ft_lstclear(t_list **lst)
+int	lex_brackets(char *str, int *err)
 {
-	t_list	*iterator;
-	t_list	*prev;
-	
-	iterator = *lst;
-	prev = NULL;
-	while (iterator)
+	int	i;
+	int	r_bracket;
+	int	l_bracket;
+
+	i = 0;
+	r_bracket = 0;
+	l_bracket = 0;
+	while (str[i])
 	{
-		prev = iterator;
-		iterator = iterator->next;
-		if (prev->token && ft_strcmp(prev->token, "echo -n"))
-			free(prev->token);
-		free(prev);
+		if (str[i] == '{')
+			l_bracket++;
+		if (str[i] == '}')
+			r_bracket++;
+		i++;
 	}
-	*lst = NULL;
+	if (l_bracket != r_bracket)
+	{
+		*err = MISSING_BRACKET;
+		printf("smbash: syntax error. Please check pipes.\n");
+		return (*err);
+	}
+	return (0);
 }

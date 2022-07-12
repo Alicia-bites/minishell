@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/12 15:58:39 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/12 16:42:49 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@
 # define BACK_SLASH -46
 # define SEMICOLON -47
 # define DOUBLE_PIPE -48
-
+# define MISSING_BRACKET -49
+	
 # define ENV_SEP '='
 # define ENV_FIELD_SEP ':'
 # define ENV_PATH_NAME "PATH="
@@ -119,6 +120,7 @@ int					lex_pipe(char *str, int *err);
 int					lex_quote(char *str, int *err);
 int					lex_redir(char *str, int *err);
 int					lex_sym(char *str, int *err);
+int					lex_brackets(char *str, int *err);
 //expansions
 char				*expand_dollar(char *str);
 void				find_expansions(char *str, t_expanded **expanded_list, int *full_size);
@@ -218,8 +220,8 @@ t_list	*cmd_init_prop_fullcmd(t_list *tok, t_cmd *cmd);
 t_list	*cmd_init_prop_fullcmd_null(t_list *tok, t_cmd *cmd);
 size_t	cmd_init_prop_n_arg(t_list *tok, t_cmd *cmd);
 char	*cmd_loop_envline(char *cmd, char **envline);
-char	*cmd_loop_envp(char *cmd, char **envp);
-char	*cmd_loop_envp_str(char *cmd, char **envp, char *s);
+char	*cmd_loop_envp(char *cmd, t_ulist **envp_lst);
+char	*cmd_loop_envp_str(char *cmd, t_ulist **envp_lst, char *s);
 char	*cmd_setpath(char *cmd, char *env);
 void	cmd_show(void *content);
 

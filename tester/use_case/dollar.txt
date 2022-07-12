@@ -16,3 +16,6 @@ echo $>TERM
 echo hey $>alicia
 echo hey $<alicia
 echo ${LANG
+echo $LANG}
+echo $"TER'M"
+echo $'TER"M'
