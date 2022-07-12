@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/12 17:00:53 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/12 18:15:41 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ int					lex_brackets(char *str, int *err);
 //expansions
 char				*expand_dollar(char *str);
 void				find_expansions(char *str, t_expanded **expanded_list, int *full_size);
-char				*insert_expansions(int full_size, t_expanded *expanded_list, char *str);
+char				*insert_expansions(int full_size, t_expanded *expanded_list, char *str, int lb);
 int					get_full_size(t_expanded *expanded_list);
 void				get_expanded(char *str, t_expanded **expanded_list, int i, int *varsize);
 char				*malloc_varname(char *str, int start, int end);
