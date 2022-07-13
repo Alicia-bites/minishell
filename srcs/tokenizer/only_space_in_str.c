@@ -6,13 +6,14 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 15:44:38 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/05 15:47:01 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/13 14:22:06 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 // return 0 if str is only made of space(s)
+// return -1 if str[i] = '\0'
 int	only_space_in_str(char *str)
 {
 	int	not_space;
@@ -20,6 +21,8 @@ int	only_space_in_str(char *str)
 	
 	not_space = 0;
 	i = 0;
+	if (!str[i])
+		return (-1);
 	while (str[i])
 	{
 		if (!is_char_space(str[i]))
