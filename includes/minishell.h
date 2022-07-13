@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/13 12:52:04 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/13 14:29:55 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,10 +100,10 @@ typedef struct s_cmd
 
 //main.c
 //int					main(void);
-int					get_input(void);
+int					get_input(int *err);
 
 //parsing
-int					ft_parse(char *str, t_list **token_list);
+int					ft_parse(char *str, t_list **token_list, int *err);
 void				create_input_list(t_chartype **input_list, char *str);
 void				sort_inputs(char **inputs);
 char				**store_built_ins(void);
