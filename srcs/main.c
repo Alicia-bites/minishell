@@ -6,13 +6,29 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:17:17 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/13 14:33:15 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/13 14:40:40 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 t_global global;
+
+void	read_line(char **str)
+{
+	global.readline = 1;
+	while (global.readline)
+	{
+		global.readline = 0;
+		*str = readline("$: ");
+		break ;
+	}
+}
+
+// void	exit_minishell(t_list **token_list, int *err)
+// {
+	
+// }
 
 int	get_input(int *err)
 {
@@ -23,13 +39,7 @@ int	get_input(int *err)
 	str = NULL;
 	while (42)
 	{
-		global.readline = 1;
-		while (global.readline)
-		{
-			global.readline = 0;
-			str = readline("$: ");
-			break ;
-		}
+		read_line(&str);
 		if (!str)
 		{
 			rl_clear_history();
