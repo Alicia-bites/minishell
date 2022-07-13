@@ -4,5 +4,10 @@ NORME
 	normer les fichiers
 
 EXPANSION
+	un pipe dans une expansion n'est pas un operateur (ex = 
+	export VAR=|
+	echo alicia > test
+	cat test $VAR wc -l
+	--> error)
 
 SIGNAL
