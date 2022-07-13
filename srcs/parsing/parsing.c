@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:49:49 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/13 14:29:32 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/13 14:45:57 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	ft_parse(char *str, t_list **token_list, int *err)
 	if (pre_lexer(str, err))
 		return (*err);
 	create_input_list(&input_list, str);
+	free(str);
 	tokenize(input_list, token_list);
 	free(input_list);
 	return (0);
