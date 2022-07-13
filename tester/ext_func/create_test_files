@@ -1,0 +1,34 @@
+#!/bin/bash
+
+DIR_CUR=$(pwd)
+DIR_TEST="test"
+DIR_SUBDIR="dir"
+FILE_DIR="file"
+
+function	create_dir()
+{
+	if [ -z "${1}" ];
+	then
+		echo "Error: variable \"${1}\" not defined";
+	else
+		if [ -d "${1}" ];
+		then
+			echo "Directory \"${1}\" does exist";
+		else
+			echo "Warning: directory \"${1}\" does not exist";
+		fi
+	fi
+	return 0
+}
+
+function	main()
+{
+	echo "Program ${0} - Start"
+	echo "Active directory: ${DIR_CUR}"
+	create_dir ${DIR_TEST}
+	echo "Program ${0} - End"
+	return 0
+}
+
+main
+exit $?
