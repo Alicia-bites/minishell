@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/12 18:59:04 by amarchan         ###   ########.fr        #
+#    Updated: 2022/07/13 16:38:01 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,43 +31,49 @@ VALGRIND	:=	valgrind --suppressions=ignoreliberror --leak-check=full --show-leak
 IPATH		:=	includes
 OPATH		:=	obj
 
-SRCS_PATH	:=	srcs
-BUILT_PATH	:=	built-in
-BUILT_ENV_PATH	:=	do_env
-BUILT_UNSET_PATH	:=	do_unset
-ENV_PATH	:=	env
-EXEC_PATH	:=	execute_commands
-LEX_PATH	:=	lexer
-PARSING_PATH	:=	parsing
-EXP_PATH	:=	expansions
-SIG_PATH	:=	signal_handling
-TOK_PATH	:=	tokenizer
+SRCS_PATH			:=		srcs
+BUILT_PATH			:=		built-in
+BUILT_ENV_PATH		:=		do_env
+BUILT_UNSET_PATH	:=		do_unset
+ENV_PATH			:=		env
+EXEC_PATH			:=		execute_commands
+INPUT_HANDLER_PATH		:=	input_handler
+LEX_PATH			:=		lexer
+PARSING_PATH		:=		parsing
+EXP_PATH			:=		expansions
+SIG_PATH			:=		signal_handling
+TOK_PATH			:=		tokenizer
 
 RM		:=	rm -rf
 
 BUILT_SRCS	:=	cd.c\
-			echo.c\
-			do_env.c\
-			do_env_create_env.c\
-			do_env_show.c\
-			do_env_update_env.c\
-			do_env_update_lst.c\
-			do_unset.c\
-			do_unset_update_lst.c\
-			exit.c\
-			export.c\
-			pwd.c
+				echo.c\
+				do_env.c\
+				do_env_create_env.c\
+				do_env_show.c\
+				do_env_update_env.c\
+				do_env_update_lst.c\
+				do_unset.c\
+				do_unset_update_lst.c\
+				exit.c\
+				export.c\
+				pwd.c
 
 ENV_SRCS	:=	env_free.c\
-			env_init.c\
-			env_init_key.c\
-			env_init_value.c\
-			env_lst_set.c\
-			env_lst_show.c\
-			env_show.c
+				env_init.c\
+				env_init_key.c\
+				env_init_value.c\
+				env_lst_set.c\
+				env_lst_show.c\
+				env_show.c
 
 EXEC_SRCS	:=	execute_command.c\
-			read_command.c
+				read_command.c
+
+INPUT_HANDLER	:=	exit_minishell.c \
+					get_input.c \
+					handle_str.c \
+					read_line.c \
 
 LEX_SRCS	:=	lex_brackets.c \
 				lex_pipe.c \
@@ -77,31 +83,31 @@ LEX_SRCS	:=	lex_brackets.c \
 				pre_lexer.c
 
 PARSING_SRCS	:=	count_quotes.c\
-			create_list.c\
-			create_input_list.c \
-			ft_panic.c\
-			handle_unknown_command.c\
-			is_not_clone.c\
-			is_not_empty.c\
-			parsing.c\
-			print_lst.c\
-			sort_inputs.c\
-			store_built_ins.c
+					create_list.c\
+					create_input_list.c \
+					ft_panic.c\
+					handle_unknown_command.c\
+					is_not_clone.c\
+					is_not_empty.c\
+					parsing.c\
+					print_lst.c\
+					sort_inputs.c\
+					store_built_ins.c
 
 EXP_SRCS	:=	create_dollar_list.c\
-			expand_dollar.c\
-			find_expansions.c\
-			ft_lstadd_back_dollar.c\
-			ft_lstclear_back_dollar.c\
-			ft_lstclear_dollar.c\
-			ft_lstnew_dollar.c\
-			get_expanded.c\
-			get_full_size.c\
-			insert_expansions.c\
-			is_varname.c\
-			lonely_bracket.c \
-			malloc_varname.c\
-			print_dollar_lst.c
+				expand_dollar.c\
+				find_expansions.c\
+				ft_lstadd_back_dollar.c\
+				ft_lstclear_back_dollar.c\
+				ft_lstclear_dollar.c\
+				ft_lstnew_dollar.c\
+				get_expanded.c\
+				get_full_size.c\
+				insert_expansions.c\
+				is_varname.c\
+				lonely_bracket.c \
+				malloc_varname.c\
+				print_dollar_lst.c
 
 SIG_SRCS	:=	ft_set_sigaction.c \
 				give_prompt_back.c
@@ -131,14 +137,15 @@ TOK_SRCS	:=	add_token_to_list.c \
 				tokenizer.c
 
 SRCS		:=	main.c\
-			$(BUILT_SRCS)\
-			$(ENV_SRCS)\
-			$(EXEC_SRCS)\
-			$(LEX_SRCS)\
-			$(PARSING_SRCS)\
-			$(EXP_SRCS)\
-			$(SIG_SRCS)\
-			$(TOK_SRCS)\
+				$(BUILT_SRCS)\
+				$(ENV_SRCS)\
+				$(EXEC_SRCS)\
+				$(INPUT_HANDLER)\
+				$(LEX_SRCS)\
+				$(PARSING_SRCS)\
+				$(EXP_SRCS)\
+				$(SIG_SRCS)\
+				$(TOK_SRCS)\
 
 OBJS		:=	$(addprefix $(OPATH)/, $(SRCS:.c=.o))
 DEPS		:=	$(OBJS:.o=.d)
@@ -151,6 +158,7 @@ vpath %.c $(SRCS_PATH)\
 	$(SRCS_PATH)/$(ENV_PATH)\
 	$(SRCS_PATH)/$(EXEC_PATH)\
 	$(SRCS_PATH)/$(LEX_PATH)\
+	$(SRCS_PATH)/$(INPUT_HANDLER_PATH)\
 	$(SRCS_PATH)/$(PARSING_PATH)\
 	$(SRCS_PATH)/$(PARSING_PATH)/$(EXP_PATH)\
 	$(SRCS_PATH)/$(SIG_PATH)\

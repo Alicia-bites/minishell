@@ -6,60 +6,11 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:17:17 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/13 14:40:40 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/13 16:25:49 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-t_global global;
-
-void	read_line(char **str)
-{
-	global.readline = 1;
-	while (global.readline)
-	{
-		global.readline = 0;
-		*str = readline("$: ");
-		break ;
-	}
-}
-
-// void	exit_minishell(t_list **token_list, int *err)
-// {
-	
-// }
-
-int	get_input(int *err)
-{
-	char	*str;
-	t_list	*token_list;
-	
-	token_list = NULL;
-	str = NULL;
-	while (42)
-	{
-		read_line(&str);
-		if (!str)
-		{
-			rl_clear_history();
-			ft_lstclear(&token_list);
-			printf("err = %d\n", *err);
-			printf("exit");
-			return (*err);
-		}
-		if (str[0] != 0)
-		{
-			ft_parse(str, &token_list, err);
-			print_lst(token_list);
-			// execute_command(token_list);
-			ft_lstclear(&token_list);
-			if (is_not_empty(str))
-				add_history(str);
-		}
-	}
-	return (*err);
-}
 
 int	main(int argc, char **argv, char **envp)
 {

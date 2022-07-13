@@ -1,13 +1,9 @@
 TOKENIZER
-	si que des espaces, juste redoner le prompt
-	si "" '' ou " " ou ' ', consider comme une commande introuvable
-	echo "bon'jour'"
 
 NORME
 	normer les fichiers
-	
-EXPANSION
 
+EXPANSION
+	echo $"TERM"
 
 SIGNAL
-	quand on fait un ctrl-D, afficher "exit"
