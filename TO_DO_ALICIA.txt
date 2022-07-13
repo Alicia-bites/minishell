@@ -4,6 +4,10 @@ TOKENIZER
 	echo "bon'jour'"
 
 NORME
-
+	normer les fichiers
+	
 EXPANSION
-	echo $LANG}
+
+
+SIGNAL
+	quand on fait un ctrl-D, afficher "exit"
