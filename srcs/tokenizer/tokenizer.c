@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:07:44 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/11 15:17:28 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/13 12:11:43 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,5 @@ void	tokenize(t_chartype *input_list, t_list **token_list)
 	
 	get_chartype(&input_list);
 	get_token(input_list, token_list);
-	// print_lst(*token_list);
 	get_toktype(token_list);
 }
