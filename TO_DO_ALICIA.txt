@@ -4,6 +4,5 @@ NORME
 	normer les fichiers
 
 EXPANSION
-	echo $"TERM"
 
 SIGNAL
