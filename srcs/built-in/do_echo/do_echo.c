@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   do_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/16 18:22:30 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/27 09:07:32 by abarrier         ###   ########.fr       */
+/*   Created: 2022/06/16 09:56:41 by amarchan          #+#    #+#             */
+/*   Updated: 2022/06/28 11:25:17 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	do_exit(int exit_number)
+int	do_echo(char *str)
 {
-	if (exit_number >= 0 && exit_number <= 255)
-		exit(exit_number);
-	exit(EXIT_FAILURE);
+	if (str)
+		printf("%s\n", str);		
+	return (0);
+}
+
+int	do_echo_n(char *str)
+{
+	printf("%s", str);
+	return (0);
 }
