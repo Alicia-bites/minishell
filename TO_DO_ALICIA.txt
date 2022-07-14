@@ -10,4 +10,8 @@ EXPANSION
 	cat test $VAR wc -l
 	--> error)
 
+	attention a la tokenization du chevron aussi, pas un operateur
+
+
 SIGNAL
+	voir avec Yohan pour la boucle et le ctrl-D
