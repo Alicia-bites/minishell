@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/12 16:42:49 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/14 17:45:14 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 # define ENV_SEP '='
 # define ENV_FIELD_SEP ':'
 # define ENV_PATH_NAME "PATH="
+# define EXP_PREFIX "declare -x "
 # define DIR_SEP "/"
 # define ARG_SEP ' '
 
@@ -141,7 +142,6 @@ int					do_echo(char *str);
 int					do_echo_n(char *str);
 int					do_cd(char *str);
 int					do_pwd(void);
-int					do_export(char *str);
 
 //do_env
 int					do_env(t_ulist **envp, t_cmd *cmd);
@@ -156,6 +156,10 @@ int     do_unset_update_lst(t_ulist **envp, char **str);
 
 //do_exit
 void				do_exit(int exit_number);
+
+//do_export
+int					do_export(t_ulist **env_lst, t_cmd *cmd);
+void				do_export_show(void *content);
 
 //execute_command
 int					read_command(t_list *inputs_lst, char **built_ins);

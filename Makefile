@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/13 12:42:18 by abarrier         ###   ########.fr        #
+#    Updated: 2022/07/14 17:37:08 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,8 @@ BUILT_ENV_SRCS	:=	do_env.c\
 
 BUILT_EXIT_SRCS	:=	do_exit.c
 
-BUILT_EXPORT_SRCS	:=	do_export.c
+BUILT_EXPORT_SRCS	:=	do_export.c\
+			do_export_show.c
 
 BUILT_PWD_SRCS	:=	do_pwd.c
 

@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_export.c                                        :+:      :+:    :+:   */
+/*   do_export_show.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/16 18:20:51 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/14 17:31:22 by abarrier         ###   ########.fr       */
+/*   Created: 2022/07/14 17:31:29 by abarrier          #+#    #+#             */
+/*   Updated: 2022/07/14 17:45:55 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	do_export(t_ulist **envp, t_cmd *cmd)
+void	do_export_show(void *content)
 {
-	if (!cmd)
-		return (1);
-	if (ft_strstrlen(cmd->fullcmd) == 0)
-		return (2);
-	else if (ft_strstrlen(cmd->fullcmd) == 1)
-		ft_lst_func_lst(envp, &do_export_show);
-	return (0);
+	t_env	*env;
+
+	if (!content)
+		return ;
+	env = (t_env *)content;
+	printf("%s%s=\"%s\"\n", EXP_PREFIX, env->key, env->value);
 }
