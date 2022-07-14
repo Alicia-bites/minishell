@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/13 16:32:45 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/14 17:10:21 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,9 +154,9 @@ int					do_export(char *str);
 
 //do_env
 int					do_env(t_ulist **envp, t_cmd *cmd);
-int     do_env_create_env(t_ulist **list, char *str);
-int     do_env_update_env(t_ulist *obj, char *str, int sep_pos);
-int     do_env_update_lst(t_ulist **envp, char **str);
+int     			do_env_create_env(t_ulist **list, char *str);
+int     			do_env_update_env(t_ulist *obj, char *str, int sep_pos);
+int     			do_env_update_lst(t_ulist **envp, char **str);
 void				do_env_show(void *content);
 
 //do_unset
@@ -181,6 +181,16 @@ void				remove_squotes(t_chartype *input_list, int *start, int *end);
 void				add_token_to_list(char *token, t_list **token_list);
 int					is_char_word(char c);
 int					only_space_in_str(char *str);
+void				get_toktype(t_list **token_list);
+int					is_cmd(t_list **token_list);
+int					token_space_redir(t_list **token_list);
+int					redir_space_token(t_list **token_list);
+int					token_redir(t_list **token_list);
+int					redir_token(t_list **token_list);
+static int			is_argument(t_list **token_list);
+static int			is_heredoc_sep(t_list **token_list);
+static int			is_filename(t_list **token_list);
+static int			is_built_in(t_list **token_list);
 
 //get_toktype
 void				get_toktype(t_list **token_list);
