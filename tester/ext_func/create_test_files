@@ -1,34 +1,143 @@
 #!/bin/bash
 
+## VARIABLES ##
 DIR_CUR=$(pwd)
+#DIR_TEST=
+#DIR_SUBDIR=""
+#DIR_FILE=''
 DIR_TEST="test"
 DIR_SUBDIR="dir"
-FILE_DIR="file"
+DIR_FILE="file"
+CONTENT=("Bonjour" "Tout" "Le" "Monde")
 
-function	create_dir()
+## CONSTANT ##
+SEP_P="#########################"
+SEP_SP="------------------------"
+
+## COLORS ##
+RD='\033[0;31m'
+GN='\033[0;32m'
+YE='\033[0;33m'
+BU='\033[0;34m'
+MG='\033[0;35m'
+NC='\033[0m'
+
+function	create_test_file_symbolic_link()
 {
-	if [ -z "${1}" ];
+	local	PREF="_sym"
+	local	CD=${1}/${2}/${3}${@: -1};
+	local	DIR=${CD}${PREF}
+	local	i=1
+
+	echo -e "${YE}Executing \"${FUNCNAME}\"${NC}";
+	mkdir "${DIR}" && echo "Directory \"${DIR}\" has been created in the current directory \"${1}\"" || echo "Error: impossible to create the directory \"${DIR}\" in the current directory \"${1}\"";
+	if [ "$?" != 0 ]; then return 1; fi;
+	for FILE in ${CD}/*
+	do
+		eval ln -s ${FILE} ${DIR}/${4}${i}${PREF} && echo "File \"${4}${PREF}\" has been created in the current directory \"${DIR}\"" || echo "Error: impossible to create the file \"${4}${PREF}\" in the current directory \"${DIR}\"";
+		if [ "$?" != 0 ]; then return 2; fi;
+		i=$((i+1));
+	done
+	echo -e "${YE}${SEP_SP}${NC}";
+	return 0;
+}
+
+function	create_test_file_basic()
+{
+	local	CD=${1}/${2}/${3}${@: -1}
+	local	i=1
+
+	echo -e "${YE}Executing \"${FUNCNAME}\"${NC}";
+	if [ -d "${CD}" ]
 	then
-		echo "Error: variable \"${1}\" not defined";
+		echo -e "${MG}Directory ${CD} does exist. No actions done${NC}";
+		return 0;
 	else
-		if [ -d "${1}" ];
+		mkdir -p ${CD} && echo "Directory \"${3}\" has been created in the current directory \"${1}${2}\"" || echo "Error: impossible to create the directory \"${3}\" in the current directory \"${1}${2}\"";
+		if [ "$?" != 0 ]; then return 1; fi;
+		for text in ${CONTENT[@]}
+		do
+			eval echo "${text}" > ${CD}/${4}${i} && echo "File \"${4}${i}\" has been created in the current directory \"${CD}\"" || echo "Error: impossible to create the file \"${4}${i}\" in the current directory \"${CD}\"";
+			if [ "$?" != 0 ]; then return 2; fi;
+			i=$((i+1));
+		done
+	fi
+	echo -e "${YE}${SEP_SP}${NC}";
+	return 0;
+}
+
+function	create_test_files()
+{
+	echo -e "${YE}Executing \"${FUNCNAME}\"${NC}";
+	create_test_file_basic $@ 1;
+	create_test_file_basic $@ 2;
+	create_test_file_symbolic_link $@ 2;
+	echo -e "${YE}${SEP_P}${NC}";
+}
+
+function	create_test_dir()
+{
+	local usr_answer=""
+
+	echo -e "${YE}Executing \"${FUNCNAME}\"${NC}";
+	if [ -d "${2}" ]
+	then
+		echo "Directory \"${2}\" does exist";
+		while [ "${usr_answer}" != "y" ] && [ "${usr_answer}" != "n" ]
+		do
+			read -n 1 -p "The process will delete the directory. Do you want to continue [y/n] ? " usr_answer;
+			echo "";
+			echo "Answer: ${usr_answer}";
+		done
+		if [ "${usr_answer}" == "y" ]
 		then
-			echo "Directory \"${1}\" does exist";
+			rm -rf ${2} && echo "Directory \"${2}\" has been deleted from the current directory \"${1}\"" || echo "Error: impossible to delete the directory \"${2}\" from the current directory \"${1}\"";
+			if [ "$?" != 0 ]; then return 2; fi;
 		else
-			echo "Warning: directory \"${1}\" does not exist";
+			echo -e "${BU}The process has been stopped${NC}";
+			return 3;
 		fi
 	fi
-	return 0
+	mkdir ${2} && echo "Directory \"${2}\" has been created in the current directory \"${1}\"" || echo "Error: impossible to create the directory \"${2}\" in the current directory \"${1}\"";
+	if [ "$?" != 0 ]; then return 3; fi;
+	echo -e "${YE}${SEP_P}${NC}";
+	return 0;
+}
+
+function	check_settings()
+{
+	local	res=0
+
+	echo -e "${YE}Executing \"${FUNCNAME}\"${NC}";
+	for i in "${DIR_CUR}" "${DIR_TEST}" "${DIR_SUBDIR}" "${DIR_FILE}" "${CONTENT}";
+	do
+		if [ "${i}" == "" ];
+		then
+			res=$((res+1));
+		fi
+	done
+	echo "Variable \"${!DIR_CUR@}\" value = ${DIR_CUR}";
+	echo "Variable \"${!DIR_TEST@}\" value = ${DIR_TEST}";
+	echo "Variable \"${!DIR_SUBDIR@}\" value = ${DIR_SUBDIR}";
+	echo "Variable \"${!DIR_FILE@}\" value = ${DIR_FILE}";
+	echo "Variable \"${!CONTENT@}\" value = ${CONTENT}";
+	echo -e "${YE}${SEP_P}${NC}";
+	return ${res};
 }
 
 function	main()
 {
-	echo "Program ${0} - Start"
-	echo "Active directory: ${DIR_CUR}"
-	create_dir ${DIR_TEST}
-	echo "Program ${0} - End"
-	return 0
+	echo -e  "${BU}Active directory: ${DIR_CUR}${NC}";
+	check_settings;
+	if [ "$?" != 0 ]; then echo -e "${RD}Error: one or several variables are not defined${NC}"; return 1; fi;
+	create_test_dir ${DIR_CUR} ${DIR_TEST};
+	if [ "$?" != 0 ]; then return 2; fi;
+	create_test_files ${DIR_CUR} ${DIR_TEST} ${DIR_SUBDIR} ${DIR_FILE};
+	return 0;
 }
 
-main
+clear;
+echo "Program ${0} - Start";
+main;
+echo "Program ${0} - End";
 exit $?
