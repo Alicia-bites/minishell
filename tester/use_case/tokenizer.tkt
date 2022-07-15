@@ -1,0 +1,10 @@
+< file cmd arg
+< file1 cat -e
+cmd < file arg
+>> file cmd
+cmd >> file
+> file cmd arg 
+cmd > file arg
+echo alicia | < file cmd arg
+echo alicia | cmd > file arg
+echo alicia | cmd arg > file arg

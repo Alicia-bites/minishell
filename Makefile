@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/15 10:25:22 by amarchan         ###   ########.fr        #
+#    Updated: 2022/07/15 14:21:10 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -124,12 +124,15 @@ GIVE_CHAR_SRCS	:=	get_chartype.c\
 
 GIVE_TOK_SRCS	:=	cmd_heredoc.c\
 					cmd_redir.c\
+					combo_is_after_pipe.c\
+					combo_is_at_the_beggining.c\
 					following_pipe.c\
 					get_toktype.c\
 					is_argument.c\
 					is_built_in.c\
 					is_cmd.c\
 					is_combo_heredoc.c\
+					is_combo_heredoc_when_heredoc_index_zero.c\
 					is_combo_redir.c\
 					is_combo_redir_when_redir_index_zero.c\
 					is_filename.c\

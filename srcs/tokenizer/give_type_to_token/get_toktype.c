@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:58:10 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/15 09:50:50 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/15 14:32:21 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	get_toktype(t_list **token_list)
 		else if (is_heredoc_sep(token_list))
 			(*token_list)->toktype = TOK_HERESEP;
 		else if (is_argument(token_list))
-			NULL;
+			(*token_list)->toktype = TOK_ARG;
 		else if (is_cmd(token_list))
 			(*token_list)->toktype = TOK_CMD;
 		if (*token_list)

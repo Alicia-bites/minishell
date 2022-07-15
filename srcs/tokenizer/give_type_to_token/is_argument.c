@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 09:47:14 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/15 10:10:19 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/15 14:37:56 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ int	is_argument(t_list **token_list)
 		if ((*token_list)->prev->prev->toktype == TOK_BUILTIN
 			&& (ft_strcmp((*token_list)->token, "$"))
 			|| ((*token_list)->prev->prev->toktype == TOK_CMD))
-			(*token_list)->toktype = TOK_ARG;
+				return (1);
 	}
 	if (is_combo_redir(token_list))
-		(*token_list)->toktype = TOK_ARG;
+		return (1);
 	if (is_combo_heredoc(token_list))
-		(*token_list)->toktype = TOK_ARG;
+		return (1);
 	if ((*token_list)->toktype == TOK_ARG)
 	{
 		while (*token_list && !is_operator((*token_list)->token))

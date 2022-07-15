@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/15 11:00:04 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/15 14:20:49 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,8 @@ int					is_char_word(char c);
 //give_type_to_token
 int					cmd_heredoc(t_list **token_list);
 int					cmd_redir(t_list **token_list);
+int					combo_is_after_pipe(t_list **token_list);
+int					combo_is_at_the_beggining(t_list **token_list);
 int					following_pipe(t_list **token_list);
 void				get_toktype(t_list **token_list);
 int					is_argument(t_list **token_list);
@@ -199,6 +201,10 @@ int					redir_space_token(t_list **token_list);
 int					redir_token(t_list **token_list);
 int					token_space_redir(t_list **token_list);
 int					token_redir(t_list **token_list);
+
+int					is_combo_heredoc_when_heredoc_index_zero(t_list **token_list);
+int					heredoc_combo_is_at_the_beggining(t_list **token_list);
+int					heredoc_combo_is_after_pipe(t_list **token_list);
 
 //make_token
 void				add_token_to_list(char *token, t_list **token_list);

@@ -1,2 +1,3 @@
 | cat test wc
 cat test wc |
+alicia | < file1 cat -e --> alicia must be a cmd
