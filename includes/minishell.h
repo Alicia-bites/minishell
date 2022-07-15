@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/15 11:51:32 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/15 14:29:18 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,9 +150,6 @@ int					do_pwd(void);
 
 //do_env
 int					do_env(t_ulist **envp, t_cmd *cmd);
-int     do_env_create_env(t_ulist **list, char *str);
-int     do_env_update_env(t_ulist *obj, char *str, int sep_pos);
-int     do_env_update_lst(t_ulist **envp, char **str);
 void				do_env_show(void *content);
 
 //do_unset
@@ -164,6 +161,9 @@ void				do_exit(int exit_number);
 
 //do_export
 int					do_export(t_ulist **env_lst, t_cmd *cmd);
+int				do_export_create_env(t_ulist **list, char *str);
+int				do_export_update_env(t_ulist *obj, char *str, int sep_pos);
+int				do_export_update_lst(t_ulist **envp, char **str);
 void				do_export_show(void *content);
 
 //execute_command
@@ -212,7 +212,7 @@ void				give_prompt_back(int signum);
 void    env_free(void *content);
 t_env   *env_init(char *env_fullname);
 char    *env_init_key(t_env *env, char *fullname);
-char    *env_init_value(t_env *env);
+int	env_init_value(t_env *env);
 int	env_init_var_view(t_env *env);
 int     env_lst_set(char **envp, t_ulist **env_lst);
 void    env_lst_show(t_ulist **list);

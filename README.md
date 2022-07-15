@@ -334,6 +334,9 @@ tgetnum, tgetstr, tgoto, tputs
 - https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/
 - https://blog.doppler.com/how-to-set-environment-variables-in-linux-and-mac
 
+#### Export
+- https://www.baeldung.com/linux/bash-variables-export
+
 ### Git
 - https://github.com/BarrierAntho/Survivor_Note/tree/main/git 
 
