@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 09:47:31 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/15 09:49:53 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/15 11:02:19 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int	is_combo_redir_when_redir_index_zero(t_list **token_list)
 {
 	if ((*token_list)->index >= 4)
 	{
-		if ((*token_list)->prev->prev->prev->prev->index == 0)
+		if ((*token_list)->prev->prev->prev->prev->index == 0 
+			|| following_pipe(token_list))
 		{
 			if (((*token_list)->prev->prev->prev->prev->toktype == TOK_L_REDIR
 				|| (*token_list)->prev->prev->prev->prev->toktype == TOK_R_REDIR
