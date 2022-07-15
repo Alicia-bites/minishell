@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_export_show.c                                   :+:      :+:    :+:   */
+/*   do_export_create_env.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: antho <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/14 17:31:29 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/15 14:36:13 by abarrier         ###   ########.fr       */
+/*   Created: 2022/07/01 17:13:46 by antho             #+#    #+#             */
+/*   Updated: 2022/07/15 14:34:04 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	do_export_show(void *content)
+int	do_export_create_env(t_ulist **list, char *str)
 {
 	t_env	*env;
 
-	if (!content)
-		return ;
-	env = (t_env *)content;
-	if (env->var_view == VAR_ALL || env->var_view == VAR_EXP)
+	env = NULL;
+	env = env_init(str);
+	if (!env)
+		return (1);
+	if (!ft_lst_append(list, (void *)env))
 	{
-		if (!env->value)
-			printf("%s%s\n", EXP_PREFIX, env->key);
-		else
-			printf("%s%s=\"%s\"\n", EXP_PREFIX, env->key, env->value);
+		env_free((void *)env);
+		ft_panic(-1, ERR_LST_APPEND);
+		return (2);
 	}
+	return (0);
 }

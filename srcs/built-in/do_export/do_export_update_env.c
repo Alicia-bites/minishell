@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_export_show.c                                   :+:      :+:    :+:   */
+/*   do_export_update_env.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: antho <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/14 17:31:29 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/15 14:36:13 by abarrier         ###   ########.fr       */
+/*   Created: 2022/07/01 17:04:25 by antho             #+#    #+#             */
+/*   Updated: 2022/07/15 14:02:46 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	do_export_show(void *content)
+int	do_export_update_env(t_ulist *obj, char *str, int sep_pos)
 {
 	t_env	*env;
 
-	if (!content)
-		return ;
-	env = (t_env *)content;
-	if (env->var_view == VAR_ALL || env->var_view == VAR_EXP)
-	{
-		if (!env->value)
-			printf("%s%s\n", EXP_PREFIX, env->key);
-		else
-			printf("%s%s=\"%s\"\n", EXP_PREFIX, env->key, env->value);
-	}
+	printf("IN UPDATE\n");
+	env = (t_env *)obj->content;
+	env->fullname = str;
+	env->value = &str[sep_pos];
+	return (0);
 }
