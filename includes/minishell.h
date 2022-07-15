@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/14 17:10:21 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/15 10:23:34 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,46 +172,50 @@ int					execute_command(char *str, int i);
 
 //tokenizer
 void				tokenize(t_chartype *input_list, t_list **token_list);
+
+//give_chartype
 int					get_chartype(t_chartype **input_list);
-void				get_token(t_chartype *input_list, t_list **token_list);
+int					is_char_space(char c);
+int					is_char_word(char c);
+
+//give_type_to_token
+int					cmd_heredoc(t_list **token_list);
+int					cmd_redir(t_list **token_list);
+int					following_pipe(t_list **token_list);
+void				get_toktype(t_list **token_list);
+int					is_argument(t_list **token_list);
+int					is_built_in(t_list **token_list);
+int					is_cmd(t_list **token_list);
+int					is_combo_heredoc(t_list **token_list);
+int					is_combo_redir_when_redir_index_zero(t_list **token_list);
+int					is_combo_redir(t_list **token_list);
+int					is_filename(t_list **token_list);
+int					is_heredoc_sep(t_list **token_list);
+e_toktype			is_operator(char *str);
+int					only_space_in_str(char *str);
+int					redir_space_token(t_list **token_list);
+int					redir_token(t_list **token_list);
+int					token_space_redir(t_list **token_list);
+int					token_redir(t_list **token_list);
+
+//make_token
+void				add_token_to_list(char *token, t_list **token_list);
 void				built_token(t_chartype *input_list, int start, int end, t_list **token_list);
+void				get_token(t_chartype *input_list, t_list **token_list);
+void				is_bn(t_chartype *input_list, int *start, int *end, t_list **token_list);
+void				is_d_quote(t_chartype *input_list, int *start, int *end, t_list **token_list);
+void				is_dl_redir(t_chartype *input_list, int *start, int *end, t_list **token_list);
+void				is_dr_redir(t_chartype *input_list, int *start, int *end, t_list **token_list);
+void				is_intpoint(t_chartype *input_list, int *start, int *end, t_list **token_list);
+void				is_l_redir(t_chartype *input_list, int *start, int *end, t_list **token_list);
+void				is_pipe(t_chartype *input_list, int *start, int *end, t_list **token_list);
+void				is_r_redir(t_chartype *input_list, int *start, int *end, t_list **token_list);
+void				is_s_quote(t_chartype *input_list, int *start, int *end, t_list **token_list);
+void				is_space(t_chartype *input_list, int *start, int *end, t_list **token_list);
+void				is_word(t_chartype *input_list, int *start, int *end, t_list **token_list);
 void				remove_quotes(t_chartype *input_list, int *start, int *end);
 void				remove_dquotes(t_chartype *input_list, int *start, int *end);
 void				remove_squotes(t_chartype *input_list, int *start, int *end);
-void				add_token_to_list(char *token, t_list **token_list);
-int					is_char_word(char c);
-int					only_space_in_str(char *str);
-void				get_toktype(t_list **token_list);
-int					is_cmd(t_list **token_list);
-int					token_space_redir(t_list **token_list);
-int					redir_space_token(t_list **token_list);
-int					token_redir(t_list **token_list);
-int					redir_token(t_list **token_list);
-static int			is_argument(t_list **token_list);
-static int			is_heredoc_sep(t_list **token_list);
-static int			is_filename(t_list **token_list);
-static int			is_built_in(t_list **token_list);
-
-//get_toktype
-void				get_toktype(t_list **token_list);
-int					is_char_space(char c);
-e_toktype			is_operator(char *str);
-
-// int					is_charword(char c);
-
-// static int			is_char_word(char c);
-void				is_word(t_chartype *input_list, int *start, int *end, t_list **token_list);
-void				is_space(t_chartype *input_list, int *start, int *end, t_list **token_list);
-void				is_pipe(t_chartype *input_list, int *start, int *end, t_list **token_list);
-void				is_s_quote(t_chartype *input_list, int *start, int *end, t_list **token_list);
-void				is_d_quote(t_chartype *input_list, int *start, int *end, t_list **token_list);
-// t_list				*is_envcall(t_chartype *input_list, int *start, int *end);
-void				is_l_redir(t_chartype *input_list, int *start, int *end, t_list **token_list);
-void				is_r_redir(t_chartype *input_list, int *start, int *end, t_list **token_list);
-void				is_dl_redir(t_chartype *input_list, int *start, int *end, t_list **token_list);
-void				is_dr_redir(t_chartype *input_list, int *start, int *end, t_list **token_list);
-void				is_bn(t_chartype *input_list, int *start, int *end, t_list **token_list);
-void				is_intpoint(t_chartype *input_list, int *start, int *end, t_list **token_list);
 
 //signal_handling
 int					ft_set_sigaction(void);

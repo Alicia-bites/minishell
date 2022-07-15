@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/13 16:38:01 by amarchan         ###   ########.fr        #
+#    Updated: 2022/07/15 10:25:22 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,18 +31,22 @@ VALGRIND	:=	valgrind --suppressions=ignoreliberror --leak-check=full --show-leak
 IPATH		:=	includes
 OPATH		:=	obj
 
-SRCS_PATH			:=		srcs
-BUILT_PATH			:=		built-in
-BUILT_ENV_PATH		:=		do_env
-BUILT_UNSET_PATH	:=		do_unset
-ENV_PATH			:=		env
-EXEC_PATH			:=		execute_commands
-INPUT_HANDLER_PATH		:=	input_handler
-LEX_PATH			:=		lexer
-PARSING_PATH		:=		parsing
-EXP_PATH			:=		expansions
-SIG_PATH			:=		signal_handling
-TOK_PATH			:=		tokenizer
+SRCS_PATH				:=		srcs
+BUILT_PATH				:=		built-in
+BUILT_ENV_PATH			:=		do_env
+BUILT_UNSET_PATH		:=		do_unset
+ENV_PATH				:=		env
+EXEC_PATH				:=		execute_commands
+INPUT_HANDLER_PATH		:=		input_handler
+LEX_PATH				:=		lexer
+PARSING_PATH			:=		parsing
+EXP_PATH				:=		expansions
+SIG_PATH				:=		signal_handling
+TOK_PATH				:=		tokenizer
+GIVE_CHAR_PATH			:=		give_chartype
+GIVE_TOK_PATH			:=		give_type_to_token
+MAKE_TOK_PATH			:=		make_token
+
 
 RM		:=	rm -rf
 
@@ -70,16 +74,16 @@ ENV_SRCS	:=	env_free.c\
 EXEC_SRCS	:=	execute_command.c\
 				read_command.c
 
-INPUT_HANDLER	:=	exit_minishell.c \
-					get_input.c \
-					handle_str.c \
-					read_line.c \
+INPUT_HANDLER	:=	exit_minishell.c\
+					get_input.c\
+					handle_str.c\
+					read_line.c\
 
-LEX_SRCS	:=	lex_brackets.c \
-				lex_pipe.c \
-				lex_quote.c \
-				lex_redir.c \
-				lex_sym.c \
+LEX_SRCS	:=	lex_brackets.c\
+				lex_pipe.c\
+				lex_quote.c\
+				lex_redir.c\
+				lex_sym.c\
 				pre_lexer.c
 
 PARSING_SRCS	:=	count_quotes.c\
@@ -106,35 +110,53 @@ EXP_SRCS	:=	create_dollar_list.c\
 				insert_expansions.c\
 				is_varname.c\
 				lonely_bracket.c \
-				malloc_varname.c\
+				malloc_varname.c \
 				print_dollar_lst.c
 
-SIG_SRCS	:=	ft_set_sigaction.c \
+SIG_SRCS	:=	ft_set_sigaction.c\
 				give_prompt_back.c
 
-TOK_SRCS	:=	add_token_to_list.c \
-				built_token.c \
-				get_chartype.c \
-				get_token.c \
-				get_toktype.c \
-				is_bn.c \
-				is_char_space.c \
-				is_char_word.c \
-				is_dl_redir.c \
-				is_d_quote.c \
-				is_dr_redir.c \
-				is_envcall.c \
-				is_intpoint.c \
-				is_l_redir.c \
-				is_operator.c \
-				is_pipe.c \
-				is_r_redir.c \
-				is_space.c \
-				is_s_quote.c \
-				is_word.c \
-				only_space_in_str.c \
-				remove_quotes.c \
-				tokenizer.c
+TOK_SRCS	:=	tokenizer.c\
+				
+GIVE_CHAR_SRCS	:=	get_chartype.c\
+					is_char_space.c\
+					is_char_word.c 
+
+GIVE_TOK_SRCS	:=	cmd_heredoc.c\
+					cmd_redir.c\
+					following_pipe.c\
+					get_toktype.c\
+					is_argument.c\
+					is_built_in.c\
+					is_cmd.c\
+					is_combo_heredoc.c\
+					is_combo_redir.c\
+					is_combo_redir_when_redir_index_zero.c\
+					is_filename.c\
+					is_heredoc_sep.c\
+					is_operator.c\
+					only_space_in_str.c\
+					redir_space_token.c\
+					redir_token.c\
+					token_redir.c\
+					token_space_redir.c
+
+MAKE_TOK_SRCS	:=	add_token_to_list.c\
+					built_token.c\
+					get_token.c\
+					is_bn.c\
+					is_dl_redir.c\
+					is_d_quote.c\
+					is_dr_redir.c\
+					is_envcall.c\
+					is_intpoint.c\
+					is_l_redir.c\
+					is_pipe.c\
+					is_r_redir.c\
+					is_space.c\
+					is_s_quote.c\
+					is_word.c\
+					remove_quotes.c
 
 SRCS		:=	main.c\
 				$(BUILT_SRCS)\
@@ -146,6 +168,9 @@ SRCS		:=	main.c\
 				$(EXP_SRCS)\
 				$(SIG_SRCS)\
 				$(TOK_SRCS)\
+				$(GIVE_CHAR_SRCS)\
+				$(GIVE_TOK_SRCS)\
+				$(MAKE_TOK_SRCS)\
 
 OBJS		:=	$(addprefix $(OPATH)/, $(SRCS:.c=.o))
 DEPS		:=	$(OBJS:.o=.d)
@@ -162,7 +187,10 @@ vpath %.c $(SRCS_PATH)\
 	$(SRCS_PATH)/$(PARSING_PATH)\
 	$(SRCS_PATH)/$(PARSING_PATH)/$(EXP_PATH)\
 	$(SRCS_PATH)/$(SIG_PATH)\
-	$(SRCS_PATH)/$(TOK_PATH)
+	$(SRCS_PATH)/$(TOK_PATH)\
+	$(SRCS_PATH)/$(TOK_PATH)/$(GIVE_CHAR_PATH)\
+	$(SRCS_PATH)/$(TOK_PATH)/$(GIVE_TOK_PATH)\
+	$(SRCS_PATH)/$(TOK_PATH)/$(MAKE_TOK_PATH)
 vpath %.o $(OPATH)
 
 all:			$(NAME)
