@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/14 17:45:14 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/15 11:51:32 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,18 @@ typedef struct s_expanded {
 	struct s_expanded	*next;
 } t_expanded;
 
+typedef enum e_var_view
+{
+	VAR_ALL,
+	VAR_ENV,
+	VAR_EXP
+} e_var_view;
+
 typedef struct s_env {
-	char	*fullname;
-	char	*key;
-	char	*value;
-	char	*old_fullname;
-	char	*old_value;
-	int	is_new;
+	char		*fullname;
+	char		*key;
+	char		*value;
+	e_var_view	var_view;
 }	t_env;
 
 typedef struct s_cmd
@@ -208,6 +213,7 @@ void    env_free(void *content);
 t_env   *env_init(char *env_fullname);
 char    *env_init_key(t_env *env, char *fullname);
 char    *env_init_value(t_env *env);
+int	env_init_var_view(t_env *env);
 int     env_lst_set(char **envp, t_ulist **env_lst);
 void    env_lst_show(t_ulist **list);
 void    env_show(void *content);

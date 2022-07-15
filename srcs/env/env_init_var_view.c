@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_env_show.c                                      :+:      :+:    :+:   */
+/*   env_init_var_view.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antho <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/30 15:49:59 by antho             #+#    #+#             */
-/*   Updated: 2022/07/15 11:58:17 by abarrier         ###   ########.fr       */
+/*   Created: 2022/07/15 11:48:47 by abarrier          #+#    #+#             */
+/*   Updated: 2022/07/15 11:50:40 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
-void	do_env_show(void *content)
+int	env_init_var_view(t_env *env)
 {
-	t_env	*env;
-
-	if (!content)
-		return ;
-	env = (t_env *)content;
-	if (env->var_view == VAR_ALL || env->var_view == VAR_ENV
-			|| env->value)
-		printf("%s\n", env->fullname);
-}
+	if (ft_strcmp(env->key, "_") == 0)
+		return (VAR_ENV);
+	else
+		return (VAR_ALL);
+}	

@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/14 17:37:08 by abarrier         ###   ########.fr        #
+#    Updated: 2022/07/15 11:51:10 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,6 +91,7 @@ ENV_SRCS	:=	env_free.c\
 			env_init.c\
 			env_init_key.c\
 			env_init_value.c\
+			env_init_var_view.c\
 			env_lst_set.c\
 			env_lst_show.c\
 			env_show.c
