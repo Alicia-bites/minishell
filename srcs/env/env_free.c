@@ -6,7 +6,7 @@
 /*   By: antho <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 18:11:36 by antho             #+#    #+#             */
-/*   Updated: 2022/06/28 20:04:21 by antho            ###   ########.fr       */
+/*   Updated: 2022/07/15 12:07:44 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	env_free(void *content)
 {
 	t_env	*env;
-	
+
 	if (!content)
 		return ;
 	env = (t_env *)content;

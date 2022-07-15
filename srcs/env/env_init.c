@@ -6,7 +6,7 @@
 /*   By: antho <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 17:29:38 by antho             #+#    #+#             */
-/*   Updated: 2022/07/15 11:48:35 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/15 12:07:33 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_env	*env_init(char *env_fullname)
 {
 	t_env	*env;
-	
+
 	env = NULL;
 	env = (t_env *)malloc(sizeof(t_env));
 	if (!env)
