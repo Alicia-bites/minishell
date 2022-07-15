@@ -6,11 +6,11 @@
 /*   By: antho <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:49:59 by antho             #+#    #+#             */
-/*   Updated: 2022/07/15 11:58:17 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/15 12:10:08 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 void	do_env_show(void *content)
 {
