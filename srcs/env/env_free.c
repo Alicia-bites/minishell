@@ -6,7 +6,7 @@
 /*   By: antho <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 18:11:36 by antho             #+#    #+#             */
-/*   Updated: 2022/07/15 12:07:44 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/15 13:53:33 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ void	env_free(void *content)
 	{
 		free(env->key);
 		env->key = NULL;
+	}
+	if (env->value)
+	{
+		free(env->value);
+		env->value = NULL;
 	}
 	free(env);
 	env = NULL;
