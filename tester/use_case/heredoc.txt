@@ -1,0 +1,3 @@
+<< "EOF" cat > file1
+<< 'EOF' cat > file1
+<< EOF cat > file1
