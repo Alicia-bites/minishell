@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/15 10:23:34 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/15 11:00:04 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,13 @@
 # define SEMICOLON -47
 # define DOUBLE_PIPE -48
 # define MISSING_BRACKET -49
-	
 # define ENV_SEP '='
 # define ENV_FIELD_SEP ':'
 # define ENV_PATH_NAME "PATH="
 # define DIR_SEP "/"
 # define ARG_SEP ' '
 
-typedef enum e_chartype {
+typedef enum enum_chartype {
 	CH_UNKNOWN,
 	CH_WORD,
 	CH_SPACE,
@@ -52,31 +51,31 @@ typedef enum e_chartype {
 	CH_EQUAL,
 	CH_INTPOINT,
 	CH_BN,
-} e_chartype;
+}	t_enum_chartype;
 
 typedef struct s_chartype {
-	char		character;
-	int			length;
-	int			n_double;
-	int			n_single;
-	e_chartype	type;
-} t_chartype;
+	char			character;
+	int				length;
+	int				n_double;
+	int				n_single;
+	t_enum_chartype	type;
+}	t_chartype;
 
 typedef struct s_global {
 	int			readline;
-} t_global;
+}	t_global;
 
 typedef struct s_cursor {
 	int			i;
 	int			k;
-} t_cursor;
+}	t_cursor;
 
 typedef struct s_expanded {
 	int					index;
-	char 				*expanded;
+	char				*expanded;
 	struct s_expanded	*prev;
 	struct s_expanded	*next;
-} t_expanded;
+}	t_expanded;
 
 typedef struct s_env {
 	char	*fullname;
@@ -84,7 +83,7 @@ typedef struct s_env {
 	char	*value;
 	char	*old_fullname;
 	char	*old_value;
-	int	is_new;
+	int		is_new;
 }	t_env;
 
 typedef struct s_cmd
@@ -130,15 +129,18 @@ int					lex_brackets(char *str, int *err);
 
 //expansions
 char				*expand_dollar(char *str);
-void				find_expansions(char *str, t_expanded **expanded_list, int *full_size);
-char				*insert_expansions(int full_size, t_expanded *expanded_list, char *str, int lb);
+void				find_expansions(char *str, t_expanded **expanded_list,
+						int *full_size);
+char				*insert_expansions(int full_size, t_expanded *expanded_list,
+						char *str, int lb);
 int					get_full_size(t_expanded *expanded_list);
-void				get_expanded(char *str, t_expanded **expanded_list, int i, int *varsize);
+void				get_expanded(char *str, t_expanded **expanded_list, int i,
+						int *varsize);
 char				*malloc_varname(char *str, int start, int end);
 t_expanded			*create_dollar_list(char *str, int index);
 t_expanded			*ft_lstnew_dollar(char *str, int i);
 void				ft_lstadd_back_dollar(t_expanded **alst, t_expanded *new);
-int 				is_varname(char c);
+int					is_varname(char c);
 void				print_dollar_lst(t_expanded *lst);
 void				ft_lstclear_back_dollar(t_expanded **lst);
 void				ft_lstclear_dollar(t_expanded **lst);
@@ -154,14 +156,14 @@ int					do_export(char *str);
 
 //do_env
 int					do_env(t_ulist **envp, t_cmd *cmd);
-int     			do_env_create_env(t_ulist **list, char *str);
-int     			do_env_update_env(t_ulist *obj, char *str, int sep_pos);
-int     			do_env_update_lst(t_ulist **envp, char **str);
+int					do_env_create_env(t_ulist **list, char *str);
+int					do_env_update_env(t_ulist *obj, char *str, int sep_pos);
+int					do_env_update_lst(t_ulist **envp, char **str);
 void				do_env_show(void *content);
 
 //do_unset
-int	do_unset(t_ulist **envp, t_cmd *cmd);
-int     do_unset_update_lst(t_ulist **envp, char **str);
+int					do_unset(t_ulist **envp, t_cmd *cmd);
+int					do_unset_update_lst(t_ulist **envp, char **str);
 
 //do_exit
 void				do_exit(int exit_number);
@@ -200,34 +202,48 @@ int					token_redir(t_list **token_list);
 
 //make_token
 void				add_token_to_list(char *token, t_list **token_list);
-void				built_token(t_chartype *input_list, int start, int end, t_list **token_list);
+void				built_token(t_chartype *input_list, int start, int end,
+						t_list **token_list);
 void				get_token(t_chartype *input_list, t_list **token_list);
-void				is_bn(t_chartype *input_list, int *start, int *end, t_list **token_list);
-void				is_d_quote(t_chartype *input_list, int *start, int *end, t_list **token_list);
-void				is_dl_redir(t_chartype *input_list, int *start, int *end, t_list **token_list);
-void				is_dr_redir(t_chartype *input_list, int *start, int *end, t_list **token_list);
-void				is_intpoint(t_chartype *input_list, int *start, int *end, t_list **token_list);
-void				is_l_redir(t_chartype *input_list, int *start, int *end, t_list **token_list);
-void				is_pipe(t_chartype *input_list, int *start, int *end, t_list **token_list);
-void				is_r_redir(t_chartype *input_list, int *start, int *end, t_list **token_list);
-void				is_s_quote(t_chartype *input_list, int *start, int *end, t_list **token_list);
-void				is_space(t_chartype *input_list, int *start, int *end, t_list **token_list);
-void				is_word(t_chartype *input_list, int *start, int *end, t_list **token_list);
+void				is_bn(t_chartype *input_list, int *start, int *end,
+						t_list **token_list);
+void				is_d_quote(t_chartype *input_list, int *start, int *end,
+						t_list **token_list);
+void				is_dl_redir(t_chartype *input_list, int *start, int *end,
+						t_list **token_list);
+void				is_dr_redir(t_chartype *input_list, int *start, int *end,
+						t_list **token_list);
+void				is_intpoint(t_chartype *input_list, int *start, int *end,
+						t_list **token_list);
+void				is_l_redir(t_chartype *input_list, int *start, int *end,
+						t_list **token_list);
+void				is_pipe(t_chartype *input_list, int *start, int *end,
+						t_list **token_list);
+void				is_r_redir(t_chartype *input_list, int *start, int *end,
+						t_list **token_list);
+void				is_s_quote(t_chartype *input_list, int *start, int *end,
+						t_list **token_list);
+void				is_space(t_chartype *input_list, int *start, int *end,
+						t_list **token_list);
+void				is_word(t_chartype *input_list, int *start, int *end,
+						t_list **token_list);
 void				remove_quotes(t_chartype *input_list, int *start, int *end);
-void				remove_dquotes(t_chartype *input_list, int *start, int *end);
-void				remove_squotes(t_chartype *input_list, int *start, int *end);
+void				remove_dquotes(t_chartype *input_list, int *start,
+						int *end);
+void				remove_squotes(t_chartype *input_list, int *start,
+						int *end);
 
 //signal_handling
 int					ft_set_sigaction(void);
 void				give_prompt_back(int signum);
 
 //environment list
-void    env_free(void *content);
-t_env   *env_init(char *env_fullname);
-char    *env_init_key(t_env *env, char *fullname);
-char    *env_init_value(t_env *env);
-int     env_lst_set(char **envp, t_ulist **env_lst);
-void    env_lst_show(t_ulist **list);
-void    env_show(void *content);
+void				env_free(void *content);
+t_env				*env_init(char *env_fullname);
+char				*env_init_key(t_env *env, char *fullname);
+char				*env_init_value(t_env *env);
+int					env_lst_set(char **envp, t_ulist **env_lst);
+void				env_lst_show(t_ulist **list);
+void				env_show(void *content);
 
 #endif
