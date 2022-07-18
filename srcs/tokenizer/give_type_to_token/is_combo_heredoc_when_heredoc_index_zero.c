@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 14:11:20 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/15 14:20:35 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/18 15:33:38 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,9 @@
 // Check if we have combo redir+file+cmd+arg
 int	is_combo_heredoc_when_heredoc_index_zero(t_list **token_list)
 {
-	if ((*token_list)->index >= 5)
-	{
+	if ((*token_list)->index >= 6)
 		if (heredoc_combo_is_after_pipe(token_list))
 			return (1);	
-	}
 	else if ((*token_list)->index >= 4)
 		if (heredoc_combo_is_at_the_beggining(token_list))
 			return (1);

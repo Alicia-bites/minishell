@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 09:47:31 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/15 13:59:55 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/18 15:29:44 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // Check if we have combo redir+file+cmd+arg
 int	is_combo_redir_when_redir_index_zero(t_list **token_list)
 {
-	if ((*token_list)->index >= 5)
+	if ((*token_list)->index >= 6)
 	{
 		if (combo_is_after_pipe(token_list))
 			return (1);	
