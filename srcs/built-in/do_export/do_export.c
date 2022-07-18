@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 18:20:51 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/15 14:16:39 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/18 12:47:29 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,6 @@ int	do_export(t_ulist **envp, t_cmd *cmd)
 	else if (len_fullcmd == 1)
 		ft_lst_func_lst(envp, &do_export_show);
 	else if (len_fullcmd > 1)
-	{
 		do_export_update_lst(envp, &cmd->fullcmd[1]);
-		ft_lst_func_lst(envp, &do_export_show);
-	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: antho <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 16:31:22 by antho             #+#    #+#             */
-/*   Updated: 2022/07/15 14:25:01 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/18 11:11:27 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,35 +19,27 @@
  */
 int	do_export_update_lst(t_ulist **envp, char **str)
 {
-	int	i;
-	int	sep_pos;
 	t_ulist	*obj;
-	t_env	*env;
-	int	updated;
+	int		i;
+	int		sep_pos;
 
-	i = 0;
-	sep_pos = 0;
 	obj = NULL;
-	env = NULL;
+	i = 0;
+	sep_pos = -1;
 	while (str[i])
 	{
-		obj = *envp;
-		sep_pos = ft_index((const char *)str[i], ENV_SEP);
-		updated = 0;
-		while (obj && updated == 0)
+		if (do_export_check_str(str[i]) == 0)
 		{
-			env = (t_env *)obj->content;
-			if (ft_strncmp(env->key, str[i], sep_pos) == 0) // env->key = PATH && str[i]= "PATH=xxx" ==> res = 0
+			sep_pos = ft_index((const char *)str[i], ENV_SEP);
+			obj = do_export_check_exist(envp, str[i], sep_pos);
+			if (obj)
 			{
 				if (do_export_update_env(obj, str[i], sep_pos) != 0)
-					return (2);
-				else
-					updated = 1;
+					return (1);
 			}
-			obj = obj->next;
+			else
+				do_export_create_env(envp, str[i]);
 		}
-		if (updated == 0)
-			do_export_create_env(envp, str[i]);
 		i++;
 	}
 	return (0);
