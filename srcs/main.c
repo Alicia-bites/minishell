@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:17:17 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/18 15:49:20 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/18 18:11:46 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,12 @@ static void	antho_test(t_ulist **env_lst)
 	printf("%s\n", SEP_P);
 
  	t_cmd	test_cd_cmd;
- 	char test_cd_cmd_arg[] = "cd";
- 	char *test_cd_cmd_fullcmd[] = { "cd", NULL };
+// 	char test_cd_cmd_arg[] = "cd";
+// 	char *test_cd_cmd_fullcmd[] = { "cd", NULL };
+// 	char test_cd_cmd_arg[] = "cd dir_which_does_not_exist";
+// 	char *test_cd_cmd_fullcmd[] = { "cd", "dir_which_does_not_exist", NULL };
+ 	char test_cd_cmd_arg[] = "cd too many arg" ;
+ 	char *test_cd_cmd_fullcmd[] = { "cd", "too", "many", "arg", NULL };
  	char test_cd_cmd_path[] = "built-in";
 
 	test_cd_cmd.arg = test_cd_cmd_arg;
@@ -75,31 +79,29 @@ static void	antho_test(t_ulist **env_lst)
  	ft_lst_func_lst(env_lst, &do_export_show);
 	ft_lst_func_lst(env_lst, &do_env_show);
 	printf("%s\n", SEP_P);
-
 }
 
 int	main(int argc, char **argv, char **envp)
 {
-	int	err;
+//	int	err;
 
-	err = 0;
-	get_input(&err, NULL);
-// 	t_ulist	**env_lst;
-//
-//	if (ft_set_sigaction() == -1)
-//		printf("Setting up sigaction failed.\n");
-// 	env_lst = ft_lst_init();
-// 	if (!env_lst)
-// 		return (1);
-// 	if (env_lst_set(envp, env_lst))
-// 	{
-// 		ft_lst_free(env_lst, &env_free);
-// 		return (2);
-// 	}
-// 	env_lst_show(env_lst);
-//	antho_test(env_lst);
-// 	env_lst_show(env_lst);
-//	get_input(&err, env_lst);
-// 	ft_lst_free(env_lst, &env_free);
+//	err = 0;
+//	get_input(&err, NULL);
+ 	t_ulist	**env_lst;
+
+	if (ft_set_sigaction() == -1)
+		printf("Setting up sigaction failed.\n");
+ 	env_lst = ft_lst_init();
+ 	if (!env_lst)
+ 		return (1);
+ 	if (env_lst_set(envp, env_lst))
+ 	{
+ 		ft_lst_free(env_lst, &env_free);
+ 		return (2);
+ 	}
+ 	env_lst_show(env_lst);
+	antho_test(env_lst);
+ 	env_lst_show(env_lst);
+ 	ft_lst_free(env_lst, &env_free);
 	return (0);
 }
