@@ -1,5 +1,6 @@
 TOKENIZER
 	creer un TOK_VAR pour 'antho=' (voir carnet)
+	--> verifier comportement avec un dollar en argument
 
 NORME
 	normer les fichiers
