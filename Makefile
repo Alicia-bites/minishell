@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/15 14:05:16 by abarrier         ###   ########.fr        #
+#    Updated: 2022/07/18 13:23:31 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,6 +62,8 @@ BUILT_EXIT_SRCS	:=	do_exit.c
 
 BUILT_EXPORT_SRCS	:=	do_export.c\
 			do_export_create_env.c\
+			do_export_check_exist.c\
+			do_export_check_str.c\
 			do_export_update_env.c\
 			do_export_update_lst.c\
 			do_export_show.c
@@ -69,6 +71,7 @@ BUILT_EXPORT_SRCS	:=	do_export.c\
 BUILT_PWD_SRCS	:=	do_pwd.c
 
 BUILT_UNSET_SRCS	:=	do_unset.c\
+			do_unset_check_str.c\
 			do_unset_update_lst.c\
 
 CMD_SRCS	:=	cmd_close_fd.c\
@@ -109,7 +112,6 @@ LEX_SRCS	:=	lex_brackets.c \
 PARSING_SRCS	:=	count_quotes.c\
 			create_list.c\
 			create_input_list.c \
-			ft_panic.c\
 			handle_unknown_command.c\
 			is_not_clone.c\
 			is_not_empty.c\

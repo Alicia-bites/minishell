@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/18 08:53:31 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/18 13:23:07 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@
 # define EXP_PREFIX "declare -x "
 # define DIR_SEP "/"
 # define ARG_SEP ' '
+
+# define ERR_EXP_ARG "not a valid identifier"
+# define ERR_UNSET_ARG "not a valid identifier"
 
 typedef enum e_chartype {
 	CH_UNKNOWN,
@@ -153,14 +156,17 @@ void				do_env_show(void *content);
 
 //do_unset
 int	do_unset(t_ulist **envp, t_cmd *cmd);
+int	do_unset_check_str(char *str);
 int     do_unset_update_lst(t_ulist **envp, char **str);
 
 //do_exit
 void				do_exit(int exit_number);
 
 //do_export
-int					do_export(t_ulist **env_lst, t_cmd *cmd);
+int				do_export(t_ulist **env_lst, t_cmd *cmd);
 int				do_export_create_env(t_ulist **list, char *str);
+t_ulist	*do_export_check_exist(t_ulist **envp, char *str, int sep_pos);
+int				do_export_check_str(char *str);
 int				do_export_update_env(t_ulist *obj, char *str, int sep_pos);
 int				do_export_update_lst(t_ulist **envp, char **str);
 void				do_export_show(void *content);
