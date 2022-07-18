@@ -6,13 +6,13 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:58:50 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/15 12:04:29 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/18 15:48:01 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-e_toktype	is_operator(char *str)
+t_toktype	is_operator(char *str)
 {
 	if (str)
 	{

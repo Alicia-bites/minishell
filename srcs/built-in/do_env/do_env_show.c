@@ -6,11 +6,11 @@
 /*   By: antho <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:49:59 by antho             #+#    #+#             */
-/*   Updated: 2022/06/30 15:55:55 by antho            ###   ########.fr       */
+/*   Updated: 2022/07/18 10:53:21 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 void	do_env_show(void *content)
 {
@@ -19,5 +19,7 @@ void	do_env_show(void *content)
 	if (!content)
 		return ;
 	env = (t_env *)content;
-	printf("%s\n", env->fullname);
+	if (env->var_view == VAR_ALL || env->var_view == VAR_ENV
+		|| env->value)
+		printf("%s=%s\n", env->key, env->value);
 }

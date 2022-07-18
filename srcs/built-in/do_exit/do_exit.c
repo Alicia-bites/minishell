@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   do_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/16 18:19:28 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/17 16:29:50 by abarrier         ###   ########.fr       */
+/*   Created: 2022/06/16 18:22:30 by amarchan          #+#    #+#             */
+/*   Updated: 2022/06/27 09:07:32 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include <limits.h>
 
-int	do_pwd(void)
+void	do_exit(int exit_number)
 {
-	char	*path;
-
-	path = getcwd(NULL, 0);
-	if (!path)
-		return (1);
-	printf("%s\n", path);
-	free(path);
-	return (0);
+	if (exit_number >= 0 && exit_number <= 255)
+		exit(exit_number);
+	exit(EXIT_FAILURE);
 }
-/*
-int main(void)
-{
-	do_pwd();
-	return (0);
-}*/

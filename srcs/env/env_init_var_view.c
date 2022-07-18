@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   echo.c                                             :+:      :+:    :+:   */
+/*   env_init_var_view.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/16 09:56:41 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/28 11:25:17 by amarchan         ###   ########.fr       */
+/*   Created: 2022/07/15 11:48:47 by abarrier          #+#    #+#             */
+/*   Updated: 2022/07/15 14:34:27 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	do_echo(char *str)
+int	env_init_var_view(t_env *env)
 {
-	if (str)
-		printf("%s\n", str);		
-	return (0);
-}
-
-int	do_echo_n(char *str)
-{
-	printf("%s", str);
-	return (0);
-}
+	if (ft_strcmp(env->key, "_") == 0)
+		return (VAR_ENV);
+	else if (!env->value)
+		return (VAR_EXP);
+	else
+		return (VAR_ALL);
+}	
