@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/15 14:21:10 by amarchan         ###   ########.fr        #
+#    Updated: 2022/07/18 14:05:05 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,6 +83,7 @@ LEX_SRCS	:=	lex_brackets.c\
 				lex_pipe.c\
 				lex_quote.c\
 				lex_redir.c\
+				lex_space.c\
 				lex_sym.c\
 				pre_lexer.c
 
