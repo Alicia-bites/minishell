@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/18 15:51:39 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/18 17:33:15 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@
 
 # define ERR_EXP_ARG "not a valid identifier"
 # define ERR_NOHOME "HOME not set"
+# define ERR_PWD "impossible to get the current directory"
 # define ERR_UNSET_ARG "not a valid identifier"
 
 typedef enum enum_chartype {
@@ -162,24 +163,19 @@ void				ft_lstclear_dollar(t_expanded **lst);
 char				*expand_dollar(char *str);
 int					lonely_bracket(char *str);
 
-//built-in
-int					do_echo(char *str);
-int					do_echo_n(char *str);
-int					do_pwd(void);
-
 //do_cd
 int					do_cd(t_ulist **envp, t_cmd *cmd);
 int					do_cd_home(t_ulist **envp);
-int					do_cd_update_home(t_ulist **envp, t_ulist *obj);
+int					do_cd_update_env(t_ulist *obj, char *path);
+int					do_cd_update_pwd_home(t_ulist **envp, t_ulist *obj, char *pwd);
+
+//do_echo
+int					do_echo(char *str);
+int					do_echo_n(char *str);
 
 //do_env
 int					do_env(t_ulist **envp, t_cmd *cmd);
 void				do_env_show(void *content);
-
-//do_unset
-int	do_unset(t_ulist **envp, t_cmd *cmd);
-int	do_unset_check_str(char *str);
-int     do_unset_update_lst(t_ulist **envp, char **str);
 
 //do_exit
 void				do_exit(int exit_number);
@@ -192,6 +188,15 @@ int				do_export_check_str(char *str);
 int				do_export_update_env(t_ulist *obj, char *str, int sep_pos);
 int				do_export_update_lst(t_ulist **envp, char **str);
 void				do_export_show(void *content);
+
+//do_pwd
+int					do_pwd(void);
+char	*do_pwd_getpath(void);
+
+//do_unset
+int	do_unset(t_ulist **envp, t_cmd *cmd);
+int	do_unset_check_str(char *str);
+int     do_unset_update_lst(t_ulist **envp, char **str);
 
 //execute_command
 int					read_command(t_list *inputs_lst, char **built_ins);
