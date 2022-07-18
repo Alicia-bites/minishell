@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/18 15:31:36 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/18 15:51:39 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,18 +92,18 @@ typedef enum e_var_view
 	VAR_ALL,
 	VAR_ENV,
 	VAR_EXP
-} e_var_view;
+} 	t_var_view;
 
 typedef struct s_env {
 	char		*key;
 	char		*value;
-	e_var_view	var_view;
+	t_var_view	var_view;
 }	t_env;
 
 typedef struct s_cmd
 {
 	t_ulist	**env_lst;
-	e_toktype	toktype;
+	t_toktype	toktype;
 	char	*arg;
 	size_t	n_arg;
 	char	**fullcmd;
@@ -114,20 +114,18 @@ typedef struct s_cmd
 }		t_cmd;
 
 //input_handler
-int					get_input(int *err);
+int					get_input(int *err, t_ulist **envp);
 void				read_line(char **str);
 void				exit_minishell(t_list **token_list, int *err);
 void				handle_str(char **str, t_list **token_list, int *err);
-int					get_input(int *err);
 
 //parsing
 int					ft_parse(char *str, t_list **token_list, int *err);
 void				create_input_list(t_chartype **input_list, char *str);
 void				sort_inputs(char **inputs);
 char				**store_built_ins(void);
-t_list				*create_list(char *str, int i, e_toktype e_toktype);
+t_list				*create_list(char *str, int i, t_toktype e_toktype);
 void				print_lst(t_list *lst);
-//void				ft_panic(int errcode, char *str);
 int					handle_unknown_command(t_list *inputs_lst);
 int					is_not_clone(char *str);
 int					is_not_empty(char *str);
@@ -222,7 +220,7 @@ int					is_combo_redir_when_redir_index_zero(t_list **token_list);
 int					is_combo_redir(t_list **token_list);
 int					is_filename(t_list **token_list);
 int					is_heredoc_sep(t_list **token_list);
-e_toktype			is_operator(char *str);
+t_toktype			is_operator(char *str);
 int					only_space_in_str(char *str);
 int					redir_space_token(t_list **token_list);
 int					redir_token(t_list **token_list);
