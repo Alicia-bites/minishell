@@ -23,3 +23,6 @@ SIGNAL
 	qu'est-ce que cela signifie pour les signaux quand on n'est pas en mode
 		interactif ?
 	
+PIPE FIN DE LIGNE ?
+	| + fin de LIGNE
+	| + espace + fin de ligne
