@@ -6,19 +6,22 @@
 /*   By: amarchan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 15:37:28 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/27 15:52:47 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/18 11:35:50 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_put.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_putstr_fd(char *s, int fd)
 {
 	int	i;
+	int	res;
 
 	i = 0;
+	res = 0;
 	if (!s)
-		return ;
+		return (res);
 	while (s[i])
-		ft_putchar_fd(s[i++], fd);
+		res += ft_putchar_fd(s[i++], fd);
+	return (res);
 }
