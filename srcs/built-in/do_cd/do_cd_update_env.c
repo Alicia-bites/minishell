@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_cd.c                                            :+:      :+:    :+:   */
+/*   do_cd_update_env.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/16 18:16:31 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/18 18:14:59 by abarrier         ###   ########.fr       */
+/*   Created: 2022/07/18 16:45:09 by abarrier          #+#    #+#             */
+/*   Updated: 2022/07/18 18:17:08 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/* Update variable PWD and OLDPWD export and env list when changing directory
- * 
- */
-int	do_cd(t_ulist **envp, t_cmd *cmd)
+int	do_cd_update_env(t_ulist *obj, char *path)
 {
-	size_t	len_cmd;
+	t_env	*env;
 
-	if (!cmd)
+	env = (t_env *)obj->content;
+	if (env->value)
+		free(env->value);
+	if (!path)
 		return (1);
-	len_cmd = ft_strstrlen(cmd->fullcmd);
-	if (len_cmd == 1)
-		do_cd_home(envp);
-	else if (len_cmd > 1)
-		return (ft_panic(-1, ERR_ARG));
+	env->value = ft_strdup(path);
+	if (env->value)
+		env->var_view = VAR_ALL;
+	else
+		return (ft_panic(-1, ERR_MALLOC));
 	return (0);
 }
