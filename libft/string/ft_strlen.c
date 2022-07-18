@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 08:42:58 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/24 13:40:17 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/18 11:40:07 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_strlen(const char *s)
 {
 	int	i;
-	
+
 	if (s == 0)
 		return (0);
 	i = 0;

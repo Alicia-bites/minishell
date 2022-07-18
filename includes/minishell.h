@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/18 15:15:07 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/18 15:31:36 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,21 @@
 # define SEMICOLON -47
 # define DOUBLE_PIPE -48
 # define MISSING_BRACKET -49
+	
+# define ARG_SEP ' '
+# define DIR_SEP "/"
 # define ENV_SEP '='
 # define ENV_FIELD_SEP ':'
-# define ENV_PATH_NAME "PATH="
-# define DIR_SEP "/"
-# define ARG_SEP ' '
+# define EXP_PREFIX "declare -x "
+
+# define ENV_HOME_NAME "HOME"
+# define ENV_OLDPWD_NAME "OLDPWD"
+# define ENV_PATH_NAME "PATH"
+# define ENV_PWD_NAME "PWD"
+
+# define ERR_EXP_ARG "not a valid identifier"
+# define ERR_NOHOME "HOME not set"
+# define ERR_UNSET_ARG "not a valid identifier"
 
 typedef enum enum_chartype {
 	CH_UNKNOWN,
@@ -77,13 +87,17 @@ typedef struct s_expanded {
 	struct s_expanded	*next;
 }	t_expanded;
 
+typedef enum e_var_view
+{
+	VAR_ALL,
+	VAR_ENV,
+	VAR_EXP
+} e_var_view;
+
 typedef struct s_env {
-	char	*fullname;
-	char	*key;
-	char	*value;
-	char	*old_fullname;
-	char	*old_value;
-	int		is_new;
+	char		*key;
+	char		*value;
+	e_var_view	var_view;
 }	t_env;
 
 typedef struct s_cmd
@@ -153,23 +167,33 @@ int					lonely_bracket(char *str);
 //built-in
 int					do_echo(char *str);
 int					do_echo_n(char *str);
-int					do_cd(char *str);
 int					do_pwd(void);
-int					do_export(char *str);
+
+//do_cd
+int					do_cd(t_ulist **envp, t_cmd *cmd);
+int					do_cd_home(t_ulist **envp);
+int					do_cd_update_home(t_ulist **envp, t_ulist *obj);
 
 //do_env
 int					do_env(t_ulist **envp, t_cmd *cmd);
-int					do_env_create_env(t_ulist **list, char *str);
-int					do_env_update_env(t_ulist *obj, char *str, int sep_pos);
-int					do_env_update_lst(t_ulist **envp, char **str);
 void				do_env_show(void *content);
 
 //do_unset
-int					do_unset(t_ulist **envp, t_cmd *cmd);
-int					do_unset_update_lst(t_ulist **envp, char **str);
+int	do_unset(t_ulist **envp, t_cmd *cmd);
+int	do_unset_check_str(char *str);
+int     do_unset_update_lst(t_ulist **envp, char **str);
 
 //do_exit
 void				do_exit(int exit_number);
+
+//do_export
+int				do_export(t_ulist **env_lst, t_cmd *cmd);
+int				do_export_create_env(t_ulist **list, char *str);
+t_ulist	*do_export_check_exist(t_ulist **envp, char *str, int sep_pos);
+int				do_export_check_str(char *str);
+int				do_export_update_env(t_ulist *obj, char *str, int sep_pos);
+int				do_export_update_lst(t_ulist **envp, char **str);
+void				do_export_show(void *content);
 
 //execute_command
 int					read_command(t_list *inputs_lst, char **built_ins);
@@ -247,13 +271,14 @@ int					ft_set_sigaction(void);
 void				give_prompt_back(int signum);
 
 //environment list
-void				env_free(void *content);
-t_env				*env_init(char *env_fullname);
-char				*env_init_key(t_env *env, char *fullname);
-char				*env_init_value(t_env *env);
-int					env_lst_set(char **envp, t_ulist **env_lst);
-void				env_lst_show(t_ulist **list);
-void				env_show(void *content);
+void    env_free(void *content);
+t_env   *env_init(char *env_fullname);
+char    *env_init_key(t_env *env, char *fullname);
+int	env_init_value(t_env *env, char *fullname);
+int	env_init_var_view(t_env *env);
+int     env_lst_set(char **envp, t_ulist **env_lst);
+void    env_lst_show(t_ulist **list);
+void    env_show(void *content);
 
 //command list
 void    cmd_close_fd(void *content);

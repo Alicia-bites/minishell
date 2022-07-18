@@ -6,7 +6,7 @@
 /*   By: antho <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 17:39:13 by antho             #+#    #+#             */
-/*   Updated: 2022/06/28 19:59:55 by antho            ###   ########.fr       */
+/*   Updated: 2022/07/18 08:55:18 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,10 @@ void	env_show(void *content)
 	if (!content)
 		return ;
 	env = (t_env *)content;
-	printf("fullname: %s\n", env->fullname);
 	if (env->key)
 		printf("key: %s\n", env->key);
 	if (env->value)
 		printf("value: %s\n", env->value);
-	if (env->old_fullname)
-		printf("old fullname: %s\n", env->old_fullname);
-	if (env->old_value)
-		printf("old value: %s\n", env->old_value);
-	printf("is_new: %d\n", env->is_new);
+	printf("var_view: %d\n", env->var_view);
 	printf("%s\n", SEP_P);
 }

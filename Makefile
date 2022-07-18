@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/18 15:16:59 by amarchan         ###   ########.fr        #
+#    Updated: 2022/07/18 15:35:53 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,10 +32,16 @@ IPATH		:=	includes
 OPATH		:=	obj
 
 SRCS_PATH				:=		srcs
-BUILT_PATH				:=		built-in
-BUILT_ENV_PATH			:=		do_env
-BUILT_UNSET_PATH		:=		do_unset
-ENV_PATH				:=		env
+BUILT_PATH	:=	built-in
+BUILT_CD_PATH	:=	do_cd
+BUILT_ECHO_PATH	:=	do_echo
+BUILT_ENV_PATH	:=	do_env
+BUILT_EXIT_PATH	:=	do_exit
+BUILT_EXPORT_PATH	:=	do_export
+BUILT_PWD_PATH	:=	do_pwd
+BUILT_UNSET_PATH	:=	do_unset
+CMD_PATH	:=	cmd
+ENV_PATH	:=	env
 EXEC_PATH				:=		execute_commands
 INPUT_HANDLER_PATH		:=		input_handler
 LEX_PATH				:=		lexer
@@ -47,21 +53,32 @@ GIVE_CHAR_PATH			:=		give_chartype
 GIVE_TOK_PATH			:=		give_type_to_token
 MAKE_TOK_PATH			:=		make_token
 
-
 RM		:=	rm -rf
 
-BUILT_SRCS	:=	cd.c\
-				echo.c\
-				do_env.c\
-				do_env_create_env.c\
-				do_env_show.c\
-				do_env_update_env.c\
-				do_env_update_lst.c\
-				do_unset.c\
-				do_unset_update_lst.c\
-				exit.c\
-				export.c\
-				pwd.c
+BUILT_CD_SRCS	:=	do_cd.c\
+			do_cd_home.c\
+			do_cd_update_home.c
+
+BUILT_ECHO_SRCS	:=	do_echo.c
+
+BUILT_ENV_SRCS	:=	do_env.c\
+			do_env_show.c
+
+BUILT_EXIT_SRCS	:=	do_exit.c
+
+BUILT_EXPORT_SRCS	:=	do_export.c\
+			do_export_create_env.c\
+			do_export_check_exist.c\
+			do_export_check_str.c\
+			do_export_update_env.c\
+			do_export_update_lst.c\
+			do_export_show.c
+
+BUILT_PWD_SRCS	:=	do_pwd.c
+
+BUILT_UNSET_SRCS	:=	do_unset.c\
+			do_unset_check_str.c\
+			do_unset_update_lst.c\
 
 CMD_SRCS	:=	cmd_close_fd.c\
 			cmd_create_lst.c\
@@ -80,12 +97,13 @@ CMD_SRCS	:=	cmd_close_fd.c\
 			cmd_show.c
 
 ENV_SRCS	:=	env_free.c\
-				env_init.c\
-				env_init_key.c\
-				env_init_value.c\
-				env_lst_set.c\
-				env_lst_show.c\
-				env_show.c
+			env_init.c\
+			env_init_key.c\
+			env_init_value.c\
+			env_init_var_view.c\
+			env_lst_set.c\
+			env_lst_show.c\
+			env_show.c
 
 EXEC_SRCS	:=	execute_command.c\
 				read_command.c
@@ -179,7 +197,15 @@ MAKE_TOK_SRCS	:=	add_token_to_list.c\
 					remove_quotes.c
 
 SRCS		:=	main.c\
-				$(BUILT_SRCS)\
+<<<<<<< HEAD
+				$(BUILT_CD_SRCS)\
+				$(BUILT_ECHO_SRCS)\
+				$(BUILT_ENV_SRCS)\
+				$(BUILT_EXIT_SRCS)\
+				$(BUILT_EXPORT_SRCS)\
+				$(BUILT_PWD_SRCS)\
+				$(BUILT_UNSET_SRCS)\
+				$(CMD_SRCS)\
 				$(ENV_SRCS)\
 				$(EXEC_SRCS)\
 				$(INPUT_HANDLER)\
@@ -197,8 +223,12 @@ DEPS		:=	$(OBJS:.o=.d)
 
 vpath %.h $(IPATH)
 vpath %.c $(SRCS_PATH)\
-	$(SRCS_PATH)/$(BUILT_PATH)\
+	$(SRCS_PATH)/$(BUILT_PATH)/$(BUILT_CD_PATH)\
+	$(SRCS_PATH)/$(BUILT_PATH)/$(BUILT_ECHO_PATH)\
 	$(SRCS_PATH)/$(BUILT_PATH)/$(BUILT_ENV_PATH)\
+	$(SRCS_PATH)/$(BUILT_PATH)/$(BUILT_EXIT_PATH)\
+	$(SRCS_PATH)/$(BUILT_PATH)/$(BUILT_EXPORT_PATH)\
+	$(SRCS_PATH)/$(BUILT_PATH)/$(BUILT_PWD_PATH)\
 	$(SRCS_PATH)/$(BUILT_PATH)/$(BUILT_UNSET_PATH)\
 	$(SRCS_PATH)/$(CMD_PATH)\
 	$(SRCS_PATH)/$(ENV_PATH)\
