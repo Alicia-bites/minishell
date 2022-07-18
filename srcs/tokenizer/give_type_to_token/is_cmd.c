@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 19:29:17 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/15 14:36:51 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/18 17:42:40 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,5 @@ int	is_cmd(t_list **token_list)
 		return (1);
 	if (is_combo_heredoc_when_heredoc_index_zero(token_list))
 		return (1);
-	// if ((redir_token(token_list)
-	// 	|| redir_space_token(token_list))
-	// 	&& (token_redir(token_list))
-	// 	|| token_space_redir(token_list))
-	// 	return (1);
 	return (0);
 }
