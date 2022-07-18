@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 09:47:22 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/15 15:02:18 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/18 10:45:35 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ int	pipe_cmd_dlredir_sep_token(t_list **token_list)
 
 int	start_cmd_dlredir_sep_token(t_list **token_list)
 {
-	if ((*token_list)->prev->prev->prev->prev->prev->index == 0)
+	if ((*token_list)->prev->prev->prev->prev->prev->prev->index == 0)
 	{
-		if ((*token_list)->prev->prev->prev->prev->prev->toktype == TOK_CMD
+		if ((*token_list)->prev->prev->prev->prev->prev->prev->toktype == TOK_CMD
 			&& (*token_list)->prev->prev->prev->prev->prev->toktype == TOK_SPACE
 			&& (*token_list)->prev->prev->prev->prev->toktype == TOK_DL_REDIR
 			&& (*token_list)->prev->prev->prev->toktype == TOK_SPACE
