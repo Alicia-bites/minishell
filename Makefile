@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/18 15:35:53 by abarrier         ###   ########.fr        #
+#    Updated: 2022/07/18 15:38:06 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -124,7 +124,6 @@ LEX_SRCS	:=	lex_brackets.c\
 PARSING_SRCS	:=	count_quotes.c\
 					create_list.c\
 					create_input_list.c \
-					ft_panic.c\
 					handle_unknown_command.c\
 					is_not_clone.c\
 					is_not_empty.c\
@@ -197,7 +196,6 @@ MAKE_TOK_SRCS	:=	add_token_to_list.c\
 					remove_quotes.c
 
 SRCS		:=	main.c\
-<<<<<<< HEAD
 				$(BUILT_CD_SRCS)\
 				$(BUILT_ECHO_SRCS)\
 				$(BUILT_ENV_SRCS)\
