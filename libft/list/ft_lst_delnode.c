@@ -6,12 +6,34 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:05:02 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/18 17:08:42 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/18 18:15:50 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
-#include <stdio.h>
+
+static void	update_index(t_list **next, t_list *obj)
+{
+	t_list	*iterator;
+	
+	iterator = (*next);
+	while ((*next))
+	{
+		(*next)->index = obj->index++;
+		(*next) = (*next)->next;
+	}
+	(*next) = iterator;
+}
+
+static void	join_broken_list(t_list **prev, t_list **next, t_list *obj)
+{
+	(*prev)->next = (*next);
+	if ((*next))
+	{
+		(*next)->prev = (*prev);
+		update_index(&(*next), obj);
+	}
+}
 
 t_list	*ft_lst_delnode(t_list *obj, void (*f)(t_list *))
 {
@@ -26,11 +48,7 @@ t_list	*ft_lst_delnode(t_list *obj, void (*f)(t_list *))
 	prev = obj->prev;
 	next = obj->next;
 	if (prev)
-	{
-		prev->next = next;
-		if (next)
-			next->prev = prev;
-	}
+		join_broken_list(&prev, &next, obj);
 	else if (next)
 		next->prev = NULL;
 	if (f)
