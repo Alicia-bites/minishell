@@ -25,3 +25,5 @@ cmd hello| <<SEP cmd arg arg arg
 echo alicia|< file cmd arg arg arg
 echo alicia |cmd> file arg arg arg
 echo alicia|cmd arg >file arg arg arg
+#############################################################################
+echo alicia > file1 > file2 > file2 hello
