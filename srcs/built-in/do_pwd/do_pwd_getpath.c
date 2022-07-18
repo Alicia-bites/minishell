@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_pwd.c                                           :+:      :+:    :+:   */
+/*   do_pwd_getpath.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/16 18:19:28 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/18 16:13:02 by abarrier         ###   ########.fr       */
+/*   Created: 2022/07/18 16:08:49 by abarrier          #+#    #+#             */
+/*   Updated: 2022/07/18 16:09:48 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	do_pwd(void)
+char	*do_pwd_getpath(void)
 {
 	char	*path;
 
-	path = do_pwd_getpath();
-	if (path)
-	{
-		printf("%s\n", path);
-		free(path);
-	}
-	return (0);
+	path = NULL;
+	path = getcwd(NULL, 0);
+	return (path);
 }
