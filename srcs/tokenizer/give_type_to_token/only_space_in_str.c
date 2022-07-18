@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pre_lexer.c                                        :+:      :+:    :+:   */
+/*   only_space_in_str.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/05 13:52:57 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/18 14:03:58 by amarchan         ###   ########.fr       */
+/*   Created: 2022/07/05 15:44:38 by amarchan          #+#    #+#             */
+/*   Updated: 2022/07/13 14:22:06 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	pre_lexer(char *str, int *err)
+// return 0 if str is only made of space(s)
+// return -1 if str[i] = '\0'
+int	only_space_in_str(char *str)
 {
-	*err = 0;
-	if (lex_quote(str, err) || lex_pipe(str, err) || lex_redir(str, err)
-		|| lex_sym(str, err) || lex_brackets(str, err) || lex_space(str, err))
-		return ((*err));
-	return (0);
+	int	not_space;
+	int	i;
+	
+	not_space = 0;
+	i = 0;
+	if (!str[i])
+		return (-1);
+	while (str[i])
+	{
+		if (!is_char_space(str[i]))
+			not_space++;
+		i++;
+	}
+	return (not_space);
 }

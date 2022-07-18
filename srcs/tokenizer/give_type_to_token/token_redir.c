@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pre_lexer.c                                        :+:      :+:    :+:   */
+/*   token_redir.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/05 13:52:57 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/18 14:03:58 by amarchan         ###   ########.fr       */
+/*   Created: 2022/07/15 09:47:54 by amarchan          #+#    #+#             */
+/*   Updated: 2022/07/15 09:50:43 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	pre_lexer(char *str, int *err)
+//check if token is followed by <, > or >>
+int	token_redir(t_list **token_list)
 {
-	*err = 0;
-	if (lex_quote(str, err) || lex_pipe(str, err) || lex_redir(str, err)
-		|| lex_sym(str, err) || lex_brackets(str, err) || lex_space(str, err))
-		return ((*err));
+	if ((*token_list)->next)
+	{
+		if (((*token_list)->next->toktype == TOK_L_REDIR
+			|| (*token_list)->next->toktype == TOK_R_REDIR
+			|| (*token_list)->next->toktype == TOK_DR_REDIR))
+			return (1);	
+	}
 	return (0);
 }

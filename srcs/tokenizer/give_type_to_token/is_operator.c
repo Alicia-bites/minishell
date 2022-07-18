@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pre_lexer.c                                        :+:      :+:    :+:   */
+/*   is_operator.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/05 13:52:57 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/18 14:03:58 by amarchan         ###   ########.fr       */
+/*   Created: 2022/06/29 14:58:50 by amarchan          #+#    #+#             */
+/*   Updated: 2022/07/15 12:04:29 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	pre_lexer(char *str, int *err)
+e_toktype	is_operator(char *str)
 {
-	*err = 0;
-	if (lex_quote(str, err) || lex_pipe(str, err) || lex_redir(str, err)
-		|| lex_sym(str, err) || lex_brackets(str, err) || lex_space(str, err))
-		return ((*err));
+	if (str)
+	{
+		if (ft_strstr(str, "|"))
+			return (TOK_PIPE);
+		if (ft_strstr(str, "<<"))
+			return (TOK_DL_REDIR);
+		if (ft_strstr(str, ">>"))
+			return (TOK_DR_REDIR);
+		if (ft_strstr(str, "<"))
+			return (TOK_L_REDIR);
+		if (ft_strstr(str, ">"))
+			return (TOK_R_REDIR);
+	}
 	return (0);
 }

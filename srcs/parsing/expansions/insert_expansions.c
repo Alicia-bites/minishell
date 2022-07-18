@@ -6,16 +6,16 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:49:04 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/12 12:30:04 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/12 18:54:04 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static char	*malloc_newstr(int full_size,  t_expanded **expanded_list)
+static char	*malloc_newstr(int full_size, t_expanded **expanded_list)
 {
 	char	*new_str;
-		
+
 	new_str = malloc(sizeof(char) * (full_size + 1));
 	if (!new_str)
 	{
@@ -32,51 +32,55 @@ static void	travel_to_next_str(int *k, char *str)
 	while (ft_isalnum(str[*k]) || str[*k] == '{' || str[*k] == '}')
 	{
 		if (str[*k - 1] == '}' && ft_isalnum(str[*k]))
-			break;
+			break ;
 		(*k)++;
 	}
 }
 
-char	*insert_expansions(int full_size, t_expanded *expanded_list, char *str)
+static void	copy_expanded(char *str, t_expanded **expanded_list,
+	t_cursor *cursor, char *new_str)
 {
-	int		i;
-	int		j;
-	int		k;
-	char	*new_str;
+	int	j;
 
-	// printf("strlen str = %d\n", ft_strlen(str));
-	// printf("strlen expanded = %d\n", ft_strlen(expanded_list->expanded));
-	new_str = malloc_newstr(full_size, &expanded_list);
-	i = 0;
-	j = 0;
-	k = 0;
-	full_size -= count_double(str);
-	while (i < full_size && k < ft_strlen(str))
+	if (cursor->k < ft_strlen(str) -1)
 	{
-		if (k < ft_strlen(str) -1)
+		if (str[cursor->k] == '$' && str[cursor->k + 1] != '"')
 		{
-			if (str[k] == '$' && str[k + 1] != '"')
-			{
-				j = 0;
-				while (expanded_list->expanded[j])
-					new_str[i++] = expanded_list->expanded[j++];
-				expanded_list = expanded_list->next;
-				k++;
-				travel_to_next_str(&k, str);
-			}
+			j = 0;
+			while ((*expanded_list)->expanded[j])
+				new_str[cursor->i++] = (*expanded_list)->expanded[j++];
+			(*expanded_list) = (*expanded_list)->next;
+			cursor->k++;
+			travel_to_next_str(&cursor->k, str);
 		}
-		// printf("k = %d\n", k);
-		if (str[k] != '$' && str[k] != '"')
-			new_str[i++] = str[k++];
-		else if ((str[k] == '$' && str[k + 1] == '"') || str[k] == '"')
-			k++;
 	}
-	// printf("full_size = %d\n", full_size);
-	// // printf("i = %d\n", i);
-	// printf("newstr[i - 2] = %c\n", new_str[i - 2]);
-	// printf("newstr[i - 1] = %c\n", new_str[i - 1]);
-	// printf("newstr[i] = %c\n", new_str[i]);
-	if (new_str[i - 1] != '\0')
-		new_str[i] = '\0';
+}
+
+char	*insert_expansions(int full_size, t_expanded *expanded_list, char *str,
+	int lb)
+{
+	t_cursor	cursor;
+	int			j;
+	char		*new_str;
+
+	new_str = malloc_newstr(full_size, &expanded_list);
+	cursor.i = 0;
+	cursor.k = 0;
+	full_size -= count_double(str);
+	while (cursor.i < full_size && cursor.k < ft_strlen(str))
+	{
+		copy_expanded(str, &expanded_list, &cursor, new_str);
+		if (str[cursor.k] && str[cursor.k] != '$' && str[cursor.k] != '"')
+			new_str[cursor.i++] = str[cursor.k++];
+		else if ((str[cursor.k] == '$' && str[cursor.k + 1] == '"')
+			|| str[cursor.k] == '"')
+			cursor.k++;
+	}
+	if (lb)
+	{
+		new_str[cursor.i] = '}';
+		cursor.i++;		
+	}
+	new_str[cursor.i] = '\0';
 	return (new_str);
 }

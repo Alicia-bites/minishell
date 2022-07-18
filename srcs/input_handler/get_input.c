@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pre_lexer.c                                        :+:      :+:    :+:   */
+/*   get_input.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/05 13:52:57 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/18 14:03:58 by amarchan         ###   ########.fr       */
+/*   Created: 2022/07/13 16:25:39 by amarchan          #+#    #+#             */
+/*   Updated: 2022/07/13 16:25:41 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	pre_lexer(char *str, int *err)
+int	get_input(int *err)
 {
-	*err = 0;
-	if (lex_quote(str, err) || lex_pipe(str, err) || lex_redir(str, err)
-		|| lex_sym(str, err) || lex_brackets(str, err) || lex_space(str, err))
-		return ((*err));
-	return (0);
+	char	*str;
+	t_list	*token_list;
+	
+	token_list = NULL;
+	str = NULL;
+	while (42)
+	{
+		read_line(&str);
+		if (!str)
+			exit_minishell(&token_list, err);
+		if (str[0] != 0)
+			handle_str(&str, &token_list, err);
+	}
+	return (*err);
 }

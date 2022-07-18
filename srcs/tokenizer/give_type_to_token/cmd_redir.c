@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pre_lexer.c                                        :+:      :+:    :+:   */
+/*   cmd_redir.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/05 13:52:57 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/18 14:03:58 by amarchan         ###   ########.fr       */
+/*   Created: 2022/07/15 09:45:51 by amarchan          #+#    #+#             */
+/*   Updated: 2022/07/15 09:48:17 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	pre_lexer(char *str, int *err)
+int	cmd_redir(t_list **token_list)
 {
-	*err = 0;
-	if (lex_quote(str, err) || lex_pipe(str, err) || lex_redir(str, err)
-		|| lex_sym(str, err) || lex_brackets(str, err) || lex_space(str, err))
-		return ((*err));
+	if ((*token_list)->index == 0 || following_pipe(token_list))
+	{
+		if (!only_space_in_str((*token_list)->next->token)
+			&& is_operator((*token_list)->next->next->token) == TOK_R_REDIR
+			|| is_operator((*token_list)->next->next->token) == TOK_L_REDIR
+			|| is_operator((*token_list)->next->next->token) == TOK_DL_REDIR)
+		return (1);
+	}
 	return (0);
 }

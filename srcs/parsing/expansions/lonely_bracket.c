@@ -1,22 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pre_lexer.c                                        :+:      :+:    :+:   */
+/*   lonely_bracket.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/05 13:52:57 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/18 14:03:58 by amarchan         ###   ########.fr       */
+/*   Created: 2022/07/12 18:56:59 by amarchan          #+#    #+#             */
+/*   Updated: 2022/07/12 18:57:15 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	pre_lexer(char *str, int *err)
+int	lonely_bracket(char *str)
 {
-	*err = 0;
-	if (lex_quote(str, err) || lex_pipe(str, err) || lex_redir(str, err)
-		|| lex_sym(str, err) || lex_brackets(str, err) || lex_space(str, err))
-		return ((*err));
+	int	i;
+	int	r_bracket;
+	int	l_bracket;
+
+	i = 0;
+	r_bracket = 0;
+	l_bracket = 0;
+	while (str[i])
+	{
+		if (str[i] == '{')
+			l_bracket++;
+		if (str[i] == '}')
+			r_bracket++;
+		i++;
+	}
+	if (l_bracket < r_bracket)
+		return (1);
 	return (0);
 }

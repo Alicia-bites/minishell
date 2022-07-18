@@ -1,3 +1,28 @@
 TOKENIZER
-	si que des espaces, juste redoner le prompt
-	si "" '' ou " " ou ' ', consider comme une commande introuvable
+	creer un TOK_VAR pour 'antho=' (voir carnet)
+
+NORME
+	normer les fichiers
+
+EXPANSION
+	un pipe dans une expansion n'est pas un operateur (ex = 
+	export VAR=|
+	echo alicia > test
+	cat test $VAR wc -l
+	--> error)
+
+	attention a la tokenization du chevron aussi, pas un operateur
+	export VAR="< test"
+	export VAR=< test
+
+
+SIGNAL
+	voir avec Yohan pour la boucle et le ctrl-D
+	foutre tout ce qui a ete malloc dans une variable globale pour pouvoir
+		nettoyer le tout quand ctrl-C.
+	qu'est-ce que cela signifie pour les signaux quand on n'est pas en mode
+		interactif ?
+	
+PIPE FIN DE LIGNE ?
+	| + fin de LIGNE
+	| + espace + fin de ligne

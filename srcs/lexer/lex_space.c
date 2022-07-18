@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_operator.c                                      :+:      :+:    :+:   */
+/*   lex_space.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/29 14:58:50 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/12 13:54:04 by amarchan         ###   ########.fr       */
+/*   Created: 2022/07/18 14:03:48 by amarchan          #+#    #+#             */
+/*   Updated: 2022/07/18 14:03:53 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-e_toktype	is_operator(char *str)
+int	lex_space(char *str, int *err)
 {
-	if (str)
-	{
-		if (ft_strstr(str, "|"))
-			return (TOK_PIPE);
-		if (ft_strstr(str, "<<"))
-			return (TOK_DL_REDIR);
-		if (ft_strstr(str, ">>"))
-			return (TOK_DR_REDIR);
-		if (ft_strstr(str, "<"))
-			return (TOK_L_REDIR);
-		if (ft_strstr(str, ">"))
-			return (TOK_R_REDIR);
-
-	}
+	if (ft_isspace(str[0]) && str[1] == '|'
+		|| (str[ft_strlen(str) - 2]) == '|' && ft_isspace(str[ft_strlen(str) - 1]))
+		{
+			*err = MISPLACED_PIPE;
+			printf("smbash: syntax error. Please check pipes.\n");
+			return (*err);
+		}
 	return (0);
 }
