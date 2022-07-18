@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/18 13:23:31 by abarrier         ###   ########.fr        #
+#    Updated: 2022/07/18 15:23:21 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,9 @@ TOK_PATH	:=	tokenizer
 
 RM		:=	rm -rf
 
-BUILT_CD_SRCS	:=	do_cd.c
+BUILT_CD_SRCS	:=	do_cd.c\
+			do_cd_home.c\
+			do_cd_update_home.c
 
 BUILT_ECHO_SRCS	:=	do_echo.c
 

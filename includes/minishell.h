@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/18 13:23:07 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/18 15:13:13 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,19 @@
 # define DOUBLE_PIPE -48
 # define MISSING_BRACKET -49
 	
+# define ARG_SEP ' '
+# define DIR_SEP "/"
 # define ENV_SEP '='
 # define ENV_FIELD_SEP ':'
-# define ENV_PATH_NAME "PATH="
 # define EXP_PREFIX "declare -x "
-# define DIR_SEP "/"
-# define ARG_SEP ' '
+
+# define ENV_HOME_NAME "HOME"
+# define ENV_OLDPWD_NAME "OLDPWD"
+# define ENV_PATH_NAME "PATH"
+# define ENV_PWD_NAME "PWD"
 
 # define ERR_EXP_ARG "not a valid identifier"
+# define ERR_NOHOME "HOME not set"
 # define ERR_UNSET_ARG "not a valid identifier"
 
 typedef enum e_chartype {
@@ -147,8 +152,12 @@ void				ft_lstclear_dollar(t_expanded **lst);
 //built-in
 int					do_echo(char *str);
 int					do_echo_n(char *str);
-int					do_cd(char *str);
 int					do_pwd(void);
+
+//do_cd
+int					do_cd(t_ulist **envp, t_cmd *cmd);
+int					do_cd_home(t_ulist **envp);
+int					do_cd_update_home(t_ulist **envp, t_ulist *obj);
 
 //do_env
 int					do_env(t_ulist **envp, t_cmd *cmd);
