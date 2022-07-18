@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 08:05:01 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/15 15:06:09 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/18 09:06:23 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,12 @@ char	*cmd_loop_envp_str(char *cmd, t_ulist **envp_lst, char *s)
 	while (envp_node)
 	{
 		envp = (t_env *)envp_node->content;
-		//printf("**%s** envp ptr = %p\n)", __FILE__, envp);
-		//printf("**%s** envp ptr = %p\t envp->fullname = %s\n)", __FILE__, envp, envp->fullname);
-		if (ft_strncmp(envp->fullname, s, ft_strlen(s)) == 0)
+		if (ft_strcmp(envp->key, s) == 0)
 		{
 			if (!envp->value)
 				envline = ft_split("", ENV_FIELD_SEP);
 			else
 				envline = ft_split(envp->value, ENV_FIELD_SEP);
-
 			if (!envline)
 			{
 				ft_panic(-1, ERR_NOOBJ);

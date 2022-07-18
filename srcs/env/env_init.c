@@ -6,7 +6,7 @@
 /*   By: antho <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 17:29:38 by antho             #+#    #+#             */
-/*   Updated: 2022/07/15 14:28:39 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/18 08:55:05 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ t_env	*env_init(char *env_fullname)
 		ft_panic(-1, ERR_MALLOC);
 		return (NULL);
 	}
-	env->fullname = env_fullname;
 	env->key = NULL;
 	env->value = NULL;
 	if (!env_init_key(env, env_fullname))
@@ -31,7 +30,7 @@ t_env	*env_init(char *env_fullname)
 		free(env);
 		return (NULL);
 	}
-	if (env_init_value(env) != 0)
+	if (env_init_value(env, env_fullname) != 0)
 	{
 		free(env->key);
 		free(env);
