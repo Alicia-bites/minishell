@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/30 09:51:13 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/11 13:50:48 by abarrier         ###   ########.fr        #
+#    Updated: 2022/07/11 18:14:29 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,6 +62,7 @@ LIST_SRCS	:=	ft_lst_append.c\
 			ft_lstsize.c
 
 MEM_SRCS	:=	ft_calloc.c\
+			ft_free_ptrptr_str.c\
 			ft_memchr.c\
 			ft_memcmp.c\
 			ft_memcpy.c\

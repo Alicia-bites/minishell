@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/18 14:04:27 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/18 15:15:07 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,9 @@ typedef struct s_env {
 typedef struct s_cmd
 {
 	t_ulist	**env_lst;
+	e_toktype	toktype;
 	char	*arg;
+	size_t	n_arg;
 	char	**fullcmd;
 	char	*fullpath;
 	int		fd_r;
@@ -252,5 +254,22 @@ char				*env_init_value(t_env *env);
 int					env_lst_set(char **envp, t_ulist **env_lst);
 void				env_lst_show(t_ulist **list);
 void				env_show(void *content);
+
+//command list
+void    cmd_close_fd(void *content);
+int     cmd_create_lst(t_list *tok, t_ulist **env_lst, t_ulist **cmd_lst);
+void    cmd_free(void *content);
+char	*cmd_getvalidpath(t_cmd *cmd);
+char	*cmd_getvalidpath_null(t_cmd *cmd);
+t_cmd   *cmd_init(t_ulist **env_lst);
+t_list	*cmd_init_prop(t_list *tok, t_cmd *cmd);
+t_list	*cmd_init_prop_fullcmd(t_list *tok, t_cmd *cmd);
+t_list	*cmd_init_prop_fullcmd_null(t_list *tok, t_cmd *cmd);
+size_t	cmd_init_prop_n_arg(t_list *tok, t_cmd *cmd);
+char	*cmd_loop_envline(char *cmd, char **envline);
+char	*cmd_loop_envp(char *cmd, t_ulist **envp_lst);
+char	*cmd_loop_envp_str(char *cmd, t_ulist **envp_lst, char *s);
+char	*cmd_setpath(char *cmd, char *env);
+void	cmd_show(void *content);
 
 #endif

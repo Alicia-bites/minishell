@@ -15,3 +15,6 @@ echo hello<
 echo hello>
 <echo hello
 >echo hello
+
+ls > file1 > file2 > file3
+ls > file1 > file2 >> file2

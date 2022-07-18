@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/18 14:05:05 by amarchan         ###   ########.fr        #
+#    Updated: 2022/07/18 15:16:59 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,6 +62,22 @@ BUILT_SRCS	:=	cd.c\
 				exit.c\
 				export.c\
 				pwd.c
+
+CMD_SRCS	:=	cmd_close_fd.c\
+			cmd_create_lst.c\
+			cmd_free.c\
+			cmd_getvalidpath.c\
+			cmd_getvalidpath_null.c\
+			cmd_init.c\
+			cmd_init_prop.c\
+			cmd_init_prop_fullcmd.c\
+			cmd_init_prop_fullcmd_null.c\
+			cmd_init_prop_n_arg.c\
+			cmd_loop_envline.c\
+			cmd_loop_envp.c\
+			cmd_loop_envp_str.c\
+			cmd_setpath.c\
+			cmd_show.c
 
 ENV_SRCS	:=	env_free.c\
 				env_init.c\
@@ -184,6 +200,7 @@ vpath %.c $(SRCS_PATH)\
 	$(SRCS_PATH)/$(BUILT_PATH)\
 	$(SRCS_PATH)/$(BUILT_PATH)/$(BUILT_ENV_PATH)\
 	$(SRCS_PATH)/$(BUILT_PATH)/$(BUILT_UNSET_PATH)\
+	$(SRCS_PATH)/$(CMD_PATH)\
 	$(SRCS_PATH)/$(ENV_PATH)\
 	$(SRCS_PATH)/$(EXEC_PATH)\
 	$(SRCS_PATH)/$(LEX_PATH)\
