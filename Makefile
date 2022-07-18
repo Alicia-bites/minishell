@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/18 15:16:59 by amarchan         ###   ########.fr        #
+#    Updated: 2022/07/18 17:20:53 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -134,6 +134,7 @@ SIG_SRCS	:=	ft_set_sigaction.c\
 				give_prompt_back.c
 
 TOK_SRCS	:=	tokenizer.c\
+				delete_spaces.c\
 				
 GIVE_CHAR_SRCS	:=	get_chartype.c\
 					is_char_space.c\
