@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/19 16:16:16 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/19 18:30:08 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,7 @@ void				ft_lstclear_back_dollar(t_expanded **lst);
 void				ft_lstclear_dollar(t_expanded **lst);
 char				*expand_dollar(char *str);
 int					lonely_bracket(char *str);
-void				check_if_operator(char *str);
+void				check_if_operator(char *str, char *new_str);
 
 //built-in
 int					do_echo(char *str);

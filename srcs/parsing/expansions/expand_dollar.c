@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:47:06 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/19 15:32:47 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/19 17:52:50 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ char	*expand_dollar(char *str)
 	new_str = insert_expansions(full_size, expanded_list, str, lb);
 	ft_lstclear_dollar(&expanded_list);
 	ft_lstclear_back_dollar(&expanded_list);
-	check_if_operator(new_str);
+	// check_if_operator(str, new_str);
 	return (new_str);
 }
