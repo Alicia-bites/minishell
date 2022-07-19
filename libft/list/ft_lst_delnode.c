@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:05:02 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/18 18:15:50 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/19 16:10:07 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	join_broken_list(t_list **prev, t_list **next, t_list *obj)
 	if ((*next))
 	{
 		(*next)->prev = (*prev);
-		update_index(&(*next), obj);
+		update_index(next, obj);
 	}
 }
 
@@ -50,7 +50,11 @@ t_list	*ft_lst_delnode(t_list *obj, void (*f)(t_list *))
 	if (prev)
 		join_broken_list(&prev, &next, obj);
 	else if (next)
+	{
+		next->index = 0;
+		update_index(&next, obj);
 		next->prev = NULL;
+	}
 	if (f)
 		(f)(obj);
 	free(obj);
