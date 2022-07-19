@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:58:50 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/19 16:36:40 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/19 18:13:12 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,8 @@
 e_toktype	is_operator(char *str)
 {
 	extern t_global	global;
-
 	if (str)
 	{
-		if (global.ignore_op == 1)
-		{
-			global.ignore_op = 0;
-			return (0);			
-		}
 		if (ft_strstr(str, "|"))
 		{
 			global.seen_tok_cmd = 0;
