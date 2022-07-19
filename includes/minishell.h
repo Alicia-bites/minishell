@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/19 14:41:00 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/19 16:16:16 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct s_chartype {
 typedef struct s_global {
 	int			readline;
 	int			seen_tok_cmd;
+	int			ignore_op;
 }	t_global;
 
 typedef struct s_cursor {
@@ -135,13 +136,13 @@ int					count_double(char *str);
 int					count_single(char *str);
 
 //lexer
-int					pre_lexer(char *str, int *err);
 int					lex_pipe(char *str, int *err);
 int					lex_quote(char *str, int *err);
 int					lex_redir(char *str, int *err);
 int					lex_sym(char *str, int *err);
 int					lex_brackets(char *str, int *err);
 int					lex_space(char *str, int *err);
+int					lexer(char *str, int *err);
 
 //expansions
 char				*expand_dollar(char *str);
@@ -162,6 +163,7 @@ void				ft_lstclear_back_dollar(t_expanded **lst);
 void				ft_lstclear_dollar(t_expanded **lst);
 char				*expand_dollar(char *str);
 int					lonely_bracket(char *str);
+void				check_if_operator(char *str);
 
 //built-in
 int					do_echo(char *str);

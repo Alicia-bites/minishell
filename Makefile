@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/18 18:47:36 by amarchan         ###   ########.fr        #
+#    Updated: 2022/07/19 16:16:32 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -119,7 +119,7 @@ LEX_SRCS	:=	lex_brackets.c\
 				lex_redir.c\
 				lex_space.c\
 				lex_sym.c\
-				pre_lexer.c
+				lexer.c
 
 PARSING_SRCS	:=	count_quotes.c\
 					create_list.c\
@@ -133,6 +133,7 @@ PARSING_SRCS	:=	count_quotes.c\
 					store_built_ins.c
 
 EXP_SRCS	:=	create_dollar_list.c\
+				check_if_operator.c\
 				expand_dollar.c\
 				find_expansions.c\
 				ft_lstadd_back_dollar.c\

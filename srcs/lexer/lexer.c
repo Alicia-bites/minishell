@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/16 10:49:49 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/19 15:34:08 by amarchan         ###   ########.fr       */
+/*   Created: 2022/07/19 15:45:13 by amarchan          #+#    #+#             */
+/*   Updated: 2022/07/19 15:45:17 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_parse(char *str, t_list **token_list, int *err)
+int	lexer(char *str, int *err)
 {
-	char			*tmp;
-	extern t_global	global;
-	t_chartype		*input_list;
-
-	tmp = str;
-	input_list = NULL;
-	global.ignore_op = 0;
-	if (lexer(tmp, err))
-		return (*err);
-	if (ft_strstr(tmp, "$"))
-		tmp = expand_dollar(str);
-	create_input_list(&input_list, tmp);
-	if (ft_strcmp(str, tmp))
-		free(tmp);
-	tokenize(input_list, token_list);
-	free(input_list);
-	return (*err);
+	*err = 0;
+	if (lex_quote(str, err) || lex_pipe(str, err) || lex_redir(str, err)
+		|| lex_sym(str, err) || lex_brackets(str, err) || lex_space(str, err))
+		return ((*err));
+	return (0);
 }
