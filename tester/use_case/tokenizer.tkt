@@ -26,5 +26,9 @@ echo alicia|< file cmd arg arg arg
 echo alicia |cmd> file arg arg arg
 echo alicia|cmd arg >file arg arg arg
 #
-echo alicia > file1 > file2 > file2 hello
-> file1 > file2 echo alicia
+cmd > file1 > file2 > file3 arg
+cmd arg arg > file1 arg > file2 > file2 arg arg
+> file1 > file2 cmd arg arg arg
+cmd arg > file arg > file arg arg
+cmd arg | cmd > file1 > file2 > file3 arg
+cmd arg | cmd arg > file arg > file arg arg
