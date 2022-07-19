@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/18 17:33:15 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/19 14:50:03 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct s_chartype {
 
 typedef struct s_global {
 	int			readline;
+	int			seen_tok_cmd;
 }	t_global;
 
 typedef struct s_cursor {
@@ -204,6 +205,7 @@ int					execute_command(char *str, int i);
 
 //tokenizer
 void				tokenize(t_chartype *input_list, t_list **token_list);
+void				delete_spaces(t_list **token_list);
 
 //give_chartype
 int					get_chartype(t_chartype **input_list);

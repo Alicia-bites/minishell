@@ -1,14 +1,49 @@
 < file cmd arg
 < file1 cat -e
+#
 >> file cmd
 cmd >> file
+#
 > file cmd arg arg arg
 cmd > file arg arg arg
+#
 echo alicia | < file cmd arg arg arg
 echo alicia | cmd > file arg arg arg
 echo alicia | cmd arg > file arg arg arg
+#
 cmd << SEP arg arg arg
 cmd hello | cmd << SEP arg arg arg
 << SEP cmd arg arg arg
 cmd hello | << SEP cmd arg arg arg
+#
 cmd hello|<<SEP cmd arg arg arg
+echo alicia|<file cmd arg arg arg
+echo alicia|cmd> file arg arg arg
+echo alicia|cmd arg>file arg arg arg
+#
+cmd hello| <<SEP cmd arg arg arg
+echo alicia|< file cmd arg arg arg
+echo alicia |cmd> file arg arg arg
+echo alicia|cmd arg >file arg arg arg
+#
+cmd > file1 > file2 > file3 arg
+cmd arg arg > file1 arg > file2 > file2 arg arg
+> file1 > file2 cmd arg arg arg
+cmd arg > file arg > file arg arg
+cmd arg | cmd > file1 > file2 > file3 arg
+cmd arg | cmd arg > file arg > file arg arg
+cmd arg | cmd < file < file arg
+cmd arg | < file < file cmd arg
+echo arg | echo < file < file arg
+echo arg | cmd < file < file arg
+echo arg | < file < file cmd arg
+echo arg | < file < file echo arg
+echo arg | echo < file < file arg
+#
+< file < file echo arg
+echo arg < file < file arg
+#
+cmd arg << SEP << SEP arg
+<< SEP << SEP cmd arg
+<< SEP << SEP cmd arg
+<< SEP << SEP cmd arg

@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 09:47:37 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/15 14:43:43 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/18 17:22:48 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,12 @@
 
 static int	cmd_after_SEP(t_list **token_list)
 {
-	if ((*token_list)->index >= 4)
+	if ((*token_list)->index >= 2)
 	{
-		if ((*token_list)->prev->prev->prev->prev->index != 0)
+		if ((*token_list)->prev->prev->index != 0)
 		{
-			if ((*token_list)->prev->prev->prev->prev->toktype == TOK_DL_REDIR
-				&& ((*token_list)->prev->prev->prev->toktype == TOK_SPACE)
-				&& ((*token_list)->prev->prev->toktype == TOK_HERESEP)
-				&& ((*token_list)->prev->toktype == TOK_SPACE))
+			if ((*token_list)->prev->prev->toktype == TOK_DL_REDIR
+				&& (*token_list)->prev->toktype == TOK_HERESEP)
 					return (1);
 		}
 	}

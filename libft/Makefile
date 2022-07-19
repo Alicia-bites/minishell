@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/30 09:51:13 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/11 18:14:29 by abarrier         ###   ########.fr        #
+#    Updated: 2022/07/18 16:20:20 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,7 @@ LIST_SRCS	:=	ft_lst_append.c\
 			ft_lstadd_front.c\
 			ft_lstclear.c\
 			ft_lstdelone.c\
+			ft_lst_delnode.c\
 			ft_lstiter.c\
 			ft_lstlast.c\
 			ft_lstnew.c\
