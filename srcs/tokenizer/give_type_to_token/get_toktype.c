@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:58:10 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/19 13:55:50 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/19 18:20:13 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@ void	get_toktype(t_list **token_list)
 {
 	t_list	*it;
 	extern t_global	global;
+	static int	tmp;
 	
 	global.seen_tok_cmd = 0;
 	it = *token_list;
+	tmp = global.ignore_op;
 	while (*token_list)
 	{
 		if (is_built_in(token_list))
@@ -36,7 +38,10 @@ void	get_toktype(t_list **token_list)
 		else if (is_argument(token_list))
 			NULL;
 		else if (is_cmd(token_list))
-			(*token_list)->toktype = TOK_CMD;
+		{
+			global.seen_tok_cmd = 1;
+			(*token_list)->toktype = TOK_CMD;			
+		}
 		if (*token_list)
 			*token_list = (*token_list)->next;
 	}
