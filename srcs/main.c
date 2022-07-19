@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:17:17 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/18 18:11:46 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/19 15:05:00 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,9 @@ static void	antho_test(t_ulist **env_lst)
 
 int	main(int argc, char **argv, char **envp)
 {
-//	int	err;
+	int	err;
 
-//	err = 0;
-//	get_input(&err, NULL);
+	err = 0;
  	t_ulist	**env_lst;
 
 	if (ft_set_sigaction() == -1)
@@ -99,9 +98,10 @@ int	main(int argc, char **argv, char **envp)
  		ft_lst_free(env_lst, &env_free);
  		return (2);
  	}
- 	env_lst_show(env_lst);
-	antho_test(env_lst);
- 	env_lst_show(env_lst);
+// 	env_lst_show(env_lst);
+//	antho_test(env_lst);
+// 	env_lst_show(env_lst);
+	get_input(&err, env_lst);
  	ft_lst_free(env_lst, &env_free);
 	return (0);
 }
