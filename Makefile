@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/19 14:50:22 by abarrier         ###   ########.fr        #
+#    Updated: 2022/07/19 16:21:21 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ BUILT_UNSET_PATH	:=	do_unset
 CMD_PATH	:=	cmd
 ENV_PATH	:=	env
 EXEC_PATH				:=		execute_commands
+FD_PATH		:=	fd
 INPUT_HANDLER_PATH		:=		input_handler
 LEX_PATH				:=		lexer
 PARSING_PATH			:=		parsing
@@ -109,6 +110,9 @@ ENV_SRCS	:=	env_free.c\
 
 EXEC_SRCS	:=	execute_command.c\
 				read_command.c
+
+FD_SRCS		:=	fd_access.c\
+			fd_infile.c
 
 INPUT_HANDLER	:=	exit_minishell.c\
 					get_input.c\
@@ -209,6 +213,7 @@ SRCS		:=	main.c\
 				$(CMD_SRCS)\
 				$(ENV_SRCS)\
 				$(EXEC_SRCS)\
+				$(FD_SRCS)\
 				$(INPUT_HANDLER)\
 				$(LEX_SRCS)\
 				$(PARSING_SRCS)\
@@ -234,6 +239,7 @@ vpath %.c $(SRCS_PATH)\
 	$(SRCS_PATH)/$(CMD_PATH)\
 	$(SRCS_PATH)/$(ENV_PATH)\
 	$(SRCS_PATH)/$(EXEC_PATH)\
+	$(SRCS_PATH)/$(FD_PATH)\
 	$(SRCS_PATH)/$(LEX_PATH)\
 	$(SRCS_PATH)/$(INPUT_HANDLER_PATH)\
 	$(SRCS_PATH)/$(PARSING_PATH)\

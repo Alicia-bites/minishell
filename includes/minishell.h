@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/19 15:30:04 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/19 16:23:59 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <signal.h>
 # include <stdint.h>
 # include <sys/types.h>
+# include <fcntl.h>
 
 # include "libft.h"
 
@@ -95,6 +96,14 @@ typedef enum e_var_view
 	VAR_ENV,
 	VAR_EXP
 } 	t_var_view;
+
+typedef enum e_fd_access
+{
+	ACCESS_UNDEFINED,
+	ACCESS_X,
+	ACCESS_W,
+	ACCESS_R
+}	t_fd_access;
 
 typedef struct s_env {
 	char		*key;
@@ -301,5 +310,9 @@ char	*cmd_loop_envp(char *cmd, t_ulist **envp_lst);
 char	*cmd_loop_envp_str(char *cmd, t_ulist **envp_lst, char *s);
 char	*cmd_setpath(char *cmd, char *env);
 void	cmd_show(void *content);
+
+//file_descriptor
+int	fd_access(char *fd, int mode);
+int	fd_infile(t_ulist *obj, char *fd);
 
 #endif
