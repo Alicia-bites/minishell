@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:05:02 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/19 16:10:07 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/19 18:42:27 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	update_index(t_list **next, t_list *obj)
 {
 	t_list	*iterator;
-	
+
 	iterator = (*next);
 	while ((*next))
 	{
