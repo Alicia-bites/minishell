@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 09:47:14 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/19 13:51:20 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/19 18:23:09 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,11 @@ int	is_argument(t_list **token_list)
 		(*token_list)->toktype = TOK_ARG;
 	if (following_file_or_sep(token_list) && global.seen_tok_cmd)
 		(*token_list)->toktype = TOK_ARG;
-	else if (following_file_or_sep(token_list))
+	else if (following_file_or_sep(token_list) && !global.seen_tok_cmd)
+	{
+		global.seen_tok_cmd = 1;
 		(*token_list)->toktype = TOK_CMD;
+	}
 	if ((*token_list)->toktype == TOK_ARG)
 	{
 		while (*token_list && !is_operator((*token_list)->token))

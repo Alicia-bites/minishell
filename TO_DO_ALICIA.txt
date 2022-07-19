@@ -1,6 +1,5 @@
 TOKENIZER
-	creer un TOK_VAR pour 'antho=' (voir carnet)
-	--> verifier comportement avec un dollar en argument
+	 cmd arg | < file < file cmd arg
 
 	(cree par Antho)
 	commande: < file1 cat file2 file3 > file4 >> file5 file6

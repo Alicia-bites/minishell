@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 14:06:35 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/18 17:39:32 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/19 18:04:06 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	combo_is_at_the_beggining(t_list **token_list)
 {
-	if ((*token_list)->prev->prev->prev->index == 0)
+	if ((*token_list)->prev->prev->index == 0)
 	{
 		if (((*token_list)->prev->prev->toktype == TOK_L_REDIR
 			|| (*token_list)->prev->prev->toktype == TOK_R_REDIR
