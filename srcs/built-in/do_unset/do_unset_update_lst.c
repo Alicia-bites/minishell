@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 10:15:48 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/11 10:40:43 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/18 13:19:41 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,24 @@
 
 int	do_unset_update_lst(t_ulist **envp, char **str)
 {
-	int	i;
 	t_ulist	*obj;
-	t_env	*env;
-	int	updated;
+	int		i;
+	int		sep_pos;
 
-	i = 0;
 	obj = NULL;
-	env = NULL;
+	i = 0;
+	sep_pos = -1;
 	while (str[i])
 	{
-		obj = *envp;
-		updated = 0;
-		while (obj && updated == 0)
+		if (do_unset_check_str(str[i]) == 0)
 		{
-			env = (t_env *)obj->content;
-			if (ft_strncmp(env->key, str[i], ft_strlen(str[i])) == 0) // env->key = PATH && str[i]= "PATH" ==> res = 0
+			sep_pos = ft_index((const char *)str[i], ENV_SEP);
+			obj = do_export_check_exist(envp, str[i], sep_pos);
+			if (obj)
 			{
 				if (ft_lst_delbyobj(obj, &env_free) == NULL)
-					return (2);
-				else
-					updated = 1;
+					return (1);
 			}
-			obj = obj->next;
 		}
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 15:17:45 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/18 16:19:16 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/18 18:47:09 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef enum e_toktype {
 	TOK_BN,
 	TOK_FILE,
 	TOK_HERESEP,
-} e_toktype;
+}	t_toktype;
 
 typedef struct s_ulist
 {
@@ -47,7 +47,7 @@ typedef struct s_ulist
 typedef struct s_list
 {
 	int				index;
-	e_toktype		toktype;
+	t_toktype		toktype;
 	char			*token;
 	struct s_list	*prev;
 	struct s_list	*next;
@@ -63,7 +63,7 @@ t_ulist	*ft_lst_last(t_ulist *lst);
 t_ulist	*ft_lst_new(void *content);
 size_t	ft_lst_size(t_ulist **lst);
 
-t_list	*ft_lstnew(char *str, int i, e_toktype toktype);
+t_list	*ft_lstnew(char *str, int i, t_toktype toktype);
 void	ft_lstadd_front(t_list **alst, t_list *new);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);

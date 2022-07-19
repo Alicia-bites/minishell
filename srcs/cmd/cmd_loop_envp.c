@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 08:05:01 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/12 16:49:07 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/15 15:06:22 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,11 @@ char	*cmd_loop_envp(char *cmd, t_ulist **envp_lst)
 	envline = NULL;
 	while (envp_node)
 	{
-		envp = (t_env *)envp_node;
-		envline = ft_split(ft_strchr(envp->fullname, ENV_SEP) + 1, ENV_FIELD_SEP);
+		envp = (t_env *)envp_node->content;
+		if (!envp->value)
+			envline = ft_split("", ENV_FIELD_SEP);
+		else
+			envline = ft_split(envp->value, ENV_FIELD_SEP);
 		if (!envline)
 		{
 			ft_panic(-1, ERR_NOOBJ);

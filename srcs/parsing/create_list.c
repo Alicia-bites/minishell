@@ -6,14 +6,14 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 18:09:02 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/23 10:30:34 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/18 15:48:20 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 // Create a linked list of inputs with indexes
-t_list	*create_list(char *str, int i, e_toktype toktype)
+t_list	*create_list(char *str, int i, t_toktype toktype)
 {
 	static t_list			*lst;
 	t_list					*new;

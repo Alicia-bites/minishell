@@ -6,13 +6,13 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:58:50 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/19 14:25:27 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/19 14:40:27 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-e_toktype	is_operator(char *str)
+t_toktype	is_operator(char *str)
 {
 	extern t_global	global;
 

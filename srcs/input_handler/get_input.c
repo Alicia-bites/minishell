@@ -6,16 +6,17 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 16:25:39 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/13 16:25:41 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/18 15:47:05 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	get_input(int *err)
+int	get_input(int *err, t_ulist **envp)
 {
 	char	*str;
 	t_list	*token_list;
+	(void)envp;
 	
 	token_list = NULL;
 	str = NULL;
