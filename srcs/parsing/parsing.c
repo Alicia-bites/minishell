@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:49:49 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/13 16:11:19 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/19 15:07:13 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ int	ft_parse(char *str, t_list **token_list, int *err)
 		return (*err);
 	if (ft_strstr(tmp, "$"))
 		tmp = expand_dollar(str);
-	if (pre_lexer(tmp, err))
-		return (*err);
 	create_input_list(&input_list, tmp);
 	if (ft_strcmp(str, tmp))
 		free(tmp);
