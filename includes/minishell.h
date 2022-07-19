@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/19 14:50:03 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/19 15:30:04 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ typedef struct s_cmd
 int					get_input(int *err, t_ulist **envp);
 void				read_line(char **str);
 void				exit_minishell(t_list **token_list, int *err);
-void				handle_str(char **str, t_list **token_list, int *err);
+void				handle_str(char **str, t_list **token_list, int *err, t_ulist **envp);
 
 //parsing
 int					ft_parse(char *str, t_list **token_list, int *err);
