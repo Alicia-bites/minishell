@@ -2,6 +2,30 @@ TOKENIZER
 	creer un TOK_VAR pour 'antho=' (voir carnet)
 	--> verifier comportement avec un dollar en argument
 
+	(cree par Antho)
+	commande: < file1 cat file2 file3 > file4 >> file5 file6
+	resultat obtenu avec notre minishell:
+	toktype: 3
+	n_arg: 3
+	fullcmd[0]: cat
+	fullcmd[1]: file2
+	fullcmd[2]: file3
+	fullpath: /usr/bin/cat
+	pfd[0]: -1	pfd[1]: -1
+	access: 0
+
+	resultat attendu:
+	toktype: 3
+	n_arg: 4
+	fullcmd[0]: cat
+	fullcmd[1]: file2
+	fullcmd[2]: file3
+	fullcmd[3]: file6
+	fullpath: /usr/bin/cat
+	pfd[0]: -1	pfd[1]: -1
+	access: 0
+
+
 NORME
 	normer les fichiers
 
@@ -27,3 +51,6 @@ SIGNAL
 PIPE FIN DE LIGNE ?
 	| + fin de LIGNE
 	| + espace + fin de ligne
+
+
+
