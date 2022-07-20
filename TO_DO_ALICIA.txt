@@ -10,6 +10,11 @@ EXPANSION
 	echo alicia > test
 	cat test $VAR wc -l
 	--> error)
+	export C={|}
+	cho $C --> {|}
+	$ > export A={echo -n}
+	bash: export: `-n}': not a valid identifier
+
 
 	attention a la tokenization du chevron aussi, pas un operateur
 	export VAR="< test"
