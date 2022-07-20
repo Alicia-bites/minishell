@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:49:14 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/23 19:50:25 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/20 13:50:38 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@ char	*malloc_varname(char *str, int start, int end)
 	len = end - start;
 	new_str = malloc(sizeof(char) * end + 1);
 	if (!new_str)
-	{
-		ft_panic(MALLOC_FAILURE, 0);
-		return (NULL);
-	}
+		return (ft_panic_null(MALLOC_FAILURE, __FILE__, NULL));
 	i = 0;
 	while (i <= len - 1)
 		new_str[i++] = str[start++];

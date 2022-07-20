@@ -1,30 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_cd_update_env.c                                 :+:      :+:    :+:   */
+/*   fd_outfile_open.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/18 16:45:09 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/20 13:54:35 by abarrier         ###   ########.fr       */
+/*   Created: 2022/07/19 18:01:57 by abarrier          #+#    #+#             */
+/*   Updated: 2022/07/20 16:04:03 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	do_cd_update_env(t_ulist *obj, char *path)
+int	fd_outfile_open(t_cmd *cmd, char *fd, int mode)
 {
-	t_env	*env;
-
-	env = (t_env *)obj->content;
-	if (env->value)
-		free(env->value);
-	if (!path)
-		return (1);
-	env->value = ft_strdup(path);
-	if (env->value)
-		env->var_view = VAR_ALL;
-	else
-		return (ft_panic(-1, __FILE__, ERR_MALLOC));
+	if (cmd->fd_w >= 0)
+	{
+		close(cmd->fd_w);
+		cmd->fd_w = -1;
+	}
+	cmd->fd_w = fd_open(fd, mode);
+	if (cmd->fd_w < 0)
+	{
+		if (access(fd, F_OK) != 0)
+		{
+			cmd->fd_w = fd_open(fd, mode);
+			if (cmd->fd_w < 0)
+				return (ft_shell_msg(errno, fd));
+		}
+		else if (access(fd, O_DIRECTORY) != 0)
+			return (ft_shell_msg(EISDIR, fd));
+		else
+			return (fd_access(fd, 2));
+	}
 	return (0);
 }

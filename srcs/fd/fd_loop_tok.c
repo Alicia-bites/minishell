@@ -1,41 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_create_lst.c                                   :+:      :+:    :+:   */
+/*   fd_loop_tok.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/11 17:45:45 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/20 12:19:24 by abarrier         ###   ########.fr       */
+/*   Created: 2022/07/20 09:30:48 by abarrier          #+#    #+#             */
+/*   Updated: 2022/07/20 16:40:15 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	cmd_create_lst(t_list *tok, t_ulist **env_lst, t_ulist **cmd_lst)
+t_list	*fd_loop_tok(t_list *tok, t_cmd *cmd, enum e_toktype toktype, int mode)
 {
 	t_list	*obj;
-	t_cmd	*cmd;
-	int		j;
 
 	obj = tok;
-	while (obj)
+	while (obj && !(obj->toktype == TOK_PIPE))
 	{
-		cmd = NULL;
-		if (obj->toktype == TOK_BUILTIN || obj->toktype == TOK_CMD)
+		if (obj->toktype == toktype)
 		{
-			cmd = cmd_init(env_lst);
-			if (!cmd)
-				return (1);
-			obj = cmd_init_prop(obj, cmd);
-			if (!ft_lst_append(cmd_lst, (void *)cmd))
-			{
-				cmd_free(cmd);
-				return (2);
-			}
-		}	
-		else
 			obj = obj->next;
+			if (toktype == TOK_L_REDIR
+				&& (cmd->fd_r == FD_NOT_INIT || cmd->fd_r >= 0))
+				fd_infile_open(cmd, obj->token, mode);
+			else if ((toktype == TOK_R_REDIR
+					|| toktype == TOK_DR_REDIR)
+				&& (cmd->fd_w == FD_NOT_INIT || cmd->fd_w >= 0))
+				fd_outfile_open(cmd, obj->token, mode);
+		}
+		obj = obj->next;
 	}
-	return (0);
+	return (obj);
 }

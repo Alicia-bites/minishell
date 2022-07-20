@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_init.c                                         :+:      :+:    :+:   */
+/*   fd_open.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/17 14:07:42 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/20 13:59:27 by abarrier         ###   ########.fr       */
+/*   Created: 2022/07/20 16:00:11 by abarrier          #+#    #+#             */
+/*   Updated: 2022/07/20 16:40:39 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_cmd	*cmd_init(t_ulist **env_lst)
+int	fd_open(char *fd, int mode)
 {
-	t_cmd	*cmd;
+	int	res;
 
-	if (!env_lst)
-		return (ft_panic_null(-1, __FILE__, ERR_NOOBJ));
-	cmd = (t_cmd *)malloc(sizeof(t_cmd));
-	if (!cmd)
-		return (ft_panic_null(-1, __FILE__, ERR_MALLOC));
-	cmd->env_lst = env_lst;
-	cmd->toktype = 0;
-	cmd->arg = NULL;
-	cmd->fullcmd = NULL;
-	cmd->fullpath = NULL;
-	cmd->fd_r = FD_NOT_INIT;
-	cmd->fd_w = FD_NOT_INIT;
-	cmd->access = -1;
-	return (cmd);
+	res = -1;
+	if (mode == O_RDONLY)
+		res = open(fd, O_RDONLY);
+	else if (mode == O_WRONLY)
+		res = open(fd, O_WRONLY | O_TRUNC | O_CREAT, 0644);
+	else if (mode == O_APPEND)
+		res = open(fd, O_APPEND | O_TRUNC | O_CREAT, 0644);
+	return (res);
 }

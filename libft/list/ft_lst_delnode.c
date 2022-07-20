@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:05:02 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/19 18:42:27 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/20 13:35:45 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,7 @@ t_list	*ft_lst_delnode(t_list *obj, void (*f)(t_list *))
 	t_list	*next;
 
 	if (!obj)
-	{
-		ft_panic(-1, ERR_NOOBJ);
-		return (NULL);
-	}
+		return (ft_panic_null(-1, __FILE__, ERR_NOOBJ));
 	prev = obj->prev;
 	next = obj->next;
 	if (prev)

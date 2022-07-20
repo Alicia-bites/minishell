@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/20 17:43:37 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/20 18:13:35 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
 # define ENV_SEP '='
 # define ENV_FIELD_SEP ':'
 # define EXP_PREFIX "declare -x "
+# define FD_NOT_INIT -999999
 
 # define ENV_HOME_NAME "HOME"
 # define ENV_OLDPWD_NAME "OLDPWD"
@@ -311,11 +312,23 @@ size_t	cmd_init_prop_n_arg(t_list *tok, t_cmd *cmd);
 char	*cmd_loop_envline(char *cmd, char **envline);
 char	*cmd_loop_envp(char *cmd, t_ulist **envp_lst);
 char	*cmd_loop_envp_str(char *cmd, t_ulist **envp_lst, char *s);
+char	**cmd_loop_envp_create_envline(t_env *envp);
 char	*cmd_setpath(char *cmd, char *env);
 void	cmd_show(void *content);
 
 //file_descriptor
 int	fd_access(char *fd, int mode);
-int	fd_infile(t_ulist *obj, char *fd);
+int	fd_close_open(t_ulist *obj);
+void	fd_infile(t_list **tok_lst, t_ulist **cmd_lst, int mode);
+int	fd_infile_open(t_cmd *cmd, char *fd, int mode);
+t_list	*fd_loop_tok(t_list *tok, t_cmd *cmd, enum e_toktype toktype, int mode);
+int	fd_open(char *fd, int mode);
+void	fd_outfile(t_list **tok_lst, t_ulist **cmd_lst, enum e_toktype toktype, int mode);
+int	fd_outfile_open(t_cmd *cmd, char *fd, int mode);
+
+
+
+//TEST
+void	test_antho(t_ulist **env_lst);
 
 #endif

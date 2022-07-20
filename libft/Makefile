@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/30 09:51:13 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/19 18:37:23 by abarrier         ###   ########.fr        #
+#    Updated: 2022/07/20 12:00:00 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,6 +71,7 @@ MEM_SRCS	:=	ft_calloc.c\
 			ft_memset.c
 
 MSG_SRCS	:=	ft_panic.c\
+			ft_panic_null.c\
 			ft_shell_msg.c
 
 PUT_SRCS	:=	ft_putchar_fd.c\

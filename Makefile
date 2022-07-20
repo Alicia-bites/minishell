@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/20 10:15:29 by amarchan         ###   ########.fr        #
+#    Updated: 2022/07/20 18:13:48 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ CFLAGS		:=	-MMD
 #CFLAGSADD	:=	-g3 -fsanitize=address
 CFLAGSADD	:=	-g3
 
-VALGRIND	:=	valgrind --suppressions=ignoreliberror --leak-check=full --show-leak-kinds=all --track-origins=yes
+VALGRIND	:=	valgrind --suppressions=ignoreliberror --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes
 
 IPATH		:=	includes
 OPATH		:=	obj
@@ -96,6 +96,7 @@ CMD_SRCS	:=	cmd_close_fd.c\
 			cmd_loop_envline.c\
 			cmd_loop_envp.c\
 			cmd_loop_envp_str.c\
+			cmd_loop_envp_create_envline.c\
 			cmd_setpath.c\
 			cmd_show.c
 
@@ -112,7 +113,13 @@ EXEC_SRCS	:=	execute_command.c\
 				read_command.c
 
 FD_SRCS		:=	fd_access.c\
-			fd_infile.c
+			fd_close.c\
+			fd_infile.c\
+			fd_infile_open.c\
+			fd_loop_tok.c\
+			fd_open.c\
+			fd_outfile.c\
+			fd_outfile_open.c
 
 INPUT_HANDLER	:=	exit_minishell.c\
 					get_input.c\
@@ -205,6 +212,7 @@ MAKE_TOK_SRCS	:=	add_token_to_list.c\
 					remove_quotes.c
 
 SRCS		:=	main.c\
+			test_antho.c\
 				$(BUILT_CD_SRCS)\
 				$(BUILT_ECHO_SRCS)\
 				$(BUILT_ENV_SRCS)\

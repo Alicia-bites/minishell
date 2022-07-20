@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 09:31:55 by abarrier          #+#    #+#             */
-/*   Updated: 2022/06/28 12:25:15 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/20 13:35:10 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ t_ulist	*ft_lst_delbyobj(t_ulist *obj, void (*f)(void *))
 	t_ulist	*next;
 
 	if (!obj)
-	{
-		ft_panic(-1, ERR_NOOBJ);
-		return (NULL);
-	}
+		return (ft_panic_null(-1, __FILE__, ERR_NOOBJ));
 	prev = obj->prev;
 	next = obj->next;
 	if (prev)
