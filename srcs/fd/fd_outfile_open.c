@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fd_infile_open.c                                   :+:      :+:    :+:   */
+/*   fd_outfile_open.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/19 16:06:00 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/20 16:03:44 by abarrier         ###   ########.fr       */
+/*   Created: 2022/07/19 18:01:57 by abarrier          #+#    #+#             */
+/*   Updated: 2022/07/20 16:04:03 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	fd_infile_open(t_cmd *cmd, char *fd, int mode)
+int	fd_outfile_open(t_cmd *cmd, char *fd, int mode)
 {
-	if (cmd->fd_r >= 0)
+	if (cmd->fd_w >= 0)
 	{
-		close(cmd->fd_r);
-		cmd->fd_r = -1;
+		close(cmd->fd_w);
+		cmd->fd_w = -1;
 	}
-	cmd->fd_r = fd_open(fd, mode);
-	if (cmd->fd_r < 0)
-		return (fd_access(fd, ACCESS_R));
-	else
-		return (0);
+	cmd->fd_w = fd_open(fd, mode);
+	if (cmd->fd_w < 0)
+	{
+		if (access(fd, F_OK) != 0)
+		{
+			cmd->fd_w = fd_open(fd, mode);
+			if (cmd->fd_w < 0)
+				return (ft_shell_msg(errno, fd));
+		}
+		else if (access(fd, O_DIRECTORY) != 0)
+			return (ft_shell_msg(EISDIR, fd));
+		else
+			return (fd_access(fd, 2));
+	}
+	return (0);
 }

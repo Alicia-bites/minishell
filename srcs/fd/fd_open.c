@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fd_infile_open.c                                   :+:      :+:    :+:   */
+/*   fd_open.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/19 16:06:00 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/20 16:03:44 by abarrier         ###   ########.fr       */
+/*   Created: 2022/07/20 16:00:11 by abarrier          #+#    #+#             */
+/*   Updated: 2022/07/20 16:40:39 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	fd_infile_open(t_cmd *cmd, char *fd, int mode)
+int	fd_open(char *fd, int mode)
 {
-	if (cmd->fd_r >= 0)
-	{
-		close(cmd->fd_r);
-		cmd->fd_r = -1;
-	}
-	cmd->fd_r = fd_open(fd, mode);
-	if (cmd->fd_r < 0)
-		return (fd_access(fd, ACCESS_R));
-	else
-		return (0);
+	int	res;
+
+	res = -1;
+	if (mode == O_RDONLY)
+		res = open(fd, O_RDONLY);
+	else if (mode == O_WRONLY)
+		res = open(fd, O_WRONLY | O_TRUNC | O_CREAT, 0644);
+	else if (mode == O_APPEND)
+		res = open(fd, O_APPEND | O_TRUNC | O_CREAT, 0644);
+	return (res);
 }

@@ -115,8 +115,11 @@ EXEC_SRCS	:=	execute_command.c\
 FD_SRCS		:=	fd_access.c\
 			fd_close.c\
 			fd_infile.c\
-			fd_infile_loop_tok.c\
-			fd_infile_open.c
+			fd_infile_open.c\
+			fd_loop_tok.c\
+			fd_open.c\
+			fd_outfile.c\
+			fd_outfile_open.c
 
 INPUT_HANDLER	:=	exit_minishell.c\
 					get_input.c\
