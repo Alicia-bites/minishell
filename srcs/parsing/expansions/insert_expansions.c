@@ -6,27 +6,11 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:49:04 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/20 09:46:34 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/20 09:58:17 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-int	bracket_is_after_dollar(char *str, int pos)
-{
-	while (str[pos])
-	{
-		if (str[pos] == '$')
-		{
-			if (str[pos + 1] == '}')
-				return (1);
-			else
-				return (0);
-		}
-		pos--;
-	}
-	return (0);
-}
 
 static char	*malloc_newstr(int full_size, t_expanded **expanded_list)
 {
