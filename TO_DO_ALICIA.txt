@@ -1,25 +1,11 @@
 TOKENIZER
-	cmd arg | < file < file cmd arg
-
-	echo {$USERA}
-	bash: ${USER
-	echo {$USERA}: bad substitution
-
 
 
 NORME
 	normer les fichiers
 
 EXPANSION
-	un pipe dans une expansion n'est pas un operateur (ex = 
-	export VAR=|
-	echo alicia > test
-	cat test $VAR wc -l
-	--> error)
-	export C={|}
-	cho $C --> {|}
-	$ > export A={echo -n}
-	bash: export: `-n}': not a valid identifier
+	operateurs qui "sortent" d'une expansion : pas des operateurs.
 
 
 	attention a la tokenization du chevron aussi, pas un operateur
@@ -37,6 +23,4 @@ SIGNAL
 PIPE FIN DE LIGNE ?
 	| + fin de LIGNE
 	| + espace + fin de ligne
-
-
-
+	echo ${USER
