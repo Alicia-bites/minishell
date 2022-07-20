@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/20 11:56:08 by abarrier         ###   ########.fr        #
+#    Updated: 2022/07/20 16:04:16 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -211,6 +211,7 @@ MAKE_TOK_SRCS	:=	add_token_to_list.c\
 					remove_quotes.c
 
 SRCS		:=	main.c\
+			test_antho.c\
 				$(BUILT_CD_SRCS)\
 				$(BUILT_ECHO_SRCS)\
 				$(BUILT_ENV_SRCS)\
