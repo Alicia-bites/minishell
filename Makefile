@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/20 10:51:44 by abarrier         ###   ########.fr        #
+#    Updated: 2022/07/20 11:56:08 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,6 +96,7 @@ CMD_SRCS	:=	cmd_close_fd.c\
 			cmd_loop_envline.c\
 			cmd_loop_envp.c\
 			cmd_loop_envp_str.c\
+			cmd_loop_envp_create_envline.c\
 			cmd_setpath.c\
 			cmd_show.c
 

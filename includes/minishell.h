@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/20 10:02:22 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/20 11:56:48 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -311,6 +311,7 @@ size_t	cmd_init_prop_n_arg(t_list *tok, t_cmd *cmd);
 char	*cmd_loop_envline(char *cmd, char **envline);
 char	*cmd_loop_envp(char *cmd, t_ulist **envp_lst);
 char	*cmd_loop_envp_str(char *cmd, t_ulist **envp_lst, char *s);
+char	**cmd_loop_envp_create_envline(t_env *envp);
 char	*cmd_setpath(char *cmd, char *env);
 void	cmd_show(void *content);
 
