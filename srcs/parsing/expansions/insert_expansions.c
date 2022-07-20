@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:49:04 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/20 09:58:17 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/20 17:42:48 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,7 @@ static void	copy_expanded(char *str, t_expanded **expanded_list,
 	}
 }
 
-char	*insert_expansions(int full_size, t_expanded *expanded_list, char *str,
-	int lb)
+char	*insert_expansions(int full_size, t_expanded *expanded_list, char *str)
 {
 	t_cursor	cursor;
 	int			j;
@@ -80,11 +79,6 @@ char	*insert_expansions(int full_size, t_expanded *expanded_list, char *str,
 		else if ((str[cursor.k] == '$' && str[cursor.k + 1] == '"')
 			|| str[cursor.k] == '"')
 			cursor.k++;
-	}
-	if (lb)
-	{
-		new_str[cursor.i] = '}';
-		cursor.i++;		
 	}
 	new_str[cursor.i] = '\0';
 	return (new_str);

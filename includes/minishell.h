@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/20 10:12:15 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/20 17:43:37 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ char				*expand_dollar(char *str);
 void				find_expansions(char *str, t_expanded **expanded_list,
 						int *full_size);
 char				*insert_expansions(int full_size, t_expanded *expanded_list,
-						char *str, int lb);
+						char *str);
 int					get_full_size(t_expanded *expanded_list);
 void				get_expanded(char *str, t_expanded **expanded_list, int i,
 						int *varsize);
