@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:48:15 by abarrier          #+#    #+#             */
-/*   Updated: 2022/06/28 12:27:36 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/20 13:37:15 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ t_ulist	**ft_lst_init(void)
 
 	list = (t_ulist **)malloc(sizeof(t_ulist *));
 	if (!list)
-	{
-		ft_panic(-1, ERR_MALLOC);
-		return (NULL);
-	}
+		return (ft_panic_null(-1, __FILE__, ERR_MALLOC));
 	*list = NULL;
 	return (list);
 }

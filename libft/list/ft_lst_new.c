@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 08:47:50 by abarrier          #+#    #+#             */
-/*   Updated: 2022/06/28 12:28:20 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/20 13:37:02 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ t_ulist	*ft_lst_new(void *content)
 
 	new = (t_ulist *)malloc(sizeof(t_ulist));
 	if (!new)
-	{
-		ft_panic(-1, ERR_MALLOC);
-		return (NULL);
-	}
+		return (ft_panic_null(-1, __FILE__, ERR_MALLOC));
 	if (!content)
 		new->content = NULL;
 	else

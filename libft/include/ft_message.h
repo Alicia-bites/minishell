@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 15:45:06 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/20 12:00:21 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/20 13:43:05 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@
 /**STRING***/
 # define ERR_MAXLEN_INT "Length string is more than MAX_LEN_INT"
 
-int	ft_panic(int errcode, char *msg);
-void	*ft_panic_null(int errcode, char *msg);
-int	ft_shell_msg(int errcode, char *data);
+int		ft_panic(int errcode, char *filename, char *msg);
+void	*ft_panic_null(int errcode, char *filename, char *msg);
+int		ft_shell_msg(int errcode, char *data);
 
 #endif
