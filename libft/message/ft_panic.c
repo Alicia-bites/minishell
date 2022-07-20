@@ -6,20 +6,18 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 15:33:20 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/18 11:51:10 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/20 13:32:22 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_message.h"
 
-int	ft_panic(int errcode, char *msg)
+int	ft_panic(int errcode, char *filename, char *msg)
 {
 	int		res;
-	char	*err_file;
 	char	*err_msg;
 
 	res = 0;
-	err_file = __FILE__;
 	err_msg = NULL;
 	(void)errcode;
 	(void)msg;
@@ -29,8 +27,12 @@ int	ft_panic(int errcode, char *msg)
 		err_msg = msg;
 	else
 		err_msg = NULL;
-	res += ft_putstr_fd("Error:\nfile: ", 2);
-	res += ft_putendl_fd(err_file, 2);
+	res += ft_putendl_fd("Error:", 2);
+	if (filename)
+	{
+		res += ft_putstr_fd("file: ", 2);
+		res += ft_putendl_fd(filename, 2);
+	}
 	res += ft_putstr_fd("message: ", 2);
 	res += ft_putendl_fd(err_msg, 2);
 	return (res);

@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/19 16:32:19 by abarrier         ###   ########.fr        #
+#    Updated: 2022/07/20 11:56:08 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ CFLAGS		:=	-MMD
 #CFLAGSADD	:=	-g3 -fsanitize=address
 CFLAGSADD	:=	-g3
 
-VALGRIND	:=	valgrind --suppressions=ignoreliberror --leak-check=full --show-leak-kinds=all --track-origins=yes
+VALGRIND	:=	valgrind --suppressions=ignoreliberror --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes
 
 IPATH		:=	includes
 OPATH		:=	obj
@@ -96,6 +96,7 @@ CMD_SRCS	:=	cmd_close_fd.c\
 			cmd_loop_envline.c\
 			cmd_loop_envp.c\
 			cmd_loop_envp_str.c\
+			cmd_loop_envp_create_envline.c\
 			cmd_setpath.c\
 			cmd_show.c
 
@@ -112,7 +113,10 @@ EXEC_SRCS	:=	execute_command.c\
 				read_command.c
 
 FD_SRCS		:=	fd_access.c\
-			fd_infile.c
+			fd_close.c\
+			fd_infile.c\
+			fd_infile_loop_tok.c\
+			fd_infile_open.c
 
 INPUT_HANDLER	:=	exit_minishell.c\
 					get_input.c\

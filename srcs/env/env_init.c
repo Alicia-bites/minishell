@@ -6,7 +6,7 @@
 /*   By: antho <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 17:29:38 by antho             #+#    #+#             */
-/*   Updated: 2022/07/18 08:55:05 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/20 14:02:39 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@ t_env	*env_init(char *env_fullname)
 	env = NULL;
 	env = (t_env *)malloc(sizeof(t_env));
 	if (!env)
-	{
-		ft_panic(-1, ERR_MALLOC);
-		return (NULL);
-	}
+		return (ft_panic_null(-1, __FILE__, ERR_MALLOC));
 	env->key = NULL;
 	env->value = NULL;
 	if (!env_init_key(env, env_fullname))

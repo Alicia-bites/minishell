@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:57:58 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/11 15:27:23 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/20 13:46:13 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void built_token(t_chartype *input_list, int start, int end, t_list **token_list
 	token = malloc(sizeof(char) * (len + 1));
 	if (!token)
 	{
-		ft_panic(MALLOC_FAILURE, 0);
+		ft_panic(MALLOC_FAILURE, __FILE__, NULL);
 		return ;
 	}
 	k = 0;

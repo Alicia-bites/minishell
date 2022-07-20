@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 17:59:05 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/12 14:24:36 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/20 14:00:07 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,14 @@ char	*cmd_setpath(char *cmd, char *env)
 	size_t	len_cmd;
 
 	if (!env || !DIR_SEP)
-	{
-		ft_panic(-1, ERR_NOOBJ);
-		return (NULL);
-	}
+		return (ft_panic_null(-1, __FILE__, ERR_NOOBJ));
 	len_env = ft_strlen(env);
 	len_env_sep = ft_strlen(DIR_SEP);
 	len_cmd = ft_strlen(cmd);
 	path = (char *)malloc(sizeof(char) * (len_env + len_env_sep
 				+ len_cmd + 1));
 	if (!path)
-	{
-		ft_panic(-1, ERR_MALLOC);
-		return (NULL);
-	}
+		return (ft_panic_null(-1, __FILE__, ERR_MALLOC));
 	path = ft_memmove(path, env, len_env);
 	ft_memmove(path + len_env, DIR_SEP, len_env_sep);
 	ft_memmove(path + len_env + len_env_sep, cmd, len_cmd);

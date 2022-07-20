@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:16:15 by abarrier          #+#    #+#             */
-/*   Updated: 2022/06/28 12:27:09 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/20 13:36:14 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_lst_func_lst(t_ulist **list, void (*f)(void *))
 
 	if (!list)
 	{
-		ft_panic(-1, ERR_NOOBJ);
+		ft_panic(-1, __FILE__, ERR_NOOBJ);
 		return ;
 	}
 	obj = *list;

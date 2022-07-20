@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:03:36 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/18 17:32:35 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/20 13:53:54 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	do_cd_update_pwd_home(t_ulist **envp, t_ulist *obj, char *oldpwd)
 
 	pwd = do_pwd_getpath();
 	if (!pwd)
-		return (ft_panic(-1, ERR_PWD));
+		return (ft_panic(-1, __FILE__, ERR_PWD));
 	pwd_obj = do_export_check_exist(envp, ENV_PWD_NAME, -1);
 	oldpwd_obj = do_export_check_exist(envp, ENV_OLDPWD_NAME, -1);
 	if (oldpwd_obj)
