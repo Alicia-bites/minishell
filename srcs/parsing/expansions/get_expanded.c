@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:48:34 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/14 16:50:55 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/20 17:47:49 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	handle_dollar_name(int i, char *str, int *varsize,
 	*varsize = ft_strlen(var) + 1;
 	expanded = getenv(var);
 	if (!expanded)
-		expanded = "\n";
+		expanded = "";
 	*expanded_list = create_dollar_list(expanded, (*index)++);
 	free(var);
 }
