@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:17:17 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/20 10:00:00 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/20 11:04:38 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,19 @@ static void	antho_test(t_ulist **env_lst)
 	int	case_unset;
 
 	case_cd = 0;
-	case_env = 0;
+	case_env = 1;
 	case_export = 1;
-	case_unset = 0;
+	case_unset = 1;
 
  	t_cmd	test_env_cmd;
-// //	char test_env_cmd_arg[] = "env";
-// //	char *test_env_cmd_fullcmd[] = { "env", NULL };
+	char test_env_cmd_arg[] = "env";
+	char *test_env_cmd_fullcmd[] = { "env", NULL };
 // 	char test_env_cmd_arg[] = "env ANTHO=toto";
 // 	char *test_env_cmd_fullcmd[] = { "env", "ANTHO=toto", NULL };
-	char test_env_cmd_arg[] = "env ANTHO=toto echo $ANTHO";
-	char *test_env_cmd_fullcmd[] = { "env", "ANTHO=toto", "echo", "$ANTHO", NULL };
-// //	char test_env_cmd_arg[] = "env echo $ANTHO";
-// //	char *test_env_cmd_fullcmd[] = { "env", "echo", "$ANTHO", NULL };
+//	char test_env_cmd_arg[] = "env ANTHO=toto echo $ANTHO";
+//	char *test_env_cmd_fullcmd[] = { "env", "ANTHO=toto", "echo", "$ANTHO", NULL };
+//	char test_env_cmd_arg[] = "env echo $ANTHO";
+//	char *test_env_cmd_fullcmd[] = { "env", "echo", "$ANTHO", NULL };
  	char test_env_cmd_path[] = "built-in";
 
  	test_env_cmd.arg = test_env_cmd_arg;
@@ -49,10 +49,12 @@ static void	antho_test(t_ulist **env_lst)
  	t_cmd	test_export_cmd;
 // 	char test_export_cmd_arg[] = "export";
 // 	char *test_export_cmd_fullcmd[] = { "export", NULL };
-	char test_export_cmd_arg[] = "export ANTHO={echo -n}";
-	char *test_export_cmd_fullcmd[] = { "export", "ANTHO", "{echo -n}", NULL };
+ 	char test_export_cmd_arg[] = "export ANTHO=toto=";
+	char *test_export_cmd_fullcmd[] = { "export", "ANTHO=toto", NULL };
 // 	char test_export_cmd_arg[] = "export ANTHO ANTHO=toto=titi=tata ANTHO ALICIA=BG @ELON ANTHO=";
 //	char *test_export_cmd_fullcmd[] = { "export", "ANTHO", "ANTHO=toto=titi=tata", "ANTHO", "ALICIA=BG", "@ELON", "ANTHO=", NULL };
+//	char test_export_cmd_arg[] = "export ANTHO={echo -n}";
+//	char *test_export_cmd_fullcmd[] = { "export", "ANTHO", "{echo -n}", NULL };
 	char test_export_cmd_path[] = "built-in";
 
  	test_export_cmd.arg = test_export_cmd_arg;
