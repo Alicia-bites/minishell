@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 14:07:42 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/12 13:47:10 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/20 10:02:55 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ t_cmd	*cmd_init(t_ulist **env_lst)
 	cmd->arg = NULL;
 	cmd->fullcmd = NULL;
 	cmd->fullpath = NULL;
-	cmd->fd_r = -1;
-	cmd->fd_w = -1;
+	cmd->fd_r = FD_NOT_INIT;
+	cmd->fd_w = FD_NOT_INIT;
 	cmd->access = -1;
 	return (cmd);
 }

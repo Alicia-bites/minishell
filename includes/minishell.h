@@ -39,6 +39,7 @@
 # define ENV_SEP '='
 # define ENV_FIELD_SEP ':'
 # define EXP_PREFIX "declare -x "
+# define FD_NOT_INIT -999999
 
 # define ENV_HOME_NAME "HOME"
 # define ENV_OLDPWD_NAME "OLDPWD"
