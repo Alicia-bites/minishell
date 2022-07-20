@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:48:34 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/20 17:47:49 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/20 18:38:18 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	handle_dollar_name(int i, char *str, int *varsize,
 	var = malloc_varname(str, i, j);
 	*varsize = ft_strlen(var) + 1;
 	expanded = getenv(var);
-	if (!expanded)
+	if (!expanded || (i >= 2 && str[i - 2] == '<'))
 		expanded = "";
 	*expanded_list = create_dollar_list(expanded, (*index)++);
 	free(var);
@@ -55,7 +55,7 @@ static void	handle_dollar_brackets(int i, char *str, int *varsize,
 	var = malloc_varname(str, i, j);
 	*varsize = ft_strlen(var) + 2;
 	expanded = getenv(var);
-	if (str[j] == '\0')
+	if (str[j] == '\0' || (i >= 3 && str[i - 3] == '<'))
 		expanded = 0;
 	*expanded_list = create_dollar_list(expanded, (*index)++);
 	free(var);
