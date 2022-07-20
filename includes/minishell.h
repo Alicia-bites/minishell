@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/19 18:30:08 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/19 18:58:55 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <signal.h>
 # include <stdint.h>
 # include <sys/types.h>
+# include <fcntl.h>
 
 # include "libft.h"
 
@@ -46,6 +47,7 @@
 
 # define ERR_EXP_ARG "not a valid identifier"
 # define ERR_NOHOME "HOME not set"
+# define ERR_PWD "impossible to get the current directory"
 # define ERR_UNSET_ARG "not a valid identifier"
 
 typedef enum enum_chartype {
@@ -96,6 +98,14 @@ typedef enum e_var_view
 	VAR_EXP
 } 	t_var_view;
 
+typedef enum e_fd_access
+{
+	ACCESS_UNDEFINED,
+	ACCESS_X,
+	ACCESS_W,
+	ACCESS_R
+}	t_fd_access;
+
 typedef struct s_env {
 	char		*key;
 	char		*value;
@@ -118,8 +128,8 @@ typedef struct s_cmd
 //input_handler
 int					get_input(int *err, t_ulist **envp);
 void				read_line(char **str);
-void				exit_minishell(t_list **token_list, int *err);
-void				handle_str(char **str, t_list **token_list, int *err);
+void				exit_minishell(t_list **token_list, int *err, t_ulist **envp);
+void				handle_str(char **str, t_list **token_list, int *err, t_ulist **envp);
 
 //parsing
 int					ft_parse(char *str, t_list **token_list, int *err);
@@ -165,24 +175,19 @@ char				*expand_dollar(char *str);
 int					lonely_bracket(char *str);
 void				check_if_operator(char *str, char *new_str);
 
-//built-in
-int					do_echo(char *str);
-int					do_echo_n(char *str);
-int					do_pwd(void);
-
 //do_cd
 int					do_cd(t_ulist **envp, t_cmd *cmd);
 int					do_cd_home(t_ulist **envp);
-int					do_cd_update_home(t_ulist **envp, t_ulist *obj);
+int					do_cd_update_env(t_ulist *obj, char *path);
+int					do_cd_update_pwd_home(t_ulist **envp, t_ulist *obj, char *pwd);
+
+//do_echo
+int					do_echo(char *str);
+int					do_echo_n(char *str);
 
 //do_env
 int					do_env(t_ulist **envp, t_cmd *cmd);
 void				do_env_show(void *content);
-
-//do_unset
-int	do_unset(t_ulist **envp, t_cmd *cmd);
-int	do_unset_check_str(char *str);
-int     do_unset_update_lst(t_ulist **envp, char **str);
 
 //do_exit
 void				do_exit(int exit_number);
@@ -195,6 +200,15 @@ int				do_export_check_str(char *str);
 int				do_export_update_env(t_ulist *obj, char *str, int sep_pos);
 int				do_export_update_lst(t_ulist **envp, char **str);
 void				do_export_show(void *content);
+
+//do_pwd
+int					do_pwd(void);
+char	*do_pwd_getpath(void);
+
+//do_unset
+int	do_unset(t_ulist **envp, t_cmd *cmd);
+int	do_unset_check_str(char *str);
+int     do_unset_update_lst(t_ulist **envp, char **str);
 
 //execute_command
 int					read_command(t_list *inputs_lst, char **built_ins);
@@ -298,5 +312,9 @@ char	*cmd_loop_envp(char *cmd, t_ulist **envp_lst);
 char	*cmd_loop_envp_str(char *cmd, t_ulist **envp_lst, char *s);
 char	*cmd_setpath(char *cmd, char *env);
 void	cmd_show(void *content);
+
+//file_descriptor
+int	fd_access(char *fd, int mode);
+int	fd_infile(t_ulist *obj, char *fd);
 
 #endif

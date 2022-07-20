@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_pwd.c                                           :+:      :+:    :+:   */
+/*   do_cd_update_env.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/16 18:19:28 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/18 16:13:02 by abarrier         ###   ########.fr       */
+/*   Created: 2022/07/18 16:45:09 by abarrier          #+#    #+#             */
+/*   Updated: 2022/07/18 18:17:08 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	do_pwd(void)
+int	do_cd_update_env(t_ulist *obj, char *path)
 {
-	char	*path;
+	t_env	*env;
 
-	path = do_pwd_getpath();
-	if (path)
-	{
-		printf("%s\n", path);
-		free(path);
-	}
+	env = (t_env *)obj->content;
+	if (env->value)
+		free(env->value);
+	if (!path)
+		return (1);
+	env->value = ft_strdup(path);
+	if (env->value)
+		env->var_view = VAR_ALL;
+	else
+		return (ft_panic(-1, ERR_MALLOC));
 	return (0);
 }

@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_minishell.c                                   :+:      :+:    :+:   */
+/*   fd_infile.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/13 16:24:35 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/19 18:58:38 by abarrier         ###   ########.fr       */
+/*   Created: 2022/07/19 16:06:00 by abarrier          #+#    #+#             */
+/*   Updated: 2022/07/19 16:16:36 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	exit_minishell(t_list **token_list, int *err, t_ulist **envp)
+int	fd_infile(t_ulist *obj, char *fd)
 {
-	rl_clear_history();
-	ft_lstclear(token_list);
-	ft_lst_func_lst(envp, &env_free);
-	printf("err = %d\n", *err);
-	printf("exit");
-	exit(*err);
+	t_cmd	*cmd;
+
+	cmd = (t_cmd *)obj->content;
+	if (cmd->fd_r >= 0)
+		cmd->fd_r = -1;
+	cmd->fd_r = open(fd, O_RDONLY);
+	if (cmd->fd_r < 0)
+		return (fd_access(fd, ACCESS_R));
+	else
+		return (0);
 }

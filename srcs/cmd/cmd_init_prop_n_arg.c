@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 09:36:07 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/12 13:37:25 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/19 15:24:20 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ size_t	cmd_init_prop_n_arg(t_list *tok, t_cmd *cmd)
 
 	obj = tok->next;
 	res = 1;
-	while (obj && !(obj->toktype != TOK_SPACE && obj->toktype != TOK_ARG))
+	while (obj && !(obj->toktype == TOK_PIPE))
 	{
 		if (obj->toktype == 4)
 			res++;

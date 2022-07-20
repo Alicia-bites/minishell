@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 16:25:39 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/18 15:47:05 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/19 18:59:24 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	get_input(int *err, t_ulist **envp)
 {
 	char	*str;
 	t_list	*token_list;
-	(void)envp;
 	
 	token_list = NULL;
 	str = NULL;
@@ -24,9 +23,9 @@ int	get_input(int *err, t_ulist **envp)
 	{
 		read_line(&str);
 		if (!str)
-			exit_minishell(&token_list, err);
+			exit_minishell(&token_list, err, envp);
 		if (str[0] != 0)
-			handle_str(&str, &token_list, err);
+			handle_str(&str, &token_list, err, envp);
 	}
 	return (*err);
 }

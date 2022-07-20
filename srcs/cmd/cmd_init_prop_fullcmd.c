@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 09:32:48 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/12 13:37:03 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/19 15:24:24 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_list	*cmd_init_prop_fullcmd(t_list *tok, t_cmd *cmd)
 	cmd->fullcmd[0] = ft_strdup(tok->token);
 	obj = tok->next;
 	i = 1;
-	while (obj && !(obj->toktype != TOK_SPACE && obj->toktype != TOK_ARG))
+	while (obj && !(obj->toktype == TOK_PIPE))
 	{
 		if (obj->toktype == TOK_ARG)
 		{

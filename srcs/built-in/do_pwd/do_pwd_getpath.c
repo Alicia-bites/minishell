@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_minishell.c                                   :+:      :+:    :+:   */
+/*   do_pwd_getpath.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/13 16:24:35 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/19 18:58:38 by abarrier         ###   ########.fr       */
+/*   Created: 2022/07/18 16:08:49 by abarrier          #+#    #+#             */
+/*   Updated: 2022/07/18 16:09:48 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	exit_minishell(t_list **token_list, int *err, t_ulist **envp)
+char	*do_pwd_getpath(void)
 {
-	rl_clear_history();
-	ft_lstclear(token_list);
-	ft_lst_func_lst(envp, &env_free);
-	printf("err = %d\n", *err);
-	printf("exit");
-	exit(*err);
+	char	*path;
+
+	path = NULL;
+	path = getcwd(NULL, 0);
+	return (path);
 }

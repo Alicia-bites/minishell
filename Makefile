@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/19 16:16:32 by amarchan         ###   ########.fr        #
+#    Updated: 2022/07/19 16:32:19 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ BUILT_UNSET_PATH	:=	do_unset
 CMD_PATH	:=	cmd
 ENV_PATH	:=	env
 EXEC_PATH				:=		execute_commands
+FD_PATH		:=	fd
 INPUT_HANDLER_PATH		:=		input_handler
 LEX_PATH				:=		lexer
 PARSING_PATH			:=		parsing
@@ -57,7 +58,8 @@ RM		:=	rm -rf
 
 BUILT_CD_SRCS	:=	do_cd.c\
 			do_cd_home.c\
-			do_cd_update_home.c
+			do_cd_update_env.c\
+			do_cd_update_pwd_home.c
 
 BUILT_ECHO_SRCS	:=	do_echo.c
 
@@ -74,7 +76,8 @@ BUILT_EXPORT_SRCS	:=	do_export.c\
 			do_export_update_lst.c\
 			do_export_show.c
 
-BUILT_PWD_SRCS	:=	do_pwd.c
+BUILT_PWD_SRCS	:=	do_pwd.c\
+			do_pwd_getpath.c
 
 BUILT_UNSET_SRCS	:=	do_unset.c\
 			do_unset_check_str.c\
@@ -107,6 +110,9 @@ ENV_SRCS	:=	env_free.c\
 
 EXEC_SRCS	:=	execute_command.c\
 				read_command.c
+
+FD_SRCS		:=	fd_access.c\
+			fd_infile.c
 
 INPUT_HANDLER	:=	exit_minishell.c\
 					get_input.c\
@@ -208,6 +214,7 @@ SRCS		:=	main.c\
 				$(CMD_SRCS)\
 				$(ENV_SRCS)\
 				$(EXEC_SRCS)\
+				$(FD_SRCS)\
 				$(INPUT_HANDLER)\
 				$(LEX_SRCS)\
 				$(PARSING_SRCS)\
@@ -233,6 +240,7 @@ vpath %.c $(SRCS_PATH)\
 	$(SRCS_PATH)/$(CMD_PATH)\
 	$(SRCS_PATH)/$(ENV_PATH)\
 	$(SRCS_PATH)/$(EXEC_PATH)\
+	$(SRCS_PATH)/$(FD_PATH)\
 	$(SRCS_PATH)/$(LEX_PATH)\
 	$(SRCS_PATH)/$(INPUT_HANDLER_PATH)\
 	$(SRCS_PATH)/$(PARSING_PATH)\
