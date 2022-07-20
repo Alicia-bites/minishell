@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fd_infile.c                                        :+:      :+:    :+:   */
+/*   fd_infile_loop_tok.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/20 09:04:05 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/20 10:29:59 by abarrier         ###   ########.fr       */
+/*   Created: 2022/07/20 09:30:48 by abarrier          #+#    #+#             */
+/*   Updated: 2022/07/20 10:31:37 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	fd_infile(t_list **tok_lst, t_ulist **cmd_lst)
+t_list	*fd_infile_loop_tok(t_list *tok, t_cmd *cmd)
 {
-	t_list	*tok;
-	t_ulist	*obj;
-	t_cmd	*cmd;
+	t_list	*obj;
 
-	tok = *tok_lst;
-	obj = *cmd_lst;
-	cmd = NULL;
-	while (obj && tok)
+	obj = tok;
+	while (obj && !(obj->toktype == TOK_PIPE))
 	{
-		cmd = (t_cmd *)obj->content;
-		tok = fd_infile_loop_tok(tok, cmd);
-		cmd = NULL;
-		if (tok)
-			tok = tok->next;
+		if (obj->toktype == TOK_L_REDIR)
+		{
+			obj = obj->next;
+			if (cmd->fd_r == FD_NOT_INIT || cmd->fd_r >= 0)
+				fd_infile_open(cmd, obj->token);
+		}
 		obj = obj->next;
 	}
+	return (obj);
 }

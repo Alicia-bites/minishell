@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/19 16:32:19 by abarrier         ###   ########.fr        #
+#    Updated: 2022/07/20 09:41:50 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -112,7 +112,10 @@ EXEC_SRCS	:=	execute_command.c\
 				read_command.c
 
 FD_SRCS		:=	fd_access.c\
-			fd_infile.c
+			fd_close.c\
+			fd_infile.c\
+			fd_infile_loop_tok.c\
+			fd_infile_open.c
 
 INPUT_HANDLER	:=	exit_minishell.c\
 					get_input.c\
