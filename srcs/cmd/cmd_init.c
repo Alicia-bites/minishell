@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 14:07:42 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/20 10:02:55 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/20 13:59:27 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,10 @@ t_cmd	*cmd_init(t_ulist **env_lst)
 	t_cmd	*cmd;
 
 	if (!env_lst)
-	{
-		ft_panic(-1, ERR_NOOBJ);
-		return (NULL);
-	}
+		return (ft_panic_null(-1, __FILE__, ERR_NOOBJ));
 	cmd = (t_cmd *)malloc(sizeof(t_cmd));
 	if (!cmd)
-	{
-		ft_panic(-1, ERR_MALLOC);
-		return (NULL);
-	}
+		return (ft_panic_null(-1, __FILE__, ERR_MALLOC));
 	cmd->env_lst = env_lst;
 	cmd->toktype = 0;
 	cmd->arg = NULL;

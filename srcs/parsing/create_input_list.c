@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 14:43:07 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/05 14:43:19 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/20 14:05:54 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	create_input_list(t_chartype **input_list, char *str)
 	(*input_list) = malloc(sizeof(t_chartype) * (length + 1));
 	if (!(*input_list))
 	{
-		ft_panic(MALLOC_FAILURE, 0);
+		ft_panic(MALLOC_FAILURE, __FILE__, NULL);
 		return ;		
 	}
 	ft_bzero((*input_list), sizeof(t_chartype) * (length + 1));

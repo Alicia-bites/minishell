@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 09:32:48 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/19 15:24:24 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/20 13:57:51 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,7 @@ t_list	*cmd_init_prop_fullcmd(t_list *tok, t_cmd *cmd)
 
 	cmd->fullcmd = (char **)malloc(sizeof(char *) * (cmd->n_arg + 1));
 	if (!cmd->fullcmd)
-	{
-		ft_panic(-1, ERR_NOOBJ);
-		return (NULL);
-	}
+		return (ft_panic_null(-1, __FILE__, ERR_NOOBJ));
 	cmd->fullcmd[0] = ft_strdup(tok->token);
 	obj = tok->next;
 	i = 1;

@@ -6,7 +6,7 @@
 /*   By: antho <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 17:19:53 by antho             #+#    #+#             */
-/*   Updated: 2022/06/30 16:00:48 by antho            ###   ########.fr       */
+/*   Updated: 2022/07/20 14:03:41 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ int	env_lst_set(char **envp, t_ulist **env_lst)
 		if (!ft_lst_append(env_lst, (void *)env))
 		{
 			env_free((void *)env);
-			ft_panic(-1, ERR_LST_APPEND);
-			return (2);
+			return (ft_panic(-1, __FILE__, ERR_LST_APPEND));
 		}
 		i++;
 	}

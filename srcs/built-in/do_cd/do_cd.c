@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 18:16:31 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/18 18:14:59 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/20 13:54:18 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ int	do_cd(t_ulist **envp, t_cmd *cmd)
 	if (len_cmd == 1)
 		do_cd_home(envp);
 	else if (len_cmd > 1)
-		return (ft_panic(-1, ERR_ARG));
+		return (ft_panic(-1, __FILE__, ERR_ARG));
 	return (0);
 }
