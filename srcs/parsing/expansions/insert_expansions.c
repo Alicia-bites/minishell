@@ -6,11 +6,27 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:49:04 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/12 18:54:04 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/20 09:46:34 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	bracket_is_after_dollar(char *str, int pos)
+{
+	while (str[pos])
+	{
+		if (str[pos] == '$')
+		{
+			if (str[pos + 1] == '}')
+				return (1);
+			else
+				return (0);
+		}
+		pos--;
+	}
+	return (0);
+}
 
 static char	*malloc_newstr(int full_size, t_expanded **expanded_list)
 {
@@ -31,6 +47,8 @@ static void	travel_to_next_str(int *k, char *str)
 {
 	while (ft_isalnum(str[*k]) || str[*k] == '{' || str[*k] == '}')
 	{
+		if (str[*k] == '}' && !bracket_is_after_dollar(str, *k))
+			break;
 		if (str[*k - 1] == '}' && ft_isalnum(str[*k]))
 			break ;
 		(*k)++;
@@ -47,8 +65,11 @@ static void	copy_expanded(char *str, t_expanded **expanded_list,
 		if (str[cursor->k] == '$' && str[cursor->k + 1] != '"')
 		{
 			j = 0;
-			while ((*expanded_list)->expanded[j])
-				new_str[cursor->i++] = (*expanded_list)->expanded[j++];
+			if ((*expanded_list)->expanded)
+			{
+				while ((*expanded_list)->expanded[j])
+					new_str[cursor->i++] = (*expanded_list)->expanded[j++];
+			}
 			(*expanded_list) = (*expanded_list)->next;
 			cursor->k++;
 			travel_to_next_str(&cursor->k, str);
