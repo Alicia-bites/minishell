@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 16:17:48 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/20 10:11:20 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/20 14:47:41 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ int	fd_access(char *fd, int mode)
 	else if (mode == ACCESS_X && access(fd, X_OK) != 0)
 	{
 		ft_shell_msg(EACCES, fd);
-		return (1);
+		return (ACCESS_X);
 	}
 	else if (mode == ACCESS_W && access(fd, W_OK) != 0)
 	{
 		ft_shell_msg(EACCES, fd);
-		return (2);
+		return (ACCESS_W);
 	}
 	else if (mode == ACCESS_R && access(fd, R_OK) != 0)
 	{
 		ft_shell_msg(EACCES, fd);
-		return (4);
+		return (ACCESS_R);
 	}
 	return (0);
 }
