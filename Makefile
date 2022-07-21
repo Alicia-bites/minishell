@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/21 14:49:37 by abarrier         ###   ########.fr        #
+#    Updated: 2022/07/21 15:29:59 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -114,10 +114,10 @@ EXEC_SRCS	:=	execute_command.c\
 
 FD_SRCS		:=	fd_access.c\
 			fd_close.c\
-			fd_default.c\
 			fd_infile_open.c\
 			fd_link_in_out_file.c\
 			fd_loop_tok.c\
+			fd_loop_tok_secure.c\
 			fd_loop_tok_type.c\
 			fd_open.c\
 			fd_outfile_open.c

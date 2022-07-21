@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 16:24:51 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/21 14:50:13 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/21 15:31:44 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	handle_str(char **str, t_list **token_list, int *err, t_ulist **envp)
 	// execute_command(token_list);
 	cmd_create_lst(*token_list, envp, cmd_list);
 	fd_link_in_out_file(token_list, cmd_list, DIR_IN);
-	fd_default(cmd_list);
 	ft_lst_func_lst(cmd_list, &cmd_show);
 	ft_lstclear(token_list);
 	// printf("str = %s\n", *str);

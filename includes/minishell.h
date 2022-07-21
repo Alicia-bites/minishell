@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/21 14:49:21 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/21 15:31:07 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -324,10 +324,10 @@ void	cmd_show(void *content);
 //file_descriptor
 int	fd_access(char *fd, int mode);
 int	fd_close_open(t_ulist *obj);
-void	fd_default(t_ulist **cmd_lst);
 int	fd_infile_open(t_cmd *cmd, char *fd, int mode);
 void	fd_link_in_out_file(t_list **tok_lst, t_ulist **cmd_lst, int mode);
 t_list	*fd_loop_tok(t_list *tok, t_cmd *cmd, int mode);
+void	fd_loop_tok_secure(t_cmd *cmd, int res_loop);
 int	fd_loop_tok_type(t_list *tok, t_cmd *cmd, enum e_toktype toktype, int mode);
 int	fd_open(char *fd, int mode);
 int	fd_outfile_open(t_cmd *cmd, char *fd, int mode);
