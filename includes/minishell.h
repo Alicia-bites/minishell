@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/21 17:08:59 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/21 18:28:24 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -313,7 +313,6 @@ void    env_lst_show(t_ulist **list);
 void    env_show(void *content);
 
 //command list
-void    cmd_close_fd(void *content);
 int     cmd_create_lst(t_list *tok, t_ulist **env_lst, t_ulist **cmd_lst);
 void    cmd_free(void *content);
 char	*cmd_getvalidpath(t_cmd *cmd);
@@ -332,7 +331,7 @@ void	cmd_show(void *content);
 
 //file_descriptor
 int	fd_access(char *fd, int mode);
-int	fd_close_open(t_ulist *obj);
+int	fd_close(t_cmd *cmd);
 int	fd_infile_open(t_cmd *cmd, char *fd, int mode);
 void	fd_link_in_out_file(t_list **tok_lst, t_ulist **cmd_lst, int mode);
 t_list	*fd_loop_tok(t_list *tok, t_cmd *cmd, int mode);

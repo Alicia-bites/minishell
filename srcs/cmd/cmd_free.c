@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 08:35:46 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/11 17:57:58 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/21 18:24:44 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	cmd_free(void *content)
 		free(cmd->fullpath);
 		cmd->fullpath = NULL;
 	}
-	cmd_close_fd(content);
+	fd_close(cmd);
 	free(cmd);
 	cmd = NULL;
 }

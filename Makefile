@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/21 17:08:47 by abarrier         ###   ########.fr        #
+#    Updated: 2022/07/21 18:25:21 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,8 +83,7 @@ BUILT_UNSET_SRCS	:=	do_unset.c\
 			do_unset_check_str.c\
 			do_unset_update_lst.c\
 
-CMD_SRCS	:=	cmd_close_fd.c\
-			cmd_create_lst.c\
+CMD_SRCS	:=	cmd_create_lst.c\
 			cmd_free.c\
 			cmd_getvalidpath.c\
 			cmd_getvalidpath_null.c\

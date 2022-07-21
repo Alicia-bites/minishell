@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 16:06:00 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/20 16:03:44 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/21 18:17:46 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	fd_infile_open(t_cmd *cmd, char *fd, int mode)
 {
-	if (cmd->fd_r >= 0)
+	if (cmd->fd_r > 2)
 	{
 		close(cmd->fd_r);
 		cmd->fd_r = -1;
