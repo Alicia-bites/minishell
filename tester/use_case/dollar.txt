@@ -19,3 +19,16 @@ echo ${LANG
 echo $LANG}
 echo $"TER'M"
 echo $'TER"M'
+
+echo {$USER}
+echo {$USER
+echo $USER}
+echo ${USER} $USER}
+echo {$USER} $USER}
+echo {$USER} {${USER}
+echo ${USER
+echo {$USERA}
+echo {$USERA}
+echo $USERA
+echo ${USERA}
+echo {${USER}

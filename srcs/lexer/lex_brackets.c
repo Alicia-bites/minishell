@@ -6,11 +6,24 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 09:05:15 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/12 16:47:08 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/20 16:56:16 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static int	check_if_r_bracket(char *str, int i)
+{
+	while (str[i])
+	{
+		if (str[i] == '}')
+			return (1);
+		if (str[i] == '{')
+			break;
+		i++;
+	}
+	return (0);
+}
 
 int	lex_brackets(char *str, int *err)
 {
@@ -23,17 +36,14 @@ int	lex_brackets(char *str, int *err)
 	l_bracket = 0;
 	while (str[i])
 	{
-		if (str[i] == '{')
-			l_bracket++;
-		if (str[i] == '}')
-			r_bracket++;
+		if (str[i] == '$' && str[i + 1] == '{')
+			if (!check_if_r_bracket(str, (i + 2)))
+			{
+				*err = MISSING_BRACKET;
+				printf("smbash: syntax error. Please check brackets.\n");
+				return (*err);
+			}
 		i++;
 	}
-	if (l_bracket > r_bracket)
-	{
-		*err = MISSING_BRACKET;
-		printf("smbash: syntax error. Please check brackets.\n");
-		return (*err);
-	}
-	return (0);
+	return (*err);
 }

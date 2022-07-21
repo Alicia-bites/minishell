@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   bracket_is_after_dollar.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/16 10:49:49 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/20 19:13:10 by amarchan         ###   ########.fr       */
+/*   Created: 2022/07/20 10:13:06 by amarchan          #+#    #+#             */
+/*   Updated: 2022/07/20 10:21:15 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_parse(char *str, t_list **token_list, int *err)
+int	bracket_is_after_dollar(char *str, int pos)
 {
-	char			*tmp;
-	extern t_global	global;
-	t_chartype		*input_list;
-
-	tmp = str;
-	input_list = NULL;
-	if (lexer(tmp, err))
-		return (*err);
-	if (ft_strstr(tmp, "$"))
-		tmp = expand_dollar(str);
-	create_input_list(&input_list, tmp);
-	if (ft_strcmp(str, tmp))
-		free(tmp);
-	tokenize(input_list, token_list);
-	free(input_list);
-	return (*err);
+	while (str[pos])
+	{
+		if (str[pos] == '$')
+		{
+			if (str[pos + 1] == '{')
+				return (1);
+			else
+				return (0);
+		}
+		pos--;
+	}
+	return (0);
 }

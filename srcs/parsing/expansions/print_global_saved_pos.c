@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_if_operator.c                                :+:      :+:    :+:   */
+/*   print_global_saved_pos.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/19 15:22:29 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/19 17:39:00 by amarchan         ###   ########.fr       */
+/*   Created: 2022/07/21 12:02:54 by amarchan          #+#    #+#             */
+/*   Updated: 2022/07/21 12:03:06 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	count_dollars(char *str)
+//FOR DEBUG
+void	print_global_saved_pos(void)
 {
-	int	i;
-	int	c;
-
-	i = 0;
-	c = 0;
-	printf("str = %s\n", str);
-	while (str[i])
+	extern t_global global;
+	
+	int a = 0;
+	puts("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+	while (global.saved_pos[a])
 	{
-		if (str[i] == '$')
-			c++;
-		i++;
+		printf("global.saved_pos[%d] = %d\n", a, global.saved_pos[a]);
+		a++;		
 	}
-	return (c);
-}
-void	check_if_operator(char *str, char *new_str)
-{
-	int	i;
-	extern t_global	global;
-	if (is_operator(new_str))
-	{			
-		global.ignore_op = count_dollars(str);
-	}
-	printf("global.ignore_op = %d\n", global.ignore_op);
+	puts("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 }

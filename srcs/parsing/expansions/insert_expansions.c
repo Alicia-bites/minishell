@@ -6,27 +6,11 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:49:04 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/20 14:27:19 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/20 18:13:16 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-int	bracket_is_after_dollar(char *str, int pos)
-{
-	while (str[pos])
-	{
-		if (str[pos] == '$')
-		{
-			if (str[pos + 1] == '}')
-				return (1);
-			else
-				return (0);
-		}
-		pos--;
-	}
-	return (0);
-}
 
 static char	*malloc_newstr(int full_size, t_expanded **expanded_list)
 {
@@ -76,8 +60,7 @@ static void	copy_expanded(char *str, t_expanded **expanded_list,
 	}
 }
 
-char	*insert_expansions(int full_size, t_expanded *expanded_list, char *str,
-	int lb)
+char	*insert_expansions(int full_size, t_expanded *expanded_list, char *str)
 {
 	t_cursor	cursor;
 	int			j;
@@ -95,11 +78,6 @@ char	*insert_expansions(int full_size, t_expanded *expanded_list, char *str,
 		else if ((str[cursor.k] == '$' && str[cursor.k + 1] == '"')
 			|| str[cursor.k] == '"')
 			cursor.k++;
-	}
-	if (lb)
-	{
-		new_str[cursor.i] = '}';
-		cursor.i++;		
 	}
 	new_str[cursor.i] = '\0';
 	return (new_str);

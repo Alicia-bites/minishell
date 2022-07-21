@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/21 15:29:59 by abarrier         ###   ########.fr        #
+#    Updated: 2022/07/21 17:08:47 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -146,8 +146,8 @@ PARSING_SRCS	:=	count_quotes.c\
 					sort_inputs.c\
 					store_built_ins.c
 
-EXP_SRCS	:=	create_dollar_list.c\
-				check_if_operator.c\
+EXP_SRCS	:=	bracket_is_after_dollar.c\
+				create_dollar_list.c\
 				expand_dollar.c\
 				find_expansions.c\
 				ft_lstadd_back_dollar.c\
@@ -160,7 +160,9 @@ EXP_SRCS	:=	create_dollar_list.c\
 				is_varname.c\
 				lonely_bracket.c \
 				malloc_varname.c \
-				print_dollar_lst.c
+				print_dollar_lst.c\
+				print_global_saved_pos.c\
+				save_operator_position.c
 
 SIG_SRCS	:=	ft_set_sigaction.c\
 				give_prompt_back.c
