@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:58:01 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/21 14:23:26 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/21 15:17:29 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,44 @@ static int	is_expanded_op(int i)
 	return (0);
 }
 
-void	get_chartype_second(int *i, t_chartype **input_list)
+// void	check_l_redir(int i, t_chartype **input_list)
+// {
+// 	if (i > 0)
+// 	{
+// 		if ((*input_list)[(i) - 1].character == '=')
+// 			(*input_list)[i].type = CH_WORD;
+// 		else
+// 			(*input_list)[i].type = CH_L_REDIR;
+// 	}
+// 	else
+// 		(*input_list)[i].type = CH_L_REDIR;
+// }
+
+// void	check_r_redir(int i, t_chartype **input_list)
+// {
+// 	if (i > 0)
+// 	{
+// 		if ((*input_list)[(i) - 1].character == '=')
+// 			(*input_list)[i].type = CH_WORD;
+// 		else
+// 			(*input_list)[i].type = CH_R_REDIR;
+// 	}
+// 	else
+// 		(*input_list)[i].type = CH_R_REDIR;
+// }
+
+void	get_chartype_second(int i, t_chartype **input_list)
 {
-	if ((*input_list)[*i].character == '"' && (*input_list)->n_double == 1)
-		(*input_list)[*i].type = CH_WORD;
-	else if ((*input_list)[*i].character == '"' && (*input_list)->n_double > 1)
-		(*input_list)[*i].type = CH_D_QUOTE;
-	else if ((*input_list)[*i].character == '<')
-		(*input_list)[*i].type = CH_L_REDIR;
-	else if ((*input_list)[*i].character == '>')
-		(*input_list)[*i].type = CH_R_REDIR;
-	else if ((*input_list)[*i].character == '\n')
-		(*input_list)[*i].type = CH_BN;
+	if ((*input_list)[i].character == '"' && (*input_list)->n_double == 1)
+		(*input_list)[i].type = CH_WORD;
+	else if ((*input_list)[i].character == '"' && (*input_list)->n_double > 1)
+		(*input_list)[i].type = CH_D_QUOTE;
+	else if ((*input_list)[i].character == '<')
+		(*input_list)[i].type = CH_L_REDIR;
+	else if ((*input_list)[i].character == '>')
+		(*input_list)[i].type = CH_R_REDIR;
+	else if ((*input_list)[i].character == '\n')
+		(*input_list)[i].type = CH_BN;
 }
 int	get_chartype(t_chartype **input_list)
 {
@@ -69,12 +95,14 @@ int	get_chartype(t_chartype **input_list)
 			(*input_list)[i].type = CH_SPACE;
 		else if ((*input_list)[i].character == '|')
 			(*input_list)[i].type = CH_PIPE;
-		else if ((*input_list)[i].character == '\'' && (*input_list)->n_single == 1)
+		else if ((*input_list)[i].character == '\''
+			&& (*input_list)->n_single == 1)
 			(*input_list)[i].type = CH_WORD;
-		else if ((*input_list)[i].character == '\'' && (*input_list)->n_single > 1)
+		else if ((*input_list)[i].character == '\''
+			&& (*input_list)->n_single > 1)
 			(*input_list)[i].type = CH_S_QUOTE;
 		else
-			get_chartype_second(&i, input_list);
+			get_chartype_second(i, input_list);
 		i++;
 	}
 	// print_chartype(*input_list);

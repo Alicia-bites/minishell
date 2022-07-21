@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/21 17:08:59 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/21 19:04:08 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,6 +188,7 @@ void				ft_lstclear_dollar(t_expanded **lst);
 char				*expand_dollar(char *str);
 int					lonely_bracket(char *str);
 int					bracket_is_after_dollar(char *str, int pos);
+int					found_operator(char *str);
 
 void				save_operator_position(char *expanded, t_position position);
 
@@ -260,6 +261,7 @@ int					redir_space_token(t_list **token_list);
 int					redir_token(t_list **token_list);
 int					token_space_redir(t_list **token_list);
 int					token_redir(t_list **token_list);
+int					not_operator(t_list *token_list);
 
 int					is_combo_heredoc_when_heredoc_index_zero(t_list **token_list);
 int					heredoc_combo_is_at_the_beggining(t_list **token_list);

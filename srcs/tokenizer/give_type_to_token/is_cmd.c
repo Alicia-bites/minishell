@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 19:29:17 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/19 13:55:40 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/21 19:02:13 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	is_cmd(t_list **token_list)
 	extern t_global	global;
 	
 	if (((*token_list)->index == 0 || following_pipe(token_list))
-		&& !is_operator((*token_list)->token))
+		&& not_operator((*token_list)))
 		{
 			global.seen_tok_cmd = 1;
 			return (1);			
