@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:57:58 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/20 13:46:13 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/21 17:17:27 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,38 @@
 // 		}
 // }
 
+void	check_operator_presence(t_list **token_list)
+{
+	if (found_operator((*token_list)->token))
+	{
+		puts("FOUND_OP");
+		(*token_list)->toktype = TOK_ARG;
+	}
+}
+
+int	check_quote(t_chartype *input_list, int start)
+{
+	int	seen_quote;
+	
+	seen_quote = 0;
+	if (input_list[start].character == '\''
+		|| input_list[start].character == '\"')
+		{
+			puts("FOUND_QUOTE");
+			seen_quote = 1;
+		}
+			
+	return (seen_quote);
+}
+
 void built_token(t_chartype *input_list, int start, int end, t_list **token_list)
 {
-	int			len;
 	int			k;
+	int			len;
 	char 		*token;
+	int			seen_quote;
 
+	seen_quote = check_quote(input_list, start);
 	remove_quotes(input_list, &start, &end);
 	len = end - start;
 	token = malloc(sizeof(char) * (len + 1));
@@ -49,10 +75,9 @@ void built_token(t_chartype *input_list, int start, int end, t_list **token_list
 	}
 	k = 0;
 	while (k < len)
-	{
-		// check_quotes_bn(input_list, &start, &len);
 		token[k++] = input_list[start++].character;
-	}
 	token[k++] = '\0';
 	add_token_to_list(token, token_list);
+	if (seen_quote)
+		check_operator_presence(token_list);
 }
