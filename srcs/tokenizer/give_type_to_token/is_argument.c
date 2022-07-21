@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 09:47:14 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/19 18:23:09 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/21 18:52:20 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,15 @@ int	following_file_or_sep(t_list **token_list)
 			return (1);
 	}
 	return (0);
+}
+
+int	not_operator(t_list *token_list)
+{
+	if (token_list->toktype == TOK_NOT_OP)
+		return (1);
+	if (is_operator(token_list->token))
+		return (0);
+	return (1);
 }
 
 // Is argument a token that is a $, or preceded by a space and then
@@ -50,7 +59,7 @@ int	is_argument(t_list **token_list)
 	}
 	if ((*token_list)->toktype == TOK_ARG)
 	{
-		while (*token_list && !is_operator((*token_list)->token))
+		while (*token_list && not_operator(*token_list))
 		{
 			(*token_list)->toktype = TOK_ARG;
 			*token_list = (*token_list)->next;
