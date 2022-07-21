@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/21 18:25:21 by abarrier         ###   ########.fr        #
+#    Updated: 2022/07/21 18:58:00 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -119,7 +119,9 @@ FD_SRCS		:=	fd_access.c\
 			fd_loop_tok_secure.c\
 			fd_loop_tok_type.c\
 			fd_open.c\
-			fd_outfile_open.c
+			fd_outfile_open.c\
+			fd_pipe.c\
+			fd_pipe_pfd.c
 
 INPUT_HANDLER	:=	exit_minishell.c\
 					get_input.c\

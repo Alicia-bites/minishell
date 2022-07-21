@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:10:12 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/12 13:44:00 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/21 18:44:03 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void	cmd_show(void *content)
 	}
 	if (cmd->fullpath)
 		printf("fullpath: %s\n", cmd->fullpath);
-	printf("pfd[0]: %d\tpfd[1]: %d\n", cmd->fd_r, cmd->fd_w);
+	printf("fd_in: %d\tfd_out: %d\n", cmd->fd_r, cmd->fd_w);
+	printf("pfd_in[0]: %d\tpfd_out[1]: %d\n", cmd->pfd_r, cmd->pfd_w);
 	printf("access: %d\n", cmd->access);
 	printf("%s\n", SEP_P);
 }

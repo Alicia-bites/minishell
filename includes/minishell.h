@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/21 18:28:24 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/21 19:06:06 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,8 @@ typedef struct s_cmd
 	char	*fullpath;
 	int		fd_r;
 	int		fd_w;
+	int		pfd_r;
+	int		pfd_w;
 	int		access;
 }		t_cmd;
 
@@ -339,6 +341,8 @@ void	fd_loop_tok_secure(t_cmd *cmd, int res_loop);
 int	fd_loop_tok_type(t_list *tok, t_cmd *cmd, enum e_toktype toktype, int mode);
 int	fd_open(char *fd, int mode);
 int	fd_outfile_open(t_cmd *cmd, char *fd, int mode);
+void	fd_pipe(t_ulist **cmd_lst);
+void	fd_pipe_pfd(t_ulist *obj, t_cmd *cmd1, t_cmd *cmd2, int n_pipe);
 
 
 
