@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/21 17:13:02 by amarchan         ###   ########.fr        #
+#    Updated: 2022/07/21 19:00:59 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -191,6 +191,7 @@ GIVE_TOK_SRCS	:=	cmd_heredoc.c\
 					is_heredoc_sep.c\
 					is_operator.c\
 					only_space_in_str.c\
+					not_operator.c\
 					redir_space_token.c\
 					redir_token.c\
 					token_redir.c\

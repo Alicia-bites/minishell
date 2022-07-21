@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/21 17:13:21 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/21 19:00:35 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -255,6 +255,7 @@ int					redir_space_token(t_list **token_list);
 int					redir_token(t_list **token_list);
 int					token_space_redir(t_list **token_list);
 int					token_redir(t_list **token_list);
+int					not_operator(t_list *token_list);
 
 int					is_combo_heredoc_when_heredoc_index_zero(t_list **token_list);
 int					heredoc_combo_is_at_the_beggining(t_list **token_list);
