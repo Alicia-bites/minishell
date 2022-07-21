@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:57:58 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/21 17:17:27 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/21 18:42:05 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,28 @@
 // 			(*len)--;			
 // 		}
 // }
-
-void	check_operator_presence(t_list **token_list)
+void	go_back_to_beginning_of_list(t_list **token_list)
 {
-	if (found_operator((*token_list)->token))
+	while ((*token_list)->prev)
+		(*token_list) = (*token_list)->prev;
+}
+
+void	find_token_in_list(char *token, t_list **token_list)
+{
+	while (token_list)
 	{
-		puts("FOUND_OP");
-		(*token_list)->toktype = TOK_ARG;
+		if (!ft_strcmp(token, (*token_list)->token))
+			return;
+		(*token_list) = (*token_list)->next;
 	}
+}
+
+void	check_operator_presence(char *token, t_list **token_list)
+{
+	find_token_in_list(token, token_list);
+	if (found_operator((*token_list)->token))
+		(*token_list)->toktype = TOK_NOT_OP;
+	go_back_to_beginning_of_list(token_list);
 }
 
 int	check_quote(t_chartype *input_list, int start)
@@ -49,11 +63,7 @@ int	check_quote(t_chartype *input_list, int start)
 	seen_quote = 0;
 	if (input_list[start].character == '\''
 		|| input_list[start].character == '\"')
-		{
-			puts("FOUND_QUOTE");
 			seen_quote = 1;
-		}
-			
 	return (seen_quote);
 }
 
@@ -79,5 +89,5 @@ void built_token(t_chartype *input_list, int start, int end, t_list **token_list
 	token[k++] = '\0';
 	add_token_to_list(token, token_list);
 	if (seen_quote)
-		check_operator_presence(token_list);
+		check_operator_presence(token, token_list);		
 }
