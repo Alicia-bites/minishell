@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 09:36:07 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/19 15:24:20 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/21 16:12:41 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@
 size_t	cmd_init_prop_n_arg(t_list *tok, t_cmd *cmd)
 {
 	t_list	*obj;
+	size_t	len_tok;
 	size_t	res;
 
+	len_tok = ft_strlen(tok->token);
 	obj = tok->next;
 	res = 1;
 	while (obj && !(obj->toktype == TOK_PIPE))
@@ -46,5 +48,7 @@ size_t	cmd_init_prop_n_arg(t_list *tok, t_cmd *cmd)
 			res++;
 		obj = obj->next;
 	}
+	if (res == 1 && len_tok == 0)
+		res = 0;
 	return (res);
 }
