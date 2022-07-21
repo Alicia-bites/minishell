@@ -6,11 +6,21 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:48:34 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/20 18:38:18 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/21 13:48:55 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static int	found_operator_in_expansion(char *str)
+{
+	if (str)
+		if (ft_strstr(str, "|") || ft_strstr(str, ">>")
+			|| ft_strstr(str, "<<") || ft_strstr(str, "<")
+			|| ft_strstr(str, ">"))
+			return (1);
+	return (0);
+}
 
 static void	handle_dollar_number(char *str, t_expanded **expanded_list,
 	int *index, int i)
@@ -24,9 +34,10 @@ static void	handle_dollar_number(char *str, t_expanded **expanded_list,
 static void	handle_dollar_name(int i, char *str, int *varsize,
 	t_expanded **expanded_list, int *index)
 {
-	int	j;
-	char *var;
-	char *expanded;
+	int			j;
+	char		*var;
+	char		*expanded;
+	t_position	position;	
 	
 	i++;
 	j = i;
@@ -35,6 +46,11 @@ static void	handle_dollar_name(int i, char *str, int *varsize,
 	var = malloc_varname(str, i, j);
 	*varsize = ft_strlen(var) + 1;
 	expanded = getenv(var);
+	position.move_cursor = ft_strlen(expanded) - (ft_strlen(var) + 1);
+	position.pos = i - 1;
+	if (found_operator_in_expansion(expanded))
+		save_operator_position(expanded, position);
+	print_global_saved_pos();
 	if (!expanded || (i >= 2 && str[i - 2] == '<'))
 		expanded = "";
 	*expanded_list = create_dollar_list(expanded, (*index)++);

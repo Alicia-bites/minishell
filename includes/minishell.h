@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/20 18:13:35 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/21 13:47:41 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,20 @@ typedef struct s_chartype {
 typedef struct s_global {
 	int			readline;
 	int			seen_tok_cmd;
-	int			ignore_op;
+	int			*saved_pos;	
 }	t_global;
+
 
 typedef struct s_cursor {
 	int			i;
 	int			k;
 }	t_cursor;
+
+typedef struct s_position
+{
+	int	pos;
+	int	move_cursor;
+} t_position;
 
 typedef struct s_expanded {
 	int					index;
@@ -176,6 +183,8 @@ char				*expand_dollar(char *str);
 int					lonely_bracket(char *str);
 void				check_if_operator(char *str, char *new_str);
 int					bracket_is_after_dollar(char *str, int pos);
+
+void				save_operator_position(char *expanded, t_position position);
 
 //do_cd
 int					do_cd(t_ulist **envp, t_cmd *cmd);

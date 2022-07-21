@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/20 18:13:48 by amarchan         ###   ########.fr        #
+#    Updated: 2022/07/21 13:49:10 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -160,7 +160,9 @@ EXP_SRCS	:=	bracket_is_after_dollar.c\
 				is_varname.c\
 				lonely_bracket.c \
 				malloc_varname.c \
-				print_dollar_lst.c
+				print_dollar_lst.c\
+				print_global_saved_pos.c\
+				save_operator_position.c
 
 SIG_SRCS	:=	ft_set_sigaction.c\
 				give_prompt_back.c
