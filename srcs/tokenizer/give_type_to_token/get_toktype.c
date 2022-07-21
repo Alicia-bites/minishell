@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:58:10 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/19 18:20:13 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/20 19:14:32 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	get_toktype(t_list **token_list)
 	
 	global.seen_tok_cmd = 0;
 	it = *token_list;
-	tmp = global.ignore_op;
 	while (*token_list)
 	{
 		if (is_built_in(token_list))
