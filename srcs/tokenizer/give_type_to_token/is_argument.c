@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 09:47:14 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/19 18:23:09 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/21 18:59:54 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	is_argument(t_list **token_list)
 	}
 	if ((*token_list)->toktype == TOK_ARG)
 	{
-		while (*token_list && !is_operator((*token_list)->token))
+		while (*token_list && not_operator(*token_list))
 		{
 			(*token_list)->toktype = TOK_ARG;
 			*token_list = (*token_list)->next;

@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 15:17:45 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/19 18:39:34 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/21 18:41:27 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef enum e_toktype {
 	TOK_BN,
 	TOK_FILE,
 	TOK_HERESEP,
+	TOK_NOT_OP,
 }	t_toktype;
 
 typedef struct s_ulist

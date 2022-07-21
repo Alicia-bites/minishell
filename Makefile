@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/21 18:58:00 by abarrier         ###   ########.fr        #
+#    Updated: 2022/07/21 19:11:30 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -151,6 +151,7 @@ EXP_SRCS	:=	bracket_is_after_dollar.c\
 				create_dollar_list.c\
 				expand_dollar.c\
 				find_expansions.c\
+				found_operator.c\
 				ft_lstadd_back_dollar.c\
 				ft_lstclear_back_dollar.c\
 				ft_lstclear_dollar.c\
@@ -192,6 +193,7 @@ GIVE_TOK_SRCS	:=	cmd_heredoc.c\
 					is_heredoc_sep.c\
 					is_operator.c\
 					only_space_in_str.c\
+					not_operator.c\
 					redir_space_token.c\
 					redir_token.c\
 					token_redir.c\
