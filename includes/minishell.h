@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/21 19:11:06 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/21 19:43:34 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <signal.h>
 # include <stdint.h>
 # include <sys/types.h>
+# include <sys/wait.h>
 # include <fcntl.h>
 
 # include "libft.h"
@@ -46,9 +47,13 @@
 # define ENV_PATH_NAME "PATH"
 # define ENV_PWD_NAME "PWD"
 
+# define ERR_CMD_FOUND "Command not found"
 # define ERR_EXP_ARG "not a valid identifier"
-# define ERR_NOHOME "HOME not set"
+# define ERR_FORK "Fork issue"
+# define ERR_PFD "Impossible to create a file descriptor"
+# define ERR_PIPE "Pipe issue"
 # define ERR_PWD "impossible to get the current directory"
+# define ERR_NOHOME "HOME not set"
 # define ERR_UNSET_ARG "not a valid identifier"
 
 typedef enum enum_chartype {
@@ -346,6 +351,11 @@ int	fd_outfile_open(t_cmd *cmd, char *fd, int mode);
 void	fd_pipe(t_ulist **cmd_lst);
 void	fd_pipe_pfd(t_ulist *obj, t_cmd *cmd1, t_cmd *cmd2, int n_pipe);
 
+//pipe
+void	pipe_close_pfd(void *content);
+void	pipe_cmd(t_ulist **cmd_lst, t_ulist *obj);
+int	pipe_run(t_ulist **cmd_lst, int n_cmd);
+int	pipe_wait(int n_cmd, int pid);
 
 
 //TEST
