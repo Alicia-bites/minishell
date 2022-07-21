@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/20 17:02:24 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/21 14:49:21 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,12 @@ typedef enum e_var_view
 	VAR_ENV,
 	VAR_EXP
 } 	t_var_view;
+
+typedef enum e_redir_open
+{
+	DIR_IN,
+	DIR_OUT
+}	t_redir_open;
 
 typedef enum e_fd_access
 {
@@ -318,11 +324,12 @@ void	cmd_show(void *content);
 //file_descriptor
 int	fd_access(char *fd, int mode);
 int	fd_close_open(t_ulist *obj);
-void	fd_infile(t_list **tok_lst, t_ulist **cmd_lst, int mode);
+void	fd_default(t_ulist **cmd_lst);
 int	fd_infile_open(t_cmd *cmd, char *fd, int mode);
-t_list	*fd_loop_tok(t_list *tok, t_cmd *cmd, enum e_toktype toktype, int mode);
+void	fd_link_in_out_file(t_list **tok_lst, t_ulist **cmd_lst, int mode);
+t_list	*fd_loop_tok(t_list *tok, t_cmd *cmd, int mode);
+int	fd_loop_tok_type(t_list *tok, t_cmd *cmd, enum e_toktype toktype, int mode);
 int	fd_open(char *fd, int mode);
-void	fd_outfile(t_list **tok_lst, t_ulist **cmd_lst, enum e_toktype toktype, int mode);
 int	fd_outfile_open(t_cmd *cmd, char *fd, int mode);
 
 
