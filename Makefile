@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/21 19:43:55 by abarrier         ###   ########.fr        #
+#    Updated: 2022/07/22 11:05:40 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,6 +92,7 @@ CMD_SRCS	:=	cmd_create_lst.c\
 			cmd_init_prop.c\
 			cmd_init_prop_fullcmd.c\
 			cmd_init_prop_fullcmd_null.c\
+			cmd_init_prop_fullpath.c\
 			cmd_init_prop_n_arg.c\
 			cmd_loop_envline.c\
 			cmd_loop_envp.c\

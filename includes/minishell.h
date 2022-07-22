@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/21 19:43:34 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/22 11:06:10 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -330,6 +330,7 @@ t_cmd   *cmd_init(t_ulist **env_lst);
 t_list	*cmd_init_prop(t_list *tok, t_cmd *cmd);
 t_list	*cmd_init_prop_fullcmd(t_list *tok, t_cmd *cmd);
 t_list	*cmd_init_prop_fullcmd_null(t_list *tok, t_cmd *cmd);
+int	cmd_init_prop_fullpath(t_cmd *cmd);
 size_t	cmd_init_prop_n_arg(t_list *tok, t_cmd *cmd);
 char	*cmd_loop_envline(char *cmd, char **envline);
 char	*cmd_loop_envp(char *cmd, t_ulist **envp_lst);
