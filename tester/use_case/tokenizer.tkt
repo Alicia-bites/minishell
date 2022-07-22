@@ -45,5 +45,3 @@ echo arg < file < file arg
 #
 cmd arg << SEP << SEP arg
 << SEP << SEP cmd arg
-<< SEP << SEP cmd arg
-<< SEP << SEP cmd arg

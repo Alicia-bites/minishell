@@ -8,11 +8,6 @@ EXPANSION
 	operateurs qui "sortent" d'une expansion : pas des operateurs.
 
 
-	attention a la tokenization du chevron aussi, pas un operateur
-	export VAR="< test"
-	export VAR=< test
-
-
 SIGNAL
 	voir avec Yohan pour la boucle et le ctrl-D
 	foutre tout ce qui a ete malloc dans une variable globale pour pouvoir

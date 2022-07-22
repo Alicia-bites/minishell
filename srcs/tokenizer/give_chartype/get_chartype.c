@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:58:01 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/21 15:17:29 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/22 11:56:48 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 // static void	print_chartype(t_chartype *input_list)
 // {
 // 	int	i;
-	
+
 // 	i = 0;
 // 	while (input_list[i].character)
 // 	{
@@ -27,9 +27,9 @@
 
 static int	is_expanded_op(int i)
 {
-	int	j;
+	int				j;
 	extern t_global	global;
-	
+
 	j = 0;
 	if (global.saved_pos)
 	{
@@ -82,10 +82,11 @@ void	get_chartype_second(int i, t_chartype **input_list)
 	else if ((*input_list)[i].character == '\n')
 		(*input_list)[i].type = CH_BN;
 }
+
 int	get_chartype(t_chartype **input_list)
 {
 	int	i;
-	
+
 	i = 0;
 	while ((*input_list)[i].character)
 	{
@@ -105,6 +106,5 @@ int	get_chartype(t_chartype **input_list)
 			get_chartype_second(i, input_list);
 		i++;
 	}
-	// print_chartype(*input_list);
 	return (i);
 }

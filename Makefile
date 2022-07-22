@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/21 19:00:59 by amarchan         ###   ########.fr        #
+#    Updated: 2022/07/22 11:11:24 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -174,12 +174,15 @@ GIVE_CHAR_SRCS	:=	get_chartype.c\
 					is_char_space.c\
 					is_char_word.c 
 
-GIVE_TOK_SRCS	:=	cmd_heredoc.c\
+GIVE_TOK_SRCS	:=	arg_dlredir_sep_token.c\
+					cmd_heredoc.c\
 					cmd_redir.c\
 					combo_is_after_pipe.c\
 					combo_is_at_the_beggining.c\
 					following_pipe.c\
 					get_toktype.c\
+					heredoc_combo_is_after_pipe.c\
+					heredoc_combo_is_at_the_beggining.c\
 					is_argument.c\
 					is_built_in.c\
 					is_cmd.c\
@@ -190,10 +193,12 @@ GIVE_TOK_SRCS	:=	cmd_heredoc.c\
 					is_filename.c\
 					is_heredoc_sep.c\
 					is_operator.c\
-					only_space_in_str.c\
 					not_operator.c\
+					only_space_in_str.c\
+					pipe_cmd_dlredir_sep_token.c\
 					redir_space_token.c\
 					redir_token.c\
+					start_cmd_dlredir_sep_token.c\
 					token_redir.c\
 					token_space_redir.c
 

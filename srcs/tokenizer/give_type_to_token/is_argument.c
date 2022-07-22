@@ -6,14 +6,13 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 09:47:14 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/21 18:59:54 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/22 11:43:07 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "minishell.h"
 
-int	following_file_or_sep(t_list **token_list)
+static int	following_file_or_sep(t_list **token_list)
 {
 	if ((*token_list)->index >= 1)
 	{
@@ -24,12 +23,24 @@ int	following_file_or_sep(t_list **token_list)
 	return (0);
 }
 
+static int	loop_on_arg(t_list **token_list)
+{
+	while (*token_list && not_operator(*token_list))
+	{
+		(*token_list)->toktype = TOK_ARG;
+		*token_list = (*token_list)->next;
+	}
+	if ((*token_list))
+		*token_list = (*token_list)->prev;
+	return (1);
+}
+
 // Is argument a token that is a $, or preceded by a space and then
 // a built-in or a command
 int	is_argument(t_list **token_list)
 {
 	extern t_global	global;
-	
+
 	if ((*token_list)->index >= 1)
 	{
 		if ((*token_list)->prev->toktype == TOK_BUILTIN
@@ -49,15 +60,6 @@ int	is_argument(t_list **token_list)
 		(*token_list)->toktype = TOK_CMD;
 	}
 	if ((*token_list)->toktype == TOK_ARG)
-	{
-		while (*token_list && not_operator(*token_list))
-		{
-			(*token_list)->toktype = TOK_ARG;
-			*token_list = (*token_list)->next;
-		}
-		if ((*token_list))
-			*token_list = (*token_list)->prev;
-		return (1);
-	}
+		return (loop_on_arg(token_list));
 	return (0);
 }

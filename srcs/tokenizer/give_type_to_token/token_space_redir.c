@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 09:37:00 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/15 09:37:30 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/22 11:54:42 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ int	token_space_redir(t_list **token_list)
 	if ((*token_list)->next && (*token_list)->next->next)
 	{
 		if (((*token_list)->next->toktype == TOK_SPACE
-			&& (*token_list)->next->next->toktype == TOK_L_REDIR)
+				&& (*token_list)->next->next->toktype == TOK_L_REDIR)
 			|| ((*token_list)->next->toktype == TOK_SPACE
-			&& (*token_list)->next->next->toktype == TOK_R_REDIR)
+				&& (*token_list)->next->next->toktype == TOK_R_REDIR)
 			|| ((*token_list)->next->toktype == TOK_SPACE
-			&& (*token_list)->next->next->toktype == TOK_DR_REDIR))
-				return (1);		
+				&& (*token_list)->next->next->toktype == TOK_DR_REDIR))
+			return (1);
 	}
 	return (0);
 }

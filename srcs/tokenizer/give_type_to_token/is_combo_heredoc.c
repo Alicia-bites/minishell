@@ -6,66 +6,11 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 09:47:22 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/18 17:35:33 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/22 11:08:47 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-int	heredoc_combo_is_after_pipe(t_list **token_list)
-{
-	if ((*token_list)->prev->prev->prev->toktype == TOK_PIPE)
-	{
-		if ((*token_list)->prev->prev->toktype == TOK_DL_REDIR
-			&& ((*token_list)->prev->toktype == TOK_HERESEP))
-				return (1);
-	}
-	return (0);
-}
-
-int	heredoc_combo_is_at_the_beggining(t_list **token_list)
-{
-	if ((*token_list)->prev->prev->index == 0)
-	{
-		if ((*token_list)->prev->prev->toktype == TOK_DL_REDIR
-			&& ((*token_list)->prev->toktype == TOK_HERESEP))
-				return (1);
-	}
-	return (0);
-}
-
-int	pipe_cmd_dlredir_sep_token(t_list **token_list)
-{
-	if ((*token_list)->prev->prev->prev->prev->toktype == TOK_PIPE)
-	{
-		if ((*token_list)->prev->prev->prev->toktype == TOK_CMD
-			&& (*token_list)->prev->prev->toktype == TOK_DL_REDIR
-			&& (*token_list)->prev->toktype == TOK_HERESEP)
-				return (1);
-	}
-	return (0);
-}
-
-int	arg_dlredir_sep_token(t_list **token_list)
-{
-	if ((*token_list)->prev->prev->prev->toktype == TOK_ARG
-		&& (*token_list)->prev->prev->toktype == TOK_DL_REDIR
-		&& (*token_list)->prev->toktype == TOK_HERESEP)
-		return (1);
-	return (0);
-}
-
-int	start_cmd_dlredir_sep_token(t_list **token_list)
-{
-	if ((*token_list)->prev->prev->prev->index == 0)
-	{
-		if ((*token_list)->prev->prev->prev->toktype == TOK_CMD
-			&& (*token_list)->prev->prev->toktype == TOK_DL_REDIR
-			&& (*token_list)->prev->toktype == TOK_HERESEP)
-				return (1);
-	}
-	return (0);
-}
 
 int	is_combo_heredoc(t_list **token_list)
 {
@@ -73,7 +18,7 @@ int	is_combo_heredoc(t_list **token_list)
 		return (0);
 	if ((*token_list)->index >= 4)
 		if (pipe_cmd_dlredir_sep_token(token_list))
-			return (1);			
+			return (1);
 	if ((*token_list)->index >= 3)
 		if (start_cmd_dlredir_sep_token(token_list))
 			return (1);
