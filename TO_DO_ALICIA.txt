@@ -5,8 +5,7 @@ NORME
 	normer les fichiers
 
 EXPANSION
-	operateurs qui "sortent" d'une expansion : pas des operateurs.
-
+	echo $>TERM
 
 SIGNAL
 	voir avec Yohan pour la boucle et le ctrl-D
