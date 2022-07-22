@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 16:24:51 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/22 13:30:56 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/22 15:26:47 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ void	handle_str(char **str, t_list **token_list, int *err, t_ulist **envp)
 		return ;
 	}
 	ft_parse(*str, token_list, err);
-	print_lst(*token_list);
+	//print_lst(*token_list);
 	// execute_command(token_list);
 	cmd_create_lst(token_list, envp, cmd_list);
 	fd_link_in_out_file(token_list, cmd_list, DIR_IN);
 	fd_pipe(cmd_list);
-	ft_lst_func_lst(cmd_list, &cmd_show);
+	//ft_lst_func_lst(cmd_list, &cmd_show);
 	pipe_run (cmd_list, ft_lst_size(cmd_list));
 	ft_lstclear(token_list);
 	// printf("str = %s\n", *str);
