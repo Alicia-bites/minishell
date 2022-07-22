@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 17:08:21 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/22 11:14:10 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/22 15:21:18 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ t_list	*cmd_init_prop(t_list *tok, t_cmd *cmd)
 		return (NULL);
 	if (cmd->toktype == TOK_CMD && cmd->n_arg > 0)
 		cmd->fullpath = cmd_getvalidpath(cmd);
-	else
+	else if (cmd->toktype == TOK_CMD)
 		cmd->fullpath = cmd_getvalidpath_null(cmd);
-	if (cmd_init_prop_fullpath(cmd))
+	if (cmd->toktype == TOK_CMD && cmd_init_prop_fullpath(cmd))
 	{
 		cmd_free(cmd);
 		return (NULL);
