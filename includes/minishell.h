@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/22 13:29:44 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/22 15:05:56 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,14 @@
 # define ERR_PWD "impossible to get the current directory"
 # define ERR_NOHOME "HOME not set"
 # define ERR_UNSET_ARG "not a valid identifier"
+
+# define BUILT_CD "cd"
+# define BUILT_ECHO "echo"
+# define BUILT_ENV "env"
+# define BUILT_EXIT "exit"
+# define BUILT_EXPORT "export"
+# define BUILT_PWD "pwd"
+# define BUILT_UNSET "unset"
 
 typedef enum enum_chartype {
 	CH_UNKNOWN,
@@ -199,6 +207,9 @@ int					bracket_is_after_dollar(char *str, int pos);
 int					found_operator(char *str);
 
 void				save_operator_position(char *expanded, t_position position);
+
+//do
+int	do_builtin(t_ulist **cmd_lst, t_cmd *cmd);
 
 //do_cd
 int					do_cd(t_ulist **envp, t_cmd *cmd);

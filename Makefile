@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/22 13:29:02 by abarrier         ###   ########.fr        #
+#    Updated: 2022/07/22 15:07:13 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,8 @@ GIVE_TOK_PATH			:=		give_type_to_token
 MAKE_TOK_PATH			:=		make_token
 
 RM		:=	rm -rf
+
+BUILT_SRCS	:=	do_builtin.c\
 
 BUILT_CD_SRCS	:=	do_cd.c\
 			do_cd_home.c\
@@ -228,6 +230,7 @@ MAKE_TOK_SRCS	:=	add_token_to_list.c\
 
 SRCS		:=	main.c\
 			test_antho.c\
+				$(BUILT_SRCS)\
 				$(BUILT_CD_SRCS)\
 				$(BUILT_ECHO_SRCS)\
 				$(BUILT_ENV_SRCS)\
@@ -255,6 +258,7 @@ DEPS		:=	$(OBJS:.o=.d)
 
 vpath %.h $(IPATH)
 vpath %.c $(SRCS_PATH)\
+	$(SRCS_PATH)/$(BUILT_PATH)\
 	$(SRCS_PATH)/$(BUILT_PATH)/$(BUILT_CD_PATH)\
 	$(SRCS_PATH)/$(BUILT_PATH)/$(BUILT_ECHO_PATH)\
 	$(SRCS_PATH)/$(BUILT_PATH)/$(BUILT_ENV_PATH)\

@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:39:27 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/22 13:27:06 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/22 15:38:30 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,26 @@
 void	pipe_cmd(t_ulist **cmd_lst, t_ulist *obj)
 {
 	t_cmd	*cmd;
+	int		res;
 
 	cmd = (t_cmd *)obj->content;
-//	if (cmd->fd_r >= 0)
-//		dup2(cmd->fd_r, STDIN_FILENO);
-//	else
-//	{
-//		ft_lst_free(cmd_lst, cmd_free);
-//		exit(EXIT_FAILURE);
-//	}
-//	if (cmd->fd_w < 0)
-//	{
-//		ft_lst_free(cmd_lst, &cmd_free);
-//		exit(EXIT_FAILURE);
-//	}
-//	dup2(cmd->fd_w, STDOUT_FILENO);
+	res = 0;
 	pipe_cmd_dup_fd_in(cmd_lst, cmd);
 	pipe_cmd_dup_fd_out(cmd_lst, cmd);
 	ft_lst_func_lst(cmd_lst, &pipe_close_pfd);
-	execve(cmd->fullcmd[0], cmd->fullcmd, NULL);
-	if (cmd->access == -1)
-		ft_panic(-1, __FILE__, ERR_CMD_FOUND);
+	if (cmd->toktype == TOK_BUILTIN)
+		res = do_builtin(cmd_lst, cmd);
 	else
-		ft_shell_msg(errno, cmd->fullcmd[0]);
-	ft_lst_free(cmd_lst, &cmd_free);
-	exit(EXIT_FAILURE);
+	{
+		execve(cmd->fullcmd[0], cmd->fullcmd, NULL);
+		res = 1;
+	}
+	if (res)
+	{
+		if (cmd->access == -1)
+			ft_panic(-1, __FILE__, ERR_CMD_FOUND);
+		else
+			ft_shell_msg(errno, cmd->fullcmd[0]);
+	}
+	pipe_exit(cmd_lst, cmd);
 }
