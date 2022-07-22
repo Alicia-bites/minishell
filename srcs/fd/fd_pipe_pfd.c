@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 18:53:54 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/21 18:59:47 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/22 11:14:45 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,3 @@ void	fd_pipe_pfd(t_ulist *obj, t_cmd *cmd1, t_cmd *cmd2, int n_pipe)
 		i++;
 	}
 }
-

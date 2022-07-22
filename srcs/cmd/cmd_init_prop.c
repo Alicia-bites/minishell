@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 17:08:21 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/22 11:04:50 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/22 11:14:10 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,5 @@ t_list	*cmd_init_prop(t_list *tok, t_cmd *cmd)
 		cmd_free(cmd);
 		return (NULL);
 	}
-		
 	return (obj);
 }
