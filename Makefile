@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/22 11:05:40 by abarrier         ###   ########.fr        #
+#    Updated: 2022/07/22 13:29:02 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -127,6 +127,9 @@ FD_SRCS		:=	fd_access.c\
 
 PIPE_SRCS	:=	pipe_close_pfd.c\
 			pipe_cmd.c\
+			pipe_cmd_dup_fd_in.c\
+			pipe_cmd_dup_fd_out.c\
+			pipe_exit.c\
 			pipe_run.c\
 			pipe_wait.c
 

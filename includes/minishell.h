@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/22 11:06:10 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/22 13:29:44 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -356,6 +356,12 @@ void	fd_pipe_pfd(t_ulist *obj, t_cmd *cmd1, t_cmd *cmd2, int n_pipe);
 //pipe
 void	pipe_close_pfd(void *content);
 void	pipe_cmd(t_ulist **cmd_lst, t_ulist *obj);
+void    pipe_cmd_dup_fd_in(t_ulist **cmd_lst, t_cmd *cmd);
+void    pipe_cmd_dup_fd_out(t_ulist **cmd_lst, t_cmd *cmd);
+void    pipe_exit(t_ulist **cmd_lst, t_cmd *cmd);
+
+
+
 int	pipe_run(t_ulist **cmd_lst, int n_cmd);
 int	pipe_wait(int n_cmd, int pid);
 
