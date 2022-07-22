@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:10:12 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/22 13:34:41 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/22 16:20:31 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	cmd_show(void *content)
 	cmd = (t_cmd *)content;
 	i = 0;
 	printf("**%s**\n", __FILE__);
-//	print_lst(*cmd->tok_lst);
 	printf("ntoktype: %d\n", cmd->toktype);
 	printf("n_arg: %zu\n", cmd->n_arg);
 	if (cmd->fullcmd)

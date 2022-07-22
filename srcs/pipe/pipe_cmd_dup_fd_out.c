@@ -6,43 +6,44 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:09:40 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/22 13:41:19 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/22 16:20:10 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+/* @CASE 1:
+ * SINGLE COMMAND (CMD_LST SIZE = 1)
+ * NO INFILE
+ * LAST COMMAND
+ *
+ * @CASE 2:
+ * INFILE
+ * LAST COMMAND
+ *
+ * @CASE 3:
+ * NO INFILE
+ * COMMAND PIPED (FIRST ONE OR MIDDLE)
+ *
+ * @CASE 4:
+ * INFILE
+ * COMMAND PIPED (MIDDLE OR LAST ONE)
+ *
+ * @CASE 5:
+ * ERROR
+ * POSSIBLE INFILE = -1
+ * EXIT FAILURE
+ */
 void	pipe_cmd_dup_fd_out(t_ulist **cmd_lst, t_cmd *cmd)
 {
 	if (cmd->fd_w == FD_NOT_INIT && cmd->pfd_w == FD_NOT_INIT)
-	{
-		// SINGLE COMMAND (CMD_LST SIZE = 1)
-		// NO INFILE
-		// LAST COMMAND
-	}
+		dup2(STDOUT_FILENO, STDOUT_FILENO);
 	else if (cmd->fd_w >= 0 && cmd->pfd_w == FD_NOT_INIT)
-	{
-		// INFILE
-		// LAST COMMAND
 		dup2(cmd->fd_w, STDOUT_FILENO);
-	}
 	else if (cmd->fd_w == FD_NOT_INIT && cmd->pfd_w >= 0)
-	{
-		// NO INFILE
-		// COMMAND PIPED (FIRST ONE OR MIDDLE)
 		dup2(cmd->pfd_w, STDOUT_FILENO);
-	}
 	else if (cmd->fd_w >= 0 && cmd->pfd_w >= 0)
-	{
-		// INFILE
-		// COMMAND PIPED (MIDDLE OR LAST ONE)
 		dup2(cmd->fd_w, STDOUT_FILENO);
-	}
 	else
-	{
-		// ERROR
-		// POSSIBLE INFILE = -1
-		// EXIT FAILURE
 		pipe_exit(cmd_lst, cmd);
-	}
 }
