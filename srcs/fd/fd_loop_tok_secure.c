@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 15:23:38 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/22 12:18:35 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/22 16:11:17 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,4 @@ void	fd_loop_tok_secure(t_cmd *cmd, int res_loop)
 		cmd->fd_r = -1;
 		cmd->fd_w = -1;
 	}
-//	else
-//	{
-//		if (cmd->fd_r == FD_NOT_INIT)
-//			cmd->fd_r = STDIN_FILENO;
-//		if (cmd->fd_w == FD_NOT_INIT)
-//			cmd->fd_w = STDOUT_FILENO;
-//	}
 }
