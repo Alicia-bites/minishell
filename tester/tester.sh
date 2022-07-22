@@ -18,6 +18,7 @@ ORI_P=$(pwd)
 UC_P=${ORI_P}/use_case
 RES_P=${ORI_P}/result
 RES_ORI=${RES_P}/result_ori
+COMMENT_CHAR="#"
 
 function	exec_test
 {
@@ -31,8 +32,10 @@ function	exec_test
 		echo "file name: ${i}"
 		while read -r line
 		do
-			if [ "${line}" != "#" ]
+			if [[ "${line}" =~ ^#.* ]];
 			then
+				echo -e "${MG}${line}${NC}"
+			else
 				echo "command: ${line}"
 				eval ${line}
 				echo "${SEP_SP}"
