@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_token.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 10:24:26 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/12 10:29:16 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/22 17:21:05 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	print_token(t_list *tok)
 {
+	int		i;
 	t_list	*obj;
-	int	i;
 
 	if (!tok)
 		return ;

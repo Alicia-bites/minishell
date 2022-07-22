@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:47:06 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/21 13:55:43 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/22 17:29:49 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*expand_dollar(char *str)
 {
-	char 				*new_str;
+	char				*new_str;
 	int					full_size;
 	t_expanded			*expanded_list;
 
@@ -27,8 +27,5 @@ char	*expand_dollar(char *str)
 	new_str = insert_expansions(full_size, expanded_list, str);
 	ft_lstclear_dollar(&expanded_list);
 	ft_lstclear_back_dollar(&expanded_list);
-	// printf("new_str = %s\n", new_str);
-	// printf("new_str[19] = %c\n", new_str[19]);
-	// printf("new_str[20] = %c\n", new_str[20]);
 	return (new_str);
 }

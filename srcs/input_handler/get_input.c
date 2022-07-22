@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 16:25:39 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/19 18:59:24 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/22 17:22:47 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	get_input(int *err, t_ulist **envp)
 {
 	char	*str;
 	t_list	*token_list;
-	
+
 	token_list = NULL;
 	str = NULL;
 	while (42)
