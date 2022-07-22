@@ -1,20 +1,26 @@
-hello|prout
-echo hello > file1
-echo hello >> file1
-<>
-< >
-><
-> <
->>>
-<<<
-> > >
-< < <
-> >
-< <
-echo hello<
-echo hello>
-<echo hello
->echo hello
-
-ls > file1 > file2 > file3
-ls > file1 > file2 >> file2
+##### STUPID TEST
+#<>
+#< >
+#><
+#> <
+#>>>
+#<<<
+#> > >
+#< < <
+#> >
+#< <
+##### BASIC TEST
+#echo hello > file1
+#echo world >> file2
+#echo hello < file2
+#echo hello << EOF
+#echo hello>
+#<echo hello
+#>echo hello
+#####
+#ls > file1 > file2 > file3
+#ls > file1 > file2 >> file2
+##### COMPLEX CASES
+< test/dir1/file1 cat > file2 | wc
+< test/dir1/file1 cat > file2 | wc < test/dir1/file2
+< test/dir1/file1 cat > file1 | head -n 1 | wc > file3
