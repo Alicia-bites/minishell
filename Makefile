@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/22 11:11:24 by amarchan         ###   ########.fr        #
+#    Updated: 2022/07/22 15:42:08 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -203,6 +203,7 @@ GIVE_TOK_SRCS	:=	arg_dlredir_sep_token.c\
 					token_space_redir.c
 
 MAKE_TOK_SRCS	:=	add_token_to_list.c\
+					built_echo.c\
 					built_token.c\
 					get_token.c\
 					is_bn.c\

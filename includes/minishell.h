@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/22 10:59:30 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/22 15:40:50 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -265,6 +265,7 @@ int					heredoc_combo_is_after_pipe(t_list **token_list);
 
 //make_token
 void				add_token_to_list(char *token, t_list **token_list);
+void				built_echo(t_list **token_list, int space);
 void				built_token(t_chartype *input_list, int start, int end,
 						t_list **token_list);
 void				get_token(t_chartype *input_list, t_list **token_list);
