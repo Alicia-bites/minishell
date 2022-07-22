@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 11:59:00 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/22 16:23:36 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/22 17:12:44 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,29 @@ void	copy_echo(char **token)
 	(*token)[4] = '\0';
 }
 
+void	copy_echo_n(char **token)
+{
+	char	*str;
+	int		i;
+
+	str = "echo -n";
+	(*token) = malloc(sizeof(char) * (7 + 1));
+	i = 0;
+	while (i < 7)
+	{
+		(*token)[i] = str[i];
+		i++;
+	}
+	(*token)[7] = '\0';
+}
+
 void	built_echo(t_list **token_list, int space)
 {
-	char *token;
-	
+	char	*token;
+
 	if (!space)
 		copy_echo(&token);
 	else
-		token = "echo -n";
+		copy_echo_n(&token);
 	add_token_to_list(token, token_list);
 }
