@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/22 15:05:56 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/22 16:07:53 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -335,6 +335,7 @@ void    env_show(void *content);
 
 //command list
 int     cmd_create_lst(t_list **tok_lst, t_ulist **env_lst, t_ulist **cmd_lst);
+int	cmd_execution(t_ulist **cmd_lst, int n_cmd);
 void    cmd_free(void *content);
 char	*cmd_getvalidpath(t_cmd *cmd);
 char	*cmd_getvalidpath_null(t_cmd *cmd);
