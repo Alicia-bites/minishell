@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:10:26 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/22 16:38:06 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/22 16:57:44 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,27 +21,21 @@ static int	echo_n(t_chartype *input_list, int *end)
 		&& input_list[*end + 1].character == 'c'
 		&& input_list[*end + 2].character == 'h'
 		&& input_list[*end + 3].character == 'o')
-		{
-			(*end) += 4;
-			while (input_list[*end].type == CH_SPACE)
-			{
+	{
+		(*end) += 4;
+		while (input_list[*end].type == CH_SPACE)
+			(*end)++;
+		while (input_list[*end].type == CH_D_QUOTE
+			|| input_list[*end].type == CH_S_QUOTE)
 				(*end)++;
-			}
-			while (input_list[*end].type == CH_D_QUOTE
-				|| input_list[*end].type == CH_S_QUOTE)
-				{
-					(*end)++;
-				}
-			if (input_list[*end].character == '-')
+		if (input_list[*end].character == '-')
+			(*end)++;
+		while (input_list[*end].type == CH_D_QUOTE
+			|| input_list[*end].type == CH_S_QUOTE)
 				(*end)++;
-			while (input_list[*end].type == CH_D_QUOTE
-				|| input_list[*end].type == CH_S_QUOTE)
-				{
-					(*end)++;
-				}
-			if (input_list[*end].character == 'n')
-				return (1);
-		}
+		if (input_list[*end].character == 'n')
+			return (1);
+	}
 	*end = tmp;
 	return (0);
 }
@@ -54,12 +48,12 @@ static void	echo_special_treatment_second(t_chartype *input_list, int *end)
 	if (*end < input_list->length && input_list[*end].character != '-'
 		&& input_list[*end + 1].character != 'n'
 		&& (input_list[*end].character != '"'
-		|| input_list[*end].type != CH_SPACE))
-		{
-			while (input_list[*end].type != CH_SPACE)
-				(*end)--;
-			return ;					
-		}
+			|| input_list[*end].type != CH_SPACE))
+	{
+		while (input_list[*end].type != CH_SPACE)
+			(*end)--;
+		return ;
+	}
 }
 
 static void	echo_special_treatment(t_chartype *input_list,
@@ -80,7 +74,7 @@ static void	echo_special_treatment(t_chartype *input_list,
 		while (input_list[*end].type == CH_SPACE)
 		{
 			if (!(*space))
-				break ;					
+				break ;
 			(*end)++;
 		}
 		echo_special_treatment_second(input_list, end);
@@ -90,7 +84,7 @@ static void	echo_special_treatment(t_chartype *input_list,
 void	is_word(t_chartype *input_list, int *start, int *end,
 	t_list **token_list)
 {	
-	int space;
+	int	space;
 
 	space = 1;
 	if (input_list[*end].type == CH_WORD)
@@ -104,7 +98,7 @@ void	is_word(t_chartype *input_list, int *start, int *end,
 				if (!space)
 				{
 					*start = *start + 5;
-					*end = *start;					
+					*end = *start;
 				}
 				else
 					*start = *end;
