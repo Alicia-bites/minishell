@@ -133,6 +133,7 @@ typedef struct s_env {
 
 typedef struct s_cmd
 {
+	t_list	**tok_lst;
 	t_ulist	**env_lst;
 	t_toktype	toktype;
 	char	*arg;
@@ -322,11 +323,11 @@ void    env_lst_show(t_ulist **list);
 void    env_show(void *content);
 
 //command list
-int     cmd_create_lst(t_list *tok, t_ulist **env_lst, t_ulist **cmd_lst);
+int     cmd_create_lst(t_list **tok_lst, t_ulist **env_lst, t_ulist **cmd_lst);
 void    cmd_free(void *content);
 char	*cmd_getvalidpath(t_cmd *cmd);
 char	*cmd_getvalidpath_null(t_cmd *cmd);
-t_cmd   *cmd_init(t_ulist **env_lst);
+t_cmd   *cmd_init(t_list **tok_lst, t_ulist **env_lst);
 t_list	*cmd_init_prop(t_list *tok, t_cmd *cmd);
 t_list	*cmd_init_prop_fullcmd(t_list *tok, t_cmd *cmd);
 t_list	*cmd_init_prop_fullcmd_null(t_list *tok, t_cmd *cmd);

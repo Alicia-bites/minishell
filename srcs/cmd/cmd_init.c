@@ -6,13 +6,13 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 14:07:42 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/21 18:42:49 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/22 13:02:34 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_cmd	*cmd_init(t_ulist **env_lst)
+t_cmd	*cmd_init(t_list **tok_lst, t_ulist **env_lst)
 {
 	t_cmd	*cmd;
 
@@ -21,6 +21,7 @@ t_cmd	*cmd_init(t_ulist **env_lst)
 	cmd = (t_cmd *)malloc(sizeof(t_cmd));
 	if (!cmd)
 		return (ft_panic_null(-1, __FILE__, ERR_MALLOC));
+	cmd->tok_lst = tok_lst;
 	cmd->env_lst = env_lst;
 	cmd->toktype = 0;
 	cmd->arg = NULL;
