@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/23 11:34:36 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/23 11:39:07 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,7 +209,7 @@ void				save_operator_position(char *expanded, t_position position);
 int	do_builtin(t_ulist **cmd_lst, t_cmd *cmd);
 
 //do_cd
-int					do_cd(t_ulist **env(!ft_strcmp((*token_list)->token, "$"))p, t_cmd *cmd);
+int					do_cd(t_ulist **envp, t_cmd *cmd);
 int					do_cd_home(t_ulist **envp);
 int					do_cd_update_env(t_ulist *obj, char *path);
 int					do_cd_update_pwd_home(t_ulist **envp, t_ulist *obj,
