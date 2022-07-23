@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 09:47:14 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/22 11:43:07 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/23 11:30:08 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int	is_argument(t_list **token_list)
 	if ((*token_list)->index >= 1)
 	{
 		if ((*token_list)->prev->toktype == TOK_BUILTIN
-			&& (ft_strcmp((*token_list)->token, "$"))
 			|| ((*token_list)->prev->toktype == TOK_CMD))
 				(*token_list)->toktype = TOK_ARG;
 	}
