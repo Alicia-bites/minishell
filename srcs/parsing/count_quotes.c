@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 13:56:31 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/23 12:52:43 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/23 11:09:53 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	count_single(char *str)
 {
 	int		n_single;
 	char	*loc;
-	
+
 	n_single = 0;
 	while (*str)
 	{
@@ -36,7 +36,7 @@ int	count_double(char *str)
 {
 	int		n_double;
 	char	*loc;
-	
+
 	n_double = 0;
 	while (*str)
 	{
@@ -55,7 +55,5 @@ int	count_double(char *str)
 void	count_quotes(char *str, t_chartype *input_list)
 {
 	input_list->n_single = count_single(str);
-	input_list->n_double = count_double(str);	
-	// printf("n_single = %d\n", input_list->n_single);
-	// printf("n_double = %d\n", input_list->n_double);
+	input_list->n_double = count_double(str);
 }

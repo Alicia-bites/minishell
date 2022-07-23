@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 12:14:53 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/06 17:13:47 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/23 11:12:20 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,9 @@ int	ft_set_sigaction(void)
 	struct sigaction	action;
 	sigset_t			set;
 
-	//do nothing
 	sigemptyset(&set);
 	sigaddset(&set, SIGQUIT);
 	sigprocmask(SIG_BLOCK, &set, 0);
-	//give the prompt back
 	action.sa_handler = give_prompt_back;
 	action.sa_flags = 0;
 	sigemptyset(&action.sa_mask);
