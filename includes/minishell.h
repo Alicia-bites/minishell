@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/22 16:07:53 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/23 11:34:36 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,37 +185,35 @@ int					lex_space(char *str, int *err);
 int					lexer(char *str, int *err);
 
 //expansions
+int					bracket_is_after_dollar(char *str, int pos);
+t_expanded			*create_dollar_list(char *str, int index);
 char				*expand_dollar(char *str);
 void				find_expansions(char *str, t_expanded **expanded_list,
 						int *full_size);
-char				*insert_expansions(int full_size, t_expanded *expanded_list,
-						char *str);
+int					found_operator(char *str);
+void				ft_lstadd_back_dollar(t_expanded **alst, t_expanded *new);
+t_expanded			*ft_lstnew_dollar(char *str, int i);
+void				ft_lstclear_back_dollar(t_expanded **lst);
+void				ft_lstclear_dollar(t_expanded **lst);
 int					get_full_size(t_expanded *expanded_list);
 void				get_expanded(char *str, t_expanded **expanded_list, int i,
 						int *varsize);
-char				*malloc_varname(char *str, int start, int end);
-t_expanded			*create_dollar_list(char *str, int index);
-t_expanded			*ft_lstnew_dollar(char *str, int i);
-void				ft_lstadd_back_dollar(t_expanded **alst, t_expanded *new);
+char				*insert_expansions(int full_size, t_expanded *expanded_list,
+						char *str);
 int					is_varname(char c);
+char				*malloc_varname(char *str, int start, int end);
 void				print_dollar_lst(t_expanded *lst);
-void				ft_lstclear_back_dollar(t_expanded **lst);
-void				ft_lstclear_dollar(t_expanded **lst);
-char				*expand_dollar(char *str);
-int					lonely_bracket(char *str);
-int					bracket_is_after_dollar(char *str, int pos);
-int					found_operator(char *str);
-
 void				save_operator_position(char *expanded, t_position position);
 
 //do
 int	do_builtin(t_ulist **cmd_lst, t_cmd *cmd);
 
 //do_cd
-int					do_cd(t_ulist **envp, t_cmd *cmd);
+int					do_cd(t_ulist **env(!ft_strcmp((*token_list)->token, "$"))p, t_cmd *cmd);
 int					do_cd_home(t_ulist **envp);
 int					do_cd_update_env(t_ulist *obj, char *path);
-int					do_cd_update_pwd_home(t_ulist **envp, t_ulist *obj, char *pwd);
+int					do_cd_update_pwd_home(t_ulist **envp, t_ulist *obj,
+						char *pwd);
 
 //do_echo
 int					do_echo(char *str);
@@ -229,22 +227,22 @@ void				do_env_show(void *content);
 void				do_exit(int exit_number);
 
 //do_export
-int				do_export(t_ulist **env_lst, t_cmd *cmd);
-int				do_export_create_env(t_ulist **list, char *str);
-t_ulist	*do_export_check_exist(t_ulist **envp, char *str, int sep_pos);
-int				do_export_check_str(char *str);
-int				do_export_update_env(t_ulist *obj, char *str, int sep_pos);
-int				do_export_update_lst(t_ulist **envp, char **str);
+int					do_export(t_ulist **env_lst, t_cmd *cmd);
+int					do_export_create_env(t_ulist **list, char *str);
+t_ulist				*do_export_check_exist(t_ulist **envp, char *str, int sep_pos);
+int					do_export_check_str(char *str);
+int					do_export_update_env(t_ulist *obj, char *str, int sep_pos);
+int					do_export_update_lst(t_ulist **envp, char **str);
 void				do_export_show(void *content);
 
 //do_pwd
 int					do_pwd(void);
-char	*do_pwd_getpath(void);
+char				*do_pwd_getpath(void);
 
 //do_unset
-int	do_unset(t_ulist **envp, t_cmd *cmd);
-int	do_unset_check_str(char *str);
-int     do_unset_update_lst(t_ulist **envp, char **str);
+int					do_unset(t_ulist **envp, t_cmd *cmd);
+int					do_unset_check_str(char *str);
+int     			do_unset_update_lst(t_ulist **envp, char **str);
 
 //execute_command
 int					read_command(t_list *inputs_lst, char **built_ins);
@@ -260,34 +258,39 @@ int					is_char_space(char c);
 int					is_char_word(char c);
 
 //give_type_to_token
+int					arg_dlredir_sep_token(t_list **token_list);
 int					cmd_heredoc(t_list **token_list);
 int					cmd_redir(t_list **token_list);
 int					combo_is_after_pipe(t_list **token_list);
 int					combo_is_at_the_beggining(t_list **token_list);
 int					following_pipe(t_list **token_list);
 void				get_toktype(t_list **token_list);
+int					heredoc_combo_is_at_the_beggining(t_list **token_list);
+int					heredoc_combo_is_after_pipe(t_list **token_list);
 int					is_argument(t_list **token_list);
 int					is_built_in(t_list **token_list);
 int					is_cmd(t_list **token_list);
 int					is_combo_heredoc(t_list **token_list);
-int					is_combo_redir_when_redir_index_zero(t_list **token_list);
+int					is_combo_heredoc_when_heredoc_index_zero(t_list **token_list);
 int					is_combo_redir(t_list **token_list);
+int					is_combo_redir_when_redir_index_zero(t_list **token_list);
 int					is_filename(t_list **token_list);
 int					is_heredoc_sep(t_list **token_list);
 t_toktype			is_operator(char *str);
 int					only_space_in_str(char *str);
+int					pipe_cmd_dlredir_sep_token(t_list **token_list);
+int					not_operator(t_list *token_list);
 int					redir_space_token(t_list **token_list);
 int					redir_token(t_list **token_list);
+int					start_cmd_dlredir_sep_token(t_list **token_list);
 int					token_space_redir(t_list **token_list);
 int					token_redir(t_list **token_list);
-int					not_operator(t_list *token_list);
-
-int					is_combo_heredoc_when_heredoc_index_zero(t_list **token_list);
 int					heredoc_combo_is_at_the_beggining(t_list **token_list);
 int					heredoc_combo_is_after_pipe(t_list **token_list);
 
 //make_token
 void				add_token_to_list(char *token, t_list **token_list);
+void				built_echo(t_list **token_list, int space);
 void				built_token(t_chartype *input_list, int start, int end,
 						t_list **token_list);
 void				get_token(t_chartype *input_list, t_list **token_list);
@@ -324,14 +327,14 @@ int					ft_set_sigaction(void);
 void				give_prompt_back(int signum);
 
 //environment list
-void    env_free(void *content);
-t_env   *env_init(char *env_fullname);
-char    *env_init_key(t_env *env, char *fullname);
-int	env_init_value(t_env *env, char *fullname);
-int	env_init_var_view(t_env *env);
-int     env_lst_set(char **envp, t_ulist **env_lst);
-void    env_lst_show(t_ulist **list);
-void    env_show(void *content);
+void    			env_free(void *content);
+t_env   			*env_init(char *env_fullname);
+char    			*env_init_key(t_env *env, char *fullname);
+int					env_init_value(t_env *env, char *fullname);
+int					env_init_var_view(t_env *env);
+int     			env_lst_set(char **envp, t_ulist **env_lst);
+void    			env_lst_show(t_ulist **list);
+void    			env_show(void *content);
 
 //command list
 int     cmd_create_lst(t_list **tok_lst, t_ulist **env_lst, t_ulist **cmd_lst);
@@ -379,6 +382,6 @@ int	pipe_wait(int n_cmd, int pid);
 
 
 //TEST
-void	test_antho(t_ulist **env_lst);
+void				test_antho(t_ulist **env_lst);
 
 #endif

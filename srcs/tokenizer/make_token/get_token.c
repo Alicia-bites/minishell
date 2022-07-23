@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:58:04 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/30 13:40:56 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/22 17:15:21 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,5 @@ void	get_token(t_chartype *input_list, t_list **token_list)
 		is_dl_redir(input_list, &start, &end, token_list);
 		is_dr_redir(input_list, &start, &end, token_list);
 		is_bn(input_list, &start, &end, token_list);
-		// *token_list = is_intpoint(input_list, &start, &end);
 	}
 }

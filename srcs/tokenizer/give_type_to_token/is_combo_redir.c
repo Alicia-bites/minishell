@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 09:47:26 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/18 17:30:19 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/22 11:45:44 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ int	pipe_cmd_redir_file_token(t_list **token_list)
 	if ((*token_list)->prev->prev->prev->prev->toktype == TOK_PIPE)
 	{
 		if ((*token_list)->prev->prev->prev->toktype == TOK_CMD
-		&& ((*token_list)->prev->prev->toktype == TOK_L_REDIR
-		|| (*token_list)->prev->prev->toktype == TOK_R_REDIR
-		|| (*token_list)->prev->prev->toktype == TOK_DR_REDIR)
-		&& (*token_list)->prev->toktype == TOK_FILE)
+			&& ((*token_list)->prev->prev->toktype == TOK_L_REDIR
+				|| (*token_list)->prev->prev->toktype == TOK_R_REDIR
+				|| (*token_list)->prev->prev->toktype == TOK_DR_REDIR)
+			&& (*token_list)->prev->toktype == TOK_FILE)
 			return (1);
 	}
 	return (0);
@@ -32,10 +32,10 @@ int	start_cmd_redir_file_token(t_list **token_list)
 	{
 		if (((*token_list)->prev->prev->prev->toktype == TOK_CMD)
 			&& ((*token_list)->prev->prev->toktype == TOK_L_REDIR
-			|| (*token_list)->prev->prev->toktype == TOK_R_REDIR
-			|| (*token_list)->prev->prev->toktype == TOK_DR_REDIR)
+				|| (*token_list)->prev->prev->toktype == TOK_R_REDIR
+				|| (*token_list)->prev->prev->toktype == TOK_DR_REDIR)
 			&& (*token_list)->prev->toktype == TOK_FILE)
-				return (1);
+			return (1);
 	}
 	return (0);
 }
@@ -44,8 +44,8 @@ int	arg_redir_sep_token(t_list **token_list)
 {
 	if ((*token_list)->prev->prev->prev->toktype == TOK_ARG
 		&& ((*token_list)->prev->prev->toktype == TOK_L_REDIR
-		|| (*token_list)->prev->prev->toktype == TOK_R_REDIR
-		|| (*token_list)->prev->prev->toktype == TOK_DR_REDIR)
+			|| (*token_list)->prev->prev->toktype == TOK_R_REDIR
+			|| (*token_list)->prev->prev->toktype == TOK_DR_REDIR)
 		&& (*token_list)->prev->toktype == TOK_FILE)
 		return (1);
 	return (0);

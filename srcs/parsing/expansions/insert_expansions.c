@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:49:04 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/20 18:13:16 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/22 17:30:42 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	travel_to_next_str(int *k, char *str)
 	while (ft_isalnum(str[*k]) || str[*k] == '{' || str[*k] == '}')
 	{
 		if (str[*k] == '}' && !bracket_is_after_dollar(str, *k))
-			break;
+			break ;
 		if (str[*k - 1] == '}' && ft_isalnum(str[*k]))
 			break ;
 		(*k)++;

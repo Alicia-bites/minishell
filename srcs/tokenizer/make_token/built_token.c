@@ -6,49 +6,29 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:57:58 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/21 18:42:05 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/22 17:14:47 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-// static void check_quotes_bn(t_chartype *input_list, int *start, int *len)
-// {
-// 	if (*start == 0 || input_list[*start + 1].character == '\0')
-// 	{
-		
-// 	}
-// 	if (input_list[*start - 1].character == '"'
-// 		&& input_list[*start].character == '\\'
-// 		&& (input_list[*start + 1].character == '"'
-// 		|| input_list[*start + 1].character == '\\'))
-// 		{
-// 			if (input_list[*start - 1].character == '"'
-// 				&& input_list[*start].character == '\\'
-// 				&& input_list[*start + 1].character == '"'
-// 				&& input_list[*start + 2].character != '"')
-// 				(*start)--; 
-// 			(*start)++;
-// 			(*len)--;			
-// 		}
-// }
-void	go_back_to_beginning_of_list(t_list **token_list)
+static void	go_back_to_beginning_of_list(t_list **token_list)
 {
 	while ((*token_list)->prev)
 		(*token_list) = (*token_list)->prev;
 }
 
-void	find_token_in_list(char *token, t_list **token_list)
+static void	find_token_in_list(char *token, t_list **token_list)
 {
 	while (token_list)
 	{
 		if (!ft_strcmp(token, (*token_list)->token))
-			return;
+			return ;
 		(*token_list) = (*token_list)->next;
 	}
 }
 
-void	check_operator_presence(char *token, t_list **token_list)
+static void	check_operator_presence(char *token, t_list **token_list)
 {
 	find_token_in_list(token, token_list);
 	if (found_operator((*token_list)->token))
@@ -56,10 +36,10 @@ void	check_operator_presence(char *token, t_list **token_list)
 	go_back_to_beginning_of_list(token_list);
 }
 
-int	check_quote(t_chartype *input_list, int start)
+static int	check_quote(t_chartype *input_list, int start)
 {
 	int	seen_quote;
-	
+
 	seen_quote = 0;
 	if (input_list[start].character == '\''
 		|| input_list[start].character == '\"')
@@ -67,11 +47,12 @@ int	check_quote(t_chartype *input_list, int start)
 	return (seen_quote);
 }
 
-void built_token(t_chartype *input_list, int start, int end, t_list **token_list)
+void	built_token(t_chartype *input_list, int start, int end,
+	t_list **token_list)
 {
 	int			k;
 	int			len;
-	char 		*token;
+	char		*token;
 	int			seen_quote;
 
 	seen_quote = check_quote(input_list, start);
@@ -89,5 +70,5 @@ void built_token(t_chartype *input_list, int start, int end, t_list **token_list
 	token[k++] = '\0';
 	add_token_to_list(token, token_list);
 	if (seen_quote)
-		check_operator_presence(token, token_list);		
+		check_operator_presence(token, token_list);
 }
