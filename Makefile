@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/23 11:34:55 by amarchan         ###   ########.fr        #
+#    Updated: 2022/07/23 13:14:31 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,29 +31,28 @@ VALGRIND	:=	valgrind --suppressions=ignoreliberror --leak-check=full --show-leak
 IPATH		:=	includes
 OPATH		:=	obj
 
-SRCS_PATH				:=		srcs
-BUILT_PATH	:=	built-in
-BUILT_CD_PATH	:=	do_cd
-BUILT_ECHO_PATH	:=	do_echo
-BUILT_ENV_PATH	:=	do_env
-BUILT_EXIT_PATH	:=	do_exit
-BUILT_EXPORT_PATH	:=	do_export
-BUILT_PWD_PATH	:=	do_pwd
-BUILT_UNSET_PATH	:=	do_unset
-CMD_PATH	:=	cmd
-ENV_PATH	:=	env
-EXEC_PATH				:=		execute_commands
-FD_PATH		:=	fd
-PIPE_PATH	:=	pipe
-INPUT_HANDLER_PATH		:=		input_handler
-LEX_PATH				:=		lexer
-PARSING_PATH			:=		parsing
-EXP_PATH				:=		expansions
-SIG_PATH				:=		signal_handling
-TOK_PATH				:=		tokenizer
-GIVE_CHAR_PATH			:=		give_chartype
-GIVE_TOK_PATH			:=		give_type_to_token
-MAKE_TOK_PATH			:=		make_token
+SRCS_PATH				:=	srcs
+BUILT_PATH				:=	built-in
+BUILT_CD_PATH			:=	do_cd
+BUILT_ECHO_PATH			:=	do_echo
+BUILT_ENV_PATH			:=	do_env
+BUILT_EXIT_PATH			:=	do_exit
+BUILT_EXPORT_PATH		:=	do_export
+BUILT_PWD_PATH			:=	do_pwd
+BUILT_UNSET_PATH		:=	do_unset
+CMD_PATH				:=	cmd
+ENV_PATH				:=	env
+FD_PATH					:=	fd
+PIPE_PATH				:=	pipe
+INPUT_HANDLER_PATH		:=	input_handler
+LEX_PATH				:=	lexer
+PARSING_PATH			:=	parsing
+EXP_PATH				:=	expansions
+SIG_PATH				:=	signal_handling
+TOK_PATH				:=	tokenizer
+GIVE_CHAR_PATH			:=	give_chartype
+GIVE_TOK_PATH			:=	give_type_to_token
+MAKE_TOK_PATH			:=	make_token
 
 RM		:=	rm -rf
 
@@ -112,9 +111,6 @@ ENV_SRCS	:=	env_free.c\
 			env_lst_set.c\
 			env_lst_show.c\
 			env_show.c
-
-EXEC_SRCS	:=	execute_command.c\
-				read_command.c
 
 FD_SRCS		:=	fd_access.c\
 			fd_close.c\
