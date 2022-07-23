@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/23 11:39:07 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/23 13:05:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@
 # define SEMICOLON -47
 # define DOUBLE_PIPE -48
 # define MISSING_BRACKET -49
-	
 # define ARG_SEP ' '
 # define DIR_SEP "/"
 # define ENV_SEP '='
@@ -93,7 +92,6 @@ typedef struct s_global {
 	int			*saved_pos;	
 }	t_global;
 
-
 typedef struct s_cursor {
 	int			i;
 	int			k;
@@ -103,7 +101,7 @@ typedef struct s_position
 {
 	int	pos;
 	int	move_cursor;
-} t_position;
+}	t_position;
 
 typedef struct s_expanded {
 	int					index;
@@ -117,7 +115,7 @@ typedef enum e_var_view
 	VAR_ALL,
 	VAR_ENV,
 	VAR_EXP
-} 	t_var_view;
+}	t_var_view;
 
 typedef enum e_redir_open
 {
@@ -141,25 +139,27 @@ typedef struct s_env {
 
 typedef struct s_cmd
 {
-	t_list	**tok_lst;
-	t_ulist	**env_lst;
+	t_list		**tok_lst;
+	t_ulist		**env_lst;
 	t_toktype	toktype;
-	char	*arg;
-	size_t	n_arg;
-	char	**fullcmd;
-	char	*fullpath;
-	int		fd_r;
-	int		fd_w;
-	int		pfd_r;
-	int		pfd_w;
-	int		access;
+	char		*arg;
+	size_t		n_arg;
+	char		**fullcmd;
+	char		*fullpath;
+	int			fd_r;
+	int			fd_w;
+	int			pfd_r;
+	int			pfd_w;
+	int			access;
 }		t_cmd;
 
 //input_handler
 int					get_input(int *err, t_ulist **envp);
 void				read_line(char **str);
-void				exit_minishell(t_list **token_list, int *err, t_ulist **envp);
-void				handle_str(char **str, t_list **token_list, int *err, t_ulist **envp);
+void				exit_minishell(t_list **token_list, int *err,
+						t_ulist **envp);
+void				handle_str(char **str, t_list **token_list, int *err,
+						t_ulist **envp);
 
 //parsing
 int					ft_parse(char *str, t_list **token_list, int *err);
@@ -206,7 +206,9 @@ void				print_dollar_lst(t_expanded *lst);
 void				save_operator_position(char *expanded, t_position position);
 
 //do
-int	do_builtin(t_ulist **cmd_lst, t_cmd *cmd);
+int					do_builtin(t_ulist **cmd_lst, t_cmd *cmd);
+void				pipe_cmd_dup_fd_in(t_ulist **cmd_lst, t_cmd *cmd);
+void				pipe_cmd_dup_fd_out(t_ulist **cmd_lst, t_cmd *cmd);
 
 //do_cd
 int					do_cd(t_ulist **envp, t_cmd *cmd);
@@ -229,7 +231,8 @@ void				do_exit(int exit_number);
 //do_export
 int					do_export(t_ulist **env_lst, t_cmd *cmd);
 int					do_export_create_env(t_ulist **list, char *str);
-t_ulist				*do_export_check_exist(t_ulist **envp, char *str, int sep_pos);
+t_ulist				*do_export_check_exist(t_ulist **envp, char *str,
+						int sep_pos);
 int					do_export_check_str(char *str);
 int					do_export_update_env(t_ulist *obj, char *str, int sep_pos);
 int					do_export_update_lst(t_ulist **envp, char **str);
@@ -242,7 +245,7 @@ char				*do_pwd_getpath(void);
 //do_unset
 int					do_unset(t_ulist **envp, t_cmd *cmd);
 int					do_unset_check_str(char *str);
-int     			do_unset_update_lst(t_ulist **envp, char **str);
+int					do_unset_update_lst(t_ulist **envp, char **str);
 
 //execute_command
 int					read_command(t_list *inputs_lst, char **built_ins);
@@ -261,6 +264,7 @@ int					is_char_word(char c);
 int					arg_dlredir_sep_token(t_list **token_list);
 int					cmd_heredoc(t_list **token_list);
 int					cmd_redir(t_list **token_list);
+int					combo_heredoc_when_heredoc_index_zero(t_list **token_list);
 int					combo_is_after_pipe(t_list **token_list);
 int					combo_is_at_the_beggining(t_list **token_list);
 int					following_pipe(t_list **token_list);
@@ -271,7 +275,6 @@ int					is_argument(t_list **token_list);
 int					is_built_in(t_list **token_list);
 int					is_cmd(t_list **token_list);
 int					is_combo_heredoc(t_list **token_list);
-int					is_combo_heredoc_when_heredoc_index_zero(t_list **token_list);
 int					is_combo_redir(t_list **token_list);
 int					is_combo_redir_when_redir_index_zero(t_list **token_list);
 int					is_filename(t_list **token_list);
@@ -327,59 +330,59 @@ int					ft_set_sigaction(void);
 void				give_prompt_back(int signum);
 
 //environment list
-void    			env_free(void *content);
-t_env   			*env_init(char *env_fullname);
-char    			*env_init_key(t_env *env, char *fullname);
+void				env_free(void *content);
+t_env				*env_init(char *env_fullname);
+char				*env_init_key(t_env *env, char *fullname);
 int					env_init_value(t_env *env, char *fullname);
 int					env_init_var_view(t_env *env);
-int     			env_lst_set(char **envp, t_ulist **env_lst);
-void    			env_lst_show(t_ulist **list);
-void    			env_show(void *content);
+int					env_lst_set(char **envp, t_ulist **env_lst);
+void				env_lst_show(t_ulist **list);
+void				env_show(void *content);
 
 //command list
-int     cmd_create_lst(t_list **tok_lst, t_ulist **env_lst, t_ulist **cmd_lst);
-int	cmd_execution(t_ulist **cmd_lst, int n_cmd);
-void    cmd_free(void *content);
-char	*cmd_getvalidpath(t_cmd *cmd);
-char	*cmd_getvalidpath_null(t_cmd *cmd);
-t_cmd   *cmd_init(t_list **tok_lst, t_ulist **env_lst);
-t_list	*cmd_init_prop(t_list *tok, t_cmd *cmd);
-t_list	*cmd_init_prop_fullcmd(t_list *tok, t_cmd *cmd);
-t_list	*cmd_init_prop_fullcmd_null(t_list *tok, t_cmd *cmd);
-int	cmd_init_prop_fullpath(t_cmd *cmd);
-size_t	cmd_init_prop_n_arg(t_list *tok, t_cmd *cmd);
-char	*cmd_loop_envline(char *cmd, char **envline);
-char	*cmd_loop_envp(char *cmd, t_ulist **envp_lst);
-char	*cmd_loop_envp_str(char *cmd, t_ulist **envp_lst, char *s);
-char	**cmd_loop_envp_create_envline(t_env *envp);
-char	*cmd_setpath(char *cmd, char *env);
-void	cmd_show(void *content);
+int					cmd_create_lst(t_list **tok_lst, t_ulist **env_lst,
+						t_ulist **cmd_lst);
+int					cmd_execution(t_ulist **cmd_lst, int n_cmd);
+void				cmd_free(void *content);
+char				*cmd_getvalidpath(t_cmd *cmd);
+char				*cmd_getvalidpath_null(t_cmd *cmd);
+t_cmd				*cmd_init(t_list **tok_lst, t_ulist **env_lst);
+t_list				*cmd_init_prop(t_list *tok, t_cmd *cmd);
+t_list				*cmd_init_prop_fullcmd(t_list *tok, t_cmd *cmd);
+t_list				*cmd_init_prop_fullcmd_null(t_list *tok, t_cmd *cmd);
+int					cmd_init_prop_fullpath(t_cmd *cmd);
+size_t				cmd_init_prop_n_arg(t_list *tok, t_cmd *cmd);
+char				*cmd_loop_envline(char *cmd, char **envline);
+char				*cmd_loop_envp(char *cmd, t_ulist **envp_lst);
+char				*cmd_loop_envp_str(char *cmd, t_ulist **envp_lst, char *s);
+char				**cmd_loop_envp_create_envline(t_env *envp);
+char				*cmd_setpath(char *cmd, char *env);
+void				cmd_show(void *content);
 
 //file_descriptor
-int	fd_access(char *fd, int mode);
-int	fd_close(t_cmd *cmd);
-int	fd_infile_open(t_cmd *cmd, char *fd, int mode);
-void	fd_link_in_out_file(t_list **tok_lst, t_ulist **cmd_lst, int mode);
-t_list	*fd_loop_tok(t_list *tok, t_cmd *cmd, int mode);
-void	fd_loop_tok_secure(t_cmd *cmd, int res_loop);
-int	fd_loop_tok_type(t_list *tok, t_cmd *cmd, enum e_toktype toktype, int mode);
-int	fd_open(char *fd, int mode);
-int	fd_outfile_open(t_cmd *cmd, char *fd, int mode);
-void	fd_pipe(t_ulist **cmd_lst);
-void	fd_pipe_pfd(t_ulist *obj, t_cmd *cmd1, t_cmd *cmd2, int n_pipe);
+int					fd_access(char *fd, int mode);
+int					fd_close(t_cmd *cmd);
+int					fd_infile_open(t_cmd *cmd, char *fd, int mode);
+void				fd_link_in_out_file(t_list **tok_lst, t_ulist **cmd_lst,
+						int mode);
+t_list				*fd_loop_tok(t_list *tok, t_cmd *cmd, int mode);
+void				fd_loop_tok_secure(t_cmd *cmd, int res_loop);
+int					fd_loop_tok_type(t_list *tok, t_cmd *cmd,
+						enum e_toktype toktype, int mode);
+int					fd_open(char *fd, int mode);
+int					fd_outfile_open(t_cmd *cmd, char *fd, int mode);
+void				fd_pipe(t_ulist **cmd_lst);
+void				fd_pipe_pfd(t_ulist *obj, t_cmd *cmd1, t_cmd *cmd2,
+						int n_pipe);
 
 //pipe
-void	pipe_close_pfd(void *content);
-void	pipe_cmd(t_ulist **cmd_lst, t_ulist *obj);
-void    pipe_cmd_dup_fd_in(t_ulist **cmd_lst, t_cmd *cmd);
-void    pipe_cmd_dup_fd_out(t_ulist **cmd_lst, t_cmd *cmd);
-void    pipe_exit(t_ulist **cmd_lst, t_cmd *cmd);
-
-
-
-int	pipe_run(t_ulist **cmd_lst, int n_cmd);
-int	pipe_wait(int n_cmd, int pid);
-
+void				pipe_close_pfd(void *content);
+void				pipe_cmd(t_ulist **cmd_lst, t_ulist *obj);
+void				pipe_cmd_dup_fd_in(t_ulist **cmd_lst, t_cmd *cmd);
+void				pipe_cmd_dup_fd_out(t_ulist **cmd_lst, t_cmd *cmd);
+void				pipe_exit(t_ulist **cmd_lst, t_cmd *cmd);
+int					pipe_run(t_ulist **cmd_lst, int n_cmd);
+int					pipe_wait(int n_cmd, int pid);
 
 //TEST
 void				test_antho(t_ulist **env_lst);

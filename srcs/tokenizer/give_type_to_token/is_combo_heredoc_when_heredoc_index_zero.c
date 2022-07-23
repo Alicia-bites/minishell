@@ -6,14 +6,14 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 14:11:20 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/22 10:39:23 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/23 13:03:37 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 // Check if we have combo redir+file+cmd+arg
-int	is_combo_heredoc_when_heredoc_index_zero(t_list **token_list)
+int	combo_heredoc_when_heredoc_index_zero(t_list **token_list)
 {
 	if ((*token_list)->index >= 3)
 	{
