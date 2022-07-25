@@ -3,22 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   do_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/25 15:51:54 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/25 15:52:02 by abarrier         ###   ########.fr       */
+/*   Created: 2022/06/16 09:56:41 by amarchan          #+#    #+#             */
+/*   Updated: 2022/06/28 11:25:17 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	do_echo(t_ulist **envp, t_cmd *cmd)
+int	do_echo_n(t_ulist **envp, t_cmd *cmd)
 {
 	int	res;
+	int	i;
 
 	res = 0;
-	do_echo_n(envp, cmd);
-	res = printf("\n");
+	i = 1;
+	if (cmd->n_arg == 1)
+		return (0);
+	while (i < (cmd->n_arg -1))
+	{
+		res += printf("%s ", cmd->fullcmd[i]);
+		i++;
+	}
+	res += printf("%s", cmd->fullcmd[i]);
 	if (res <= 0)
 		return (1);
 	else

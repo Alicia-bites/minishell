@@ -57,6 +57,7 @@
 
 # define BUILT_CD "cd"
 # define BUILT_ECHO "echo"
+# define BUILT_ECHO_N "echo -n"
 # define BUILT_ENV "env"
 # define BUILT_EXIT "exit"
 # define BUILT_EXPORT "export"
@@ -218,8 +219,8 @@ int					do_cd_update_pwd_home(t_ulist **envp, t_ulist *obj,
 						char *pwd);
 
 //do_echo
-int					do_echo(char *str);
-int					do_echo_n(char *str);
+int					do_echo(t_ulist **envp, t_cmd *cmd);
+int					do_echo_n(t_ulist **envp, t_cmd *cmd);
 
 //do_env
 int					do_env(t_ulist **envp, t_cmd *cmd);

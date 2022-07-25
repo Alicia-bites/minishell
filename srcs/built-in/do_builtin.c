@@ -12,8 +12,6 @@
 
 #include "minishell.h"
 
-//	else if (ft_strcmp(cmd->fullcmd[0], BUILT_ECHO) == 0)
-//		return (do_echo(cmd->env_lst, cmd));
 //	else if (ft_strcmp(cmd->fullcmd[0], BUILT_EXIT) == 0)
 //		return (do_exit(cmd->env_lst, cmd));
 int	do_builtin(t_ulist **cmd_lst, t_cmd *cmd)
@@ -22,6 +20,10 @@ int	do_builtin(t_ulist **cmd_lst, t_cmd *cmd)
 
 	if (ft_strcmp(cmd->fullcmd[0], BUILT_CD) == 0)
 		return (do_cd(cmd->env_lst, cmd));
+	else if (ft_strcmp(cmd->fullcmd[0], BUILT_ECHO) == 0)
+		return (do_echo(cmd->env_lst, cmd));
+	else if (ft_strcmp(cmd->fullcmd[0], BUILT_ECHO_N) == 0)
+		return (do_echo_n(cmd->env_lst, cmd));
 	else if (ft_strcmp(cmd->fullcmd[0], BUILT_ENV) == 0)
 		return (do_env(cmd->env_lst, cmd));
 	else if (ft_strcmp(cmd->fullcmd[0], BUILT_EXPORT) == 0)
