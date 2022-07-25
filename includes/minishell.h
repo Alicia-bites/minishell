@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/23 13:15:20 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/25 16:03:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,13 +144,14 @@ typedef struct s_cmd
 	t_toktype	toktype;
 	char		*arg;
 	size_t		n_arg;
-	char		**fullcmd;
-	char		*fullpath;
-	int			fd_r;
-	int			fd_w;
-	int			pfd_r;
-	int			pfd_w;
-	int			access;
+	char		**fullcmd; //-> liste chainee de char qui contient la commande + les arguments
+	char		*fullpath; //-> chemin absolu de la ou se trouve la commande
+	int			fd_r; //->  file descriptor read
+	int			fd_w; //-> file descriptor write
+	int			pfd_r; //-> pipe file descriptor
+	int			pfd_w; //-> pipe file descriptor
+	int			access; //-> verif que la commande existe, ou est executable, en gros c'est le
+						// -> lfag pour savoir si on peut lancer la commande et sinon, message d'erreur
 }		t_cmd;
 
 //input_handler
@@ -218,8 +219,8 @@ int					do_cd_update_pwd_home(t_ulist **envp, t_ulist *obj,
 						char *pwd);
 
 //do_echo
-int					do_echo(char *str);
-int					do_echo_n(char *str);
+int					do_echo(t_ulist **envp, t_cmd *cmd);
+int					do_echo_n(t_ulist **envp, t_cmd *cmd);
 
 //do_env
 int					do_env(t_ulist **envp, t_cmd *cmd);
@@ -250,6 +251,8 @@ int					do_unset_update_lst(t_ulist **envp, char **str);
 //tokenizer
 void				tokenize(t_chartype *input_list, t_list **token_list);
 void				delete_spaces(t_list **token_list);
+void				delete_content(t_list *token_list);
+int					seen_equal_last(char *token);
 
 //give_chartype
 int					get_chartype(t_chartype **input_list);
