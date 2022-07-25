@@ -27,7 +27,8 @@ t_ulist	*do_export_check_exist(t_ulist **envp, char *str, int sep_pos)
 	while (obj)
 	{
 		env = (t_env *)obj->content;
-		if (ft_strncmp(env->key, str, len_key) == 0)
+		//if (ft_strncmp(env->key, str, len_key) == 0)
+		if (ft_strcmp(env->key, str) == 0)
 			return (obj);
 		obj = obj->next;
 	}
