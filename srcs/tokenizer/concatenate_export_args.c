@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 17:47:33 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/25 17:48:30 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/25 18:09:47 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,19 @@ void	concatenate_export_args(t_list **token_list)
 	tmp = *token_list;
 	while (*token_list)
 	{
-		if (!ft_strcmp((*token_list)->token, "export"))
+		if (!ft_strcmp((*token_list)->token, "export")
+			|| !ft_strcmp((*token_list)->token, "echo")
+			|| !ft_strcmp((*token_list)->token, "echo -n"))
 		{
-			if ((*token_list)->next)
+			if (!(*token_list)->next)
+				return ;
+			else
 				*token_list = (*token_list)->next;
-			if (seen_equal_last((*token_list)->token))
-				built_new_token_list(token_list);
+			if ((!ft_strcmp((*token_list)->prev->token, "echo")
+					|| !ft_strcmp((*token_list)->prev->token, "echo -n"))
+				|| (!ft_strcmp((*token_list)->prev->token, "export")
+					&& seen_equal_last((*token_list)->token)))
+						built_new_token_list(token_list);
 		}
 		if (*token_list)
 			*token_list = (*token_list)->next;

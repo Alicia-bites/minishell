@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:15:03 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/27 17:43:23 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/25 18:22:31 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,7 @@ void	is_s_quote(t_chartype *input_list, int *start, int *end,
 		(*end)++;
 		if (input_list->n_single > 1)
 		{
-			while (input_list[*end].type == CH_WORD
-				|| input_list[*end].type == CH_SPACE
-				|| input_list[*end].type == CH_PIPE
-				|| input_list[*end].type == CH_DOLLAR
-				|| input_list[*end].type == CH_L_REDIR
-				|| input_list[*end].type == CH_R_REDIR)
+			while (input_list[*end].type != CH_S_QUOTE)
 				(*end)++;
 			input_list->n_single -= 2;
 			(*end)++;

@@ -1,5 +1,7 @@
 echo 
 echo ""
+echo "'"
+echo '"'
 echo "Hello"
 echo "'Hello'"
 echo '"Hello"'
@@ -78,5 +80,18 @@ echo "-n" "-n" "-nalicia"
 echo "           TERM"
 echo '           TERM'
 echo 'bon"jour"'
+echo 'bon'jour""
+echo 'bon'"jour"
+echo "'bon'jour"
+echo "'bon'jour"
 echo "bon'jour'"
- echo 'bon'jour''
+echo 'bon'jour''
+echo '"bonjour"'
+echo 'bon'"jour"
+echo "bon'jour"'
+echo 'bon"jour'"
+
+echo '
+echo "
+echo "bon"'
+echo 'bon'"
