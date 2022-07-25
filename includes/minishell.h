@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/25 19:27:16 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/25 19:32:12 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,11 @@ typedef struct s_cursor {
 	int			k;
 }	t_cursor;
 
+typedef struct s_exp_arg {
+	char		*str;
+	t_ulist		*envp;
+}	t_exp_arg;
+
 typedef struct s_position
 {
 	int	pos;
@@ -109,6 +114,7 @@ typedef struct s_expanded {
 	char				*expanded;
 	struct s_expanded	*prev;
 	struct s_expanded	*next;
+	t_ulist				*envp;
 }	t_expanded;
 
 typedef enum e_var_view
@@ -164,7 +170,7 @@ void				handle_str(char **str, t_list **token_list, int *err,
 						t_ulist **envp);
 
 //parsing
-int					ft_parse(char *str, t_list **token_list, int *err);
+int					ft_parse(char *str, t_list **token_list, int *err, t_ulist *envp);
 void				create_input_list(t_chartype **input_list, char *str);
 void				sort_inputs(char **inputs);
 char				**store_built_ins(void);
@@ -189,17 +195,15 @@ int					lexer(char *str, int *err);
 //expansions
 int					bracket_is_after_dollar(char *str, int pos);
 t_expanded			*create_dollar_list(char *str, int index);
-char				*expand_dollar(char *str);
-void				find_expansions(char *str, t_expanded **expanded_list,
-						int *full_size);
+char				*expand_dollar(t_exp_arg exp_arg);
+void				find_expansions(t_exp_arg exp_arg, t_expanded **expanded_list, int *full_size);
 int					found_operator(char *str);
 void				ft_lstadd_back_dollar(t_expanded **alst, t_expanded *new);
 t_expanded			*ft_lstnew_dollar(char *str, int i);
 void				ft_lstclear_back_dollar(t_expanded **lst);
 void				ft_lstclear_dollar(t_expanded **lst);
 int					get_full_size(t_expanded *expanded_list);
-void				get_expanded(char *str, t_expanded **expanded_list, int i,
-						int *varsize);
+void				get_expanded(t_exp_arg exp_arg, t_expanded **expanded_list, int i, int *varsize);
 char				*insert_expansions(int full_size, t_expanded *expanded_list,
 						char *str);
 int					is_varname(char c);

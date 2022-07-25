@@ -6,24 +6,24 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:47:29 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/22 17:28:56 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/25 17:21:27 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	find_expansions(char *str, t_expanded **expanded_list, int *full_size)
+void	find_expansions(t_exp_arg exp_arg, t_expanded **expanded_list, int *full_size)
 {
 	int	i;
 	int	varsize;
 
 	varsize = 0;
 	i = 0;
-	while (str[i])
+	while (exp_arg.str[i])
 	{
-		if (str[i] == '$' && str[i + 1] != '\'')
+		if (exp_arg.str[i] == '$' && exp_arg.str[i + 1] != '\'')
 		{
-			get_expanded(str, expanded_list, i, &varsize);
+			get_expanded(exp_arg, expanded_list, i, &varsize);
 			*full_size -= varsize;
 		}
 		i++;
