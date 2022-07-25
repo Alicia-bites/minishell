@@ -7,3 +7,21 @@ export antho_=test5; echo $? && echo &antho_
 export antho0=test6; echo $? && echo $antho0
 export antho=cia; echo $? && echo $antho; export al$antho=tata; echo $? && echo $al$antho
 export antho=test7; echo $? && echo $antho; export antho=$antho
+#
+export hey = you
+export hey= you
+export hey=
+#
+export hey
+export hey=you
+export "hey"=you
+export hey="you"
+export hey=" you"
+export hey= "you"
+export hey= " you"
+export hey=you out there
+export hey="you out there"
+export hey="you out there" in the dark
+#
+export hey="you" | export out=there
+export hey=you | export out="there"
