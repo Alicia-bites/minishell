@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   do_builtin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 14:56:18 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/22 15:39:34 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/25 11:10:17 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	do_builtin(t_ulist **cmd_lst, t_cmd *cmd)
 
 	if (ft_strcmp(cmd->fullcmd[0], BUILT_CD) == 0)
 		return (do_cd(cmd->env_lst, cmd));
+	else if (ft_strcmp(cmd->fullcmd[0], BUILT_ECHO) == 0)
+		return (do_echo(cmd->env_lst, cmd));
 	else if (ft_strcmp(cmd->fullcmd[0], BUILT_ENV) == 0)
 		return (do_env(cmd->env_lst, cmd));
 	else if (ft_strcmp(cmd->fullcmd[0], BUILT_EXPORT) == 0)
