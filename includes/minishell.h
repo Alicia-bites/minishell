@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/25 17:20:59 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/25 17:51:19 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -254,10 +254,11 @@ int					do_unset_check_str(char *str);
 int					do_unset_update_lst(t_ulist **envp, char **str);
 
 //tokenizer
-void				tokenize(t_chartype *input_list, t_list **token_list);
-void				delete_spaces(t_list **token_list);
+void				concatenate_export_args(t_list **token_list);
 void				delete_content(t_list *token_list);
+void				delete_spaces(t_list **token_list);
 int					seen_equal_last(char *token);
+void				tokenize(t_chartype *input_list, t_list **token_list);
 
 //give_chartype
 int					get_chartype(t_chartype **input_list);

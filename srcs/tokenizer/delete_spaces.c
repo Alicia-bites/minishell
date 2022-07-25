@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 17:19:04 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/25 16:08:15 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/25 17:49:19 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,6 @@ static void	go_back_to_head(t_list **token_list)
 		while ((*token_list)->prev)
 			(*token_list) = (*token_list)->prev;
 	}
-}
-
-void	delete_content(t_list *token_list)
-{
-	free(token_list->token);
 }
 
 int	is_export_special(t_list *token_list)
