@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/25 16:03:52 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/25 19:27:16 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -330,10 +330,19 @@ int					ft_set_sigaction(void);
 void				give_prompt_back(int signum);
 
 //environment list
+int					env_char_env(t_env *env, char **ptr,
+						int i);
+void				env_char_free(char **ptr);
+char				**env_char_init(size_t len_envp);
+int					env_char_loop_envp(t_ulist *obj,
+						size_t len_envp, char **ptr);
+char				**env_char_set(t_ulist **envp);
+size_t				env_char_size(t_ulist **envp);
 void				env_free(void *content);
 t_env				*env_init(char *env_fullname);
 char				*env_init_key(t_env *env, char *fullname);
-int					env_init_value(t_env *env, char *fullname);
+int					env_init_value(t_env *env,
+						char *fullname);
 int					env_init_var_view(t_env *env);
 int					env_lst_set(char **envp, t_ulist **env_lst);
 void				env_lst_show(t_ulist **list);
