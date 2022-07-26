@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:14:42 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/25 18:21:01 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/26 10:46:59 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,10 @@ void	is_d_quote(t_chartype *input_list, int *start, int *end,
 	if (input_list[*end].type == CH_D_QUOTE)
 	{
 		(*end)++;
-		if (input_list->n_double > 1)
-		{
-			while (input_list[*end].type != CH_D_QUOTE)
-				(*end)++;
-			input_list->n_double -= 2;
+		while (*end < input_list->length && (input_list[*end].type != CH_PIPE
+				|| input_list[*end].type != CH_L_REDIR
+				|| input_list[*end].type != CH_R_REDIR))
 			(*end)++;
-		}
-		else if (input_list->n_double > 0)
-		{
-			while (input_list[*end].type == CH_WORD)
-				(*end)++;
-			input_list->n_double--;
-		}
 		built_token(input_list, *start, *end, token_list);
 		*start = *end;
 	}
