@@ -20,4 +20,9 @@ PIPE FIN DE LIGNE ?
 	echo ${USER
 
 quotes
-	echo "-n" "-n""-nalicia"
+	 echo "-n            "          a
+	 echo "-n" "-n         " alicia
+	 echo "       -n         " alicia
+	 echo -n "-n         " alicia
+	 echo "        -n" alicia
+	 echo           -n alicia
