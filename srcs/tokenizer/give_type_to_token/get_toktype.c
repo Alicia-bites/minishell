@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:58:10 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/22 11:13:23 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/26 18:22:33 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ void	get_toktype(t_list **token_list)
 		else if (is_operator((*token_list)->token)
 			&& (*token_list)->toktype != TOK_NOT_OP)
 			(*token_list)->toktype = is_operator((*token_list)->token);
-		else if (!only_space_in_str((*token_list)->token))
+		else if (!only_space_in_str((*token_list)->token)
+			&& (*token_list)->toktype != TOK_CMD)
 			(*token_list)->toktype = TOK_SPACE;
 		else if (is_filename(token_list))
 			(*token_list)->toktype = TOK_FILE;
