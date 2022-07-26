@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/30 09:51:13 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/20 12:00:00 by abarrier         ###   ########.fr        #
+#    Updated: 2022/07/26 19:37:32 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ CHAR_SRCS	:=	ft_isalnum.c\
 			ft_isascii.c\
 			ft_isdigit.c\
 			ft_isinteger.c\
+			ft_ispolarity.c\
 			ft_isprint.c\
 			ft_isspace.c
 
@@ -41,7 +42,8 @@ CONV_SRCS	:=	ft_atoi.c\
 			ft_atoll.c\
 			ft_itoa.c\
 			ft_tolower.c\
-			ft_toupper.c
+			ft_toupper.c\
+			ft_atoull.c
 
 LIST_SRCS	:=	ft_lst_append.c\
 			ft_lst_clear.c\

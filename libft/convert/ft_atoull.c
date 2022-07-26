@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoll.c                                         :+:      :+:    :+:   */
+/*   ft_atoull.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 08:16:38 by abarrier          #+#    #+#             */
-/*   Updated: 2022/04/11 08:16:39 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/26 19:40:32 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_convert.h"
 
-long long	ft_atoll(const char *s)
+unsigned long long	ft_atoull(const char *s)
 {
 	unsigned long long	n;
 	int					sign;
@@ -34,5 +34,5 @@ long long	ft_atoll(const char *s)
 		n = (n * 10) + (unsigned long long)(s[i] - '0');
 		i++;
 	}
-	return (sign * (long long)n);
+	return (sign * n);
 }
