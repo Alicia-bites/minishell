@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/25 19:18:46 by abarrier         ###   ########.fr        #
+#    Updated: 2022/07/26 16:50:09 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -105,7 +105,6 @@ CMD_SRCS	:=	cmd_create_lst.c\
 			cmd_show.c
 
 ENV_SRCS	:=	env_char_env.c\
-			env_char_free.c\
 			env_char_init.c\
 			env_char_loop_envp.c\
 			env_char_set.c\

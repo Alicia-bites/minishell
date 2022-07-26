@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/25 19:32:12 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/26 16:50:21 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -336,7 +336,6 @@ void				give_prompt_back(int signum);
 //environment list
 int					env_char_env(t_env *env, char **ptr,
 						int i);
-void				env_char_free(char **ptr);
 char				**env_char_init(size_t len_envp);
 int					env_char_loop_envp(t_ulist *obj,
 						size_t len_envp, char **ptr);
