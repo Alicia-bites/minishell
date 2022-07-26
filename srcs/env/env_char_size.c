@@ -6,7 +6,7 @@
 /*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 18:21:15 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/25 19:06:04 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/26 13:09:35 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ size_t	env_char_size(t_ulist **envp)
 	while (obj)
 	{
 		env = (t_env *)obj->content;
-		if (env->var_view == VAR_ALL || env->var_view == VAR_EXP)
+		if (env->var_view == VAR_ALL || env->var_view == VAR_ENV)
 			res++;
 		obj = obj->next;
 	}
