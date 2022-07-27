@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 17:19:04 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/26 18:25:49 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/27 09:22:41 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,9 @@ void	delete_spaces(t_list **token_list)
 	tmp = (*token_list);
 	while ((*token_list))
 	{
+		while (tmp && !only_space_in_str(tmp->token)
+			&& !is_export_special(tmp))
+				tmp = tmp->next;
 		while (*token_list && !only_space_in_str((*token_list)->token)
 			&& !is_export_special((*token_list)))
 			(*token_list) = ft_lst_delnode(*token_list, &delete_content);
