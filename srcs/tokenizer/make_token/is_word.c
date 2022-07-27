@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:10:26 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/26 16:13:48 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/27 11:12:59 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@
 // if space is found after n (no matter how many),
 // return 0 --> not a valid '-n'
 // If not between quotes, just return 1.
-int	check_inside_quotes(t_chartype *input_list, int end, int quote)
+int	no_space_inside_quotes(t_chartype *input_list, int end, int quote)
 {
+	// printf("quote = %d\n", quote);
 	if (quote)
 	{
 		if (input_list[end].type == CH_D_QUOTE
@@ -29,7 +30,38 @@ int	check_inside_quotes(t_chartype *input_list, int end, int quote)
 	return (1);
 }
 
+// Check if after closing the last closing quote, you have a space. If so,
+// you have a valid 'echo -n' combination. If something else than a space is
+// found, return 0.
+int	space_after_quote(t_chartype *input_list, int end, int quote)
+{
+	int	count_quote;
 
+	count_quote = 0;
+	while (end < input_list->length
+		&& count_quote <= quote
+		&& (input_list[end].type == CH_S_QUOTE
+		|| input_list[end].type == CH_D_QUOTE))
+		{
+			end++;
+			count_quote++;
+		}
+	if (input_list[end].type == CH_SPACE)
+			return (1);
+	else
+		return (0);
+}
+
+// This function will check if we have a valid combination for "echo -n."
+// If combo 'echo' is found, move *end forward 4.
+// Then, if no space is following, return 0. If space, move forward as long
+// as you find spaces.
+// Then, move forward as long as you have quotes. Count them and put the 
+// result in *quote.
+// Then, if you find a '-', move forward 1. If not, stay where you are.
+// Then, move forward as long as you have quotes.
+// Then, if you where you are you have a 'n', it means you reached a winning
+// combination. Return 1. Else, place *end back where your started and return 0.
 static int	echo_n(t_chartype *input_list, int *end, int *quote)
 {
 	int	tmp;
@@ -56,7 +88,9 @@ static int	echo_n(t_chartype *input_list, int *end, int *quote)
 		while (input_list[*end].type == CH_D_QUOTE
 			|| input_list[*end].type == CH_S_QUOTE)
 				(*end)++;
-		if (input_list[*end].character == 'n')
+		if (input_list[*end].character == 'n'
+			&& (no_space_inside_quotes(input_list, *end + 1, *quote)
+			&& space_after_quote(input_list, *end + 1, *quote)))
 			return (1);
 	}
 	*end = tmp;
@@ -108,7 +142,7 @@ static void	echo_special_treatment(t_chartype *input_list,
 		(*end)++;
 		while (input_list[*end].character == 'n')
 			(*end)++;
-		if (!check_inside_quotes(input_list, *end, *quote))
+		if (!no_space_inside_quotes(input_list, *end, *quote))
 		{		
 			(*end) = tmp + 2;
 			break ;
@@ -118,7 +152,7 @@ static void	echo_special_treatment(t_chartype *input_list,
 		{
 			(*end)++;
 			count_quote++;
-			printf("count_quote = %d\n", count_quote);
+			// printf("count_quote = %d\n", count_quote);
 			if (count_quote == *quote)
 			{
 				*quote = 0;
@@ -126,7 +160,7 @@ static void	echo_special_treatment(t_chartype *input_list,
 			}
 		}
 		*quote = count_quote;
-		printf("quote = %d\n", *quote);
+		// printf("quote = %d\n", *quote);
 		if (input_list[*end].character == '-'
 			&& input_list[*end + 1].character == 'n')
 		{
