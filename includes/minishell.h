@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/27 15:51:05 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/27 18:53:48 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -304,6 +304,7 @@ void				add_token_to_list(char *token, t_list **token_list);
 void				built_echo(t_list **token_list, int space);
 void				built_token(t_chartype *input_list, int start, int end,
 						t_list **token_list);
+int					empty_string(t_chartype *input_list, int end);
 void				get_token(t_chartype *input_list, t_list **token_list);
 void				is_bn(t_chartype *input_list, int *start, int *end,
 						t_list **token_list);
