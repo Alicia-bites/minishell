@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:57:58 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/27 12:30:06 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/27 15:31:50 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ void	built_token(t_chartype *input_list, int start, int end,
 		token[k++] = input_list[start++].character;
 	token[k++] = '\0';
 	token = trim_quotes(token);
-	// printf("token = %s\n", token);
 	add_token_to_list(token, token_list);
 	if (seen_quote && token != NULL)
 		check_operator_presence(token, token_list);
