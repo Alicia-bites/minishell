@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 09:47:14 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/23 11:30:08 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/27 15:26:16 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,12 @@ static int	following_file_or_sep(t_list **token_list)
 
 static int	loop_on_arg(t_list **token_list)
 {
-	while (*token_list && not_operator(*token_list))
+	while ((*token_list)->next
+		&& not_operator((*token_list)->next))
 	{
-		(*token_list)->toktype = TOK_ARG;
+		(*token_list)->next->toktype = TOK_ARG;
 		*token_list = (*token_list)->next;
 	}
-	if ((*token_list))
-		*token_list = (*token_list)->prev;
 	return (1);
 }
 
