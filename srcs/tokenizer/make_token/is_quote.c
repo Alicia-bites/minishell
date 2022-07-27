@@ -16,20 +16,32 @@
 // way :
 // 1. an operator outside of quotes,
 // 2. a space outside of quotes.
-void	move_while_inside_quote(t_chartype *input_list, int *end, int *quote)
+void	move_while_inside_quote(t_chartype *input_list, int *end, int s, int d)
 {
-	int	count_quote;
+	int	count_d;
+	int count_s;
 
-	count_quote = 0;
+	count_d = 0;
+	count_s = 0;
 	while (*end < input_list->length)
 	{
-		while (input_list[*end].type == CH_S_QUOTE
-			|| input_list[*end].type == CH_D_QUOTE)
+		while (*end < input_list->length
+			&& input_list[*end].type == CH_S_QUOTE)
 		{
-			count_quote++;
+			count_s++;
 			(*end)++;			
 		}
-		if (count_quote == *quote
+		while (*end < input_list->length
+			&& input_list[*end].type == CH_D_QUOTE)
+		{
+			count_d++;
+			(*end)++;			
+		}
+		// printf("d = %d\n", d);
+		// printf("count_d = %d\n", count_d);
+		// printf("s = %d\n", s);
+		// printf("count_s = %d\n", count_s);
+		if ((count_d >= d && count_s >= s)
 			&& (input_list[*end].type == CH_SPACE
 				|| input_list[*end].type == CH_PIPE
 				|| input_list[*end].type == CH_R_REDIR
@@ -43,22 +55,33 @@ void	move_while_inside_quote(t_chartype *input_list, int *end, int *quote)
 void	is_quote(t_chartype *input_list, int *start, int *end,
 	t_list **token_list)
 {
-	int	quote;
-	int	count_quote;
-	
-	quote = 0;
-	count_quote = 0;
+	int d;
+	int s;
+
+	d = 0;
+	s = 0;
 	if (input_list[*end].type == CH_D_QUOTE
 		|| input_list[*end].type == CH_S_QUOTE)
 	{
+		if (empty_string(input_list, *end))
+		{
+			*end += 2;
+			*start = *end;
+			return ;
+		}
 		while (*end < input_list->length
-		&& (input_list[*end].type == CH_D_QUOTE
-			|| input_list[*end].type == CH_S_QUOTE))
+		&& input_list[*end].type == CH_D_QUOTE)
 		{
 			(*end)++;
-			quote++;
+			d++;
 		}
-		move_while_inside_quote(input_list, end, &quote);
+		while (*end < input_list->length
+		&& input_list[*end].type == CH_S_QUOTE)
+		{
+			(*end)++;
+			s++;
+		}
+		move_while_inside_quote(input_list, end, s, d);
 		built_token(input_list, *start, *end, token_list);
 		*start = *end;
 	}
