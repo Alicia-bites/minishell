@@ -6,10 +6,12 @@
 /*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 09:58:54 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/27 11:04:27 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/27 15:00:49 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_chartype.h"
+#include "ft_convert.h"
 #include "ft_string.h"
 
 static int	ft_str_isll_check_str(char *str, int sign)

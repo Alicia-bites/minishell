@@ -6,17 +6,14 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 11:41:10 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/27 11:06:13 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/27 15:00:30 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_STRING_H
 # define FT_STRING_H
 
-# include <limits.h>
 # include <stdlib.h>
-# include "ft_chartype.h"
-# include "ft_convert.h"
 
 # define STR_LONG_LONG_MAX "9223372036854775807"
 # define STR_LONG_LONG_MIN "9223372036854775808"
