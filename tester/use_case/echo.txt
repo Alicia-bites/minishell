@@ -1,25 +1,4 @@
-echo 
-echo ""
-echo "'"
-echo '"'
-echo "Hello"
-echo "'Hello'"
-echo '"Hello"'
-echo ""Hello""
-echo ''Hello''
-echo '"''"''"'"'"'"'"'""Hello""'"'"'"'"'"'
-#
-test="Hello"; echo $test
-test="Hello"; echo "$test"
-test="Hello"; echo '$test'
-#
-echo -n "Hello"
-echo -n "Hello"
-echo -n "Hello"
-echo -n "Hello"
-echo -n "Hello"
-echo -n -n -n -nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn 123456789
-#
+EXPANSIONS;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 echo $TERM
 echo "$TERM"
 echo '$TERM'
@@ -34,15 +13,8 @@ echo ""$TERM""
 echo "'$TERM'"
 echo ''$TERM''
 echo '"$TERM"'
-#
-echo "Salut" $TERM cat
-#
-echo """
-echo """"
-echo "a""b"
-echo "a" "b"
-echo "hey""you"
-echo "outthere" "in the dark"
+echo "Salut" $TERM | cat -e
+FORBIDDEN CHARACTER;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 echo "\""
 echo "\'"
 echo '\"'
@@ -56,34 +28,10 @@ echo "$"
 echo $
 echo \\
 echo \
-#
-echo -n Hello
-echo -nnnnnnnnnnnnnnnnnn Hello
-echo -n -n Hello
-echo -nnnn -nnnn Hello
-echo -n-n-n-n-n-n Hello
-echo -n -n -b
-echo -n     -nnn -nnn
-echo     -n -nnnn
-echo-n
-"echo -n"
-echo "-n" hello
-echo '-n' hello
-echo "-nnnnn""-nnnn" hello
-echo "-""n" hello
-echo '-nnnnnnn' '-nnnnn' alicia
-echo '-nnnnnnn''-nnnnn' alicia
-echo "-n            "          a
-echo "    -n" a
-echo "-n" "-n""-nalicia"
-echo "-n" "-n" "-nalicia"
-echo "-n" "-n         " alicia
-echo "       -n         " alicia
+TRICKY CASE;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 echo -n "-n         " alicia
-echo "        -n" alicia
-echo           -n alicia
-echo "-n""-n"  alicia
-echo -n"-n         " alicia
+echo "-n" "-n         " alicia
+CHECKING PRINTING OF QUOTES;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 echo "           TERM"
 echo '           TERM'
 echo 'bon"jour"'
@@ -98,9 +46,61 @@ echo 'bon'"jour"
 echo "bon'jour"'
 echo 'bon"jour'"
 echo 'bon'         jour''
-
-
 echo '
 echo "
 echo "bon"'
 echo 'bon'"
+echo 
+echo ""
+echo "'"
+echo '"'
+echo """
+echo """"
+echo "Hello"
+echo "'Hello'"
+echo '"Hello"'
+echo ""Hello""
+echo ''Hello''
+echo '"'Hello'"'
+echo '"''"''"'"'"'"'"'""Hello""'"'"
+echo "a""b"
+echo "a" "b"
+echo "hey""you"
+echo "outthere" "in the dark"
+VALID 'ECHO -N' COMBINATION;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+echo -n nul ne fait le mal HAPPY DAYS
+echo "-n" nul ne fait le mal HAPPY DAYS
+echo -nnnnn nul ne fait le mal HAPPY DAYS
+echo "-nnnnnn" nul ne fait le mal HAPPY DAYS
+echo -n -n -n nul ne fait le mal HAPPY DAYS
+echo "-n" "-n" "-n" nul ne fait le mal HAPPY DAYS
+echo -nnnnn -nnnn -nnnn nul ne fait le mal HAPPY DAYS
+echo -n     -nnn -nnn nul ne fait le mal HAPPY DAYS
+echo "-nnnnn" "-nnnn" "-nnnn" nul ne fait le mal HAPPY DAYS
+echo    -n nul ne fait le mal HAPPY DAYS
+echo -n   nul ne fait le mal HAPPY DAYS
+echo "-""n" HAPPY DAYS
+echo           -n HAPPY DAYS
+echo -n           HAPPY DAYS
+echo -n "HAPPY DAYS"
+echo -n "-nHAPPY DAYS"
+NON-VALID 'echo -n' combination;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+"echo -n" HAPPY DAYS
+echo-n HAPPY DAYS
+echo - n HAPPY DAYS
+echo -b HAPPY DAYS
+echo -n -n -b HAPPY DAYS
+echo -n-n-n-n HAPPY DAYS
+echo "-n-n-n-n" HAPPY DAYS
+echo "-n -n -n -n" HAPPY DAYS
+echo "-n   " HAPPY DAYS
+echo "   -n" HAPPY DAYS
+echo "   -n"     HAPPY DAYS
+echo "   -n   " HAPPY DAYS
+echo "-nnnnn""-nnnn" HAPPY DAYS
+echo '-nnnnnnn''-nnnnn' HAPPY DAYS
+echo "-n" "-n""-nHAPPY DAYS"
+echo "-n" "-n""-nnnnHAPPY DAYS"
+echo "-n" "-n""-nnnnnn"HAPPY DAYS"
+echo "-n""-n" HAPPY DAYS
+echo -n"-n         " HAPPY DAYS
