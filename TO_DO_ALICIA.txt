@@ -20,9 +20,6 @@ PIPE FIN DE LIGNE ?
 	echo ${USER
 
 quotes
-	 echo "-n""-n"  alicia
-	 echo -n"-n         " alicia
-
 	 export a=" "
 
 	 --> antho segfault 
