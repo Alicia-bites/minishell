@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_expansions.c                                  :+:      :+:    :+:   */
+/*   no_space_inside_quotes.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/23 19:47:29 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/25 17:46:50 by amarchan         ###   ########.fr       */
+/*   Created: 2022/07/27 19:13:00 by amarchan          #+#    #+#             */
+/*   Updated: 2022/07/27 19:13:15 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	find_expansions(t_exp_arg exp_arg, t_expanded **expanded_list,
-	int *full_size)
+// If between quotes,
+// if space is found after n (no matter how many),
+// return 0 --> not a valid '-n'
+// If not between quotes, just return 1.
+int	no_space_inside_quotes(t_chartype *input_list, int end, int quote)
 {
-	int	i;
-	int	varsize;
-
-	varsize = 0;
-	i = 0;
-	while (exp_arg.str[i])
+	// printf("quote = %d\n", quote);
+	if (quote)
 	{
-		if (exp_arg.str[i] == '$' && exp_arg.str[i + 1] != '\'')
-		{
-			get_expanded(exp_arg, expanded_list, i, &varsize);
-			*full_size -= varsize;
-		}
-		i++;
+		if (input_list[end].type == CH_D_QUOTE
+			|| input_list[end].type == CH_S_QUOTE)
+				return (1);
+		else
+			return (0);
 	}
+	return (1);
 }

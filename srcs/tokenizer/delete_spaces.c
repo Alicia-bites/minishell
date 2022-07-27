@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 17:19:04 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/25 16:08:15 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/27 09:22:41 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,6 @@ static void	go_back_to_head(t_list **token_list)
 	}
 }
 
-void	delete_content(t_list *token_list)
-{
-	free(token_list->token);
-}
-
 int	is_export_special(t_list *token_list)
 {
 	if (token_list->index >= 2)
@@ -38,17 +33,33 @@ int	is_export_special(t_list *token_list)
 	return (0);
 }
 
+int	only_spaces_in_list(t_list *token_list)
+{
+	while (token_list)
+	{
+		if (only_space_in_str(token_list->token))
+			return (0);
+		token_list = token_list->next;
+	}
+	return (1);
+}
+
 void	delete_spaces(t_list **token_list)
 {
 	t_list	*tmp;
 
+	if (only_spaces_in_list(*token_list))
+	{
+		(*token_list)->toktype = TOK_CMD;
+		return ;
+	}
 	tmp = (*token_list);
 	while ((*token_list))
 	{
-		if (!only_space_in_str(tmp->token)
-			&& !is_export_special((*token_list)))
-			tmp = tmp->next;
-		if (!only_space_in_str((*token_list)->token)
+		while (tmp && !only_space_in_str(tmp->token)
+			&& !is_export_special(tmp))
+				tmp = tmp->next;
+		while (*token_list && !only_space_in_str((*token_list)->token)
 			&& !is_export_special((*token_list)))
 			(*token_list) = ft_lst_delnode(*token_list, &delete_content);
 		if (!*token_list)

@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/27 11:11:11 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/27 20:09:27 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,6 +187,8 @@ int					count_single(char *str);
 //lexer
 int					lex_pipe(char *str, int *err);
 int					lex_quote(char *str, int *err);
+int					count_double_for_lexer(char *str);
+int					count_single_for_lexer(char *str);
 int					lex_redir(char *str, int *err);
 int					lex_sym(char *str, int *err);
 int					lex_brackets(char *str, int *err);
@@ -255,10 +257,12 @@ int					do_unset_check_str(char *str);
 int					do_unset_update_lst(t_ulist **envp, char **str);
 
 //tokenizer
-void				tokenize(t_chartype *input_list, t_list **token_list);
-void				delete_spaces(t_list **token_list);
+void				concatenate_export_args(t_list **token_list);
 void				delete_content(t_list *token_list);
+void				delete_spaces(t_list **token_list);
 int					seen_equal_last(char *token);
+void				tokenize(t_chartype *input_list, t_list **token_list);
+char 				*trim_quotes(char *str);
 
 //give_chartype
 int					get_chartype(t_chartype **input_list);
@@ -301,10 +305,14 @@ void				add_token_to_list(char *token, t_list **token_list);
 void				built_echo(t_list **token_list, int space);
 void				built_token(t_chartype *input_list, int start, int end,
 						t_list **token_list);
+int					echo_n(t_chartype *input_list, int *end, int *quote);
+void				echo_special_treatment(t_chartype *input_list,
+						int *end, int *space, int *quote);
+int					empty_string(t_chartype *input_list, int end);
 void				get_token(t_chartype *input_list, t_list **token_list);
 void				is_bn(t_chartype *input_list, int *start, int *end,
 						t_list **token_list);
-void				is_d_quote(t_chartype *input_list, int *start, int *end,
+void				is_quote(t_chartype *input_list, int *start, int *end,
 						t_list **token_list);
 void				is_dl_redir(t_chartype *input_list, int *start, int *end,
 						t_list **token_list);
@@ -318,17 +326,17 @@ void				is_pipe(t_chartype *input_list, int *start, int *end,
 						t_list **token_list);
 void				is_r_redir(t_chartype *input_list, int *start, int *end,
 						t_list **token_list);
-void				is_s_quote(t_chartype *input_list, int *start, int *end,
-						t_list **token_list);
 void				is_space(t_chartype *input_list, int *start, int *end,
 						t_list **token_list);
 void				is_word(t_chartype *input_list, int *start, int *end,
 						t_list **token_list);
+int					no_space_inside_quotes(t_chartype *input_list, int end, int quote);
 void				remove_quotes(t_chartype *input_list, int *start, int *end);
 void				remove_dquotes(t_chartype *input_list, int *start,
 						int *end);
 void				remove_squotes(t_chartype *input_list, int *start,
 						int *end);
+int					space_after_quote(t_chartype *input_list, int end, int quote);
 
 //signal_handling
 int					ft_set_sigaction(void);
