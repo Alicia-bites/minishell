@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 15:13:55 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/26 19:40:04 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/27 11:13:29 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,5 @@ long long			ft_atoll(const char *str);
 char				*ft_itoa(int n);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
-unsigned long long	ft_atoull(const char *str);
 
 #endif
