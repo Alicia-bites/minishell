@@ -33,7 +33,8 @@ void	move_while_inside_quote(t_chartype *input_list, int *end, int *quote)
 			&& (input_list[*end].type == CH_SPACE
 				|| input_list[*end].type == CH_PIPE
 				|| input_list[*end].type == CH_R_REDIR
-				|| input_list[*end].type == CH_L_REDIR))
+				|| input_list[*end].type == CH_L_REDIR
+				|| input_list[*end].character == '\0'))
 				return ;
 		(*end)++;
 	}
