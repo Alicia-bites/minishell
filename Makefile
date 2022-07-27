@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/27 12:38:19 by amarchan         ###   ########.fr        #
+#    Updated: 2022/07/27 19:15:08 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -221,6 +221,7 @@ GIVE_TOK_SRCS	:=	arg_dlredir_sep_token.c\
 MAKE_TOK_SRCS	:=	add_token_to_list.c\
 					built_echo.c\
 					built_token.c\
+					empty_string.c\
 					get_token.c\
 					is_bn.c\
 					is_dl_redir.c\
@@ -233,6 +234,9 @@ MAKE_TOK_SRCS	:=	add_token_to_list.c\
 					is_r_redir.c\
 					is_space.c\
 					is_word.c\
+					parse_echo.c\
+					no_space_inside_quotes.c\
+					space_after_quote.c\
 					remove_quotes.c
 
 SRCS		:=	main.c\
