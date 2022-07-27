@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:10:26 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/27 12:48:37 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/27 18:52:16 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,10 +184,14 @@ static void	echo_special_treatment(t_chartype *input_list,
 		|| input_list[*end + 1].character == 'n')
 		*end = tmp + 1;
 }
-int	next_is_quote(t_chartype *input_list, int end)
+
+int	empty_string(t_chartype *input_list, int end)
 {
-	if (input_list[end].type == CH_S_QUOTE
-		|| input_list[end].type == CH_D_QUOTE)
+	if (end + 1 < input_list->length
+		&& ((input_list[end].type == CH_S_QUOTE
+		&& input_list[end + 1].type == CH_S_QUOTE)
+		|| (input_list[end].type == CH_D_QUOTE
+		&& input_list[end + 1].type == CH_D_QUOTE)))
 			return (1);
 	return (0);
 }
@@ -219,7 +223,8 @@ void	is_word(t_chartype *input_list, int *start, int *end,
 			}
 			(*end)++;
 		}
-		is_quote(input_list, start, end, token_list);			
+		if (!empty_string(input_list, *end))
+			is_quote(input_list, start, end, token_list);			
 		built_token(input_list, *start, *end, token_list);
 		*start = *end;
 	}
