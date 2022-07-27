@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 10:50:58 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/26 18:54:05 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/27 09:26:21 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,8 @@ int	lex_quote(char *str, int *err)
 
 	c_double = count_double_for_lexer(str);
 	c_single = count_single_for_lexer(str);
-	printf("c_single = %d\n", c_single);
-	printf("c_double = %d\n", c_double);
+	// printf("c_single = %d\n", c_single);
+	// printf("c_double = %d\n", c_double);
 	if (c_double % 2 != 0 || c_single % 2 != 0)
 	{
 		*err = MISSING_QUOTES;
