@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/26 17:31:09 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/27 12:39:01 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -305,7 +305,7 @@ void				built_token(t_chartype *input_list, int start, int end,
 void				get_token(t_chartype *input_list, t_list **token_list);
 void				is_bn(t_chartype *input_list, int *start, int *end,
 						t_list **token_list);
-void				is_d_quote(t_chartype *input_list, int *start, int *end,
+void				is_quote(t_chartype *input_list, int *start, int *end,
 						t_list **token_list);
 void				is_dl_redir(t_chartype *input_list, int *start, int *end,
 						t_list **token_list);
@@ -318,8 +318,6 @@ void				is_l_redir(t_chartype *input_list, int *start, int *end,
 void				is_pipe(t_chartype *input_list, int *start, int *end,
 						t_list **token_list);
 void				is_r_redir(t_chartype *input_list, int *start, int *end,
-						t_list **token_list);
-void				is_s_quote(t_chartype *input_list, int *start, int *end,
 						t_list **token_list);
 void				is_space(t_chartype *input_list, int *start, int *end,
 						t_list **token_list);
