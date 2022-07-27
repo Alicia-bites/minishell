@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:57:58 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/26 17:44:11 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/27 12:30:06 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	find_token_in_list(char *token, t_list **token_list)
 	while (token_list)
 	{
 		if (!ft_strcmp(token, (*token_list)->token))
-			return (*token_list);
+			return ;
 		(*token_list) = (*token_list)->next;
 	}
 }
