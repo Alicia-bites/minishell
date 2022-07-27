@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 09:47:18 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/22 10:37:40 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/27 12:17:12 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	is_built_in(t_list **token_list)
 
 	built_ins = store_built_ins();
 	i = 0;
-	while (i < 8)
+	while (i < 9)
 	{
 		if (!ft_strcmp((*token_list)->token, built_ins[i++]))
 		{

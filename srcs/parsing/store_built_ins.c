@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 17:39:15 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/23 11:09:17 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/27 12:13:35 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	**store_built_ins(void)
 {
 	char	**built_ins;
 
-	built_ins = malloc(sizeof(char *) * (8 + 1));
+	built_ins = malloc(sizeof(char *) * (9 + 1));
 	if (!built_ins)
 		return (ft_panic_null(MALLOC_FAILURE, __FILE__, NULL));
 	built_ins[0] = "echo";
@@ -28,6 +28,7 @@ char	**store_built_ins(void)
 	built_ins[5] = "unset";
 	built_ins[6] = "env";
 	built_ins[7] = "exit";
-	built_ins[8] = NULL;
+	built_ins[8] = "$?";	
+	built_ins[9] = NULL;
 	return (built_ins);
 }
