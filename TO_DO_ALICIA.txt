@@ -22,7 +22,5 @@ PIPE FIN DE LIGNE ?
 quotes
 	 export a=" "
 
-	 --> antho segfault 
-	 	echo "ali<cia"
-
-	-->enlever les quotes pour "alicia"'anho'
+$?
+	mettre dans les expansions
