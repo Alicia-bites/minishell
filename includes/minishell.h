@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/28 11:59:26 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/28 12:21:41 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -257,7 +257,7 @@ int					do_export_update_lst(t_ulist **envp, char **str);
 void				do_export_show(void *content);
 
 //do_pwd
-int					do_pwd(void);
+int					do_pwd(t_ulist **envp, t_cmd *cmd);
 char				*do_pwd_getpath(void);
 
 //do_unset
