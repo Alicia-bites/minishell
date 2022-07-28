@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 18:22:30 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/28 11:59:07 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/28 12:08:44 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int	do_exit(t_ulist **envp, t_ulist **cmd_lst, t_cmd *cmd)
 {
 	extern t_global	global;
 
+	if (!cmd && cmd->n_arg == 0)
+		return (ft_panic_value(-1, __FILE__, ERR_NOOBJ, EXIT_FAILURE));
 	if (cmd->n_arg == 1)
 		do_exit_clear(envp, cmd_lst, cmd, NULL);
 	else
