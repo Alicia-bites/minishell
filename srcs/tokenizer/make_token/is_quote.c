@@ -18,8 +18,7 @@ int	count_d_quotes(t_chartype *input_list, int end)
 
 	d = 0;
 	while (end < input_list->length
-			&& (input_list[end].type != CH_SPACE
-				|| input_list[end].type != CH_PIPE
+			&& (input_list[end].type != CH_PIPE
 				|| input_list[end].type != CH_R_REDIR
 				|| input_list[end].type != CH_L_REDIR
 				|| input_list[end].character != '\0'))
@@ -32,7 +31,7 @@ int	count_d_quotes(t_chartype *input_list, int end)
 			while (end < input_list->length
 				&& input_list[end].type != CH_D_QUOTE)
 					end++;
-			if (input_list[end].type = CH_D_QUOTE)
+			if (input_list[end].type == CH_D_QUOTE)
 				d++;
 		}
 		end++;
@@ -47,8 +46,7 @@ int	count_s_quotes(t_chartype *input_list, int end)
 
 	s = 0;
 	while (end < input_list->length
-			&& (input_list[end].type != CH_SPACE
-				|| input_list[end].type != CH_PIPE
+			&& (input_list[end].type != CH_PIPE
 				|| input_list[end].type != CH_R_REDIR
 				|| input_list[end].type != CH_L_REDIR
 				|| input_list[end].character != '\0'))
@@ -61,7 +59,7 @@ int	count_s_quotes(t_chartype *input_list, int end)
 			while (end < input_list->length
 				&& input_list[end].type != CH_S_QUOTE)
 					end++;
-			if (input_list[end].type = CH_S_QUOTE)
+			if (input_list[end].type == CH_S_QUOTE)
 				s++;
 		}
 		end++;
@@ -96,8 +94,7 @@ void	move_while_inside_quote(t_chartype *input_list, int *end, int s, int d)
 			(*end)++;			
 		}
 		if ((count_d == d && count_s == s)
-			&& (input_list[*end].type == CH_SPACE
-				|| input_list[*end].type == CH_PIPE
+			&& (input_list[*end].type == CH_PIPE
 				|| input_list[*end].type == CH_R_REDIR
 				|| input_list[*end].type == CH_L_REDIR
 				|| input_list[*end].character == '\0'))
