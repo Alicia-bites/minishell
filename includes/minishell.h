@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/28 09:09:54 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/28 11:59:26 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@
 # define ENV_PATH_NAME "PATH"
 # define ENV_PWD_NAME "PWD"
 
+# define ERR_ARG_N "too many arguments"
+# define ERR_ARG_NUM "numeric argument required"
 # define ERR_CMD_FOUND "Command not found"
 # define ERR_EXP_ARG "not a valid identifier"
 # define ERR_FORK "Fork issue"
@@ -239,6 +241,7 @@ void				do_env_show(void *content);
 
 //do_exit
 int					do_exit(t_ulist **envp, t_ulist **cmd_lst, t_cmd *cmd);
+void				do_exit_clear(t_ulist **envp, t_ulist **cmd_lst, t_cmd *cmd, char *err_msg);
 
 //do_exit_status $?
 int					do_exit_status(t_cmd *cmd);

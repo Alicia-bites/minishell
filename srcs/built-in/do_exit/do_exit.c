@@ -6,34 +6,61 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 18:22:30 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/27 19:52:02 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/28 11:59:07 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+/* n_arg is the total of argument including the command exit itself
+ * @IF n_arg == 1
+ * ==> exit the program
+ * ==> display exit: YES
+ * ==> message: N/A
+ * ==> return: return value of the last executed command
+ *
+ * @ELSE IF n_arg >= 2
+ * 	@IF the first argument is numeric
+ * 		@IF n_arg == 2
+ * 		==> exit the program
+ *		==> display exit: YES
+ * 		==> message: N/A
+ * 		==> return: argument value
+ *
+ * 		@ELSE
+ * 		==> do not exit the program
+ *		==> display exit: NO
+ * 		==> message: too many arguments
+ * 		==> return: 1
+ * 	@ELSE
+ *	==> exit the program
+ *	==> display exit: YES
+ *	==> message: numeric argument required
+ *	==> return = 2
+ */
 int	do_exit(t_ulist **envp, t_ulist **cmd_lst, t_cmd *cmd)
 {
-	int				internal_error;
-	long long		exit_return;
 	extern t_global	global;
 
-	printf("exit\n");
-	internal_error = 0;
-	exit_return = 0;
 	if (cmd->n_arg == 1)
-		exit_return = global.exit_status;
-	else if (cmd->n_arg > 1)
-		internal_error = ft_str_isll(cmd->fullcmd[1]);
-	if (cmd->n_arg == 2 && internal_error == 0)
-		exit_return = ft_atoll(cmd->fullcmd[1]);
-	rl_clear_history();
-	ft_lstclear(cmd->tok_lst);
-	ft_lst_free(envp, &env_free);
-	ft_lst_free(cmd_lst, &cmd_free);
-	if (internal_error > 0)
-		exit_return = ft_panic_value(EINVAL, __FILE__, NULL, EINVAL);
-	global.exit_status = exit_return;
-	exit(exit_return);
-	return (exit_return);
+		do_exit_clear(envp, cmd_lst, cmd, NULL);
+	else
+	{
+		if (ft_str_isdigit(cmd->fullcmd[1]) && ft_str_isll(cmd->fullcmd[1]))
+		{
+			if (cmd->n_arg == 2)
+			{
+				global.exit_status = ft_atoll(cmd->fullcmd[1]);
+				do_exit_clear(envp, cmd_lst, cmd, NULL);
+			}
+			else
+				return (ft_panic_value(-1, __FILE__, ERR_ARG_N, 1));
+		}
+		else
+		{
+			global.exit_status = 2 ;
+			do_exit_clear(envp, cmd_lst, cmd, "error");
+		}
+	}
+	return (0);
 }
