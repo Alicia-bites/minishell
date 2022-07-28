@@ -6,7 +6,7 @@
 /*   By: antho <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 16:31:22 by antho             #+#    #+#             */
-/*   Updated: 2022/07/27 15:12:11 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/28 19:03:20 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ int	do_export_update_lst(t_ulist **envp, char **str)
 	res = 0;
 	while (str[i])
 	{
-		if (do_export_check_str(str[i]) == 0)
+		sep_pos = ft_index((const char *)str[i], ENV_SEP);
+		if (do_export_check_str(str[i], sep_pos) == 0)
 		{
-			sep_pos = ft_index((const char *)str[i], ENV_SEP);
 			obj = do_export_check_exist(envp, str[i], sep_pos);
 			if (obj)
 			{
 				if (do_export_update_env(obj, str[i], sep_pos) != 0)
-					return (1);
+					res++;
 			}
 			else
 				do_export_create_env(envp, str[i]);

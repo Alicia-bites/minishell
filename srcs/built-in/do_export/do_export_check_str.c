@@ -6,21 +6,35 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 10:58:15 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/20 14:05:29 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/28 18:56:41 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	do_export_check_str(char *str)
+int	do_export_check_str(char *str, int sep_pos)
 {
-	size_t	len_str;
+	size_t	len_key;
+	char	*str_key;
+	int		res;
 
-	len_str = ft_strlen(str);
+	len_key = ft_strlen(str);
+	if (len_key == 0)
+		return (1);
+	if (sep_pos >= 0)
+		len_key = sep_pos;
+	str_key = (char *)malloc(sizeof(char) * (len_key + 1));
+	if (!str_key)
+		return (ft_panic_value(-1, __FILE__, ERR_MALLOC,
+				EXIT_FAILURE));
+	ft_strlcpy(str_key, str, len_key + 1);
 	if ((ft_isalpha(str[0]) || str[0] == '_')
-		&& (ft_isalnum(str[len_str - 1]) || str[len_str - 1] == '_'
-			|| str[len_str - 1] == '='))
-		return (0);
+		&& (ft_isalnum(str[len_key - 1]) || str[len_key - 1] == '_'
+			|| str[len_key - 1] == '=')
+		&& (!ft_strchrset_include(str_key, CHRSET_EXPORT)))
+		res = 0;
 	else
-		return (ft_panic(-1, __FILE__, ERR_EXP_ARG));
+		res = ft_panic_value(-1, __FILE__, ERR_EXP_ARG, 1);
+	free(str_key);
+	return (res);
 }
