@@ -21,6 +21,7 @@ PIPE FIN DE LIGNE ?
 
 
 quotes
+	echo "-"n -n '-'n hey
 	 export a=" "
 	 '$USER'
 	 echo $$
@@ -28,7 +29,12 @@ quotes
 	 echo $""
 	 echo $''
 	 echo "alicia;antho"
-	 "'''" "'"
+	 echo -nnnnnnnnnn
+	 traitement si que des espaces : juste return prompt
+	 proteger les boucles while dans tous les is_smth de get_token
 
 $?
 	mettre dans les expansions
+
+VARIABLE globale
+	changer la structure pour une variable
