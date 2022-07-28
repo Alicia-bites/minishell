@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 10:50:58 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/27 09:26:21 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/28 11:44:50 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,12 @@ int	inside_doubles(char *str)
 		{
 			opening_quote = i;
 			i++;
+			if (str[i] == '\'' && (i + 1) < ft_strlen(str)
+				&& i == opening_quote + 1)
+					i++;
 			while (str[i] && str[i] != '\"')
 				i++;
-			while (str[i] && i > opening_quote)
+			while (str[i] && str[i] != '\"' && i > opening_quote)
 			{
 				if (str[i] == '\'')
 					db++;
@@ -54,6 +57,9 @@ int	inside_singles(char *str)
 		{
 			opening_quote = i;
 			i++;
+			if (str[i] == '\'' && (i + 1) < ft_strlen(str)
+				&& i == opening_quote + 1)
+					i++;
 			while (str[i] && str[i] != '\'')
 				i++;
 			while (str[i] && i > opening_quote)
@@ -65,6 +71,7 @@ int	inside_singles(char *str)
 		}
 		i++;
 	}
+	// printf("db = %d\n", db);
 	return (db);
 }
 
