@@ -18,3 +18,9 @@ PIPE FIN DE LIGNE ?
 	| + fin de LIGNE
 	| + espace + fin de ligne
 	echo ${USER
+
+quotes
+	 export a=" "
+
+$?
+	mettre dans les expansions

@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_expansions.c                                  :+:      :+:    :+:   */
+/*   empty_string.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/23 19:47:29 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/25 17:46:50 by amarchan         ###   ########.fr       */
+/*   Created: 2022/07/27 19:10:56 by amarchan          #+#    #+#             */
+/*   Updated: 2022/07/27 19:11:10 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	find_expansions(t_exp_arg exp_arg, t_expanded **expanded_list,
-	int *full_size)
+int	empty_string(t_chartype *input_list, int end)
 {
-	int	i;
-	int	varsize;
-
-	varsize = 0;
-	i = 0;
-	while (exp_arg.str[i])
-	{
-		if (exp_arg.str[i] == '$' && exp_arg.str[i + 1] != '\'')
-		{
-			get_expanded(exp_arg, expanded_list, i, &varsize);
-			*full_size -= varsize;
-		}
-		i++;
-	}
+	if (end + 1 < input_list->length
+		&& ((input_list[end].type == CH_S_QUOTE
+		&& input_list[end + 1].type == CH_S_QUOTE)
+		|| (input_list[end].type == CH_D_QUOTE
+		&& input_list[end + 1].type == CH_D_QUOTE)))
+			return (1);
+	return (0);
 }

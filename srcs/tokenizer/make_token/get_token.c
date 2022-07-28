@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:58:04 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/22 17:15:21 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/27 12:36:41 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ void	get_token(t_chartype *input_list, t_list **token_list)
 		is_word(input_list, &start, &end, token_list);
 		is_space(input_list, &start, &end, token_list);
 		is_pipe(input_list, &start, &end, token_list);
-		is_s_quote(input_list, &start, &end, token_list);
-		is_d_quote(input_list, &start, &end, token_list);
+		is_quote(input_list, &start, &end, token_list);
 		is_l_redir(input_list, &start, &end, token_list);
 		is_r_redir(input_list, &start, &end, token_list);
 		is_dl_redir(input_list, &start, &end, token_list);

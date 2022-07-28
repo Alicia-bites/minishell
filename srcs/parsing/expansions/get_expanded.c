@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:48:34 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/25 17:44:17 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/25 17:46:35 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ static int	handle_dollar_name(t_exp_arg exp_arg, int i,
 	return (varsize);
 }
 
-static int	handle_dollar_brackets(t_exp_arg exp_arg, int i, t_expanded **expanded_list,
-	int *index)
+static int	handle_dollar_brackets(t_exp_arg exp_arg, int i,
+	t_expanded **expanded_list, int *index)
 {
 	int			j;
 	char		*var;
@@ -94,7 +94,8 @@ static int	handle_dollar_brackets(t_exp_arg exp_arg, int i, t_expanded **expande
 	return (varsize);
 }
 
-void	get_expanded(t_exp_arg exp_arg, t_expanded **expanded_list, int i, int *varsize)
+void	get_expanded(t_exp_arg exp_arg, t_expanded **expanded_list,
+	int i, int *varsize)
 {
 	static int	index = 0;
 
