@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 17:22:18 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/27 17:39:32 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/28 14:17:32 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,16 @@
 int	get_malloc_size(char *str)
 {
 	int	len;
-
-	len = count_double_for_lexer(str) + count_single_for_lexer(str);
+	int	d;
+	int	s;
+	
+	s = 0;
+	d = 0;
+	len = 0;
+	count_quotes_lexer(&s, &d, str);
+// 	printf("s = %d\n", s);
+	// printf("d = %d\n", d);
+	len = s + d;
 	return (len);	
 }
 
