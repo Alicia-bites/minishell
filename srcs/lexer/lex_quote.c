@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 10:50:58 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/28 11:44:50 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/28 13:00:48 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ int	inside_doubles(char *str)
 		{
 			opening_quote = i;
 			i++;
-			if (str[i] == '\'' && (i + 1) < ft_strlen(str)
+			if (str[i] == '\"' && (i + 1) < ft_strlen(str)
 				&& i == opening_quote + 1)
 					i++;
 			while (str[i] && str[i] != '\"')
 				i++;
-			while (str[i] && str[i] != '\"' && i > opening_quote)
+			while (str[i] && i > opening_quote)
 			{
 				if (str[i] == '\'')
 					db++;
@@ -88,7 +88,7 @@ int	count_single_for_lexer(char *str)
 			c_single++;
 		i++;
 	}
-	// printf("c_single before = %d\n", c_single);
+// 	printf("c_single before = %d\n", c_single);
 	// printf("inside double = %d\n", inside_doubles(str));
 	c_single -= inside_doubles(str);
 	// printf("c_single = %d\n", c_single);
@@ -108,27 +108,45 @@ int	count_double_for_lexer(char *str)
 			c_double++;
 		i++;
 	}
-	// printf("c_double before = %d\n", c_double);
-	// printf("inside singles = %d\n", inside_singles(str));
+	printf("c_double before = %d\n", c_double);
+	printf("inside singles = %d\n", inside_singles(str));
 	c_double -= inside_singles(str);
 	// printf("c_double = %d\n", c_double);
 	return (c_double);
 }
 
+void	new_count_quotes(int *s, int *d, char *str)
+{
+	int	i;
+
+	while (str[i])
+	{
+		if (str[i] == '\'' && !(*d % 2))
+			(*s)++;
+		if (str[i] == '\"' && !(*s % 2))
+			(*d)++;
+		i++;
+	}
+	printf("s = %d\n", *s);
+	printf("d = %d\n", *d);
+}
+
 int	lex_quote(char *str, int *err)
 {
-	int	c_double;
-	int	c_single;
+	int	d;
+	int	s;
 
-	c_double = count_double_for_lexer(str);
-	c_single = count_single_for_lexer(str);
-	// printf("c_single = %d\n", c_single);
-	// printf("c_double = %d\n", c_double);
-	if (c_double % 2 != 0 || c_single % 2 != 0)
+	// c_double = count_double_for_lexer(str);
+	// c_single = count_single_for_lexer(str);
+	// // printf("c_single = %d\n", c_single);
+	// // printf("c_double = %d\n", c_double);
+	d = 0;
+	s = 0;
+	new_count_quotes(&s, &d, str);
+	if (d % 2 != 0 || s % 2 != 0)
 	{
 		*err = MISSING_QUOTES;
 		printf("smbash: syntax error. Please check quotes.\n");
 	}
 	return (*err);
 }
-
