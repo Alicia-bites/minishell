@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:23:34 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/22 11:14:54 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/28 08:46:07 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ int	pipe_wait(int n_cmd, int pid)
 		waitpid(-1, NULL, 0);
 		i++;
 	}
-	return (status);
+	return (WEXITSTATUS(status));
 }
