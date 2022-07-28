@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/28 12:21:41 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/28 18:25:01 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@
 # define SEMICOLON -47
 # define DOUBLE_PIPE -48
 # define MISSING_BRACKET -49
+
+# define ARG_DEL '-'
 # define ARG_SEP ' '
 # define DIR_SEP "/"
 # define ENV_SEP '='
@@ -47,6 +49,7 @@
 # define ENV_PATH_NAME "PATH"
 # define ENV_PWD_NAME "PWD"
 
+# define ERR_INVALID_OPT "invalid option"
 # define ERR_ARG_N "too many arguments"
 # define ERR_ARG_NUM "numeric argument required"
 # define ERR_CMD_FOUND "Command not found"
@@ -57,6 +60,7 @@
 # define ERR_PWD "impossible to get the current directory"
 # define ERR_NOHOME "HOME not set"
 # define ERR_NOTOK "first no token address"
+# define ERR_TOK_BRACKET "syntax error near unexpected token"
 # define ERR_UNSET_ARG "not a valid identifier"
 
 # define BUILT_CD "cd"
@@ -68,6 +72,10 @@
 # define BUILT_EXPORT "export"
 # define BUILT_PWD "pwd"
 # define BUILT_UNSET "unset"
+
+# define CHRSET_EXPORT "`~!@#$%^&*()-[]{}|:;\"\'<,>.?/"
+# define CHRSET_PWD "()"
+# define CHRSET_UNSET "`~!@#$%^&*()-[]{}|:;\"\'<,>.?/"
 
 typedef enum enum_chartype {
 	CH_UNKNOWN,
@@ -251,14 +259,16 @@ int					do_export(t_ulist **env_lst, t_cmd *cmd);
 int					do_export_create_env(t_ulist **list, char *str);
 t_ulist				*do_export_check_exist(t_ulist **envp, char *str,
 						int sep_pos);
-int					do_export_check_str(char *str);
+int					do_export_check_str(char *str, int sep_pos);
 int					do_export_update_env(t_ulist *obj, char *str, int sep_pos);
 int					do_export_update_lst(t_ulist **envp, char **str);
 void				do_export_show(void *content);
 
 //do_pwd
 int					do_pwd(t_ulist **envp, t_cmd *cmd);
+int     				do_pwd_check_str(char *str);
 char				*do_pwd_getpath(void);
+int     				do_pwd_loop_arg(t_ulist **envp, char **str);
 
 //do_unset
 int					do_unset(t_ulist **envp, t_cmd *cmd);
