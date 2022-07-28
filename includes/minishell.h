@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/27 11:11:11 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/27 18:56:40 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@
 # define ERR_PIPE "Pipe issue"
 # define ERR_PWD "impossible to get the current directory"
 # define ERR_NOHOME "HOME not set"
+# define ERR_NOTOK "first no token address"
 # define ERR_UNSET_ARG "not a valid identifier"
 
 # define BUILT_CD "cd"
@@ -61,6 +62,7 @@
 # define BUILT_ECHO_N "echo -n"
 # define BUILT_ENV "env"
 # define BUILT_EXIT "exit"
+# define BUILT_EXIT_STATUS "$?"
 # define BUILT_EXPORT "export"
 # define BUILT_PWD "pwd"
 # define BUILT_UNSET "unset"
@@ -89,9 +91,10 @@ typedef struct s_chartype {
 }	t_chartype;
 
 typedef struct s_global {
-	int			readline;
-	int			seen_tok_cmd;
-	int			*saved_pos;
+	int				readline;
+	int				seen_tok_cmd;
+	int				*saved_pos;
+	long long		exit_status;
 }	t_global;
 
 typedef struct s_cursor {
@@ -234,6 +237,9 @@ void				do_env_show(void *content);
 
 //do_exit
 int					do_exit(t_ulist **envp, t_ulist **cmd_lst, t_cmd *cmd);
+
+//do_exit_status $?
+int					do_exit_status(t_cmd *cmd);
 
 //do_export
 int					do_export(t_ulist **env_lst, t_cmd *cmd);

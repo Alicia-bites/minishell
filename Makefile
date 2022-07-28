@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/27 11:11:05 by abarrier         ###   ########.fr        #
+#    Updated: 2022/07/27 17:31:28 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ BUILT_CD_PATH			:=	do_cd
 BUILT_ECHO_PATH			:=	do_echo
 BUILT_ENV_PATH			:=	do_env
 BUILT_EXIT_PATH			:=	do_exit
+BUILT_EXIT_STATUS_PATH		:=	do_exit_status
 BUILT_EXPORT_PATH		:=	do_export
 BUILT_PWD_PATH			:=	do_pwd
 BUILT_UNSET_PATH		:=	do_unset
@@ -70,6 +71,8 @@ BUILT_ENV_SRCS	:=	do_env.c\
 			do_env_show.c
 
 BUILT_EXIT_SRCS	:=	do_exit.c
+
+BUILT_EXIT_STATUS_SRCS	:=	do_exit_status.c
 
 BUILT_EXPORT_SRCS	:=	do_export.c\
 			do_export_create_env.c\
@@ -244,6 +247,7 @@ SRCS		:=	main.c\
 				$(BUILT_ECHO_SRCS)\
 				$(BUILT_ENV_SRCS)\
 				$(BUILT_EXIT_SRCS)\
+				$(BUILT_EXIT_STATUS_SRCS)\
 				$(BUILT_EXPORT_SRCS)\
 				$(BUILT_PWD_SRCS)\
 				$(BUILT_UNSET_SRCS)\
@@ -272,6 +276,7 @@ vpath %.c $(SRCS_PATH)\
 	$(SRCS_PATH)/$(BUILT_PATH)/$(BUILT_ECHO_PATH)\
 	$(SRCS_PATH)/$(BUILT_PATH)/$(BUILT_ENV_PATH)\
 	$(SRCS_PATH)/$(BUILT_PATH)/$(BUILT_EXIT_PATH)\
+	$(SRCS_PATH)/$(BUILT_PATH)/$(BUILT_EXIT_STATUS_PATH)\
 	$(SRCS_PATH)/$(BUILT_PATH)/$(BUILT_EXPORT_PATH)\
 	$(SRCS_PATH)/$(BUILT_PATH)/$(BUILT_PWD_PATH)\
 	$(SRCS_PATH)/$(BUILT_PATH)/$(BUILT_UNSET_PATH)\
@@ -327,6 +332,10 @@ comp:
 			make
 			$(VALGRIND) ./$(NAME)
 
+comp_vgdb:
+			make
+			$(VALGRIND) --vgdb-error=0 ./$(NAME)
+
 -include $(DEPS)
 
-.PHONY: all clean fclean re norme sym
+.PHONY: all clean fclean re norme sym comp comp_vgdb
