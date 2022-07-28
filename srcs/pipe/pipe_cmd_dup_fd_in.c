@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:09:40 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/22 16:15:54 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/27 14:05:06 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
  */
 void	pipe_cmd_dup_fd_in(t_ulist **cmd_lst, t_cmd *cmd)
 {
+	errno = 0;
 	if (cmd->fd_r == FD_NOT_INIT && cmd->pfd_r == FD_NOT_INIT)
 		dup2(STDIN_FILENO, STDIN_FILENO);
 	else if (cmd->fd_r >= 0 && cmd->pfd_r == FD_NOT_INIT)
@@ -45,5 +46,5 @@ void	pipe_cmd_dup_fd_in(t_ulist **cmd_lst, t_cmd *cmd)
 	else if (cmd->fd_r >= 0 && cmd->pfd_r >= 0)
 		dup2(cmd->fd_r, STDIN_FILENO);
 	else
-		pipe_exit(cmd_lst, cmd);
+		pipe_exit(cmd_lst, cmd, errno);
 }
