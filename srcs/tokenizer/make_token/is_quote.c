@@ -95,7 +95,7 @@ void	move_while_inside_quote(t_chartype *input_list, int *end, int s, int d)
 			count_d++;
 			(*end)++;			
 		}
-		if ((count_d == d && count_s == s)
+		if ((count_d + d) % 2 == 0 && ((count_s + s) % 2 == 0)
 			&& (input_list[*end].type == CH_PIPE
 				|| input_list[*end].type == CH_SPACE
 				|| input_list[*end].type == CH_R_REDIR
@@ -112,13 +112,13 @@ void	is_quote(t_chartype *input_list, int *start, int *end,
 	int d;
 	int s;
 
+	d = 0;
+	s = 0;
 	if (input_list[*end].type == CH_D_QUOTE
 		|| input_list[*end].type == CH_S_QUOTE)
 	{
 		d = count_d_quotes(input_list, *end);
 		s = count_s_quotes(input_list, *end);
-		// printf("d = %d\n", d);
-		// printf("s = %d\n", d);
 		if (empty_string(input_list, *end))
 			*end += 2;
 		while (*end < input_list->length
