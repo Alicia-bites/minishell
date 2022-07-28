@@ -15,12 +15,20 @@ SIGNAL
 		interactif ?
 	
 PIPE FIN DE LIGNE ?
-	| + fin de LIGNE
-	| + espace + fin de ligne
-	echo ${USER
+	echo ${USER} --> tu l'expands ?
+	si y'a un caractere special qu'on doit pas interpreter ?
+	si t'a un : ou un autre caractere special entre guillemets ?
+
 
 quotes
 	 export a=" "
+	 echo "salut''"'c'"omment tu vas
+	 '$USER'
+	 echo $$
+	 echo ${$}
+	 echo $""
+	 echo $''
+	 echo "alicia;antho"
 
 $?
 	mettre dans les expansions
