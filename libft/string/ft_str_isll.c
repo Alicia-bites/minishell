@@ -6,7 +6,7 @@
 /*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 09:58:54 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/27 15:00:49 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/28 11:49:34 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,19 @@ static int	ft_str_isll_check_str(char *str, int sign)
 	len_max = ft_strlen(STR_LONG_LONG_MAX);
 	i = 0;
 	if (len_str > len_max)
-		return (1);
+		return (0);
 	else if (len_str == len_max)
 	{
 		while (str[i])
 		{
 			if (sign > 0 && str[i] > STR_LONG_LONG_MAX[i])
-				return (1);
+				return (0);
 			if (sign < 0 && str[i] > STR_LONG_LONG_MIN[i])
-				return (1);
+				return (0);
 			i++;
 		}
 	}
-	return (0);
+	return (1);
 }
 
 int	ft_str_isll(char *str)
@@ -59,7 +59,7 @@ int	ft_str_isll(char *str)
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
-			return (1);
+			return (0);
 		i++;
 	}
 	return (ft_str_isll_check_str(&str[j], sign));
