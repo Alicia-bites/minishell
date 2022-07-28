@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 13:24:35 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/23 11:12:07 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/28 19:28:59 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	give_prompt_back(int signum)
 	if (signum == SIGINT)
 	{
 		global.readline = 1;
+		global.exit_status = 130;
 		printf("\n");
 		rl_on_new_line();
 		rl_replace_line("", 0);
