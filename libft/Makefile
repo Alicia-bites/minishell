@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/30 09:51:13 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/27 14:37:43 by abarrier         ###   ########.fr        #
+#    Updated: 2022/07/28 10:59:55 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,6 +91,8 @@ STR_SRCS	:=	ft_bzero.c\
 			ft_strcmp.c\
 			ft_strdup.c\
 			ft_strip.c\
+			ft_str_isdigit.c\
+			ft_str_isll.c\
 			ft_striteri.c\
 			ft_strjoin.c\
 			ft_strlcat.c\
@@ -103,8 +105,7 @@ STR_SRCS	:=	ft_bzero.c\
 			ft_strstr.c\
 			ft_strstrlen.c\
 			ft_strtrim.c\
-			ft_substr.c\
-			ft_str_isll.c
+			ft_substr.c
 
 SRCS		=	$(CHAR_SRCS)\
 			$(CONV_SRCS)\
