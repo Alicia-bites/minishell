@@ -22,6 +22,7 @@ PIPE FIN DE LIGNE ?
 
 quotes
 	echo "-"n '-'n hey
+	echo '-'n ''''-''''n hey
 	echo -nnn'b' hey
 	 export a=" "
 	 '$USER'
