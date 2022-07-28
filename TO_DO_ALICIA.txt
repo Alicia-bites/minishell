@@ -22,13 +22,13 @@ PIPE FIN DE LIGNE ?
 
 quotes
 	 export a=" "
-	 echo "salut''"'c'"omment tu vas
 	 '$USER'
 	 echo $$
 	 echo ${$}
 	 echo $""
 	 echo $''
 	 echo "alicia;antho"
+	 "'''" "'"
 
 $?
 	mettre dans les expansions
