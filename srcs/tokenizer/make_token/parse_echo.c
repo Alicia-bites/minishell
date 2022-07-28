@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 19:08:29 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/28 21:33:41 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/28 22:50:36 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,21 +80,33 @@ int	echo_n(t_chartype *input_list, int *end, int *quote)
 static void	echo_special_treatment_second(t_chartype *input_list, int *end,
 	int *quote)
 {
-	int	count_quote;
+	// int	count_quote;
 
-	count_quote = 0;
+	// count_quote = 0;
 	while (*end < input_list->length && input_list[*end].type == CH_D_QUOTE
 		|| input_list[*end].type == CH_S_QUOTE)
 	{
 		(*end)++;
-		count_quote++;
-		if (count_quote == *quote)
-		{
-			*quote = 0;
-			count_quote = 0;
-		}
+		(*quote)++;
+		// count_quote++;
+		// if (count_quote == *quote)
+		// {
+		// 	*quote = 0;
+		// 	count_quote = 0;
+		// }
 	}
-	*quote = count_quote;
+	// *quote = count_quote;
+	if (*end + 1 < input_list->length && (input_list[*end + 1].type == CH_D_QUOTE
+		|| input_list[*end + 1].type == CH_S_QUOTE))
+	{
+		(*end)++;
+		while (*end < input_list->length && (input_list[*end].type == CH_D_QUOTE
+			|| input_list[*end].type == CH_S_QUOTE))
+			{
+				(*end)++;
+				(*quote)++;
+			}
+	}
 	if (*end + 1 < input_list->length && input_list[*end].character != '-'
 		&& input_list[*end + 1].character != 'n'
 		&& (input_list[*end].character != '"'
@@ -129,14 +141,15 @@ int	same_with_quotes(t_chartype *input_list, int *end)
 	(*end) += 2;
 	return (0);
 }
+
 //parse input_list and move *end to the right posistion 
 void	echo_special_treatment(t_chartype *input_list,
 	int *end, int *space, int *quote)
 {
 	int	tmp;
-	int	count_quote;
+	// int	count_quote;
 
-	count_quote = 0;
+	// count_quote = 0;
 	tmp = *end;
 	if (*end - 1 >= 0)
 		(*end) -= 1;
@@ -158,22 +171,23 @@ void	echo_special_treatment(t_chartype *input_list,
 			|| input_list[*end].type == CH_S_QUOTE)
 		{
 			(*end)++;
-			count_quote++;
-			// printf("count_quote = %d\n", count_quote);
-			if (count_quote == *quote)
-			{
-				*quote = 0;
-				count_quote = 0;
-			}
+			(*quote)++;
+			// count_quote++;
+			// // printf("count_quote = %d\n", count_quote);
+			// if (count_quote == *quote)
+			// {
+			// 	*quote = 0;
+			// 	count_quote = 0;
+			// }
 		}
-		*quote = count_quote;
+		// *quote = count_quote;
 		// printf("quote = %d\n", *quote);
 		if (input_list[*end].character == '-'
 			&& input_list[*end + 1].character == 'n')
 		{
-			while (*end < input_list->length
+			while (*end + 1 < input_list->length
 				&& input_list[*end + 1].character == 'n')
-				(*end)++;
+					(*end)++;
 			if (input_list[*end].type == CH_D_QUOTE
 				|| input_list[*end].type == CH_S_QUOTE
 				|| (input_list[*end].character == '-'

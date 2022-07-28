@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:57:58 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/28 21:25:03 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/28 22:35:08 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,9 @@ void	built_token(t_chartype *input_list, int start, int end,
 	while (k < len)
 		token[k++] = input_list[start++].character;
 	token[k++] = '\0';
-	if (found_only_space_between_quotes(token))
+	if (not_only_space_between_quotes(token))
 	{
+		// printf("token = %s\n", token);
 		token = trim_quotes(token);
 	}
 	add_token_to_list(token, token_list);

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   found_only_space_between_quotes.c                  :+:      :+:    :+:   */
+/*   not_only_space_between_quotes.c                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 21:23:23 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/28 21:23:41 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/28 22:02:57 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	found_only_space_between_quotes(char *str)
+int	not_only_space_between_quotes(char *str)
 {
 	int	not_space;
 	int	i;
@@ -30,6 +30,8 @@ int	found_only_space_between_quotes(char *str)
 				not_space++;
 			i++;
 		}
+		printf("not_space = %d\n", not_space);
+		return (not_space);
 	}
-	return (not_space);
+	return (1);
 }

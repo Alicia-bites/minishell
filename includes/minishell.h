@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/28 21:24:11 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/28 22:34:27 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -310,7 +310,7 @@ int					echo_n(t_chartype *input_list, int *end, int *quote);
 void				echo_special_treatment(t_chartype *input_list,
 						int *end, int *space, int *quote);
 int					empty_string(t_chartype *input_list, int end);
-int					found_only_space_between_quotes(char *str);
+int					not_only_space_between_quotes(char *str);
 void				get_token(t_chartype *input_list, t_list **token_list);
 void				is_bn(t_chartype *input_list, int *start, int *end,
 						t_list **token_list);

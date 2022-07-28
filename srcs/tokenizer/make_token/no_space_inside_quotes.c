@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 19:13:00 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/28 18:51:35 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/28 22:43:51 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 // If not between quotes, just return 1.
 int	no_space_inside_quotes(t_chartype *input_list, int end, int quote)
 {
-	// printf("quote = %d\n", quote);
+	printf("quote = %d\n", quote);
 	if (quote % 2)
 	{
 		while (end < input_list->length && input_list[end].character == 'n')
