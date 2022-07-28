@@ -19,6 +19,7 @@ int	count_d_quotes(t_chartype *input_list, int end)
 	d = 0;
 	while (end < input_list->length
 			&& (input_list[end].type != CH_PIPE
+				|| input_list[end].type != CH_SPACE
 				|| input_list[end].type != CH_R_REDIR
 				|| input_list[end].type != CH_L_REDIR
 				|| input_list[end].character != '\0'))
@@ -47,6 +48,7 @@ int	count_s_quotes(t_chartype *input_list, int end)
 	s = 0;
 	while (end < input_list->length
 			&& (input_list[end].type != CH_PIPE
+				|| input_list[end].type != CH_SPACE
 				|| input_list[end].type != CH_R_REDIR
 				|| input_list[end].type != CH_L_REDIR
 				|| input_list[end].character != '\0'))
@@ -95,6 +97,7 @@ void	move_while_inside_quote(t_chartype *input_list, int *end, int s, int d)
 		}
 		if ((count_d == d && count_s == s)
 			&& (input_list[*end].type == CH_PIPE
+				|| input_list[*end].type == CH_SPACE
 				|| input_list[*end].type == CH_R_REDIR
 				|| input_list[*end].type == CH_L_REDIR
 				|| input_list[*end].character == '\0'))
@@ -114,6 +117,8 @@ void	is_quote(t_chartype *input_list, int *start, int *end,
 	{
 		d = count_d_quotes(input_list, *end);
 		s = count_s_quotes(input_list, *end);
+		// printf("d = %d\n", d);
+		// printf("s = %d\n", d);
 		if (empty_string(input_list, *end))
 			*end += 2;
 		while (*end < input_list->length
