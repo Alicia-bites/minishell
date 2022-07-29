@@ -15,12 +15,28 @@ SIGNAL
 		interactif ?
 	
 PIPE FIN DE LIGNE ?
-	| + fin de LIGNE
-	| + espace + fin de ligne
-	echo ${USER
+	echo ${USER} --> tu l'expands ?
+	si y'a un caractere special qu'on doit pas interpreter ?
+	si t'a un : ou un autre caractere special entre guillemets ?
+
 
 quotes
+	echo "-"n '-'n hey
+	echo '-'n ''''-''''n hey
+	echo -nnn'b' hey
 	 export a=" "
+	 '$USER'
+	 echo $$
+	 echo ${$}
+	 echo $""
+	 echo $''
+	 echo "alicia;antho"
+	 echo -nnnnnnnnnn
+	 traitement si que des espaces : juste return prompt
+	 proteger les boucles while dans tous les is_smth de get_token
 
 $?
 	mettre dans les expansions
+
+VARIABLE globale
+	changer la structure pour une variable

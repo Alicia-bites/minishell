@@ -6,16 +6,35 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 16:24:51 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/27 18:58:01 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/29 09:07:54 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+int	in_ascii(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if ((unsigned char)str[i] >= 127)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 void	handle_str(char **str, t_list **token_list, int *err, t_ulist **envp)
 {
 	t_ulist	**cmd_list;
 
+	if (!in_ascii(*str))
+	{
+		*err = 0;
+		return ;
+	}
 	cmd_list = NULL;
 	cmd_list = ft_lst_init();
 //	cmd_list = NULL;;

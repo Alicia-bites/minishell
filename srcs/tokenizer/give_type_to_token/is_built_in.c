@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 09:47:18 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/28 09:12:22 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/29 09:06:16 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	is_built_in(t_list **token_list)
 	extern t_global	global;
 	char			**built_ins;
 
+	if ((*token_list)->prev && (*token_list)->prev->toktype == TOK_BUILTIN)
+		return (0);
 	built_ins = store_built_ins();
 	i = 0;
 	while (i < 9)

@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 19:12:09 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/27 19:12:35 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/28 22:34:23 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	space_after_quote(t_chartype *input_list, int end, int quote)
 			end++;
 			count_quote++;
 		}
-	if (input_list[end].type == CH_SPACE)
+	if (input_list[end].type == CH_SPACE || input_list[end].character == 'n')
 			return (1);
 	else
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/28 18:25:01 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/29 09:05:40 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,8 +200,9 @@ int					count_single(char *str);
 //lexer
 int					lex_pipe(char *str, int *err);
 int					lex_quote(char *str, int *err);
-int					count_double_for_lexer(char *str);
-int					count_single_for_lexer(char *str);
+// int					count_double_for_lexer(char *str);
+// int					count_single_for_lexer(char *str);
+void				count_quotes_lexer(int *s, int *d, char *str);
 int					lex_redir(char *str, int *err);
 int					lex_sym(char *str, int *err);
 int					lex_brackets(char *str, int *err);
@@ -324,10 +325,12 @@ void				add_token_to_list(char *token, t_list **token_list);
 void				built_echo(t_list **token_list, int space);
 void				built_token(t_chartype *input_list, int start, int end,
 						t_list **token_list);
+void				check_operator_presence(char *token, t_list **token_list);
 int					echo_n(t_chartype *input_list, int *end, int *quote);
 void				echo_special_treatment(t_chartype *input_list,
 						int *end, int *space, int *quote);
 int					empty_string(t_chartype *input_list, int end);
+int					not_only_space_between_quotes(char *str);
 void				get_token(t_chartype *input_list, t_list **token_list);
 void				is_bn(t_chartype *input_list, int *start, int *end,
 						t_list **token_list);
@@ -356,6 +359,7 @@ void				remove_dquotes(t_chartype *input_list, int *start,
 void				remove_squotes(t_chartype *input_list, int *start,
 						int *end);
 int					space_after_quote(t_chartype *input_list, int end, int quote);
+
 
 //signal_handling
 int					ft_set_sigaction(void);
