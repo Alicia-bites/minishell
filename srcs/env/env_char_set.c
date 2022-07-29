@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_env_show.c                                      :+:      :+:    :+:   */
+/*   env_char_set.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antho <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/30 15:49:59 by antho             #+#    #+#             */
-/*   Updated: 2022/07/28 12:12:33 by abarrier         ###   ########.fr       */
+/*   Created: 2022/07/25 18:13:23 by abarrier          #+#    #+#             */
+/*   Updated: 2022/07/26 16:49:17 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	do_env_show(void *content)
+char	**env_char_set(t_ulist **envp)
 {
-	t_env	*env;
+	char	**ptr;
+	size_t	len_envp;
 
-	if (!content)
-		return ;
-	env = (t_env *)content;
-	if ((env->var_view == VAR_ALL || env->var_view == VAR_ENV)
-		&& env->value)
-		printf("%s=%s\n", env->key, env->value);
+	len_envp = env_char_size(envp);
+	ptr = env_char_init(len_envp);
+	if (!ptr)
+		return (NULL);
+	if (env_char_loop_envp(*envp, len_envp, ptr))
+	{
+		ft_free_ptrptr_str(ptr);
+		return (NULL);
+	}
+	return (ptr);
 }

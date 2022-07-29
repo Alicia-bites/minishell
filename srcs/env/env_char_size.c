@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_env_show.c                                      :+:      :+:    :+:   */
+/*   env_char_size.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antho <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/30 15:49:59 by antho             #+#    #+#             */
-/*   Updated: 2022/07/28 12:12:33 by abarrier         ###   ########.fr       */
+/*   Created: 2022/07/25 18:21:15 by abarrier          #+#    #+#             */
+/*   Updated: 2022/07/26 13:09:35 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	do_env_show(void *content)
+size_t	env_char_size(t_ulist **envp)
 {
+	t_ulist	*obj;
 	t_env	*env;
+	size_t	res;
 
-	if (!content)
-		return ;
-	env = (t_env *)content;
-	if ((env->var_view == VAR_ALL || env->var_view == VAR_ENV)
-		&& env->value)
-		printf("%s=%s\n", env->key, env->value);
+	obj = *envp;
+	env = NULL;
+	res = 0;
+	while (obj)
+	{
+		env = (t_env *)obj->content;
+		if (env->var_view == VAR_ALL || env->var_view == VAR_ENV)
+			res++;
+		obj = obj->next;
+	}
+	return (res);
 }

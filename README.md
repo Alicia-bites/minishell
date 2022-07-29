@@ -59,9 +59,15 @@ This project is about creating a simple shell.
 
 ## ToDo (officiO)
 - [ ] '?' '-' don't consider as word when exporting
-- [ ] Use customized env\_list in the whole minishell instead of char \*\*envp from the main
+- [x] Use customized env\_list in the whole minishell instead of char \*\*envp from the main
 - [ ] Return case of built-in and commands
-- [ ] Handle env\_list as a char\*\* if our minishell is call in the minishell itself ==> NO FUCKING IDEA
+- [x] Handle env\_list as a char\*\* if our minishell is call in the minishell itself ==> NO FUCKING IDEA
+- [ ] Finish correctly the function do\_exit
+- [ ] Finish correctly the function do\_cd
+- [ ] Handle HEREDOC with signal handling
+- [ ] Create the function $?
+- [ ] Check signal handling
+- [ ] Check the leaks
 - [ ] Norminette
 
 > :warning: **_The readline() function can cause memory leaks. You don’t have to fix them. But that doesn’t mean your own code, yes the code you wrote, can have memory leaks._**

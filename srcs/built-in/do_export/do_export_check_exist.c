@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 10:17:50 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/18 10:48:35 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/28 19:01:44 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_ulist	*do_export_check_exist(t_ulist **envp, char *str, int sep_pos)
 
 	obj = *envp;
 	env = NULL;
+	len_key = 0;
 	if (sep_pos >= 0)
 		len_key = sep_pos;
 	else
@@ -27,9 +28,17 @@ t_ulist	*do_export_check_exist(t_ulist **envp, char *str, int sep_pos)
 	while (obj)
 	{
 		env = (t_env *)obj->content;
-		//if (ft_strncmp(env->key, str, len_key) == 0)
-		if (ft_strcmp(env->key, str) == 0)
-			return (obj);
+		if (sep_pos >= 0)
+		{
+			if (ft_strncmp(env->key, str, len_key) == 0
+				&& str[len_key] == ENV_SEP)
+				return (obj);
+		}
+		else
+		{
+			if (ft_strncmp(env->key, str, len_key) == 0)
+				return (obj);
+		}
 		obj = obj->next;
 	}
 	return (NULL);

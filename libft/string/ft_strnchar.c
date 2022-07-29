@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_env_show.c                                      :+:      :+:    :+:   */
+/*   ft_strnchar.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antho <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/30 15:49:59 by antho             #+#    #+#             */
-/*   Updated: 2022/07/28 12:12:33 by abarrier         ###   ########.fr       */
+/*   Created: 2022/04/11 08:15:09 by abarrier          #+#    #+#             */
+/*   Updated: 2022/04/11 08:15:10 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "ft_string.h"
 
-void	do_env_show(void *content)
+int	ft_strnchar(const char *s, int c)
 {
-	t_env	*env;
+	int	res;
+	int	i;
 
-	if (!content)
-		return ;
-	env = (t_env *)content;
-	if ((env->var_view == VAR_ALL || env->var_view == VAR_ENV)
-		&& env->value)
-		printf("%s=%s\n", env->key, env->value);
+	res = 0;
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == c)
+			res++;
+		i++;
+	}
+	return (res);
 }

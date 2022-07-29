@@ -1,6 +1,35 @@
-export ANTHO=test ; env | grep -E 'ANTHO' ; unset ANTHO ; echo "~~~~~~~" ; env | grep -E 'ANTHO'
-export ANTHO=test ; env | grep -E 'ANTHO' ; unset "ANTHO" ; echo "~~~~~~~" ; env | grep -E 'ANTHO'
-export ANTHO=test ; env | grep -E 'ANTHO' ; unset 'ANTHO' ; echo "~~~~~~~" ; env | grep -E 'ANTHO'
-export ANTHO=test ; env | grep -E 'ANTHO' ; unset $ANTHO ; echo "~~~~~~~" ; env | grep -E 'ANTHO'
-export ANTHO=test ; env | grep -E 'ANTHO' ; unset "$ANTHO" ; echo "~~~~~~~" ; env | grep -E 'ANTHO'
-export ANTHO=test ; env | grep -E 'ANTHO' ; unset '$ANTHO' ; echo "~~~~~~~" ; env | grep -E 'ANTHO'
+# BASIC
+#unset
+#unset test1
+#unset test2
+#export A="unset_test"
+#unset $A
+#export A="unset_test!"
+#unset $A
+# START CHAR
+unset az
+unset 1z
+unset `z
+unset ~z
+unset !z
+unset @z
+unset #z
+unset $z
+unset %z
+unset ^z
+unset &z
+unset *z
+unset (z
+unset )z
+unset _z
+unset -z
+unset +z
+unset =z
+# FORBIDDEN CHAR
+# FULL TEST
+#export ANTHO=test ; env | grep -E 'ANTHO' ; unset ANTHO ; echo "~~~~~~~" ; env | grep -E 'ANTHO'
+#export ANTHO=test ; env | grep -E 'ANTHO' ; unset "ANTHO" ; echo "~~~~~~~" ; env | grep -E 'ANTHO'
+#export ANTHO=test ; env | grep -E 'ANTHO' ; unset 'ANTHO' ; echo "~~~~~~~" ; env | grep -E 'ANTHO'
+#export ANTHO=test ; env | grep -E 'ANTHO' ; unset $ANTHO ; echo "~~~~~~~" ; env | grep -E 'ANTHO'
+#export ANTHO=test ; env | grep -E 'ANTHO' ; unset "$ANTHO" ; echo "~~~~~~~" ; env | grep -E 'ANTHO'
+#export ANTHO=test ; env | grep -E 'ANTHO' ; unset '$ANTHO' ; echo "~~~~~~~" ; env | grep -E 'ANTHO'

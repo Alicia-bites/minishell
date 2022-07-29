@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   give_prompt_back.c                                 :+:      :+:    :+:   */
+/*   ft_str_isdigit.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 13:24:35 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/28 19:28:59 by abarrier         ###   ########.fr       */
+/*   Created: 2022/07/27 09:58:54 by abarrier          #+#    #+#             */
+/*   Updated: 2022/07/28 10:58:42 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "ft_chartype.h"
+#include "ft_string.h"
 
-void	give_prompt_back(int signum)
+int	ft_str_isdigit(char *str)
 {
-	extern t_global	global;
+	long long	i;
 
-	if (signum == SIGINT)
+	i = 0;
+	while (ft_isspace(str[i]))
+		i++;
+	if (ft_ispolarity(str[i]))
+		i++;
+	while (str[i])
 	{
-		global.readline = 1;
-		global.exit_status = 130;
-		printf("\n");
-		rl_on_new_line();
-		rl_replace_line("", 0);
-		rl_redisplay();
-		return ;
+		if (!ft_isdigit(str[i]))
+			return (0);
+		i++;
 	}
+	return (1);
 }

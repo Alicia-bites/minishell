@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 15:45:06 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/20 13:43:05 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/27 14:38:10 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@
 
 int		ft_panic(int errcode, char *filename, char *msg);
 void	*ft_panic_null(int errcode, char *filename, char *msg);
+int		ft_panic_value(int errcode, char *filename, char *msg,
+			int value);
 int		ft_shell_msg(int errcode, char *data);
 
 #endif

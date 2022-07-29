@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_env_show.c                                      :+:      :+:    :+:   */
+/*   do_exit_status.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antho <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/30 15:49:59 by antho             #+#    #+#             */
-/*   Updated: 2022/07/28 12:12:33 by abarrier         ###   ########.fr       */
+/*   Created: 2022/07/27 11:44:55 by abarrier          #+#    #+#             */
+/*   Updated: 2022/07/27 20:20:05 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	do_env_show(void *content)
+int	do_exit_status(t_cmd *cmd)
 {
-	t_env	*env;
+	extern t_global	global;
+	unsigned char	chr;
 
-	if (!content)
-		return ;
-	env = (t_env *)content;
-	if ((env->var_view == VAR_ALL || env->var_view == VAR_ENV)
-		&& env->value)
-		printf("%s=%s\n", env->key, env->value);
+	if (cmd->n_arg > 1)
+		return (ft_panic(EINVAL, __FILE__, NULL));
+	chr = (unsigned char)global.exit_status;
+	printf("%d\n", (int)chr);
+	return (0);
 }

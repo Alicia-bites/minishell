@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:17:53 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/21 19:45:47 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/28 20:54:58 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	pipe_run(t_ulist **cmd_lst, int n_cmd)
 		pid = fork();
 		if (pid < 0)
 		{
-			res += ft_panic(-1, __FILE__, ERR_PIPE);
+			res = ft_panic_value(-1, __FILE__, ERR_PIPE, 1);
 			break ;
 		}
 		if (pid == 0)
@@ -36,6 +36,7 @@ int	pipe_run(t_ulist **cmd_lst, int n_cmd)
 		i++;
 	}
 	ft_lst_func_lst(cmd_lst, &pipe_close_pfd);
-	res += pipe_wait(i, pid);
+	if (res == 0)
+		res = pipe_wait(i, pid);
 	return (res);
 }

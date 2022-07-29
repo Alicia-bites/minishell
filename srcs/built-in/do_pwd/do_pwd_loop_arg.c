@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_env_show.c                                      :+:      :+:    :+:   */
+/*   do_pwd_loop_arg.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antho <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/30 15:49:59 by antho             #+#    #+#             */
-/*   Updated: 2022/07/28 12:12:33 by abarrier         ###   ########.fr       */
+/*   Created: 2022/07/28 17:37:41 by abarrier          #+#    #+#             */
+/*   Updated: 2022/07/28 17:41:54 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	do_env_show(void *content)
+int	do_pwd_loop_arg(t_ulist **envp, char **str)
 {
-	t_env	*env;
+	t_ulist	*obj;
+	int		i;
+	int		res;
 
-	if (!content)
-		return ;
-	env = (t_env *)content;
-	if ((env->var_view == VAR_ALL || env->var_view == VAR_ENV)
-		&& env->value)
-		printf("%s=%s\n", env->key, env->value);
+	obj = NULL;
+	i = 0;
+	res = 0;
+	while (str[i])
+	{
+		res = do_pwd_check_str(str[i]);
+		if (res)
+			return (res);
+		i++;
+	}
+	return (0);
 }

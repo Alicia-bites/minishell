@@ -6,11 +6,13 @@ void	test_antho(t_ulist **env_lst)
 	int	case_env;
 	int	case_export;
 	int	case_unset;
+	int	case_exit_status;
 
 	case_cd = 0;
 	case_env = 0;
-	case_export = 1;
+	case_export = 0;
 	case_unset = 0;
+	case_exit_status = 1;
 
 /************************************************************/
  	t_cmd	test_cd_cmd;
@@ -90,6 +92,29 @@ void	test_antho(t_ulist **env_lst)
 	if (case_unset)
 	{
 		do_unset(env_lst, &test_unset_cmd);
+		ft_lst_func_lst(env_lst, &do_export_show);
+		ft_lst_func_lst(env_lst, &do_env_show);
+		printf("%s\n", SEP_P);
+	}
+/************************************************************/
+	extern t_global global;
+
+	global.exit_status = -1;
+
+ 	t_cmd	test_exit_status_cmd;
+ 	char test_exit_status_cmd_arg[] = "$?";
+ 	char *test_exit_status_cmd_fullcmd[] = { "$?", NULL };
+// 	char test_exit_status_cmd_arg[] = "$? too many arg" ;
+// 	char *test_exit_status_cmd_fullcmd[] = { "$?", "too", "many", "arg", NULL };
+ 	char test_exit_status_cmd_path[] = "built-in";
+
+	test_exit_status_cmd.arg = test_exit_status_cmd_arg;
+ 	test_exit_status_cmd.fullcmd = test_exit_status_cmd_fullcmd;
+ 	test_exit_status_cmd.fullpath = test_exit_status_cmd_path;
+	test_exit_status_cmd.n_arg = ft_strstrlen(test_exit_status_cmd.fullcmd);
+	if (case_exit_status)
+	{
+		do_exit_status(&test_exit_status_cmd);
 		ft_lst_func_lst(env_lst, &do_export_show);
 		ft_lst_func_lst(env_lst, &do_env_show);
 		printf("%s\n", SEP_P);

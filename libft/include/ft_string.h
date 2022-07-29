@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 11:41:10 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/18 11:42:03 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/28 12:53:32 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define FT_STRING_H
 
 # include <stdlib.h>
+
+# define STR_LONG_LONG_MAX "9223372036854775807"
+# define STR_LONG_LONG_MIN "9223372036854775808"
 
 void	ft_bzero(void *s, size_t n);
 int		ft_index(const char *s, int c);
@@ -38,5 +41,8 @@ char	*ft_strstr(const char *big, const char *little);
 size_t	ft_strstrlen(char **str);
 char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+int		ft_str_isll(char *str);
+int		ft_str_isdigit(char *str);
+char	*ft_strnchr(const char *s, int c, size_t n);
 
 #endif

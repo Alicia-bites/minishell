@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   give_prompt_back.c                                 :+:      :+:    :+:   */
+/*   env_char_init.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 13:24:35 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/28 19:28:59 by abarrier         ###   ########.fr       */
+/*   Created: 2022/07/25 17:36:20 by abarrier          #+#    #+#             */
+/*   Updated: 2022/07/26 14:48:16 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	give_prompt_back(int signum)
+char	**env_char_init(size_t len_envp)
 {
-	extern t_global	global;
+	char	**ptr;
+	int		i;
 
-	if (signum == SIGINT)
+	ptr = (char **)malloc(sizeof(char *) * (len_envp + 1));
+	if (!ptr)
+		return (ft_panic_null(-1, __FILE__, ERR_MALLOC));
+	i = 0;
+	while (i < len_envp)
 	{
-		global.readline = 1;
-		global.exit_status = 130;
-		printf("\n");
-		rl_on_new_line();
-		rl_replace_line("", 0);
-		rl_redisplay();
-		return ;
+		ptr[i] = NULL;
+		i++;
 	}
+	ptr[len_envp] = NULL;
+	return (ptr);
 }

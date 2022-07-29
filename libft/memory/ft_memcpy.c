@@ -3,29 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarchan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/25 16:46:11 by amarchan          #+#    #+#             */
-/*   Updated: 2021/12/10 16:54:00 by amarchan         ###   ########.fr       */
+/*   Created: 2021/11/24 08:24:33 by abarrier          #+#    #+#             */
+/*   Updated: 2022/05/16 14:15:33 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
 
-void	*ft_memcpy(void *s1, const void *s2, size_t n)
+#include "ft_memory.h"
+
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	char		*dest;
-	const char	*src;
-	size_t		i;
+	unsigned char	*ucsrc;
+	unsigned char	*ucdest;
+	int				i;
 
+	ucsrc = (unsigned char *)src;
+	ucdest = (unsigned char *)dest;
 	i = 0;
-	if (s1 == NULL && s2 == NULL)
+	if (!dest && !src)
 		return (NULL);
-	dest = (char *)s1;
-	src = (const char *)s2;
-	while (i < n)
+	while (i < (int) n)
 	{
-		dest[i] = src[i];
+		ucdest[i] = ucsrc[i];
 		i++;
 	}
-	return (s1);
+	return (ucdest);
 }

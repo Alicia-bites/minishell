@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/30 09:51:13 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/20 12:00:00 by abarrier         ###   ########.fr        #
+#    Updated: 2022/07/28 10:59:55 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ CHAR_SRCS	:=	ft_isalnum.c\
 			ft_isascii.c\
 			ft_isdigit.c\
 			ft_isinteger.c\
+			ft_ispolarity.c\
 			ft_isprint.c\
 			ft_isspace.c
 
@@ -72,6 +73,7 @@ MEM_SRCS	:=	ft_calloc.c\
 
 MSG_SRCS	:=	ft_panic.c\
 			ft_panic_null.c\
+			ft_panic_value.c\
 			ft_shell_msg.c
 
 PUT_SRCS	:=	ft_putchar_fd.c\
@@ -89,6 +91,8 @@ STR_SRCS	:=	ft_bzero.c\
 			ft_strcmp.c\
 			ft_strdup.c\
 			ft_strip.c\
+			ft_str_isdigit.c\
+			ft_str_isll.c\
 			ft_striteri.c\
 			ft_strjoin.c\
 			ft_strlcat.c\

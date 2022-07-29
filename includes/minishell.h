@@ -6,22 +6,23 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/28 22:34:27 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/29 09:05:40 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <readline/readline.h>
+# include <fcntl.h>
+# include <limits.h>
 # include <readline/history.h>
+# include <readline/readline.h>
 # include <signal.h>
 # include <stdint.h>
+# include <stdio.h>
+# include <stdlib.h>
 # include <sys/types.h>
 # include <sys/wait.h>
-# include <fcntl.h>
 
 # include "libft.h"
 
@@ -34,6 +35,8 @@
 # define SEMICOLON -47
 # define DOUBLE_PIPE -48
 # define MISSING_BRACKET -49
+
+# define ARG_DEL '-'
 # define ARG_SEP ' '
 # define DIR_SEP "/"
 # define ENV_SEP '='
@@ -46,6 +49,9 @@
 # define ENV_PATH_NAME "PATH"
 # define ENV_PWD_NAME "PWD"
 
+# define ERR_INVALID_OPT "invalid option"
+# define ERR_ARG_N "too many arguments"
+# define ERR_ARG_NUM "numeric argument required"
 # define ERR_CMD_FOUND "Command not found"
 # define ERR_EXP_ARG "not a valid identifier"
 # define ERR_FORK "Fork issue"
@@ -53,6 +59,8 @@
 # define ERR_PIPE "Pipe issue"
 # define ERR_PWD "impossible to get the current directory"
 # define ERR_NOHOME "HOME not set"
+# define ERR_NOTOK "first no token address"
+# define ERR_TOK_BRACKET "syntax error near unexpected token"
 # define ERR_UNSET_ARG "not a valid identifier"
 
 # define BUILT_CD "cd"
@@ -60,9 +68,14 @@
 # define BUILT_ECHO_N "echo -n"
 # define BUILT_ENV "env"
 # define BUILT_EXIT "exit"
+# define BUILT_EXIT_STATUS "$?"
 # define BUILT_EXPORT "export"
 # define BUILT_PWD "pwd"
 # define BUILT_UNSET "unset"
+
+# define CHRSET_EXPORT "`~!@#$%^&*()-[]{}|:;\"\'<,>.?/"
+# define CHRSET_PWD "()"
+# define CHRSET_UNSET "`~!@#$%^&*()-[]{}|:;\"\'<,>.?/"
 
 typedef enum enum_chartype {
 	CH_UNKNOWN,
@@ -88,9 +101,10 @@ typedef struct s_chartype {
 }	t_chartype;
 
 typedef struct s_global {
-	int			readline;
-	int			seen_tok_cmd;
-	int			*saved_pos;
+	int				readline;
+	int				seen_tok_cmd;
+	int				*saved_pos;
+	long long		exit_status;
 }	t_global;
 
 typedef struct s_cursor {
@@ -235,21 +249,27 @@ int					do_env(t_ulist **envp, t_cmd *cmd);
 void				do_env_show(void *content);
 
 //do_exit
-void				do_exit(int exit_number);
+int					do_exit(t_ulist **envp, t_ulist **cmd_lst, t_cmd *cmd);
+void				do_exit_clear(t_ulist **envp, t_ulist **cmd_lst, t_cmd *cmd, char *err_msg);
+
+//do_exit_status $?
+int					do_exit_status(t_cmd *cmd);
 
 //do_export
 int					do_export(t_ulist **env_lst, t_cmd *cmd);
 int					do_export_create_env(t_ulist **list, char *str);
 t_ulist				*do_export_check_exist(t_ulist **envp, char *str,
 						int sep_pos);
-int					do_export_check_str(char *str);
+int					do_export_check_str(char *str, int sep_pos);
 int					do_export_update_env(t_ulist *obj, char *str, int sep_pos);
 int					do_export_update_lst(t_ulist **envp, char **str);
 void				do_export_show(void *content);
 
 //do_pwd
-int					do_pwd(void);
+int					do_pwd(t_ulist **envp, t_cmd *cmd);
+int     				do_pwd_check_str(char *str);
 char				*do_pwd_getpath(void);
+int     				do_pwd_loop_arg(t_ulist **envp, char **str);
 
 //do_unset
 int					do_unset(t_ulist **envp, t_cmd *cmd);
@@ -346,10 +366,18 @@ int					ft_set_sigaction(void);
 void				give_prompt_back(int signum);
 
 //environment list
+int					env_char_env(t_env *env, char **ptr,
+						int i);
+char				**env_char_init(size_t len_envp);
+int					env_char_loop_envp(t_ulist *obj,
+						size_t len_envp, char **ptr);
+char				**env_char_set(t_ulist **envp);
+size_t				env_char_size(t_ulist **envp);
 void				env_free(void *content);
 t_env				*env_init(char *env_fullname);
 char				*env_init_key(t_env *env, char *fullname);
-int					env_init_value(t_env *env, char *fullname);
+int					env_init_value(t_env *env,
+						char *fullname);
 int					env_init_var_view(t_env *env);
 int					env_lst_set(char **envp, t_ulist **env_lst);
 void				env_lst_show(t_ulist **list);
@@ -396,7 +424,7 @@ void				pipe_close_pfd(void *content);
 void				pipe_cmd(t_ulist **cmd_lst, t_ulist *obj);
 void				pipe_cmd_dup_fd_in(t_ulist **cmd_lst, t_cmd *cmd);
 void				pipe_cmd_dup_fd_out(t_ulist **cmd_lst, t_cmd *cmd);
-void				pipe_exit(t_ulist **cmd_lst, t_cmd *cmd);
+void				pipe_exit(t_ulist **cmd_lst, t_cmd *cmd, int err_no);
 int					pipe_run(t_ulist **cmd_lst, int n_cmd);
 int					pipe_wait(int n_cmd, int pid);
 

@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoll.c                                         :+:      :+:    :+:   */
+/*   do_exit_clear.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/11 08:16:38 by abarrier          #+#    #+#             */
-/*   Updated: 2022/04/11 08:16:39 by abarrier         ###   ########.fr       */
+/*   Created: 2022/07/28 10:53:00 by abarrier          #+#    #+#             */
+/*   Updated: 2022/07/28 11:59:35 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_convert.h"
+#include "minishell.h"
 
-long long	ft_atoll(const char *s)
+void	do_exit_clear(t_ulist **envp, t_ulist **cmd_lst, t_cmd *cmd,
+		char *err_msg)
 {
-	unsigned long long	n;
-	int					sign;
-	int					i;
+	extern t_global	global;
 
-	n = 0;
-	sign = 1;
-	i = 0;
-	while (ft_isspace(s[i]))
-		i++;
-	if (ft_ispolarity(s[i]))
-	{
-		if (s[i] == '-')
-			sign *= (-1);
-		i++;
-	}
-	while (ft_isdigit(s[i]))
-	{
-		n = (n * 10) + (unsigned long long)(s[i] - '0');
-		i++;
-	}
-	return (sign * (long long)n);
+	printf("exit\n");
+	if (err_msg)
+		ft_panic(-1, __FILE__, ERR_ARG_NUM);
+	rl_clear_history();
+	ft_lstclear(cmd->tok_lst);
+	ft_lst_free(envp, &env_free);
+	ft_lst_free(cmd_lst, &cmd_free);
+	exit(global.exit_status);
 }
