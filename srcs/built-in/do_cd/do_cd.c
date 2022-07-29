@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 18:16:31 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/29 12:56:24 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/29 15:43:15 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	do_cd(t_ulist **envp, t_cmd *cmd)
 		else if (cmd->n_arg >= 3)
 			return (ft_panic_value(-1, __FILE__, ERR_ARG_N, 1));
 		else
-			printf("cd with one arg to be done\n");
+			return (do_cd_change_dir(envp, cmd));
 	}
 	else if (cmd->n_arg == 1 && do_cd_home(envp))
 		return (EXIT_FAILURE);
