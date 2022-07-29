@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/29 14:29:27 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/29 15:53:37 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ typedef struct s_env {
 typedef struct s_cmd
 {
 	t_list		**tok_lst;
+	t_list		*tok_node;
 	t_ulist		**env_lst;
 	t_toktype	toktype;
 	char		*arg;
@@ -202,8 +203,10 @@ void				pipe_cmd_dup_fd_out(t_ulist **cmd_lst, t_cmd *cmd);
 
 //do_cd
 int					do_cd(t_ulist **envp, t_cmd *cmd);
+int					do_cd_change_dir(t_ulist **envp, t_cmd *cmd);
 int					do_cd_home(t_ulist **envp);
 int					do_cd_update_env(t_ulist *obj, char *path);
+int					do_cd_update_pwd_change_dir(t_ulist **envp, char *pwd);
 int					do_cd_update_pwd_home(t_ulist **envp, t_ulist *obj,
 						char *pwd);
 

@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 14:07:42 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/22 13:02:34 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/29 15:55:08 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_cmd	*cmd_init(t_list **tok_lst, t_ulist **env_lst)
 	if (!cmd)
 		return (ft_panic_null(-1, __FILE__, ERR_MALLOC));
 	cmd->tok_lst = tok_lst;
+	cmd->tok_node = NULL;
 	cmd->env_lst = env_lst;
 	cmd->toktype = 0;
 	cmd->arg = NULL;

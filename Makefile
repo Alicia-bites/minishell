@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/29 12:58:16 by amarchan         ###   ########.fr        #
+#    Updated: 2022/07/29 15:12:07 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,8 +60,10 @@ RM		:=	rm -rf
 BUILT_SRCS	:=	do_builtin.c\
 
 BUILT_CD_SRCS	:=	do_cd.c\
+			do_cd_change_dir.c\
 			do_cd_home.c\
 			do_cd_update_env.c\
+			do_cd_update_pwd_change_dir.c\
 			do_cd_update_pwd_home.c
 
 BUILT_ECHO_SRCS	:=	do_echo_get_index.c\
