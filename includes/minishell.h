@@ -128,6 +128,7 @@ typedef struct s_env {
 typedef struct s_cmd
 {
 	t_list		**tok_lst;
+	t_list		*tok_node;
 	t_ulist		**env_lst;
 	t_toktype	toktype;
 	char		*arg;
