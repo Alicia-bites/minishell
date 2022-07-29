@@ -6,13 +6,13 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 15:51:54 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/29 15:08:42 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/29 15:39:11 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_list	*do_echo_remove_quotes(t_cmd *cmd)
+t_list	**do_echo_remove_quotes(t_cmd *cmd)
 {
 	t_list *save;
 
@@ -29,8 +29,7 @@ t_list	*do_echo_remove_quotes(t_cmd *cmd)
 		}
 	}
 	*cmd->tok_lst = save;
-	printf("token = %s\n", (*(cmd->tok_lst))->next->token);
-	return (save);
+	return (cmd->tok_lst);
 }
 
 int	do_echo(t_ulist **envp, t_cmd *cmd)
@@ -43,7 +42,9 @@ int	do_echo(t_ulist **envp, t_cmd *cmd)
 	index = do_echo_get_index((*cmd->tok_lst));
 	if (index != 0)
 	{
-		(*cmd->tok_lst) = do_echo_remove_quotes(cmd);
+		cmd->tok_lst = do_echo_remove_quotes(cmd);
+		ft_free_ptrptr_str(cmd->fullcmd);
+		cmd_init_prop_fullcmd(*cmd->tok_lst, cmd);
 		do_echo_n(envp, cmd, index);
 	}
 	if (!do_echo_valid_echo_n((*cmd->tok_lst)))

@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/29 15:12:07 by abarrier         ###   ########.fr        #
+#    Updated: 2022/07/29 16:41:53 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -152,13 +152,14 @@ INPUT_HANDLER	:=	exit_minishell.c\
 					handle_str.c\
 					read_line.c\
 
-LEX_SRCS	:=	lex_brackets.c\
+LEX_SRCS	:=	lexer.c\
+				lex_brackets.c\
+				lex_dollar.c\
 				lex_pipe.c\
 				lex_quote.c\
 				lex_redir.c\
 				lex_space.c\
-				lex_sym.c\
-				lexer.c
+				lex_sym.c
 
 PARSING_SRCS	:=	count_quotes.c\
 					create_list.c\

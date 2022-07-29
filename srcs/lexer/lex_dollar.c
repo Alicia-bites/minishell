@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.c                                            :+:      :+:    :+:   */
+/*   lex_dollar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/19 15:45:13 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/29 16:08:17 by amarchan         ###   ########.fr       */
+/*   Created: 2022/07/29 15:45:35 by amarchan          #+#    #+#             */
+/*   Updated: 2022/07/29 15:49:57 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	lexer(char *str, int *err)
+int	lex_dollar(char *str, int *err)
 {
-	*err = 0;
-	if (lex_quote(str, err) || lex_pipe(str, err) || lex_redir(str, err)
-		|| lex_brackets(str, err) || lex_space(str, err) || lex_sym(str, err)
-			||lex_dollar(str, err)) 
-		return ((*err));
+	if (ft_strstr(str, "$$"))
+	{
+		*err = ERR_DOLLAR;
+		printf("smbash: syntax error. Same old story, dollar following dollar.\n");
+		return (*err);
+	}
 	return (0);
 }
