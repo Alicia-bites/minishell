@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/29 09:05:40 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/29 10:26:20 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -242,7 +242,7 @@ int					do_cd_update_pwd_home(t_ulist **envp, t_ulist *obj,
 
 //do_echo
 int					do_echo(t_ulist **envp, t_cmd *cmd);
-int					do_echo_n(t_ulist **envp, t_cmd *cmd);
+int					do_echo_n(t_ulist **envp, t_cmd *cmd, int index);
 
 //do_env
 int					do_env(t_ulist **envp, t_cmd *cmd);
