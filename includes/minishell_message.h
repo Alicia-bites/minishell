@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 12:19:00 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/29 13:11:42 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/29 14:35:42 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@
 
 // MINISHELL CUSTOMIZED MESSAGE
 # define ERR_ECHO_FAILURE "echo has failed"
-# define ERR_FORK "Fork issue"
-# define ERR_PFD "Impossible to create a file descriptor"
-# define ERR_PIPE "Pipe issue"
+# define ERR_FORK "fork issue"
+# define ERR_PFD "impossible to create a file descriptor"
+# define ERR_PIPE "pipe issue"
 # define ERR_PWD "impossible to get the current directory"
 # define ERR_NOTOK "first no token address"
+# define ERR_SIGACTION "setting up sigaction failed"
 
 #endif
