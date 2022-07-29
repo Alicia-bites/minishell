@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:48:34 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/25 17:46:35 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/29 17:37:07 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,9 @@ void	get_expanded(t_exp_arg exp_arg, t_expanded **expanded_list,
 	int i, int *varsize)
 {
 	static int	index = 0;
-
+	
+	if (i > 1 && exp_arg.str[i - 1] == '\'')
+		return ;
 	if (!*expanded_list)
 		index = 0;
 	if (ft_isdigit(exp_arg.str[i + 1]))
