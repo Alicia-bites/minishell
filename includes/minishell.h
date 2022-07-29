@@ -65,7 +65,6 @@
 
 # define BUILT_CD "cd"
 # define BUILT_ECHO "echo"
-# define BUILT_ECHO_N "echo -n"
 # define BUILT_ENV "env"
 # define BUILT_EXIT "exit"
 # define BUILT_EXIT_STATUS "$?"
