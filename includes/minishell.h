@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/29 13:03:10 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/29 14:29:27 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,6 +208,7 @@ int					do_cd_update_pwd_home(t_ulist **envp, t_ulist *obj,
 						char *pwd);
 
 //do_echo
+int					do_echo_get_index(t_list *token_list);
 int					do_echo(t_ulist **envp, t_cmd *cmd);
 int					do_echo_get_index(t_list *token_list);
 int					do_echo_n(t_ulist **envp, t_cmd *cmd, int index);
@@ -322,11 +323,11 @@ void				is_space(t_chartype *input_list, int *start, int *end,
 void				is_word(t_chartype *input_list, int *start, int *end,
 						t_list **token_list);
 int					no_space_inside_quotes(t_chartype *input_list, int end, int quote);
-//void				remove_quotes(t_chartype *input_list, int *start, int *end);
-//void				remove_dquotes(t_chartype *input_list, int *start,
-//						int *end);
-//void				remove_squotes(t_chartype *input_list, int *start,
-//						int *end);
+// void				remove_quotes(t_chartype *input_list, int *start, int *end);
+// void				remove_dquotes(t_chartype *input_list, int *start,
+// 						int *end);
+// void				remove_squotes(t_chartype *input_list, int *start,
+// 						int *end);
 int					space_after_quote(t_chartype *input_list, int end, int quote);
 
 
