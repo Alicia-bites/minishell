@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/29 09:05:40 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/29 13:03:10 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # include <sys/wait.h>
 
 # include "libft.h"
+# include "minishell_enum.h"
+# include "minishell_message.h"
 
 # define WRONG_CMD 127
 # define MALLOC_FAILURE -42
@@ -36,33 +38,26 @@
 # define DOUBLE_PIPE -48
 # define MISSING_BRACKET -49
 
+// ARGUMENT DELIMITER AS: cmd -arg1 -arg2
 # define ARG_DEL '-'
-# define ARG_SEP ' '
+// DIRECTORY SEPARATOR AS: /home/user
 # define DIR_SEP "/"
+// ENVIRONMENT SEPARATOR AS: HOME=/home/user
 # define ENV_SEP '='
+// ENVIRONMENT FIELD SEPARATOR AS: PATH=/usr/bin:/usr/local/bin
 # define ENV_FIELD_SEP ':'
+// EXPORT PREFIX AS: declare -x HOME="/home/user"
 # define EXP_PREFIX "declare -x "
+// DEFAULT FILE DESCRIPTOR VALUE FOR PIPING AND REDIRECTION PROCESS
 # define FD_NOT_INIT -999999
 
+// STANDARD ENVIRONMENT VARIABLE NAME
 # define ENV_HOME_NAME "HOME"
 # define ENV_OLDPWD_NAME "OLDPWD"
 # define ENV_PATH_NAME "PATH"
 # define ENV_PWD_NAME "PWD"
 
-# define ERR_INVALID_OPT "invalid option"
-# define ERR_ARG_N "too many arguments"
-# define ERR_ARG_NUM "numeric argument required"
-# define ERR_CMD_FOUND "Command not found"
-# define ERR_EXP_ARG "not a valid identifier"
-# define ERR_FORK "Fork issue"
-# define ERR_PFD "Impossible to create a file descriptor"
-# define ERR_PIPE "Pipe issue"
-# define ERR_PWD "impossible to get the current directory"
-# define ERR_NOHOME "HOME not set"
-# define ERR_NOTOK "first no token address"
-# define ERR_TOK_BRACKET "syntax error near unexpected token"
-# define ERR_UNSET_ARG "not a valid identifier"
-
+// BUILTIN FLAG
 # define BUILT_CD "cd"
 # define BUILT_ECHO "echo"
 # define BUILT_ENV "env"
@@ -72,24 +67,16 @@
 # define BUILT_PWD "pwd"
 # define BUILT_UNSET "unset"
 
+// BUILTIN CHARSET TO CHECK ARGUMENT STRUCTURE
 # define CHRSET_EXPORT "`~!@#$%^&*()-[]{}|:;\"\'<,>.?/"
 # define CHRSET_PWD "()"
 # define CHRSET_UNSET "`~!@#$%^&*()-[]{}|:;\"\'<,>.?/"
 
-typedef enum enum_chartype {
-	CH_UNKNOWN,
-	CH_WORD,
-	CH_SPACE,
-	CH_PIPE,
-	CH_S_QUOTE,
-	CH_D_QUOTE,
-	CH_DOLLAR,
-	CH_L_REDIR,
-	CH_R_REDIR,
-	CH_EQUAL,
-	CH_INTPOINT,
-	CH_BN,
-}	t_enum_chartype;
+typedef struct s_minishell
+{
+	struct t_env	**env_lst;
+	struct t_cmd	**cmd_lst;
+}	t_minishell;
 
 typedef struct s_chartype {
 	char			character;
@@ -130,33 +117,14 @@ typedef struct s_expanded {
 	t_ulist				*envp;
 }	t_expanded;
 
-typedef enum e_var_view
-{
-	VAR_ALL,
-	VAR_ENV,
-	VAR_EXP
-}	t_var_view;
-
-typedef enum e_redir_open
-{
-	DIR_IN,
-	DIR_OUT
-}	t_redir_open;
-
-typedef enum e_fd_access
-{
-	ACCESS_UNDEFINED,
-	ACCESS_X,
-	ACCESS_W,
-	ACCESS_R
-}	t_fd_access;
-
+// STRUCTURE OF ENVIRONMENT VARIABLE
 typedef struct s_env {
 	char		*key;
 	char		*value;
 	t_var_view	var_view;
 }	t_env;
 
+// STRUCTURE OF COMMAND LIST TO BE EXECUTED
 typedef struct s_cmd
 {
 	t_list		**tok_lst;
@@ -241,7 +209,9 @@ int					do_cd_update_pwd_home(t_ulist **envp, t_ulist *obj,
 
 //do_echo
 int					do_echo(t_ulist **envp, t_cmd *cmd);
-int					do_echo_n(t_ulist **envp, t_cmd *cmd);
+int					do_echo_get_index(t_list *token_list);
+int					do_echo_n(t_ulist **envp, t_cmd *cmd, int index);
+int					do_echo_valid_echo_n(t_list *token_list);
 
 //do_env
 int					do_env(t_ulist **envp, t_cmd *cmd);
@@ -352,11 +322,11 @@ void				is_space(t_chartype *input_list, int *start, int *end,
 void				is_word(t_chartype *input_list, int *start, int *end,
 						t_list **token_list);
 int					no_space_inside_quotes(t_chartype *input_list, int end, int quote);
-void				remove_quotes(t_chartype *input_list, int *start, int *end);
-void				remove_dquotes(t_chartype *input_list, int *start,
-						int *end);
-void				remove_squotes(t_chartype *input_list, int *start,
-						int *end);
+//void				remove_quotes(t_chartype *input_list, int *start, int *end);
+//void				remove_dquotes(t_chartype *input_list, int *start,
+//						int *end);
+//void				remove_squotes(t_chartype *input_list, int *start,
+//						int *end);
 int					space_after_quote(t_chartype *input_list, int end, int quote);
 
 
