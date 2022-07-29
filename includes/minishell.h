@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/29 16:41:39 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/29 17:42:26 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,6 +178,7 @@ int					lex_dollar(char *str, int *err);
 int					lex_redir(char *str, int *err);
 int					lex_space(char *str, int *err);
 int					lex_sym(char *str, int *err);
+int					between_quotes(char *str, int pos);
 
 //expansions
 int					bracket_is_after_dollar(char *str, int pos);
