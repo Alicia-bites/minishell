@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 13:19:52 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/28 16:54:12 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/29 12:51:58 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ int	do_unset_check_str(char *str)
 		&& !ft_strchrset_include(str, CHRSET_UNSET))
 		return (0);
 	else
-		return (ft_panic_value(-1, __FILE__, ERR_UNSET_ARG,
+		return (ft_panic_value(-1, __FILE__, ERR_ID_VAL,
 				EXIT_FAILURE));
 }

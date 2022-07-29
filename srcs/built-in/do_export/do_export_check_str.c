@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 10:58:15 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/28 18:56:41 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/29 12:53:14 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	do_export_check_str(char *str, int sep_pos)
 		&& (!ft_strchrset_include(str_key, CHRSET_EXPORT)))
 		res = 0;
 	else
-		res = ft_panic_value(-1, __FILE__, ERR_EXP_ARG, 1);
+		res = ft_panic_value(-1, __FILE__, ERR_ID_VAL, EXIT_FAILURE);
 	free(str_key);
 	return (res);
 }

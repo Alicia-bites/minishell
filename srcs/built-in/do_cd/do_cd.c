@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 18:16:31 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/29 09:08:00 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/07/29 12:56:24 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ int	do_cd(t_ulist **envp, t_cmd *cmd)
 	else if (cmd->n_arg >= 2)
 	{
 		if (cmd->fullcmd[1][0] == '-')
-			return (ft_panic_value(-1, __FILE__, ERR_INVALID_OPT,
-					2));
+			return (ft_panic_value(-1, __FILE__, ERR_OPT_INVAL, 2));
 		else if (cmd->n_arg >= 3)
 			return (ft_panic_value(-1, __FILE__, ERR_ARG_N, 1));
 		else
