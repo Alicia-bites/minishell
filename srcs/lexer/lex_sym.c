@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 16:08:41 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/29 16:39:24 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/29 16:50:30 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ int	between_quotes(char *str, int pos)
 int	is_special_character(char c)
 {
 	int	i;
-	char special_char[26] = "`~!@#$%^&*()-[]{}|:;<,>.?/";
+	char special_char[7] = "`!#&;,/";
 
 	i = 0;
-	while (i <= 26)
+	while (i <= 7)
 	{
 		if (c == special_char[i])
 			return (1);
