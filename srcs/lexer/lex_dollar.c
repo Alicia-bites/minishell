@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lex_sym.c                                          :+:      :+:    :+:   */
+/*   lex_dollar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 10:51:05 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/06 10:51:44 by amarchan         ###   ########.fr       */
+/*   Created: 2022/07/29 15:45:35 by amarchan          #+#    #+#             */
+/*   Updated: 2022/07/29 15:49:57 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	lex_sym(char *str, int *err)
+int	lex_dollar(char *str, int *err)
 {
-	if (ft_strstr(str, "\\"))
+	if (ft_strstr(str, "$$"))
 	{
-		*err = BACK_SLASH;
-		printf("smbash: syntax error. Please check backslashes.\n");
-		return (*err);
-	}
-	if (ft_strstr(str, ";"))
-	{
-		*err = SEMICOLON;
-		printf("smbash: syntax error. Please check backslashes.\n");
+		*err = ERR_DOLLAR;
+		printf("smbash: syntax error. Same old story, dollar following dollar.\n");
 		return (*err);
 	}
 	return (0);

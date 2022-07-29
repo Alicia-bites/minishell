@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/29 14:29:27 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/29 15:51:10 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 # define SEMICOLON -47
 # define DOUBLE_PIPE -48
 # define MISSING_BRACKET -49
+# define ERR_DOLLAR -50
 
 // ARGUMENT DELIMITER AS: cmd -arg1 -arg2
 # define ARG_DEL '-'
@@ -170,11 +171,11 @@ int					lex_quote(char *str, int *err);
 // int					count_double_for_lexer(char *str);
 // int					count_single_for_lexer(char *str);
 void				count_quotes_lexer(int *s, int *d, char *str);
-int					lex_redir(char *str, int *err);
-int					lex_sym(char *str, int *err);
 int					lex_brackets(char *str, int *err);
-int					lex_space(char *str, int *err);
 int					lexer(char *str, int *err);
+int					lex_dollar(char *str, int *err);
+int					lex_redir(char *str, int *err);
+int					lex_space(char *str, int *err);
 
 //expansions
 int					bracket_is_after_dollar(char *str, int pos);
