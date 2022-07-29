@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/29 10:26:20 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/29 13:10:30 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@
 # define ERR_NOTOK "first no token address"
 # define ERR_TOK_BRACKET "syntax error near unexpected token"
 # define ERR_UNSET_ARG "not a valid identifier"
+# define ERR_ECHO_FAILURE "echo has failed"
 
 # define BUILT_CD "cd"
 # define BUILT_ECHO "echo"
@@ -241,8 +242,10 @@ int					do_cd_update_pwd_home(t_ulist **envp, t_ulist *obj,
 						char *pwd);
 
 //do_echo
+int					do_echo_get_index(t_list *token_list);
 int					do_echo(t_ulist **envp, t_cmd *cmd);
 int					do_echo_n(t_ulist **envp, t_cmd *cmd, int index);
+int 				do_echo_valid_echo_n(t_list *token_list);
 
 //do_env
 int					do_env(t_ulist **envp, t_cmd *cmd);
@@ -353,11 +356,11 @@ void				is_space(t_chartype *input_list, int *start, int *end,
 void				is_word(t_chartype *input_list, int *start, int *end,
 						t_list **token_list);
 int					no_space_inside_quotes(t_chartype *input_list, int end, int quote);
-void				remove_quotes(t_chartype *input_list, int *start, int *end);
-void				remove_dquotes(t_chartype *input_list, int *start,
-						int *end);
-void				remove_squotes(t_chartype *input_list, int *start,
-						int *end);
+// void				remove_quotes(t_chartype *input_list, int *start, int *end);
+// void				remove_dquotes(t_chartype *input_list, int *start,
+// 						int *end);
+// void				remove_squotes(t_chartype *input_list, int *start,
+// 						int *end);
 int					space_after_quote(t_chartype *input_list, int end, int quote);
 
 

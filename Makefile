@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/29 09:07:29 by amarchan         ###   ########.fr        #
+#    Updated: 2022/07/29 12:58:16 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,8 +64,9 @@ BUILT_CD_SRCS	:=	do_cd.c\
 			do_cd_update_env.c\
 			do_cd_update_pwd_home.c
 
-BUILT_ECHO_SRCS	:=	do_echo.c\
-			do_echo_n.c
+BUILT_ECHO_SRCS	:=	do_echo_get_index.c\
+					do_echo.c\
+					do_echo_n.c
 
 BUILT_ENV_SRCS	:=	do_env.c\
 			do_env_show.c
@@ -250,7 +251,6 @@ MAKE_TOK_SRCS	:=	add_token_to_list.c\
 					parse_echo.c\
 					no_space_inside_quotes.c\
 					space_after_quote.c\
-					remove_quotes.c
 
 SRCS		:=	main.c\
 			test_antho.c\
