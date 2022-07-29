@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:10:26 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/29 09:01:08 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/29 09:13:08 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,6 @@ void	is_word(t_chartype *input_list, int *start, int *end,
 		while (*end < input_list->length
 			&& input_list[*end].type == CH_WORD)
 		{
-			// if (echo_n(input_list, end, &quote))
-			// {
-			// 	echo_special_treatment(input_list, end, &space, &quote);
-			// 	built_echo(token_list, space);
-			// 	if (!space)
-			// 	{
-			// 		*start = *start + 5;
-			// 		*end = *start;
-			// 	}
-			// 	else
-			// 		*start = *end;
-			// 	return ;
-			// }
 			if (*end + 1 > input_list->length)
 				break ;
 			(*end)++;
