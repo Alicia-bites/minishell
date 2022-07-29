@@ -30,7 +30,6 @@ int	not_only_space_between_quotes(char *str)
 				not_space++;
 			i++;
 		}
-		printf("not_space = %d\n", not_space);
 		return (not_space);
 	}
 	return (1);
