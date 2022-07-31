@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/29 17:43:13 by amarchan         ###   ########.fr        #
+#    Updated: 2022/07/31 16:01:35 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -178,18 +178,23 @@ EXP_SRCS	:=	bracket_is_after_dollar.c\
 				expand_dollar.c\
 				find_expansions.c\
 				found_operator.c\
+				ft_getenv.c\
 				ft_lstadd_back_dollar.c\
 				ft_lstclear_back_dollar.c\
 				ft_lstclear_dollar.c\
 				ft_lstnew_dollar.c\
 				get_expanded.c\
 				get_full_size.c\
+				handle_dollar_brackets.c\
+				handle_dollar_name.c\
+				handle_dollar_number.c\
 				insert_expansions.c\
 				is_varname.c\
 				lonely_bracket.c \
 				malloc_varname.c \
 				print_dollar_lst.c\
 				print_global_saved_pos.c\
+				same_with_brackets_number.c\
 				save_operator_position.c
 
 SIG_SRCS	:=	ft_set_sigaction.c\

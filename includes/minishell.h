@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/29 17:42:26 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/31 15:55:56 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,13 +190,21 @@ void				ft_lstadd_back_dollar(t_expanded **alst, t_expanded *new);
 t_expanded			*ft_lstnew_dollar(char *str, int i);
 void				ft_lstclear_back_dollar(t_expanded **lst);
 void				ft_lstclear_dollar(t_expanded **lst);
+char				*ft_getenv(char *var, t_ulist *envp);
 int					get_full_size(t_expanded *expanded_list);
 void				get_expanded(t_exp_arg exp_arg, t_expanded **expanded_list, int i, int *varsize);
+int					handle_dollar_brackets(t_exp_arg exp_arg, int i,
+						t_expanded **expanded_list, int *index);
+int 				handle_dollar_name(t_exp_arg exp_arg, int i,
+						t_expanded **expanded_list, int *index);
+void				handle_dollar_number(char *str, t_expanded **expanded_list,
+						int *index, int i);
 char				*insert_expansions(int full_size, t_expanded *expanded_list,
 						char *str);
 int					is_varname(char c);
 char				*malloc_varname(char *str, int start, int end);
 void				print_dollar_lst(t_expanded *lst);
+int					same_with_brackets_number(char *str, int i);
 void				save_operator_position(char *expanded, t_position position);
 
 //do
