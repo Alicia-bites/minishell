@@ -34,3 +34,6 @@ $?
 
 VARIABLE globale
 	changer la structure pour une variable
+
+A VOIR AVEC ANTHO
+	make comp --> echo ${0}hey | echo ${1}fhdjk
