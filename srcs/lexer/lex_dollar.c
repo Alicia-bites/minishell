@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 15:45:35 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/29 17:52:23 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/31 13:47:11 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	found_bad_dollar_combo(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (i > 1 && str[i] == '$' && str[i + 1] == '$'
-			|| (i > 3 && str[i] == '$' && str[i + 1] == '{'
+		if (i + 2 < ft_strlen(str) && str[i] == '$' && str[i + 1] == '$'
+			|| (i + 3 < ft_strlen(str) && str[i] == '$' && str[i + 1] == '{'
 				&& str[i + 2] == '$' && str[i + 3] == '}'))
 		{
 			return (i);
