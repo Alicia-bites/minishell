@@ -1,0 +1,12 @@
+# commit 6d6f9ad2029064cc33aa6e39188256cd00649551
+# Date:   Fri Jul 29 17:37:34 2022 +0200
+# OWNER: ALICIA
+# ACTUAL RESULT: segfault
+echo $USER '$USER'
+#
+# OWNER: ANTHO
+# ACTUAL RESULT: give the prompt to the user
+# EXPECTED RESULT: should list line by line the result of ls
+# CLUE TO FIX: check if the infile is the stdin
+ls | cat < /dev/stdin
+
