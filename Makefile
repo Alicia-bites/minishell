@@ -143,6 +143,7 @@ PIPE_SRCS	:=	pipe_close_pfd.c\
 			pipe_cmd.c\
 			pipe_cmd_dup_fd_in.c\
 			pipe_cmd_dup_fd_out.c\
+			pipe_cmd_end.c\
 			pipe_exit.c\
 			pipe_run.c\
 			pipe_wait.c

@@ -399,6 +399,7 @@ void				pipe_close_pfd(void *content);
 void				pipe_cmd(t_ulist **cmd_lst, t_ulist *obj);
 void				pipe_cmd_dup_fd_in(t_ulist **cmd_lst, t_cmd *cmd);
 void				pipe_cmd_dup_fd_out(t_ulist **cmd_lst, t_cmd *cmd);
+void				pipe_cmd_end(t_ulist **cmd_lst, t_cmd *cmd, int err_no, char **envp);
 void				pipe_exit(t_ulist **cmd_lst, t_cmd *cmd, int err_no);
 int					pipe_run(t_ulist **cmd_lst, int n_cmd);
 int					pipe_wait(int n_cmd, int pid);
