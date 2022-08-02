@@ -355,3 +355,6 @@ tgetnum, tgetstr, tgoto, tputs
 
 ### Shell
 - https://explainshell.com/ 
+
+### Signal
+- https://linuxhint.com/signal_handlers_c_programming_language/  
