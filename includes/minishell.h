@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/29 16:41:39 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/02 17:17:27 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -339,6 +339,11 @@ int					space_after_quote(t_chartype *input_list, int end, int quote);
 //signal_handling
 int					ft_set_sigaction(void);
 void				give_prompt_back(int signum);
+void				sig_pipe_quit(int signum);
+int					sig_pipe_set_action(void);
+void				sig_program_prompt_back(int signum);
+int					sig_program_set_action(void);
+int					sig_program_unset_action(void);
 
 //environment list
 int					env_char_env(t_env *env, char **ptr,
@@ -402,7 +407,11 @@ void				pipe_cmd_dup_fd_out(t_ulist **cmd_lst, t_cmd *cmd);
 void				pipe_cmd_end(t_ulist **cmd_lst, t_cmd *cmd, int err_no, char **envp);
 void				pipe_exit(t_ulist **cmd_lst, t_cmd *cmd, int err_no);
 int					pipe_run(t_ulist **cmd_lst, int n_cmd);
+int					pipe_run_end(t_ulist **cmd_lst, int n_cmd, pid_t pid, int res);
 int					pipe_wait(int n_cmd, int pid);
+int					pipe_wait_check_child(int status);
+int					pipe_wait_check_last(int status);
+int					pipe_wait_return(int status_last, int res_last, int res_child);
 
 //TEST
 void				test_antho(t_ulist **env_lst);

@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/07/29 16:41:53 by amarchan         ###   ########.fr        #
+#    Updated: 2022/08/02 17:16:47 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -146,7 +146,11 @@ PIPE_SRCS	:=	pipe_close_pfd.c\
 			pipe_cmd_end.c\
 			pipe_exit.c\
 			pipe_run.c\
-			pipe_wait.c
+			pipe_run_end.c\
+			pipe_wait.c\
+			pipe_wait_check_child.c\
+			pipe_wait_check_last.c\
+			pipe_wait_return.c
 
 INPUT_HANDLER	:=	exit_minishell.c\
 					get_input.c\
@@ -193,7 +197,12 @@ EXP_SRCS	:=	bracket_is_after_dollar.c\
 				save_operator_position.c
 
 SIG_SRCS	:=	ft_set_sigaction.c\
-				give_prompt_back.c
+				give_prompt_back.c\
+				sig_pipe_quit.c\
+				sig_pipe_set_action.c\
+				sig_program_prompt_back.c\
+				sig_program_set_action.c\
+				sig_program_unset_action.c
 
 TOK_SRCS	:=	concatenate_export_args.c\
 				delete_content.c\
