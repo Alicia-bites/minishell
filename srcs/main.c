@@ -6,33 +6,39 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:17:17 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/29 14:35:16 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/01 18:51:16 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+long long	g_msl_exit;
+
 int	main(int argc, char **argv, char **envp)
 {
+	t_minishell	msl;
 	int		err;
-	t_ulist	**env_lst;
 
+	g_msl_exit = 0;
 	err = 0;
-	if (ft_set_sigaction() == -1)
+//	if (ft_set_sigaction() == -1)
+//		return (ft_panic_value(-1, __FILE__, ERR_SIGACTION,
+//				EXIT_FAILURE));
+	if (sig_program_set_action() == -1)
 		return (ft_panic_value(-1, __FILE__, ERR_SIGACTION,
 				EXIT_FAILURE));
-	env_lst = ft_lst_init();
-	if (!env_lst)
+	msl.env_lst = ft_lst_init();
+	if (!msl.env_lst)
 		return (EXIT_FAILURE);
-	if (env_lst_set(envp, env_lst))
+	if (env_lst_set(envp, msl.env_lst))
 	{
-		ft_lst_free(env_lst, &env_free);
+		ft_lst_free(msl.env_lst, &env_free);
 		return (EXIT_FAILURE);
 	}
-	// env_lst_show(env_lst);
-//	test_antho(env_lst);
-// 	env_lst_show(env_lst);
-	get_input(&err, env_lst);
-	ft_lst_free(env_lst, &env_free);
+	// env_lst_show(msl.env_lst);
+//	test_antho(msl.env_lst);
+// 	env_lst_show(msl.env_lst);
+	get_input(&err, msl.env_lst);
+	ft_lst_free(msl.env_lst, &env_free);
 	return (0);
 }

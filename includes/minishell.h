@@ -73,10 +73,17 @@
 # define CHRSET_PWD "()"
 # define CHRSET_UNSET "`~!@#$%^&*()-[]{}|:;\"\'<,>.?/"
 
+// MAIN STRUCTURE
+// tok_lst: token list
+// env_lst: environment list
+// cmd_lst: command list after each readline
+// str: string from readline fonction
 typedef struct s_minishell
 {
-	struct t_env	**env_lst;
-	struct t_cmd	**cmd_lst;
+	struct s_list	*tok_lst;
+	struct s_ulist	**env_lst;
+	struct s_ulist	**cmd_lst;
+	char		*str;
 }	t_minishell;
 
 typedef struct s_chartype {
