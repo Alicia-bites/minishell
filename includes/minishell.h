@@ -28,6 +28,8 @@
 # include "minishell_enum.h"
 # include "minishell_message.h"
 
+# define SMB_NAME "smbash"
+
 # define WRONG_CMD 127
 # define MALLOC_FAILURE -42
 # define MISSING_QUOTES -43
@@ -71,6 +73,7 @@
 //HEREDOC
 # define HD_BIN_FALSE "/usr/bin/false"
 # define HD_BIN_TRUE "/usr/bin/true"
+# define HD_TMP_DIR "/tmp"
 
 // BUILTIN CHARSET TO CHECK ARGUMENT STRUCTURE
 # define CHRSET_EXPORT "`~!@#$%^&*()-[]{}|:;\"\'<,>.?/"
@@ -415,8 +418,11 @@ void				fd_pipe_pfd(t_ulist *obj, t_cmd *cmd1, t_cmd *cmd2,
 						int n_pipe);
 
 //heredoc
+int					hd_close(t_cmd *cmd);
+char				*hd_create_name(t_list *tok, t_cmd *cmd);
 int					hd_link(t_list **tok_lst, t_ulist **cmd_lst);
 t_list				*hd_loop_tok(t_list *tok, t_cmd *cmd, long long *hd_exit);
+int					hd_open(t_cmd *cmd);
 size_t				hd_size(t_list **tok_lst);
 //int					hd_loop_tok_type(t_list *tok, t_cmd *cmd,
 int					hd_wait(int pid);

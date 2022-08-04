@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 12:19:00 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/02 10:55:42 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/04 18:23:16 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # define ERR_ARG_NUM "numeric argument required"
 # define ERR_CMD_FOUND "command not found"
 # define ERR_COREDUMP "Quit (core dumped)"
+# define ERR_FD_OVER "Too many open files"
+# define ERR_HD_ISSUE " Impossible to create a temporary file for here-document"
 # define ERR_ID_VAL "not a valid identifier"
 # define ERR_NOHOME "HOME not set"
 # define ERR_OPT_INVAL "invalid option"

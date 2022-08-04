@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/08/04 08:23:19 by abarrier         ###   ########.fr        #
+#    Updated: 2022/08/04 19:17:26 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -140,8 +140,11 @@ FD_SRCS		:=	fd_access.c\
 			fd_pipe.c\
 			fd_pipe_pfd.c
 
-HD_SRCS		:=	hd_link.c\
+HD_SRCS		:=	hd_close.c\
+			hd_create_name.c\
+			hd_link.c\
 			hd_loop_tok.c\
+			hd_open.c\
 			hd_size.c\
 			hd_wait.c\
 			hd_write.c
