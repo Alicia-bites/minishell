@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 14:07:42 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/29 15:55:08 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/04 18:15:54 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ t_cmd	*cmd_init(t_list **tok_lst, t_ulist **env_lst)
 	cmd->arg = NULL;
 	cmd->fullcmd = NULL;
 	cmd->fullpath = NULL;
+	cmd->hd_name = NULL;
+	cmd->hd_r = FD_NOT_INIT;
 	cmd->fd_r = FD_NOT_INIT;
 	cmd->fd_w = FD_NOT_INIT;
 	cmd->pfd_r = FD_NOT_INIT;

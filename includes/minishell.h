@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/04 11:25:56 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/04 19:17:08 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,8 @@ typedef struct s_cmd
 	size_t		n_arg;
 	char		**fullcmd; //-> liste chainee de char qui contient la commande + les arguments
 	char		*fullpath; //-> chemin absolu de la ou se trouve la commande
+	char		*hd_name;
+	int			hd_r;
 	int			fd_r; //->  file descriptor read
 	int			fd_w; //-> file descriptor write
 	int			pfd_r; //-> pipe file descriptor
