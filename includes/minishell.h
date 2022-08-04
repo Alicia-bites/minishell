@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/02 17:17:27 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/04 11:25:56 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,10 @@
 # define BUILT_EXPORT "export"
 # define BUILT_PWD "pwd"
 # define BUILT_UNSET "unset"
+
+//HEREDOC
+# define HD_BIN_FALSE "/usr/bin/false"
+# define HD_BIN_TRUE "/usr/bin/true"
 
 // BUILTIN CHARSET TO CHECK ARGUMENT STRUCTURE
 # define CHRSET_EXPORT "`~!@#$%^&*()-[]{}|:;\"\'<,>.?/"
@@ -346,6 +350,8 @@ int					space_after_quote(t_chartype *input_list, int end, int quote);
 //signal_handling
 int					ft_set_sigaction(void);
 void				give_prompt_back(int signum);
+int					sig_hd_set_action(void);
+int					sig_hd_unset_action(void);
 void				sig_pipe_quit(int signum);
 int					sig_pipe_set_action(void);
 void				sig_program_prompt_back(int signum);
@@ -405,6 +411,14 @@ int					fd_outfile_open(t_cmd *cmd, char *fd, int mode);
 void				fd_pipe(t_ulist **cmd_lst);
 void				fd_pipe_pfd(t_ulist *obj, t_cmd *cmd1, t_cmd *cmd2,
 						int n_pipe);
+
+//heredoc
+int					hd_link(t_list **tok_lst, t_ulist **cmd_lst);
+t_list				*hd_loop_tok(t_list *tok, t_cmd *cmd, long long *hd_exit);
+size_t				hd_size(t_list **tok_lst);
+//int					hd_loop_tok_type(t_list *tok, t_cmd *cmd,
+int					hd_wait(int pid);
+int					hd_write(t_list *tok, t_cmd *cmd);
 
 //pipe
 void				pipe_close_pfd(void *content);

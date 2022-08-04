@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 16:24:51 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/29 11:01:43 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/04 11:20:03 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,12 @@ void	handle_str(char **str, t_list **token_list, int *err, t_ulist **envp)
 		return ;
 	}
 	if(cmd_create_lst(token_list, envp, cmd_list))
+	{
+		ft_lstclear(token_list);
+		ft_lst_free(cmd_list, &cmd_free);
+		return ;
+	}
+	if (hd_link(token_list, cmd_list))
 	{
 		ft_lstclear(token_list);
 		ft_lst_free(cmd_list, &cmd_free);

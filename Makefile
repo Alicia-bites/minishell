@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/08/02 17:16:47 by abarrier         ###   ########.fr        #
+#    Updated: 2022/08/04 08:23:19 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ BUILT_UNSET_PATH		:=	do_unset
 CMD_PATH				:=	cmd
 ENV_PATH				:=	env
 FD_PATH					:=	fd
+HD_PATH					:=	heredoc
 PIPE_PATH				:=	pipe
 INPUT_HANDLER_PATH		:=	input_handler
 LEX_PATH				:=	lexer
@@ -139,6 +140,13 @@ FD_SRCS		:=	fd_access.c\
 			fd_pipe.c\
 			fd_pipe_pfd.c
 
+HD_SRCS		:=	hd_link.c\
+			hd_loop_tok.c\
+			hd_size.c\
+			hd_wait.c\
+			hd_write.c
+#			hd_loop_tok_type.c
+
 PIPE_SRCS	:=	pipe_close_pfd.c\
 			pipe_cmd.c\
 			pipe_cmd_dup_fd_in.c\
@@ -198,6 +206,8 @@ EXP_SRCS	:=	bracket_is_after_dollar.c\
 
 SIG_SRCS	:=	ft_set_sigaction.c\
 				give_prompt_back.c\
+				sig_hd_set_action.c\
+				sig_hd_unset_action.c\
 				sig_pipe_quit.c\
 				sig_pipe_set_action.c\
 				sig_program_prompt_back.c\
@@ -280,6 +290,7 @@ SRCS		:=	main.c\
 				$(ENV_SRCS)\
 				$(EXEC_SRCS)\
 				$(FD_SRCS)\
+				$(HD_SRCS)\
 				$(PIPE_SRCS)\
 				$(INPUT_HANDLER)\
 				$(LEX_SRCS)\
@@ -309,6 +320,7 @@ vpath %.c $(SRCS_PATH)\
 	$(SRCS_PATH)/$(ENV_PATH)\
 	$(SRCS_PATH)/$(EXEC_PATH)\
 	$(SRCS_PATH)/$(FD_PATH)\
+	$(SRCS_PATH)/$(HD_PATH)\
 	$(SRCS_PATH)/$(PIPE_PATH)\
 	$(SRCS_PATH)/$(LEX_PATH)\
 	$(SRCS_PATH)/$(INPUT_HANDLER_PATH)\
