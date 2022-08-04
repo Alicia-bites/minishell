@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/08/04 19:17:26 by abarrier         ###   ########.fr        #
+#    Updated: 2022/08/04 20:11:18 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -130,6 +130,7 @@ ENV_SRCS	:=	env_char_env.c\
 
 FD_SRCS		:=	fd_access.c\
 			fd_close.c\
+			fd_hd_open.c\
 			fd_infile_open.c\
 			fd_link_in_out_file.c\
 			fd_loop_tok.c\

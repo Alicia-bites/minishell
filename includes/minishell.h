@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/04 19:17:08 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/04 20:10:52 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -404,6 +404,7 @@ void				cmd_show(void *content);
 //file_descriptor
 int					fd_access(char *fd, int mode);
 int					fd_close(t_cmd *cmd);
+int					fd_hd_open(t_cmd *cmd);
 int					fd_infile_open(t_cmd *cmd, char *fd, int mode);
 void				fd_link_in_out_file(t_list **tok_lst, t_ulist **cmd_lst,
 						int mode);
