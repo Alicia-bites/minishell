@@ -6,7 +6,7 @@
 /*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:34:24 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/04 18:45:29 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/08 18:18:56 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ t_list	*hd_loop_tok(t_list *tok, t_cmd *cmd, long long *hd_exit)
 				sig_hd_set_action();
 				hd_write(tok, cmd);
 			}
+			close(cmd->hd_r);
 			if (hd_wait(pid) == 1)
 			{
 				*hd_exit = 1;
