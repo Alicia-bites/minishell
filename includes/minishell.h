@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/09 09:57:26 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/09 11:14:50 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,6 @@ typedef struct s_cmd
 
 //input_handler
 int					get_input(int *err, t_ulist **envp);
-void				read_line(char **str);
 void				exit_minishell(t_list **token_list, int *err,
 						t_ulist **envp);
 void				handle_str(char **str, t_list **token_list, int *err,
@@ -365,8 +364,6 @@ int					space_after_quote(t_chartype *input_list, int end, int quote);
 
 
 //signal_handling
-int					ft_set_sigaction(void);
-void				give_prompt_back(int signum);
 int					sig_hd_set_action(void);
 int					sig_hd_unset_action(void);
 void				sig_pipe_quit(int signum);

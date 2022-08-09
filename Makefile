@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/08/09 09:55:02 by amarchan         ###   ########.fr        #
+#    Updated: 2022/08/09 11:15:22 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ CFLAGS		:=	-MMD
 #CFLAGSADD	:=	-g3 -fsanitize=address
 CFLAGSADD	:=	-g3
 
-VALGRIND	:=	valgrind --suppressions=ignoreliberror --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes
+VALGRIND	:=	valgrind -s --suppressions=ignoreliberror --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes
 
 IPATH		:=	includes
 OPATH		:=	obj
@@ -166,8 +166,7 @@ PIPE_SRCS	:=	pipe_close_pfd.c\
 
 INPUT_HANDLER	:=	exit_minishell.c\
 					get_input.c\
-					handle_str.c\
-					read_line.c\
+					handle_str.c
 
 LEX_SRCS	:=	between_quotes.c\
 				lexer.c\
@@ -215,9 +214,7 @@ EXP_SRCS	:=	bracket_is_after_dollar.c\
 				same_with_brackets_number.c\
 				save_operator_position.c
 
-SIG_SRCS	:=	ft_set_sigaction.c\
-				give_prompt_back.c\
-				sig_hd_set_action.c\
+SIG_SRCS	:=		sig_hd_set_action.c\
 				sig_hd_unset_action.c\
 				sig_pipe_quit.c\
 				sig_pipe_set_action.c\
