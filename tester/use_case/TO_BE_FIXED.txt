@@ -54,3 +54,12 @@ cat << "$USER"
 
 #*****************************************************************************#
 
+# OWNER: ANTHO
+# ACTUAL RESULT: print USER and doesn't put anything in file 'nana' 
+# EXPECTED RESULT: do not print USER but put USER in 'nana'
+# CASES:
+    echo USER > nana
+
+# STATUS : 
+
+#*****************************************************************************#
