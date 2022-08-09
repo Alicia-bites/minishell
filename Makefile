@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/08/08 18:17:25 by abarrier         ###   ########.fr        #
+#    Updated: 2022/08/09 11:04:07 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -166,8 +166,7 @@ PIPE_SRCS	:=	pipe_close_pfd.c\
 
 INPUT_HANDLER	:=	exit_minishell.c\
 					get_input.c\
-					handle_str.c\
-					read_line.c\
+					handle_str.c
 
 LEX_SRCS	:=	lexer.c\
 				lex_brackets.c\

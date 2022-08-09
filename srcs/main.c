@@ -6,13 +6,14 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:17:17 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/01 18:51:16 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/09 11:08:01 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 long long	g_msl_exit;
+t_global       global;
 
 int	main(int argc, char **argv, char **envp)
 {
