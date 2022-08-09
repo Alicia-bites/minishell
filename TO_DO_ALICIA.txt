@@ -37,3 +37,6 @@ VARIABLE globale
 
 A VOIR AVEC ANTHO
 	make comp --> echo ${0}hey | echo ${1}fhdjk
+
+FIXED
+	echo $TERM $'TERM'

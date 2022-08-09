@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/09 09:57:26 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/09 14:48:46 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,6 +195,7 @@ int					lex_redir(char *str, int *err);
 int					lex_space(char *str, int *err);
 int					lex_sym(char *str, int *err);
 int					between_quotes(char *str, int pos);
+int					between_single_quotes(char *str, int pos);
 
 //expansions
 int					bracket_is_after_dollar(char *str, int pos);
@@ -222,6 +223,7 @@ char				*insert_expansions(int full_size, t_expanded *expanded_list,
 int					is_varname(char c);
 char				*malloc_varname(char *str, int start, int end);
 void				print_dollar_lst(t_expanded *lst);
+char				*remove_dollars( char *str);
 int					same_with_brackets_number(char *str, int i);
 int					same_with_brackets_zero(char *str, int i);
 void				save_operator_position(char *expanded, t_position position);

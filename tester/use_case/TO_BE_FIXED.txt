@@ -3,6 +3,8 @@
 # CASES:
 echo $USER '$USER'
 
+# STATUS : done
+
 #*****************************************************************************#
 
 # OWNER: ANTHO
@@ -12,6 +14,8 @@ echo $USER '$USER'
 # CASES:
 ls | cat < /dev/stdin
 
+# STATUS : 
+
 #*****************************************************************************#
 
 # OWNER: ALICIA/ANTHO
@@ -19,6 +23,8 @@ ls | cat < /dev/stdin
 # EXPECTED RESULT: should ignore the space at the begining of the command
 # CASES:
               | cat -e
+
+# STATUS : 
 
 #*****************************************************************************#
 
@@ -32,6 +38,8 @@ cat << 'EOF'
 cat << "EOF"
 cat << EOF
 
+# STATUS : 
+
 #*****************************************************************************#
 
 # OWNER: ALICIA
@@ -41,6 +49,8 @@ cat << EOF
 cat << $USER
 cat << '$USER'
 cat << "$USER"
+
+# STATUS : 
 
 #*****************************************************************************#
 
