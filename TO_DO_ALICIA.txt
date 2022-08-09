@@ -21,17 +21,11 @@ PIPE FIN DE LIGNE ?
 
 
 quotes
-	echo "-"n '-'n hey
-	echo '-'n ''''-''''n hey
-	echo -nnn'b' hey
 	 export a=" "
 	 '$USER'
-	 echo $$
-	 echo ${$}
+	 echo ${$} -- ERREUR TOKEN
 	 echo $""
 	 echo $''
-	 echo "alicia;antho"
-	 echo -nnnnnnnnnn
 	 traitement si que des espaces : juste return prompt
 	 proteger les boucles while dans tous les is_smth de get_token
 
@@ -40,3 +34,6 @@ $?
 
 VARIABLE globale
 	changer la structure pour une variable
+
+A VOIR AVEC ANTHO
+	make comp --> echo ${0}hey | echo ${1}fhdjk

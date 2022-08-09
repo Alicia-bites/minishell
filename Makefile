@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/08/04 20:11:18 by abarrier         ###   ########.fr        #
+#    Updated: 2022/08/09 09:55:02 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -169,7 +169,8 @@ INPUT_HANDLER	:=	exit_minishell.c\
 					handle_str.c\
 					read_line.c\
 
-LEX_SRCS	:=	lexer.c\
+LEX_SRCS	:=	between_quotes.c\
+				lexer.c\
 				lex_brackets.c\
 				lex_dollar.c\
 				lex_pipe.c\
@@ -194,18 +195,24 @@ EXP_SRCS	:=	bracket_is_after_dollar.c\
 				expand_dollar.c\
 				find_expansions.c\
 				found_operator.c\
+				ft_getenv.c\
 				ft_lstadd_back_dollar.c\
 				ft_lstclear_back_dollar.c\
 				ft_lstclear_dollar.c\
 				ft_lstnew_dollar.c\
 				get_expanded.c\
 				get_full_size.c\
+				handle_dollar_brackets.c\
+				handle_dollar_int.c\
+				handle_dollar_name.c\
+				handle_dollar_number.c\
 				insert_expansions.c\
 				is_varname.c\
 				lonely_bracket.c \
 				malloc_varname.c \
 				print_dollar_lst.c\
 				print_global_saved_pos.c\
+				same_with_brackets_number.c\
 				save_operator_position.c
 
 SIG_SRCS	:=	ft_set_sigaction.c\

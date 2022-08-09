@@ -6,11 +6,23 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:47:29 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/25 17:46:50 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/07/31 14:15:03 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	found_bad_combo(int i, char *str)
+{
+	if (i + 1 < ft_strlen(str) && str[i] == '$' && str[i + 1] == '$')
+		return (1);
+	else if (i + 1 < ft_strlen(str) && str[i] == '$' && str[i + 1] == '\'')
+		return (1);
+	else if (i + 3 < ft_strlen(str) && str[i] == '$' && str[i + 1] == '{'
+		&& str[i + 2] == '$' && str[i + 3] == '}')
+		return (1);
+	return (0);
+}
 
 void	find_expansions(t_exp_arg exp_arg, t_expanded **expanded_list,
 	int *full_size)
@@ -22,7 +34,7 @@ void	find_expansions(t_exp_arg exp_arg, t_expanded **expanded_list,
 	i = 0;
 	while (exp_arg.str[i])
 	{
-		if (exp_arg.str[i] == '$' && exp_arg.str[i + 1] != '\'')
+		if (exp_arg.str[i] == '$' && !found_bad_combo(i, exp_arg.str))
 		{
 			get_expanded(exp_arg, expanded_list, i, &varsize);
 			*full_size -= varsize;
