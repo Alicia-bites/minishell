@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/08/09 14:49:22 by amarchan         ###   ########.fr        #
+#    Updated: 2022/08/09 17:06:33 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -231,7 +231,8 @@ TOK_SRCS	:=	concatenate_export_args.c\
 				delete_spaces.c\
 				seen_equal_last.c\
 				tokenizer.c\
-				trim_quotes.c
+				trim_quotes.c\
+				trim_quotes_token.c
 				
 GIVE_CHAR_SRCS	:=	get_chartype.c\
 					is_char_space.c\

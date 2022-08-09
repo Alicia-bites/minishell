@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:47:29 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/09 14:46:23 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/09 15:12:21 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	found_bad_combo(int i, char *str)
 		&& str[i + 2] == '$' && str[i + 3] == '}')
 		return (1);
 	else if (i + 1 < ft_strlen(str) && str[i] == '$' && str[i + 1] == '"')
+		return (1);
+	else if (i + 1 < ft_strlen(str) && str[i] == '$' && str[i + 1] == '>')
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/09 14:48:46 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/09 17:01:22 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,13 @@ typedef struct s_cursor {
 	int			i;
 	int			k;
 }	t_cursor;
+
+typedef struct s_dart {
+	int			i;
+	int			j;
+	int			s;
+	int			d;
+}	t_dart;
 
 typedef struct s_exp_arg {
 	char		*str;
@@ -288,6 +295,7 @@ void				delete_spaces(t_list **token_list);
 int					seen_equal_last(char *token);
 void				tokenize(t_chartype *input_list, t_list **token_list);
 char 				*trim_quotes(char *str);
+char 				*trim_quotes_token(char *str, t_list *token_list);
 
 //give_chartype
 int					get_chartype(t_chartype **input_list);
