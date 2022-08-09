@@ -22,9 +22,6 @@ int	main(int argc, char **argv, char **envp)
 
 	g_msl_exit = 0;
 	err = 0;
-//	if (ft_set_sigaction() == -1)
-//		return (ft_panic_value(-1, __FILE__, ERR_SIGACTION,
-//				EXIT_FAILURE));
 	if (sig_program_set_action() == -1)
 		return (ft_panic_value(-1, __FILE__, ERR_SIGACTION,
 				EXIT_FAILURE));

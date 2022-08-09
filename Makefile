@@ -207,9 +207,7 @@ EXP_SRCS	:=	bracket_is_after_dollar.c\
 				print_global_saved_pos.c\
 				save_operator_position.c
 
-SIG_SRCS	:=	ft_set_sigaction.c\
-				give_prompt_back.c\
-				sig_hd_set_action.c\
+SIG_SRCS	:=		sig_hd_set_action.c\
 				sig_hd_unset_action.c\
 				sig_pipe_quit.c\
 				sig_pipe_set_action.c\

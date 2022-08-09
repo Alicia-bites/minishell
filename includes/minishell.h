@@ -352,8 +352,6 @@ int					space_after_quote(t_chartype *input_list, int end, int quote);
 
 
 //signal_handling
-int					ft_set_sigaction(void);
-void				give_prompt_back(int signum);
 int					sig_hd_set_action(void);
 int					sig_hd_unset_action(void);
 void				sig_pipe_quit(int signum);
