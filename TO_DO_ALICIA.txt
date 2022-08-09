@@ -5,28 +5,8 @@ NORME
 	normer les fichiers
 
 EXPANSION
-	echo $>TERM
-
-SIGNAL
-	voir avec Yohan pour la boucle et le ctrl-D
-	foutre tout ce qui a ete malloc dans une variable globale pour pouvoir
-		nettoyer le tout quand ctrl-C.
-	qu'est-ce que cela signifie pour les signaux quand on n'est pas en mode
-		interactif ?
-	
-PIPE FIN DE LIGNE ?
-	echo ${USER} --> tu l'expands ?
-	si y'a un caractere special qu'on doit pas interpreter ?
-	si t'a un : ou un autre caractere special entre guillemets ?
-
 
 quotes
-	 export a=" "
-	 '$USER'
-	 echo ${$} -- ERREUR TOKEN
-	 echo $""
-	 echo $''
-	 traitement si que des espaces : juste return prompt
 	 proteger les boucles while dans tous les is_smth de get_token
 
 $?

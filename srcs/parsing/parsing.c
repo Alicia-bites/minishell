@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:49:49 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/25 17:19:30 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/09 14:57:23 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	ft_parse(char *str, t_list **token_list, int *err, t_ulist *envp)
 	t_chartype		*input_list;
 	t_exp_arg		exp_arg;
 	
+	if (!only_space_in_str(str))
+		return (*err);
 	tmp = str;
 	input_list = NULL;
 	exp_arg.envp = envp;

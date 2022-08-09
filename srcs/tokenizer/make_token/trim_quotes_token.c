@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   trim_quotes.c                                      :+:      :+:    :+:   */
+/*   trim_quotes_token.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/26 17:22:18 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/09 17:06:55 by amarchan         ###   ########.fr       */
+/*   Created: 2022/08/09 17:02:58 by amarchan          #+#    #+#             */
+/*   Updated: 2022/08/09 18:11:38 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,17 @@ static char *malloc_output(char *str, int *len)
 	return (output);
 }
 
-static int	is_heredoc_delimiter(t_list *token_list)
+static int	is_heredoc_delimiter(t_list *token_list, char *str)
 {
-	if (token_list->prev)
-	{
-		if (!ft_strcmp(token_list->prev->token, "<<"))
-			return (1);
+	t_list	*iterator;
+
+	if (!token_list)
 		return (0);
-	}
+	iterator = token_list;
+	while (iterator && strcmp(iterator->token, str))
+		iterator = iterator->next;
+	if (iterator && iterator->prev && !ft_strcmp(iterator->prev->token, "<<"))
+			return (1);
 	return (0);
 }
 
@@ -80,7 +83,7 @@ static void	skip_quotes(char *str, t_dart *dart)
 	}
 }
 
-char *trim_quotes(char *str)
+char *trim_quotes_token(char *str, t_list *token_list)
 {
 	char	*output;
 	t_dart	dart;
@@ -93,7 +96,8 @@ char *trim_quotes(char *str)
 	output = malloc_output(str, &len);
 	while (dart.i <= len)
 	{
-		skip_quotes(str, &dart);
+		if (!is_heredoc_delimiter(token_list, str))
+			skip_quotes(str, &dart);
 		output[dart.i++] = str[dart.j++];
 	}
 	output[dart.i] = '\0';
