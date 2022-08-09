@@ -6,11 +6,18 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 15:51:54 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/29 15:39:11 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/09 18:30:46 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static int	only_double_quote_in_str(char *str)
+{
+	if (!ft_strcmp(str, "\"\"") || !ft_strcmp(str, "''"))
+		return (1);
+	return (0);
+}
 
 t_list	**do_echo_remove_quotes(t_cmd *cmd)
 {
@@ -23,8 +30,9 @@ t_list	**do_echo_remove_quotes(t_cmd *cmd)
 		(*(cmd->tok_lst)) = (*(cmd->tok_lst))->next;
 		while ((*(cmd->tok_lst)) && (*(cmd->tok_lst))->toktype == TOK_ARG)
 		{
-			if (!not_only_space_between_quotes((*(cmd->tok_lst))->token))
-				(*(cmd->tok_lst))->token = trim_quotes((*(cmd->tok_lst))->token);
+			if (!not_only_space_between_quotes((*(cmd->tok_lst))->token)
+				&& !only_double_quote_in_str((*(cmd->tok_lst))->token))
+					(*(cmd->tok_lst))->token = trim_quotes((*(cmd->tok_lst))->token);
 			(*(cmd->tok_lst)) = (*(cmd->tok_lst))->next;
 		}
 	}

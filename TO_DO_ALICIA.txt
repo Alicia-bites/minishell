@@ -5,8 +5,6 @@ NORME
 	normer les fichiers
 
 EXPANSION
-	echo $>TERM
-
 
 quotes
 	 proteger les boucles while dans tous les is_smth de get_token
