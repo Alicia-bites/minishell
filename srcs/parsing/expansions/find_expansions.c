@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:47:29 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/31 14:15:03 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/09 12:27:02 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	found_bad_combo(int i, char *str)
 	return (0);
 }
 
+// varsize is the size of the variable before it gets expanded
+// you wanna deduct from the full size.
 void	find_expansions(t_exp_arg exp_arg, t_expanded **expanded_list,
 	int *full_size)
 {
