@@ -37,3 +37,6 @@ echo $USER $"USER"
 echo $USER $'USER'
 echo $USER "$USER"
 echo $USER '$USER'
+
+echo $""
+echo $''
