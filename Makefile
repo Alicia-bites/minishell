@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/08/09 11:15:22 by abarrier         ###   ########.fr        #
+#    Updated: 2022/08/09 18:21:10 by abarrier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,10 @@ MAKE_TOK_PATH			:=	make_token
 RM		:=	rm -rf
 
 BUILT_SRCS	:=	do_builtin.c\
+			do_builtin_close_fd.c\
+			do_builtin_dup_fd_in.c\
+			do_builtin_dup_fd_out.c\
+			do_builtin_exit.c
 
 BUILT_CD_SRCS	:=	do_cd.c\
 			do_cd_change_dir.c\

@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 16:24:51 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/09 11:16:00 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/10 08:43:22 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	handle_str(char **str, t_list **token_list, int *err, t_ulist **envp)
 		ft_lst_free(cmd_list, &cmd_free);
 		return ;
 	}
-	print_lst(*token_list);
+//	print_lst(*token_list);
 	if (!*token_list)
 	{
 		ft_panic(-1, __FILE__, ERR_NOTOK);
@@ -65,7 +65,7 @@ void	handle_str(char **str, t_list **token_list, int *err, t_ulist **envp)
 		ft_lst_free(cmd_list, &cmd_free);
 		return ;
 	}
-	ft_lst_func_lst(cmd_list, &cmd_show);
+//	ft_lst_func_lst(cmd_list, &cmd_show);
 	if (hd_link(token_list, cmd_list))
 	{
 		ft_lstclear(token_list);
@@ -74,7 +74,7 @@ void	handle_str(char **str, t_list **token_list, int *err, t_ulist **envp)
 	}
 	fd_link_in_out_file(token_list, cmd_list, DIR_IN);
 	fd_pipe(cmd_list);
-	ft_lst_func_lst(cmd_list, &cmd_show);
+//	ft_lst_func_lst(cmd_list, &cmd_show);
 	cmd_execution(cmd_list, ft_lst_size(cmd_list));
 	ft_lstclear(token_list);
 	ft_lst_free(cmd_list, &cmd_free);
