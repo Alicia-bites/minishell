@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:58:01 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/22 11:56:48 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/10 15:01:40 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 // 	}	
 // }
 
-static int	is_expanded_op(int i)
+static int	is_expanded_op(int pos)
 {
 	int				j;
 	extern t_global	global;
@@ -35,7 +35,7 @@ static int	is_expanded_op(int i)
 	{
 		while (global.saved_pos[j])
 		{
-			if (i == global.saved_pos[j])
+			if (pos == global.saved_pos[j])
 				return (1);
 			j++;
 		}
@@ -43,33 +43,7 @@ static int	is_expanded_op(int i)
 	return (0);
 }
 
-// void	check_l_redir(int i, t_chartype **input_list)
-// {
-// 	if (i > 0)
-// 	{
-// 		if ((*input_list)[(i) - 1].character == '=')
-// 			(*input_list)[i].type = CH_WORD;
-// 		else
-// 			(*input_list)[i].type = CH_L_REDIR;
-// 	}
-// 	else
-// 		(*input_list)[i].type = CH_L_REDIR;
-// }
-
-// void	check_r_redir(int i, t_chartype **input_list)
-// {
-// 	if (i > 0)
-// 	{
-// 		if ((*input_list)[(i) - 1].character == '=')
-// 			(*input_list)[i].type = CH_WORD;
-// 		else
-// 			(*input_list)[i].type = CH_R_REDIR;
-// 	}
-// 	else
-// 		(*input_list)[i].type = CH_R_REDIR;
-// }
-
-void	get_chartype_second(int i, t_chartype **input_list)
+static void	get_chartype_second(int i, t_chartype **input_list)
 {
 	if ((*input_list)[i].character == '"' && (*input_list)->n_double == 1)
 		(*input_list)[i].type = CH_WORD;
