@@ -38,7 +38,7 @@ cat << 'EOF'
 cat << "EOF"
 cat << EOF
 
-# STATUS : 
+# STATUS : HALF DONE - STILL NEED TO --> 1) interprete quotes, 2) remove quotes
 
 #*****************************************************************************#
 
@@ -50,7 +50,7 @@ cat << $USER
 cat << '$USER'
 cat << "$USER"
 
-# STATUS : 
+# STATUS : DONE
 
 #*****************************************************************************#
 

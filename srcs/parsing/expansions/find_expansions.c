@@ -6,13 +6,13 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:47:29 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/09 15:12:21 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/10 14:38:43 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	found_bad_combo(int i, char *str)
+static int	found_bad_combo(int i, char *str)
 {
 	if (i + 1 < ft_strlen(str) && str[i] == '$' && str[i + 1] == '$')
 		return (1);
@@ -25,6 +25,18 @@ int	found_bad_combo(int i, char *str)
 		return (1);
 	else if (i + 1 < ft_strlen(str) && str[i] == '$' && str[i + 1] == '>')
 		return (1);
+	return (0);
+}
+
+static int	is_heredoc_delimiter(char *str, int pos)
+{
+	if (pos > 2 && ft_isspace(str[pos]))
+	{
+		while (str[pos] && ft_isspace(str[pos]))
+			pos--;
+		if (pos > 1 && str[pos] == '<' && str[pos - 1] == '<')
+			return (1);
+	}
 	return (0);
 }
 
@@ -41,7 +53,7 @@ void	find_expansions(t_exp_arg exp_arg, t_expanded **expanded_list,
 	while (exp_arg.str[i])
 	{
 		if (exp_arg.str[i] == '$' && !found_bad_combo(i, exp_arg.str)
-			&& !between_single_quotes(exp_arg.str, i))
+			&& !between_single_quotes(exp_arg.str, i) /*&& is_heredoc_delimiter(str)*/)
 		{
 			get_expanded(exp_arg, expanded_list, i, &varsize);
 			*full_size -= varsize;
