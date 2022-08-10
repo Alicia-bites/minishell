@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/10 11:44:40 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/10 12:10:00 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,6 +220,7 @@ int					handle_dollar_brackets(t_exp_arg exp_arg, int i,
 						t_expanded **expanded_list, int *index);
 int					handle_dollar_int(t_exp_arg exp_arg, int i, t_expanded **expanded_list,
 						int *index);
+char				*handle_dollar_int_expanded(void);
 int 				handle_dollar_name(t_exp_arg exp_arg, int i,
 						t_expanded **expanded_list, int *index);
 void				handle_dollar_number(char *str, t_expanded **expanded_list,

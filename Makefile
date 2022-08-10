@@ -195,6 +195,7 @@ EXP_SRCS	:=	bracket_is_after_dollar.c\
 				get_full_size.c\
 				handle_dollar_brackets.c\
 				handle_dollar_int.c\
+				handle_dollar_int_expanded.c\
 				handle_dollar_name.c\
 				handle_dollar_number.c\
 				insert_expansions.c\
