@@ -6,13 +6,13 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:47:29 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/10 12:05:17 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/10 14:38:43 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	found_bad_combo(int i, char *str)
+static int	found_bad_combo(int i, char *str)
 {
 	if (i + 1 < ft_strlen(str) && str[i] == '$' && str[i + 1] == '$')
 		return (1);
@@ -28,10 +28,18 @@ int	found_bad_combo(int i, char *str)
 	return (0);
 }
 
-// int	is_heredoc_delimiter(char *str)
-// {
-// 	if ()
-// }
+static int	is_heredoc_delimiter(char *str, int pos)
+{
+	if (pos > 2 && ft_isspace(str[pos]))
+	{
+		while (str[pos] && ft_isspace(str[pos]))
+			pos--;
+		if (pos > 1 && str[pos] == '<' && str[pos - 1] == '<')
+			return (1);
+	}
+	return (0);
+}
+
 // varsize is the size of the variable before it gets expanded
 // you wanna deduct from the full size.
 void	find_expansions(t_exp_arg exp_arg, t_expanded **expanded_list,
