@@ -32,3 +32,11 @@ echo {$USERA}
 echo $USERA
 echo ${USERA}
 echo {${USER}
+
+echo $USER $"USER"
+echo $USER $'USER'
+echo $USER "$USER"
+echo $USER '$USER'
+
+echo $""
+echo $''

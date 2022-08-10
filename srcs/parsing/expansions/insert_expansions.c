@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:49:04 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/22 17:30:42 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/09 14:31:58 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,17 @@ static void	copy_expanded(char *str, t_expanded **expanded_list,
 
 	if (cursor->k < ft_strlen(str) -1)
 	{
-		if (str[cursor->k] == '$' && str[cursor->k + 1] != '"')
+		if (str[cursor->k] == '$' && str[cursor->k + 1] != '"'
+			&& str[cursor->k + 1] != '\'' && !between_single_quotes(str, cursor->k))
 		{
 			j = 0;
-			if ((*expanded_list)->expanded)
+			if (*expanded_list && (*expanded_list)->expanded)
 			{
 				while ((*expanded_list)->expanded[j])
 					new_str[cursor->i++] = (*expanded_list)->expanded[j++];
 			}
-			(*expanded_list) = (*expanded_list)->next;
+			if (*expanded_list)
+				(*expanded_list) = (*expanded_list)->next;
 			cursor->k++;
 			travel_to_next_str(&cursor->k, str);
 		}
@@ -73,10 +75,11 @@ char	*insert_expansions(int full_size, t_expanded *expanded_list, char *str)
 	while (cursor.i < full_size && cursor.k < ft_strlen(str))
 	{
 		copy_expanded(str, &expanded_list, &cursor, new_str);
-		if (str[cursor.k] && str[cursor.k] != '$' && str[cursor.k] != '"')
+		if (str[cursor.k] && str[cursor.k] != '$' && str[cursor.k] != '"'
+			|| (str[cursor.k] == '$' && between_single_quotes(str, cursor.k)))
 			new_str[cursor.i++] = str[cursor.k++];
-		else if ((str[cursor.k] == '$' && str[cursor.k + 1] == '"')
-			|| str[cursor.k] == '"')
+		else if (((str[cursor.k] == '$' && str[cursor.k + 1] == '"')
+			|| str[cursor.k] == '"') && !between_single_quotes(str, cursor.k))
 			cursor.k++;
 	}
 	new_str[cursor.i] = '\0';

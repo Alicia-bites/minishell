@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/06/16 10:19:37 by amarchan          #+#    #+#              #
-#    Updated: 2022/08/09 18:21:10 by abarrier         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 # libft settings
 FTPATH		:=	libft
 IFT		:=	include
@@ -215,6 +203,7 @@ EXP_SRCS	:=	bracket_is_after_dollar.c\
 				malloc_varname.c \
 				print_dollar_lst.c\
 				print_global_saved_pos.c\
+				remove_dollars.c\
 				same_with_brackets_number.c\
 				save_operator_position.c
 
@@ -231,7 +220,8 @@ TOK_SRCS	:=	concatenate_export_args.c\
 				delete_spaces.c\
 				seen_equal_last.c\
 				tokenizer.c\
-				trim_quotes.c
+				trim_quotes.c\
+				trim_quotes_token.c
 				
 GIVE_CHAR_SRCS	:=	get_chartype.c\
 					is_char_space.c\

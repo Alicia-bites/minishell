@@ -3,6 +3,8 @@
 # CASES:
 echo $USER '$USER'
 
+# STATUS : DONE
+
 #*****************************************************************************#
 
 # OWNER: ANTHO
@@ -12,6 +14,8 @@ echo $USER '$USER'
 # CASES:
 ls | cat < /dev/stdin
 
+# STATUS : 
+
 #*****************************************************************************#
 
 # OWNER: ALICIA/ANTHO
@@ -19,6 +23,8 @@ ls | cat < /dev/stdin
 # EXPECTED RESULT: should ignore the space at the begining of the command
 # CASES:
               | cat -e
+
+# STATUS : DONE
 
 #*****************************************************************************#
 
@@ -32,6 +38,8 @@ cat << 'EOF'
 cat << "EOF"
 cat << EOF
 
+# STATUS : 
+
 #*****************************************************************************#
 
 # OWNER: ALICIA
@@ -42,6 +50,8 @@ cat << $USER
 cat << '$USER'
 cat << "$USER"
 
+# STATUS : 
+
 #*****************************************************************************#
 
 # OWNER: ANTHO
@@ -50,5 +60,16 @@ cat << "$USER"
 # CASES:
 env < file1
 
+# STATUS : 
+
 #*****************************************************************************#
 
+# OWNER: ANTHO
+# ACTUAL RESULT: print USER and doesn't put anything in file 'nana' 
+# EXPECTED RESULT: do not print USER but put USER in 'nana'
+# CASES:
+    echo USER > nana
+
+# STATUS : 
+
+#*****************************************************************************#
