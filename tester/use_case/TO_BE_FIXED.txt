@@ -88,10 +88,29 @@ export a="a<b>c"
 #*****************************************************************************#
 
 # OWNER: ALICIA
-# ACTUAL RESULT: space in quotes are removed when expansion
-# EXPECTED RESULT: space in quotes must be remained
 # CASES:
 echo     "         "$USER
+
+# ACTUAL RESULT: space in quotes are removed when expansiona
+abarrier
+
+# EXPECTED RESULT: space in quotes must be remained
+       abarrier
+
+# STATUS : 
+
+#*****************************************************************************#
+
+# OWNER: ALICIA/ANTHO
+# CASES:
+echo -n - n Antho
+
+# ACTUAL RESULT: the character '-' is removed from printing in echo if
+# the character '-' is not followed by any other char
+n alicia
+
+# EXPECTED RESULT: the character should be present
+- n alicia
 
 # STATUS : 
 
