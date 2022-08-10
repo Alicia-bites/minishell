@@ -65,10 +65,23 @@ env < file1
 #*****************************************************************************#
 
 # OWNER: ANTHO
-# ACTUAL RESULT: print USER and doesn't put anything in file 'nana' 
-# EXPECTED RESULT: do not print USER but put USER in 'nana'
+# ACTUAL RESULT: return exit value is not correct if in ou out file has an issue
+# EXPECTED RESULT: return exit value must be correct
 # CASES:
-    echo USER > nana
+cat < file_does_not_exist
+cat > file_does_not_exist
+env < file_does_not_exist
+env > file_does_not_exist
+
+# STATUS : 
+
+#*****************************************************************************#
+
+# OWNER: ANTHO
+# ACTUAL RESULT: segfault if redirection without file
+# EXPECTED RESULT: no segfault
+# CASES:
+export a="a<b>c"
 
 # STATUS : 
 
