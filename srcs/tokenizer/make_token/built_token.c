@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:57:58 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/09 17:02:06 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/10 14:19:17 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,20 @@
 
 static int	check_quote(t_chartype *input_list, int start)
 {
-	int	seen_quote;
-
-	seen_quote = 0;
 	if (input_list[start].character == '\''
 		|| input_list[start].character == '\"')
-			seen_quote = 1;
-	return (seen_quote);
+			return (1);
+	else
+	{
+		while (is_char_word(input_list[start].character))
+		{
+			start++;
+			if (input_list[start].character == '\''
+			|| input_list[start].character == '\"')
+				return (1);	
+		}
+	}
+	return (0);
 }
 
 void	built_token(t_chartype *input_list, int start, int end,
