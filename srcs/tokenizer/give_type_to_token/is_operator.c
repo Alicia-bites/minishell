@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:58:50 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/22 11:48:58 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/10 15:03:21 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,18 @@ t_toktype	is_operator(char *str)
 
 	if (str)
 	{
-		if (ft_strstr(str, "|"))
+		if (!ft_strcmp(str, "|"))
 		{
 			global.seen_tok_cmd = 0;
 			return (TOK_PIPE);
 		}
-		if (ft_strstr(str, "<<"))
+		if (!ft_strcmp(str, "<<"))
 			return (TOK_DL_REDIR);
-		if (ft_strstr(str, ">>"))
+		if (!ft_strcmp(str, ">>"))
 			return (TOK_DR_REDIR);
-		if (ft_strstr(str, "<"))
+		if (!ft_strcmp(str, "<"))
 			return (TOK_L_REDIR);
-		if (ft_strstr(str, ">"))
+		if (!ft_strcmp(str, ">"))
 			return (TOK_R_REDIR);
 	}
 	return (0);
