@@ -86,3 +86,13 @@ export a="a<b>c"
 # STATUS : 
 
 #*****************************************************************************#
+
+# OWNER: ALICIA
+# ACTUAL RESULT: space in quotes are removed when expansion
+# EXPECTED RESULT: space in quotes must be remained
+# CASES:
+echo     "         "$USER
+
+# STATUS : 
+
+#*****************************************************************************#
