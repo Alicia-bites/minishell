@@ -44,3 +44,11 @@ cat << "$USER"
 
 #*****************************************************************************#
 
+# OWNER: ANTHO
+# ACTUAL RESULT: error when fd_in for builtin
+# EXPECTED RESULT: the fd_in should not impact the builtin
+# CASES:
+env < file1
+
+#*****************************************************************************#
+
