@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/10 12:10:00 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/11 08:19:34 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -268,9 +268,6 @@ void				do_env_show(void *content);
 //do_exit
 int					do_exit(t_ulist **envp, t_ulist **cmd_lst, t_cmd *cmd);
 void				do_exit_clear(t_ulist **envp, t_ulist **cmd_lst, t_cmd *cmd, char *err_msg);
-
-//do_exit_status $?
-int					do_exit_status(t_cmd *cmd);
 
 //do_export
 int					do_export(t_ulist **env_lst, t_cmd *cmd);
