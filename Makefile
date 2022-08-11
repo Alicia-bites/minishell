@@ -181,9 +181,13 @@ PARSING_SRCS	:=	count_quotes.c\
 					store_built_ins.c
 
 EXP_SRCS	:=	bracket_is_after_dollar.c\
+				count_op.c\
+				count_op_in_expanded_list.c\
+				count_my_dollars.c\
 				create_dollar_list.c\
 				expand_dollar.c\
 				find_expansions.c\
+				find_total_number_op.c\
 				found_operator.c\
 				ft_getenv.c\
 				ft_lstadd_back_dollar.c\
@@ -198,14 +202,16 @@ EXP_SRCS	:=	bracket_is_after_dollar.c\
 				handle_dollar_name.c\
 				handle_dollar_number.c\
 				insert_expansions.c\
+				is_operator_in_expansion.c\
 				is_varname.c\
 				lonely_bracket.c \
 				malloc_varname.c \
 				print_dollar_lst.c\
-				print_global_saved_pos.c\
+				print_tab.c\
 				remove_dollars.c\
 				same_with_brackets_number.c\
-				save_operator_position.c
+				save_operator_index.c\
+				set_minus_one_tab.c
 
 SIG_SRCS	:=		sig_hd_set_action.c\
 				sig_hd_unset_action.c\

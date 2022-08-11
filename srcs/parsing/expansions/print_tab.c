@@ -1,38 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   remove_dollars.c                                   :+:      :+:    :+:   */
+/*   print_tab.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/09 14:48:01 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/11 11:04:33 by amarchan         ###   ########.fr       */
+/*   Created: 2022/08/11 16:08:34 by amarchan          #+#    #+#             */
+/*   Updated: 2022/08/11 16:08:54 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*remove_dollars( char *str)
+void	print_tab(int *tab, int n)
 {
 	int	i;
-	int j;
-	int	n;
-	char *output;
 
-	n = ft_strlen(str) - count_my_dollars(str);
-	output = malloc(sizeof(char) * (n + 1));
-	if (!output)
-		return (ft_panic_null(MALLOC_FAILURE, __FILE__, NULL));
 	i = 0;
-	j = 0;
 	while (i < n)
 	{
-		if (j + 1 < ft_strlen(str) && str[j] == '$'
-			&& (str[j + 1] == '\'' || str[j + 1] == '"'))
-				j++;
-		output[i++] = str[j];
-		j++;
+		printf("tab[%d] = %d\n", i, tab[i]);
+		i++;		
 	}
-	output[i] = '\0';
-	return (output);
+	puts("-----------------------------------------------");
 }

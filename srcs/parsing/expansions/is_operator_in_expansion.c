@@ -1,36 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_operator.c                                      :+:      :+:    :+:   */
+/*   is_operator_in_expansion.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/29 14:58:50 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/11 18:29:10 by amarchan         ###   ########.fr       */
+/*   Created: 2022/08/11 16:09:37 by amarchan          #+#    #+#             */
+/*   Updated: 2022/08/11 16:23:05 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_toktype	is_operator(char *str)
+int	is_operator_in_expansion(char c)
 {
-	extern t_global	g_msl;
-
-	if (str)
-	{
-		if (!ft_strcmp(str, "|"))
-		{
-			g_msl.seen_tok_cmd = 0;
-			return (TOK_PIPE);
-		}
-		if (!ft_strcmp(str, "<<"))
-			return (TOK_DL_REDIR);
-		if (!ft_strcmp(str, ">>"))
-			return (TOK_DR_REDIR);
-		if (!ft_strcmp(str, "<"))
-			return (TOK_L_REDIR);
-		if (!ft_strcmp(str, ">"))
-			return (TOK_R_REDIR);
-	}
+	if (c == '|' || c == '<' || c == '>')
+		return (1);
 	return (0);
 }
+

@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:47:29 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/10 14:38:43 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/10 14:50:36 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static int	found_bad_combo(int i, char *str)
 
 static int	is_heredoc_delimiter(char *str, int pos)
 {
+	if (pos > 1)
+		pos--;
 	if (pos > 2 && ft_isspace(str[pos]))
 	{
 		while (str[pos] && ft_isspace(str[pos]))
@@ -53,7 +55,8 @@ void	find_expansions(t_exp_arg exp_arg, t_expanded **expanded_list,
 	while (exp_arg.str[i])
 	{
 		if (exp_arg.str[i] == '$' && !found_bad_combo(i, exp_arg.str)
-			&& !between_single_quotes(exp_arg.str, i) /*&& is_heredoc_delimiter(str)*/)
+			&& !between_single_quotes(exp_arg.str, i)
+			&& !is_heredoc_delimiter(exp_arg.str, i))
 		{
 			get_expanded(exp_arg, expanded_list, i, &varsize);
 			*full_size -= varsize;

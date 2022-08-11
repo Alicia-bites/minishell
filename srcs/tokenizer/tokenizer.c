@@ -6,15 +6,15 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 12:07:44 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/28 14:51:54 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/11 14:45:26 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	tokenize(t_chartype *input_list, t_list **token_list)
+void	tokenize(t_chartype *input_list, t_list **token_list, int *tab)
 {
-	get_chartype(&input_list);
+	get_chartype(&input_list, tab);
 	get_token(input_list, token_list);
 	// print_lst(*token_list);
 	delete_spaces(token_list);

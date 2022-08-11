@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   remove_dollars.c                                   :+:      :+:    :+:   */
+/*   count_op_in_expanded_list.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/09 14:48:01 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/11 11:04:33 by amarchan         ###   ########.fr       */
+/*   Created: 2022/08/11 16:11:26 by amarchan          #+#    #+#             */
+/*   Updated: 2022/08/11 16:11:39 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*remove_dollars( char *str)
+int count_op_in_expanded_list(t_expanded *expanded_list)
 {
-	int	i;
-	int j;
 	int	n;
-	char *output;
 
-	n = ft_strlen(str) - count_my_dollars(str);
-	output = malloc(sizeof(char) * (n + 1));
-	if (!output)
-		return (ft_panic_null(MALLOC_FAILURE, __FILE__, NULL));
-	i = 0;
-	j = 0;
-	while (i < n)
+	n = 0;
+	while (expanded_list)
 	{
-		if (j + 1 < ft_strlen(str) && str[j] == '$'
-			&& (str[j + 1] == '\'' || str[j + 1] == '"'))
-				j++;
-		output[i++] = str[j];
-		j++;
+		if (found_operator(expanded_list->expanded))
+			n += count_op(expanded_list->expanded);
+		expanded_list = expanded_list->next;
 	}
-	output[i] = '\0';
-	return (output);
+	return (n);
 }
