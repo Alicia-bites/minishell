@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/11 08:31:45 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/11 16:50:04 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@
 # define HD_TMP_DIR "/tmp"
 
 // BUILTIN CHARSET TO CHECK ARGUMENT STRUCTURE
-# define CHRSET_EXPORT "`~!@#$%^&*()-[]{}|:;\"\'<,>.?/"
+# define CHRSET_EXPORT "`~!@#$%^&*()-[]{}|:;\"\'<,>.?/ "
 # define CHRSET_PWD "()"
 # define CHRSET_UNSET "`~!@#$%^&*()-[]{}|:;\"\'<,>.?/"
 
