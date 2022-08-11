@@ -115,3 +115,17 @@ n alicia
 # STATUS : 
 
 #*****************************************************************************#
+
+# OWNER: ALICIA
+# CASES:
+echo "'$USER'"
+
+# ACTUAL RESULT: the expansion is empty
+''
+
+# EXPECTED RESULT: the expansion should be present
+'abarrier'
+
+# STATUS : 
+
+#*****************************************************************************#
