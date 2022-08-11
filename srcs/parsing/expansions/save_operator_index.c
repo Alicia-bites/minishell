@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 16:07:53 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/11 16:37:11 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/11 18:34:47 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ static void	find_and_save_op_index(char *str, char *new_str,
 				if (expanded_list)
 					expanded_list = expanded_list->next;
 			}
-			j = i + ft_strlen(expanded_list->expanded);
+			if (expanded_list)
+				j = i + ft_strlen(expanded_list->expanded);
 			while (str[i] && !ft_isspace(str[i]))
 				i++;
 		}
@@ -90,6 +91,6 @@ int	*save_operator_index(char *str, char *new_str, t_expanded *expanded_list)
 	if (!tab)
 		return (0);
 	find_and_save_op_index(str, new_str, expanded_list, &tab);
-	print_tab(tab, n);
+	// print_tab(tab, n);
 	return (tab);
 }
