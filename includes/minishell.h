@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/10 12:10:00 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/11 11:23:48 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ typedef struct s_position
 {
 	int	pos;
 	int	move_cursor;
+	int	n_expansions;
 }	t_position;
 
 typedef struct s_expanded {
@@ -230,7 +231,10 @@ char				*insert_expansions(int full_size, t_expanded *expanded_list,
 int					is_varname(char c);
 char				*malloc_varname(char *str, int start, int end);
 void				print_dollar_lst(t_expanded *lst);
+void				print_global_saved_pos(void);
 char				*remove_dollars( char *str);
+int					count_my_dollars(char *str);
+int					count_dollars_in_str(char *str);
 int					same_with_brackets_number(char *str, int i);
 int					same_with_brackets_zero(char *str, int i);
 void				save_operator_position(char *expanded, t_position position);

@@ -182,6 +182,7 @@ PARSING_SRCS	:=	count_quotes.c\
 					store_built_ins.c
 
 EXP_SRCS	:=	bracket_is_after_dollar.c\
+				count_my_dollars.c\
 				create_dollar_list.c\
 				expand_dollar.c\
 				find_expansions.c\
