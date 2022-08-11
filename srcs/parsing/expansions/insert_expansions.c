@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:49:04 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/11 19:06:32 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/11 19:08:35 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	copy_expanded(char *str, t_expanded **expanded_list,
 	}
 }
 
-int	interrogation_point_follows_dollar(char *str, int i)
+static int	interrogation_point_follows_dollar(char *str, int i)
 {
 	if (str[i] == '?' && !between_quotes(str, i))
 	{
