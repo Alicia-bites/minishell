@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/11 11:23:48 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/11 16:23:53 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ typedef struct s_dart {
 typedef struct s_exp_arg {
 	char		*str;
 	t_ulist		*envp;
+	int			*tab;
 }	t_exp_arg;
 
 typedef struct s_position
@@ -207,9 +208,13 @@ int					between_single_quotes(char *str, int pos);
 //expansions
 int					bracket_is_after_dollar(char *str, int pos);
 t_expanded			*create_dollar_list(char *str, int index);
-char				*expand_dollar(t_exp_arg exp_arg);
+int					count_op(char *str);
+int					count_op_in_expanded_list(t_expanded *expanded_list);
+char				*expand_dollar(t_exp_arg exp_arg, int **tab);
 void				find_expansions(t_exp_arg exp_arg, t_expanded **expanded_list, int *full_size);
+int					find_total_number_op(int *tab);
 int					found_operator(char *str);
+void				set_minus_one_tab(int *tab, size_t n);
 void				ft_lstadd_back_dollar(t_expanded **alst, t_expanded *new);
 t_expanded			*ft_lstnew_dollar(char *str, int i);
 void				ft_lstclear_back_dollar(t_expanded **lst);
@@ -228,17 +233,17 @@ void				handle_dollar_number(char *str, t_expanded **expanded_list,
 						int *index, int i);
 char				*insert_expansions(int full_size, t_expanded *expanded_list,
 						char *str);
+int					is_operator_in_expansion(char c);
 int					is_varname(char c);
 char				*malloc_varname(char *str, int start, int end);
 void				print_dollar_lst(t_expanded *lst);
-void				print_global_saved_pos(void);
+void				print_tab(int *tab, int n);
 char				*remove_dollars( char *str);
 int					count_my_dollars(char *str);
 int					count_dollars_in_str(char *str);
 int					same_with_brackets_number(char *str, int i);
 int					same_with_brackets_zero(char *str, int i);
-void				save_operator_position(char *expanded, t_position position);
-
+int					*save_operator_index(char *str, char *new_str, t_expanded *expanded_list);
 //do
 int					do_builtin(t_ulist **cmd_lst, t_cmd *cmd);
 void				do_builtin_close_fd(void *content);
@@ -302,12 +307,12 @@ void				concatenate_export_args(t_list **token_list);
 void				delete_content(t_list *token_list);
 void				delete_spaces(t_list **token_list);
 int					seen_equal_last(char *token);
-void				tokenize(t_chartype *input_list, t_list **token_list);
+void				tokenize(t_chartype *input_list, t_list **token_list, int *tab);
 char 				*trim_quotes(char *str);
 char 				*trim_quotes_token(char *str, t_list *token_list);
 
 //give_chartype
-int					get_chartype(t_chartype **input_list);
+int					get_chartype(t_chartype **input_list, int *tab);
 int					is_char_space(char c);
 int					is_char_word(char c);
 

@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:58:01 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/10 15:01:40 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/11 14:44:49 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,16 @@
 // 	}	
 // }
 
-static int	is_expanded_op(int pos)
+static int	is_expanded_op(int pos, int *tab)
 {
 	int				j;
-	extern t_global	global;
 
 	j = 0;
-	if (global.saved_pos)
+	if (tab[j])
 	{
-		while (global.saved_pos[j])
+		while (tab[j])
 		{
-			if (pos == global.saved_pos[j])
+			if (pos == tab[j])
 				return (1);
 			j++;
 		}
@@ -57,14 +56,14 @@ static void	get_chartype_second(int i, t_chartype **input_list)
 		(*input_list)[i].type = CH_BN;
 }
 
-int	get_chartype(t_chartype **input_list)
+int	get_chartype(t_chartype **input_list, int *tab)
 {
 	int	i;
 
 	i = 0;
 	while ((*input_list)[i].character)
 	{
-		if (is_char_word((*input_list)[i].character) || is_expanded_op(i))
+		if (is_char_word((*input_list)[i].character) || is_expanded_op(i, tab))
 			(*input_list)[i].type = CH_WORD;
 		else if (ft_isspace((*input_list)[i].character))
 			(*input_list)[i].type = CH_SPACE;

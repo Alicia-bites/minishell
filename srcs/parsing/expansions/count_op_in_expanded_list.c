@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tokenizer.c                                        :+:      :+:    :+:   */
+/*   count_op_in_expanded_list.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/17 12:07:44 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/11 14:45:26 by amarchan         ###   ########.fr       */
+/*   Created: 2022/08/11 16:11:26 by amarchan          #+#    #+#             */
+/*   Updated: 2022/08/11 16:11:39 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	tokenize(t_chartype *input_list, t_list **token_list, int *tab)
+int count_op_in_expanded_list(t_expanded *expanded_list)
 {
-	get_chartype(&input_list, tab);
-	get_token(input_list, token_list);
-	// print_lst(*token_list);
-	delete_spaces(token_list);
-	get_toktype(token_list);
-	concatenate_export_args(token_list);
+	int	n;
+
+	n = 0;
+	while (expanded_list)
+	{
+		if (found_operator(expanded_list->expanded))
+			n += count_op(expanded_list->expanded);
+		expanded_list = expanded_list->next;
+	}
+	return (n);
 }

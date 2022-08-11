@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:49:49 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/09 14:57:23 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/11 14:53:48 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	ft_parse(char *str, t_list **token_list, int *err, t_ulist *envp)
 	extern t_global	global;
 	t_chartype		*input_list;
 	t_exp_arg		exp_arg;
+	int				*tab;
 	
 	if (!only_space_in_str(str))
 		return (*err);
@@ -28,11 +29,11 @@ int	ft_parse(char *str, t_list **token_list, int *err, t_ulist *envp)
 	if (lexer(tmp, err))
 		return (*err);
 	if (ft_strstr(tmp, "$"))
-		tmp = expand_dollar(exp_arg);
+		tmp = expand_dollar(exp_arg, &tab);
 	create_input_list(&input_list, tmp);
 	if (ft_strcmp(str, tmp))
 		free(tmp);
-	tokenize(input_list, token_list);
+	tokenize(input_list, token_list, tab);
 	free(input_list);
 	return (*err);
 }
