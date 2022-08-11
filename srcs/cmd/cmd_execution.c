@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 16:02:20 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/11 08:52:25 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/11 22:27:42 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,19 @@ int	cmd_execution(t_ulist **cmd_lst, int n_cmd)
 		{
 			int	fd_stdin;
 			int	fd_stdout;
+			int	fd_stdin_back;
+			int	fd_stdout_back;
 			int	test;
 
 			sig_pipe_set_action();
 			fd_stdin = dup(STDIN_FILENO);
 			fd_stdout = dup(STDOUT_FILENO);
+			if (fd_stdin < 0 || fd_stdout < 0)
+			{
+				sig_program_set_action();
+				g_msl.exit = 1;
+				return (ft_panic(-1, __FILE__, ERR_PFD));
+			}
 			do_builtin_dup_fd_in(cmd_lst, cmd);
 			do_builtin_dup_fd_out(cmd_lst, cmd);
 			ft_lst_func_lst(cmd_lst, &do_builtin_close_fd);
@@ -41,8 +49,10 @@ int	cmd_execution(t_ulist **cmd_lst, int n_cmd)
 				dup2(fd_stdin, STDIN_FILENO);
 			if (cmd->fd_w > 2)
 				dup2(fd_stdout, STDOUT_FILENO);
-			close(fd_stdin);
-			close(fd_stdout);
+			if (fd_stdin > 2)
+				close(fd_stdin);
+			if (fd_stdout > 2)
+				close(fd_stdout);
 		}
 		else
 			res = pipe_run(cmd_lst, n_cmd);

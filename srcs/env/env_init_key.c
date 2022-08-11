@@ -6,12 +6,27 @@
 /*   By: antho <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 17:46:30 by antho             #+#    #+#             */
-/*   Updated: 2022/07/20 14:03:24 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/11 22:09:42 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+/* @BRIEF:
+ * find the env separator '=' in the fullname string, then malloc char*
+ * and store the key from fullname string
+ * example:
+ * USER=smbash
+ * key = USER
+ *
+ * @PARAM:
+ * t_env *env: env node
+ * char *fullname: environment string including the key and the value
+ *
+ * @RETURN:
+ * !NULL: address of the newly created char*
+ * NULL: error
+ */
 char	*env_init_key(t_env *env, char *fullname)
 {
 	int		sep_pos;
