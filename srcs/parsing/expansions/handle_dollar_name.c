@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 15:55:04 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/31 15:55:18 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/11 11:44:12 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	handle_dollar_name(t_exp_arg exp_arg, int i,
 	expanded = ft_getenv(var, exp_arg.envp);
 	position.move_cursor = ft_strlen(expanded) - (ft_strlen(var) + 1);
 	position.pos = i - 1;
+	position.n_expansions = count_dollars_in_str(exp_arg.str);
 	if (found_operator(expanded))
 		save_operator_position(expanded, position);
 	if (!expanded || (i >= 2 && exp_arg.str[i - 2] == '<'))
