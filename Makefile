@@ -85,7 +85,9 @@ BUILT_UNSET_SRCS	:=	do_unset.c\
 			do_unset_check_str.c\
 			do_unset_update_lst.c\
 
-CMD_SRCS	:=	cmd_create_lst.c\
+CMD_SRCS	:=	cmd_check_tok_lst.c\
+			cmd_check_tok_lst_redir.c\
+			cmd_create_lst.c\
 			cmd_execution.c\
 			cmd_free.c\
 			cmd_getvalidpath.c\

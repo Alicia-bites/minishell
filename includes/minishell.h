@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/11 16:50:04 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/11 17:45:42 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -391,6 +391,8 @@ void				env_lst_show(t_ulist **list);
 void				env_show(void *content);
 
 //command list
+int					cmd_check_tok_lst(t_list **tok_lst);
+int					cmd_check_tok_lst_redir(t_list *tok);
 int					cmd_create_lst(t_list **tok_lst, t_ulist **env_lst,
 						t_ulist **cmd_lst);
 int					cmd_execution(t_ulist **cmd_lst, int n_cmd);

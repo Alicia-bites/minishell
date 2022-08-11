@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 16:24:51 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/10 16:14:23 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/11 17:46:55 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,12 @@ void	handle_str(char **str, t_list **token_list, int *err, t_ulist **envp)
 	if (!*token_list)
 	{
 		ft_panic(-1, __FILE__, ERR_NOTOK);
+		ft_lstclear(token_list);
+		ft_lst_free(cmd_list, &cmd_free);
+		return ;
+	}
+	if (cmd_check_tok_lst(token_list)) // LOOP THROUGH EVERY TOKEN TO CHECK IF REDIR TOKEN HAVE A NEXT TOKEN FILE
+	{
 		ft_lstclear(token_list);
 		ft_lst_free(cmd_list, &cmd_free);
 		return ;
