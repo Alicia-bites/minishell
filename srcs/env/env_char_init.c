@@ -6,26 +6,38 @@
 /*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 17:36:20 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/26 14:48:16 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/11 22:50:58 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	**env_char_init(size_t len_envp)
+/* @BRIEF:
+ * malloc char **envp sized according to env node which have visibility
+ * var_view VAR_ALL or VAR_ENV
+ *
+ * @PARAM:
+ * size_t len_env_lst: size of the minishell environment list listing
+ * only env node which have visibility var_view VAR_ALL or VAR_ENV
+ *
+ * @RETURN:
+ * !NULL: address of the newly created char **envp to be used for execve
+ * NULL: error
+ */
+char	**env_char_init(size_t len_env_lst)
 {
-	char	**ptr;
+	char	**envp;
 	int		i;
 
-	ptr = (char **)malloc(sizeof(char *) * (len_envp + 1));
-	if (!ptr)
+	envp = (char **)malloc(sizeof(char *) * (len_env_lst + 1));
+	if (!envp)
 		return (ft_panic_null(-1, __FILE__, ERR_MALLOC));
 	i = 0;
-	while (i < len_envp)
+	while (i < len_env_lst)
 	{
-		ptr[i] = NULL;
+		envp[i] = NULL;
 		i++;
 	}
-	ptr[len_envp] = NULL;
-	return (ptr);
+	envp[len_env_lst] = NULL;
+	return (envp);
 }

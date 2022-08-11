@@ -6,12 +6,21 @@
 /*   By: antho <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 17:39:13 by antho             #+#    #+#             */
-/*   Updated: 2022/07/18 08:55:18 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/11 23:09:16 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+/* @BRIEF:
+ * display every env node properties
+ *
+ * @PARAM:
+ * void *content: content of the env node to be cast into t_env*
+ *
+ * @RETURN:
+ * N/A
+ */
 void	env_show(void *content)
 {
 	t_env	*env;
