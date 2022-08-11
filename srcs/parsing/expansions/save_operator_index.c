@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 16:07:53 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/11 18:34:47 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/11 19:10:31 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,12 @@ static void	find_and_save_op_index(char *str, char *new_str,
 		if (str[i] == '$' && new_str[j] != '$')
 		{
 			if (found_operator(expanded_list->expanded))
-			{
 				*tab = get_pos(expanded_list->expanded, *tab, j, str);
-				if (expanded_list)
-					expanded_list = expanded_list->next;
-			}
 			if (expanded_list)
+			{
 				j = i + ft_strlen(expanded_list->expanded);
+				expanded_list = expanded_list->next;
+			}
 			while (str[i] && !ft_isspace(str[i]))
 				i++;
 		}
@@ -91,6 +90,6 @@ int	*save_operator_index(char *str, char *new_str, t_expanded *expanded_list)
 	if (!tab)
 		return (0);
 	find_and_save_op_index(str, new_str, expanded_list, &tab);
-	// print_tab(tab, n);
+	print_tab(tab, n);
 	return (tab);
 }
