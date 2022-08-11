@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/11 08:19:34 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/11 08:21:22 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,19 +79,6 @@
 # define CHRSET_EXPORT "`~!@#$%^&*()-[]{}|:;\"\'<,>.?/"
 # define CHRSET_PWD "()"
 # define CHRSET_UNSET "`~!@#$%^&*()-[]{}|:;\"\'<,>.?/"
-
-// MAIN STRUCTURE
-// tok_lst: token list
-// env_lst: environment list
-// cmd_lst: command list after each readline
-// str: string from readline fonction
-typedef struct s_minishell
-{
-	struct s_list	*tok_lst;
-	struct s_ulist	**env_lst;
-	struct s_ulist	**cmd_lst;
-	char		*str;
-}	t_minishell;
 
 typedef struct s_chartype {
 	char			character;
