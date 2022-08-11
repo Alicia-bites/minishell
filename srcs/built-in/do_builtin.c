@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 14:56:18 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/29 14:28:50 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/11 08:24:39 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ int	do_builtin(t_ulist **cmd_lst, t_cmd *cmd)
 		return (do_env(cmd->env_lst, cmd));
 	else if (ft_strcmp(cmd->fullcmd[0], BUILT_EXIT) == 0)
 		return (do_exit(cmd->env_lst, cmd_lst, cmd));
-	else if (ft_strcmp(cmd->fullcmd[0], BUILT_EXIT_STATUS) == 0)
-		return (do_exit_status(cmd));
 	else if (ft_strcmp(cmd->fullcmd[0], BUILT_EXPORT) == 0)
 		return (do_export(cmd->env_lst, cmd));
 	else if (ft_strcmp(cmd->fullcmd[0], BUILT_PWD) == 0)
