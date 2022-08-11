@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:58:01 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/22 11:56:48 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/11 08:45:02 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@
 static int	is_expanded_op(int i)
 {
 	int				j;
-	extern t_global	global;
+	extern t_global	g_msl;
 
 	j = 0;
-	if (global.saved_pos)
+	if (g_msl.saved_pos)
 	{
-		while (global.saved_pos[j])
+		while (g_msl.saved_pos[j])
 		{
-			if (i == global.saved_pos[j])
+			if (i == g_msl.saved_pos[j])
 				return (1);
 			j++;
 		}

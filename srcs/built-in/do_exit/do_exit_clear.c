@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 10:53:00 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/03 13:56:59 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/11 08:49:59 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	do_exit_clear(t_ulist **envp, t_ulist **cmd_lst, t_cmd *cmd,
 		char *err_msg)
 {
-	extern long long	g_msl_exit;
+	extern t_global	g_msl;
 
 	printf("exit\n");
 	if (err_msg)
@@ -24,5 +24,5 @@ void	do_exit_clear(t_ulist **envp, t_ulist **cmd_lst, t_cmd *cmd,
 	ft_lstclear(cmd->tok_lst);
 	ft_lst_free(envp, &env_free);
 	ft_lst_free(cmd_lst, &cmd_free);
-	exit(g_msl_exit);
+	exit(g_msl.exit);
 }

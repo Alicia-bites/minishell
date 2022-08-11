@@ -6,7 +6,7 @@
 /*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 08:14:17 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/04 12:36:33 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/11 08:50:33 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	hd_wait(int pid)
 {
-	extern long long	g_msl_exit;
+	extern t_global	g_msl;
 	int	status;
 	int	res;
 
@@ -24,7 +24,7 @@ int	hd_wait(int pid)
 	if (WIFEXITED(status) == 1)
 	{
 		//printf("hd exited with return: %d\n", WEXITSTATUS(status));
-		g_msl_exit = 130;
+		g_msl.exit = 130;
 		if (WEXITSTATUS(status) == 1)
 			return (WEXITSTATUS(status));
 	}

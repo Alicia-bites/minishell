@@ -6,21 +6,20 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:17:17 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/11 08:23:12 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/11 09:01:15 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-long long	g_msl_exit;
-t_global       global;
+t_global       g_msl;
 
 int	main(int argc, char **argv, char **envp)
 {
 	t_ulist	**env_lst;
 	int		err;
 
-	g_msl_exit = 0;
+	g_msl.exit = 0;
 	err = 0;
 	if (sig_program_set_action() == -1)
 		return (ft_panic_value(-1, __FILE__, ERR_SIGACTION,

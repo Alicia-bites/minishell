@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 19:29:17 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/23 13:07:22 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/11 08:44:22 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 // Is command a token that is not placed before or after a redirection.
 int	is_cmd(t_list **token_list)
 {
-	extern t_global	global;
+	extern t_global	g_msl;
 
 	if (((*token_list)->index == 0 || following_pipe(token_list))
 		&& not_operator((*token_list)))
 	{
-		global.seen_tok_cmd = 1;
+		g_msl.seen_tok_cmd = 1;
 		return (1);
 	}
 	if (is_combo_redir_when_redir_index_zero(token_list))

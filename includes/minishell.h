@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/11 08:21:22 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/11 08:31:45 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ typedef struct s_global {
 	int				readline;
 	int				seen_tok_cmd;
 	int				*saved_pos;
-	long long		exit_status;
+	long long		exit;
 }	t_global;
 
 typedef struct s_cursor {

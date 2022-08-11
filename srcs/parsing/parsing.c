@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:49:49 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/09 14:57:23 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/11 08:40:54 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_parse(char *str, t_list **token_list, int *err, t_ulist *envp)
 {
 	char			*tmp;
-	extern t_global	global;
+	extern t_global	g_msl;
 	t_chartype		*input_list;
 	t_exp_arg		exp_arg;
 	

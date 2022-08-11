@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:02:19 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/21 13:47:29 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/11 08:41:44 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	count_op(char *str)
 static void	copy_pos(t_position position, int place, int n, char *expanded)
 {
 	static int		i = 0;
-	extern t_global	global;
+	extern t_global	g_msl;
 	static int		save_pos = 0;
 	static int		ex_move_cursor = 0;
 
@@ -47,7 +47,7 @@ static void	copy_pos(t_position position, int place, int n, char *expanded)
 		ex_move_cursor = 0;
 		i = 0;
 	}
-	global.saved_pos[i] = position.pos + place + ex_move_cursor;
+	g_msl.saved_pos[i] = position.pos + place + ex_move_cursor;
 	i++;
 	save_pos = position.pos;
 	if (i == n)
@@ -58,17 +58,17 @@ void	save_operator_position(char *expanded, t_position position)
 {
 	int				i;
 	static int		n = 0;
-	extern t_global	global;
+	extern t_global	g_msl;
 	static int		save_pos = 0;
 
 	if (save_pos > position.pos)
 		n = 0;
 	save_pos = position.pos;
 	n += count_op(expanded);
-	if (!global.saved_pos)
+	if (!g_msl.saved_pos)
 	{
-		global.saved_pos = malloc(sizeof(int) * (n + 1));
-		ft_bzero(global.saved_pos, n + 1);
+		g_msl.saved_pos = malloc(sizeof(int) * (n + 1));
+		ft_bzero(g_msl.saved_pos, n + 1);
 	}
 	i = 0;
 	while (expanded[i])
@@ -77,5 +77,5 @@ void	save_operator_position(char *expanded, t_position position)
 			copy_pos(position, i, n, expanded);
 		i++;
 	}
-	global.saved_pos[i++] = '\0';
+	g_msl.saved_pos[i++] = '\0';
 }

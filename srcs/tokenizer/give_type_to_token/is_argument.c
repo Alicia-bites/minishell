@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 09:47:14 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/27 15:26:16 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/11 08:43:35 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	loop_on_arg(t_list **token_list)
 // a built-in or a command
 int	is_argument(t_list **token_list)
 {
-	extern t_global	global;
+	extern t_global	g_msl;
 
 	if ((*token_list)->index >= 1)
 	{
@@ -50,11 +50,11 @@ int	is_argument(t_list **token_list)
 		(*token_list)->toktype = TOK_ARG;
 	else if (is_combo_heredoc(token_list))
 		(*token_list)->toktype = TOK_ARG;
-	if (following_file_or_sep(token_list) && global.seen_tok_cmd)
+	if (following_file_or_sep(token_list) && g_msl.seen_tok_cmd)
 		(*token_list)->toktype = TOK_ARG;
-	else if (following_file_or_sep(token_list) && !global.seen_tok_cmd)
+	else if (following_file_or_sep(token_list) && !g_msl.seen_tok_cmd)
 	{
-		global.seen_tok_cmd = 1;
+		g_msl.seen_tok_cmd = 1;
 		(*token_list)->toktype = TOK_CMD;
 	}
 	if ((*token_list)->toktype == TOK_ARG)

@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:58:10 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/27 15:17:22 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/11 08:44:08 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	get_toktype_second(t_list **token_list)
 {
-	extern t_global	global;
+	extern t_global	g_msl;
 
 	if (is_heredoc_sep(token_list))
 		(*token_list)->toktype = TOK_HERESEP;
@@ -22,7 +22,7 @@ static void	get_toktype_second(t_list **token_list)
 		NULL;
 	else if (is_cmd(token_list))
 	{
-		global.seen_tok_cmd = 1;
+		g_msl.seen_tok_cmd = 1;
 		(*token_list)->toktype = TOK_CMD;
 	}
 }
@@ -31,9 +31,9 @@ void	get_toktype(t_list **token_list)
 {
 	t_list			*it;
 	static int		tmp;
-	extern t_global	global;
+	extern t_global	g_msl;
 
-	global.seen_tok_cmd = 0;
+	g_msl.seen_tok_cmd = 0;
 	it = *token_list;
 	while (*token_list)
 	{

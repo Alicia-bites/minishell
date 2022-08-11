@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 18:22:30 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/03 13:56:42 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/11 08:49:38 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
  */
 int	do_exit(t_ulist **envp, t_ulist **cmd_lst, t_cmd *cmd)
 {
-	extern long long	g_msl_exit;
+	extern t_global	g_msl;
 
 	if (!cmd && cmd->n_arg == 0)
 		return (ft_panic_value(-1, __FILE__, ERR_NOOBJ, EXIT_FAILURE));
@@ -52,7 +52,7 @@ int	do_exit(t_ulist **envp, t_ulist **cmd_lst, t_cmd *cmd)
 		{
 			if (cmd->n_arg == 2)
 			{
-				g_msl_exit = ft_atoll(cmd->fullcmd[1]);
+				g_msl.exit = ft_atoll(cmd->fullcmd[1]);
 				do_exit_clear(envp, cmd_lst, cmd, NULL);
 			}
 			else
@@ -60,7 +60,7 @@ int	do_exit(t_ulist **envp, t_ulist **cmd_lst, t_cmd *cmd)
 		}
 		else
 		{
-			g_msl_exit = 2 ;
+			g_msl.exit = 2 ;
 			do_exit_clear(envp, cmd_lst, cmd, "error");
 		}
 	}

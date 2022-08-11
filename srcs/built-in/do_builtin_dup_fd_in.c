@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:09:40 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/09 19:30:00 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/10 12:24:12 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,6 @@ void	do_builtin_dup_fd_in(t_ulist **cmd_lst, t_cmd *cmd)
 		dup2(cmd->pfd_r, STDIN_FILENO);
 	else if (cmd->fd_r >= 0 && cmd->pfd_r >= 0)
 		dup2(cmd->fd_r, STDIN_FILENO);
-//	else
-//		do_builtin_exit(cmd_lst, cmd, errno);
+	else
+		do_builtin_exit(cmd_lst, cmd, errno);
 }
