@@ -6,13 +6,11 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:47:06 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/11 16:08:07 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/12 14:33:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-
 
 char	*expand_dollar(t_exp_arg exp_arg, int **tab)
 {

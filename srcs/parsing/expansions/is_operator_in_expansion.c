@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 16:09:37 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/11 16:23:05 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/12 14:35:28 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,3 @@ int	is_operator_in_expansion(char c)
 		return (1);
 	return (0);
 }
-

@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 14:48:01 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/11 11:04:33 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/12 14:36:28 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 char	*remove_dollars( char *str)
 {
-	int	i;
-	int j;
-	int	n;
-	char *output;
+	int		i;
+	int		j;
+	int		n;
+	char	*output;
 
 	n = ft_strlen(str) - count_my_dollars(str);
 	output = malloc(sizeof(char) * (n + 1));

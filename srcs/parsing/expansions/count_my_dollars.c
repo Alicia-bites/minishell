@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 11:03:33 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/11 11:23:52 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/12 14:33:16 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int	count_dollars_in_str(char *str)
 {
 	int	i;
-	int n;
-	
+	int	n;
+
 	i = 0;
 	n = 0;
 	while (i < ft_strlen(str))
@@ -32,8 +32,8 @@ int	count_dollars_in_str(char *str)
 int	count_my_dollars(char *str)
 {
 	int	i;
-	int n;
-	
+	int	n;
+
 	i = 0;
 	n = 0;
 	while (i < ft_strlen(str))
