@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:58:01 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/11 18:28:52 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/12 11:21:22 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static int	is_expanded_op(int pos, int *tab)
 	int				j;
 	
 	j = 0;
+	if (!tab)
+		return (0);
 	if (tab[j])
 	{
 		while (tab[j])

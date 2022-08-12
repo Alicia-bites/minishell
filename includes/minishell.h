@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/11 23:20:41 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/12 11:53:07 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,9 +234,9 @@ int					*save_operator_index(char *str, char *new_str, t_expanded *expanded_list
 //do
 int					do_builtin(t_ulist **cmd_lst, t_cmd *cmd);
 void				do_builtin_close_fd(void *content);
-void				do_builtin_dup_fd_in(t_ulist **cmd_lst, t_cmd *cmd);
-void				do_builtin_dup_fd_out(t_ulist **cmd_lst, t_cmd *cmd);
-void				do_builtin_exit(t_ulist **cmd_lst, t_cmd *cmd, int err_no);
+int					do_builtin_dup_fd_in(t_ulist **cmd_lst, t_cmd *cmd);
+int					do_builtin_dup_fd_out(t_ulist **cmd_lst, t_cmd *cmd);
+int					do_builtin_exit(int err_no);
 
 void				pipe_cmd_dup_fd_in(t_ulist **cmd_lst, t_cmd *cmd);
 void				pipe_cmd_dup_fd_out(t_ulist **cmd_lst, t_cmd *cmd);
