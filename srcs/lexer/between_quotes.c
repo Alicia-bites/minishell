@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 17:41:44 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/11 16:50:41 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/12 13:21:56 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,3 @@ int	between_quotes(char *str, int pos)
 		return (1);
 	return (0);
 }
-

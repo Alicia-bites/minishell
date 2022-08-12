@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 15:45:35 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/31 14:10:37 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/12 13:35:44 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	found_bad_dollar_combo(char *str)
 	}
 	return (0);
 }
+
 int	lex_dollar(char *str, int *err)
 {
 	int	i;
@@ -36,10 +37,12 @@ int	lex_dollar(char *str, int *err)
 	i = 0;
 	while (str[i])
 	{
-		if (found_bad_dollar_combo(str) && !between_quotes(str, found_bad_dollar_combo(str)))
+		if (found_bad_dollar_combo(str)
+			&& !between_quotes(str, found_bad_dollar_combo(str)))
 		{
 			*err = ERR_DOLLAR;
-			printf("smbash: syntax error. Same old story, dollar following dollar.\n");
+			printf("smbash: syntax error. " \
+			"Same old story, dollar following dollar.\n");
 			return (*err);
 		}
 		i++;

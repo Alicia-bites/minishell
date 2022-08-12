@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/12 11:53:07 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/12 14:15:37 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 # define DOUBLE_PIPE -48
 # define MISSING_BRACKET -49
 # define ERR_DOLLAR -50
+# define BAD_SUB -51
 
 // ARGUMENT DELIMITER AS: cmd -arg1 -arg2
 # define ARG_DEL '-'
