@@ -90,7 +90,8 @@ BUILT_UNSET_SRCS	:=	do_unset.c\
 CMD_SRCS	:=	cmd_check_tok_lst.c\
 			cmd_check_tok_lst_redir.c\
 			cmd_create_lst.c\
-			cmd_execution.c\
+			cmd_exec.c\
+			cmd_exec_only_builtin.c\
 			cmd_free.c\
 			cmd_getvalidpath.c\
 			cmd_getvalidpath_null.c\
@@ -132,7 +133,10 @@ FD_SRCS		:=	fd_access.c\
 			fd_open.c\
 			fd_outfile_open.c\
 			fd_pipe.c\
-			fd_pipe_pfd.c
+			fd_pipe_pfd.c\
+			fd_stdinout_backup.c\
+			fd_stdinout_backup_close.c\
+			fd_stdinout_restore.c
 
 HD_SRCS		:=	hd_close.c\
 			hd_create_name.c\

@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/12 15:16:08 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/12 18:06:32 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -407,7 +407,8 @@ int					cmd_check_tok_lst(t_list **tok_lst);
 int					cmd_check_tok_lst_redir(t_list *tok);
 int					cmd_create_lst(t_list **tok_lst, t_ulist **env_lst,
 						t_ulist **cmd_lst);
-int					cmd_execution(t_ulist **cmd_lst, int n_cmd);
+int					cmd_exec(t_ulist **cmd_lst, int n_cmd);
+int					cmd_exec_only_builtin(t_ulist **cmd_lst, t_cmd *cmd);
 void				cmd_free(void *content);
 char				*cmd_getvalidpath(t_cmd *cmd);
 char				*cmd_getvalidpath_null(t_cmd *cmd);
@@ -440,6 +441,9 @@ int					fd_outfile_open(t_cmd *cmd, char *fd, int mode);
 void				fd_pipe(t_ulist **cmd_lst);
 void				fd_pipe_pfd(t_ulist *obj, t_cmd *cmd1, t_cmd *cmd2,
 						int n_pipe);
+int					fd_stdinout_backup(int *fd_stdin, int *fd_stdout);
+void				fd_stdinout_backup_close(int fd_stdin, int fd_stdout);
+int					fd_stdinout_restore(t_cmd *cmd, int fd_stdin, int fd_stdout);
 
 //heredoc
 int					hd_close(t_cmd *cmd);
