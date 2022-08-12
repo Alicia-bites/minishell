@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 17:22:18 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/09 17:06:55 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/12 15:14:37 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,19 @@ static int	get_malloc_size(char *str)
 	int	len;
 	int	d;
 	int	s;
-	
+
 	s = 0;
 	d = 0;
 	len = 0;
 	count_quotes_lexer(&s, &d, str);
-// 	printf("s = %d\n", s);
-	// printf("d = %d\n", d);
 	len = s + d;
-	return (len);	
+	return (len);
 }
 
-static char *malloc_output(char *str, int *len)
+static char	*malloc_output(char *str, int *len)
 {
-	char *output;
-	
+	char	*output;
+
 	*len = 0;
 	*len = ft_strlen(str) - get_malloc_size(str);
 	if (*len == ft_strlen(str))
@@ -66,12 +64,12 @@ static void	skip_quotes(char *str, t_dart *dart)
 	while (str[dart->j] == '\"' && (!dart->s))
 	{
 		dart->d++;
-		dart->j++;			
+		dart->j++;
 	}
 	if (str[dart->j] == '\'' && !(dart->d % 2))
 	{
 		dart->j++;
-		dart->s++;			
+		dart->s++;
 	}
 	else if (str[dart->j] == '\"' && !(dart->s % 2))
 	{
@@ -80,12 +78,12 @@ static void	skip_quotes(char *str, t_dart *dart)
 	}
 }
 
-char *trim_quotes(char *str)
+char	*trim_quotes(char *str)
 {
 	char	*output;
 	t_dart	dart;
 	int		len;
-	
+
 	dart.s = 0;
 	dart.d = 0;
 	dart.j = 0;

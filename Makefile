@@ -276,10 +276,10 @@ MAKE_TOK_SRCS	:=	add_token_to_list.c\
 					is_l_redir.c\
 					is_pipe.c\
 					is_quote.c\
+					is_quote_utils.c\
 					is_r_redir.c\
 					is_space.c\
 					is_word.c\
-					parse_echo.c\
 					no_space_inside_quotes.c\
 					space_after_quote.c\
 

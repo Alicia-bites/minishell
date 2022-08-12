@@ -6,11 +6,11 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 16:08:34 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/12 14:36:04 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/12 15:17:10 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "minishell.h"
+#include "minishell.h"
 
 void	print_tab(int *tab, int n)
 {

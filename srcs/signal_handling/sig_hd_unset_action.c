@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sig_hd_unset_action.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 14:56:06 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/03 19:00:48 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/12 15:18:42 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,5 @@
 int	sig_hd_unset_action(void)
 {
 	signal(SIGQUIT, SIG_IGN);
-	//signal(SIGINT, SIG_IGN);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 17:02:58 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/09 18:11:38 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/12 15:15:45 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,19 @@ static int	get_malloc_size(char *str)
 	int	len;
 	int	d;
 	int	s;
-	
+
 	s = 0;
 	d = 0;
 	len = 0;
 	count_quotes_lexer(&s, &d, str);
-// 	printf("s = %d\n", s);
-	// printf("d = %d\n", d);
 	len = s + d;
-	return (len);	
+	return (len);
 }
 
-static char *malloc_output(char *str, int *len)
+static char	*malloc_output(char *str, int *len)
 {
-	char *output;
-	
+	char	*output;
+
 	*len = 0;
 	*len = ft_strlen(str) - get_malloc_size(str);
 	if (*len == ft_strlen(str))
@@ -55,7 +53,7 @@ static int	is_heredoc_delimiter(t_list *token_list, char *str)
 	while (iterator && strcmp(iterator->token, str))
 		iterator = iterator->next;
 	if (iterator && iterator->prev && !ft_strcmp(iterator->prev->token, "<<"))
-			return (1);
+		return (1);
 	return (0);
 }
 
@@ -69,12 +67,12 @@ static void	skip_quotes(char *str, t_dart *dart)
 	while (str[dart->j] == '\"' && (!dart->s))
 	{
 		dart->d++;
-		dart->j++;			
+		dart->j++;
 	}
 	if (str[dart->j] == '\'' && !(dart->d % 2))
 	{
 		dart->j++;
-		dart->s++;			
+		dart->s++;
 	}
 	else if (str[dart->j] == '\"' && !(dart->s % 2))
 	{
@@ -83,12 +81,12 @@ static void	skip_quotes(char *str, t_dart *dart)
 	}
 }
 
-char *trim_quotes_token(char *str, t_list *token_list)
+char	*trim_quotes_token(char *str, t_list *token_list)
 {
 	char	*output;
 	t_dart	dart;
 	int		len;
-	
+
 	dart.s = 0;
 	dart.d = 0;
 	dart.j = 0;

@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 19:13:00 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/28 22:43:51 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/12 15:15:57 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	no_space_inside_quotes(t_chartype *input_list, int end, int quote)
 			end++;
 		if (input_list[end].type == CH_D_QUOTE
 			|| input_list[end].type == CH_S_QUOTE)
-				return (1);
+			return (1);
 		else
 			return (0);
 	}
