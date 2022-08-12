@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 15:45:35 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/12 13:35:44 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/12 16:40:13 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@ int	lex_dollar(char *str, int *err)
 			&& !between_quotes(str, found_bad_dollar_combo(str)))
 		{
 			*err = ERR_DOLLAR;
-			printf("smbash: syntax error. " \
-			"Same old story, dollar following dollar.\n");
+			ft_putendl_fd(MSGERR_DOLLAR, 2);
 			return (*err);
 		}
 		i++;

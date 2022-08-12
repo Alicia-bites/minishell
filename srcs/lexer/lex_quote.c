@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 10:50:58 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/29 16:22:40 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/12 16:31:21 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	lex_quote(char *str, int *err)
 	if (d % 2 != 0 || s % 2 != 0)
 	{
 		*err = MISSING_QUOTES;
-		printf("smbash: syntax error. Please check quotes.\n");
+		ft_putendl_fd(MSGERR_QUOTE, 2);
 	}
 	return (*err);
 }

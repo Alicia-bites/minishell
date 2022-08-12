@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 15:45:13 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/12 14:31:31 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/12 16:39:58 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	only_spaces_before_pipe(char *str, int *err)
 	if (!not_space)
 	{
 		*err = MISPLACED_PIPE;
-		printf("smbash: syntax error. Please check pipes.\n");
+		ft_putendl_fd(MSGERR_ONLY_SPACE, 2);
 		return (*err);
 	}
 	return (0);

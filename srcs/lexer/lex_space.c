@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:03:48 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/25 11:15:22 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/12 16:40:37 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	lex_space(char *str, int *err)
 		&& ft_isspace(str[ft_strlen(str) - 1]))
 	{
 		*err = MISPLACED_PIPE;
-		printf("smbash: syntax error. Please check pipes.\n");
+		ft_putendl_fd(MSGERR_SPACE, 2);
 		return (*err);
 	}
 	return (0);
