@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:49:04 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/12 14:35:15 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/12 16:09:42 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ char	*insert_expansions(int full_size, t_expanded *expanded_list, char *str)
 		copy_expanded(str, &expanded_list, &cursor, new_str);
 		if (str[cursor.k] && cursor.i <= full_size
 			&& str[cursor.k] != '$'
-			&& !interrogation_point_follows_dollar(str, cursor.i)
+			&& !interrogation_point_follows_dollar(str, cursor.k)
 			|| (str[cursor.k] == '$' && between_single_quotes(str, cursor.k)))
 			new_str[cursor.i++] = str[cursor.k++];
 		else if (str[cursor.k] == '$' && !between_single_quotes(str, cursor.k))
