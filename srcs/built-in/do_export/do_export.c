@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 18:20:51 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/29 12:54:04 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/12 15:46:43 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	do_export(t_ulist **envp, t_cmd *cmd)
 					2));
 		internal_error = do_export_update_lst(envp, &cmd->fullcmd[1]);
 		if (internal_error)
-			return (internal_error);
+			return (EXIT_FAILURE);
 	}
 	return (0);
 }

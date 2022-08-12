@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/12 11:53:07 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/12 15:16:08 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -268,11 +268,14 @@ void				do_exit_clear(t_ulist **envp, t_ulist **cmd_lst, t_cmd *cmd, char *err_m
 //do_export
 int					do_export(t_ulist **env_lst, t_cmd *cmd);
 int					do_export_create_env(t_ulist **list, char *str);
-t_ulist				*do_export_check_exist(t_ulist **envp, char *str,
+t_ulist				*do_export_check_exist(t_ulist **env_lst, char *str,
+						int sep_pos);
+size_t					do_export_check_exist_len_key(char *str,
 						int sep_pos);
 int					do_export_check_str(char *str, int sep_pos);
 int					do_export_update_env(t_ulist *obj, char *str, int sep_pos);
-int					do_export_update_lst(t_ulist **envp, char **str);
+int					do_export_update_lst(t_ulist **env_lst, char **str);
+int					do_export_update_lst_do(t_ulist **env_lst, t_ulist *obj, char *str, int sep_pos);
 void				do_export_show(void *content);
 
 //do_pwd

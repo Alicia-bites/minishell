@@ -6,7 +6,7 @@
 /*   By: antho <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 16:31:22 by antho             #+#    #+#             */
-/*   Updated: 2022/07/28 19:03:20 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/12 15:46:33 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
  * env NAME1=value
  * env NAME1=value NAME2=value x=y
  */
-int	do_export_update_lst(t_ulist **envp, char **str)
+int	do_export_update_lst(t_ulist **env_lst, char **str)
 {
 	t_ulist	*obj;
 	int		i;
@@ -33,14 +33,9 @@ int	do_export_update_lst(t_ulist **envp, char **str)
 		sep_pos = ft_index((const char *)str[i], ENV_SEP);
 		if (do_export_check_str(str[i], sep_pos) == 0)
 		{
-			obj = do_export_check_exist(envp, str[i], sep_pos);
-			if (obj)
-			{
-				if (do_export_update_env(obj, str[i], sep_pos) != 0)
-					res++;
-			}
-			else
-				do_export_create_env(envp, str[i]);
+			obj = do_export_check_exist(env_lst, str[i], sep_pos);
+			res += do_export_update_lst_do(env_lst, obj,
+					str[i], sep_pos);
 		}
 		else
 			res++;

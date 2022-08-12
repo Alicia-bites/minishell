@@ -71,9 +71,11 @@ BUILT_EXIT_SRCS	:=	do_exit.c\
 BUILT_EXPORT_SRCS	:=	do_export.c\
 			do_export_create_env.c\
 			do_export_check_exist.c\
+			do_export_check_exist_len_key.c\
 			do_export_check_str.c\
 			do_export_update_env.c\
 			do_export_update_lst.c\
+			do_export_update_lst_do.c\
 			do_export_show.c
 
 BUILT_PWD_SRCS	:=	do_pwd.c\

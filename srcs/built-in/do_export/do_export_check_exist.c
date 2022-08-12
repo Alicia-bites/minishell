@@ -6,25 +6,21 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 10:17:50 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/28 19:01:44 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/12 15:15:29 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_ulist	*do_export_check_exist(t_ulist **envp, char *str, int sep_pos)
+t_ulist	*do_export_check_exist(t_ulist **env_lst, char *str, int sep_pos)
 {
 	t_ulist	*obj;
 	t_env	*env;
 	size_t	len_key;
 
-	obj = *envp;
+	obj = *env_lst;
 	env = NULL;
-	len_key = 0;
-	if (sep_pos >= 0)
-		len_key = sep_pos;
-	else
-		len_key = ft_strlen(str);
+	len_key = do_export_check_exist_len_key(str, sep_pos);
 	while (obj)
 	{
 		env = (t_env *)obj->content;
