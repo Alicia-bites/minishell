@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 09:05:15 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/22 17:24:21 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/12 14:18:55 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,53 @@ static int	check_if_r_bracket(char *str, int i)
 	return (0);
 }
 
+static int	unclosed_quote_in_brackets(char *str, int pos)
+{
+	int	s;
+	int	d;
+
+	s = 0;
+	d = 0;
+	while (str[pos] && str[pos] != '}')
+	{
+		if (str[pos] == '\'')
+			s++;
+		if (str[pos] == '\"')
+			d++;
+		pos++;
+	}
+	if (s % 2 || d % 2)
+		return (1);
+	return (0);
+}
+
+static int	quotes_in_brackets(char *str, int pos)
+{
+	int	s;
+	int	d;
+
+	s = 0;
+	d = 0;
+	while (str[pos] && str[pos] != '}')
+	{
+		if (str[pos] == '\'')
+			s++;
+		if (str[pos] == '\"')
+			d++;
+		pos++;
+	}
+	if (!(s % 2) || !(d % 2))
+		return (1);
+	return (0);
+}
+
+static int	bad_substitution(int *err)
+{
+	*err = BAD_SUB;
+	printf("smbash: bad substitution.\n");
+	return (*err);
+}
+
 int	lex_brackets(char *str, int *err)
 {
 	int	i;
@@ -38,12 +85,15 @@ int	lex_brackets(char *str, int *err)
 	{
 		if (str[i] == '$' && str[i + 1] == '{')
 		{
-			if (!check_if_r_bracket(str, (i + 2)))
+			if (!check_if_r_bracket(str, (i + 2))
+				|| unclosed_quote_in_brackets(str, i + 2))
 			{
 				*err = MISSING_BRACKET;
 				printf("smbash: syntax error. Please check brackets.\n");
 				return (*err);
 			}
+			if (quotes_in_brackets(str, i + 2))
+				return (bad_substitution(err));
 		}
 		i++;
 	}
