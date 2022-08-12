@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/12 14:15:37 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/12 15:11:02 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -338,10 +338,13 @@ void				built_echo(t_list **token_list, int space);
 void				built_token(t_chartype *input_list, int start, int end,
 						t_list **token_list);
 void				check_operator_presence(char *token, t_list **token_list);
+int					count_d_quotes(t_chartype *input_list, int end);
+int					count_s_quotes(t_chartype *input_list, int end);
 int					echo_n(t_chartype *input_list, int *end, int *quote);
 void				echo_special_treatment(t_chartype *input_list,
 						int *end, int *space, int *quote);
 int					empty_string(t_chartype *input_list, int end);
+void				move_while_inside_quote(t_chartype *input_list, int *end, int s, int d);
 int					not_only_space_between_quotes(char *str);
 void				get_token(t_chartype *input_list, t_list **token_list);
 void				is_bn(t_chartype *input_list, int *start, int *end,
@@ -365,11 +368,7 @@ void				is_space(t_chartype *input_list, int *start, int *end,
 void				is_word(t_chartype *input_list, int *start, int *end,
 						t_list **token_list);
 int					no_space_inside_quotes(t_chartype *input_list, int end, int quote);
-// void				remove_quotes(t_chartype *input_list, int *start, int *end);
-// void				remove_dquotes(t_chartype *input_list, int *start,
-// 						int *end);
-// void				remove_squotes(t_chartype *input_list, int *start,
-// 						int *end);
+
 int					space_after_quote(t_chartype *input_list, int end, int quote);
 
 

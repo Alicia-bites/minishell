@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sig_program_prompt_back.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 14:47:26 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/11 08:50:14 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/12 15:18:51 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
  * @RETURN:
  * N/A
  */
-void sig_program_prompt_back(int signum)
+void	sig_program_prompt_back(int signum)
 {
 	extern t_global	g_msl;
 

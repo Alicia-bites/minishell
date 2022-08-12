@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:49:04 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/11 19:08:35 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/12 14:35:15 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ static void	copy_expanded(char *str, t_expanded **expanded_list,
 	if (cursor->k < ft_strlen(str) -1)
 	{
 		if (str[cursor->k] == '$' && str[cursor->k + 1] != '"'
-			&& str[cursor->k + 1] != '\'' && !between_single_quotes(str, cursor->k))
+			&& str[cursor->k + 1] != '\''
+			&& !between_single_quotes(str, cursor->k))
 		{
 			j = 0;
 			if (*expanded_list && (*expanded_list)->expanded)
@@ -92,8 +93,7 @@ char	*insert_expansions(int full_size, t_expanded *expanded_list, char *str)
 			&& !interrogation_point_follows_dollar(str, cursor.i)
 			|| (str[cursor.k] == '$' && between_single_quotes(str, cursor.k)))
 			new_str[cursor.i++] = str[cursor.k++];
-		else if (str[cursor.k] == '$' /*&& str[cursor.k + 1] == '"')
-			|| str[cursor.k] == '"')*/ && !between_single_quotes(str, cursor.k))
+		else if (str[cursor.k] == '$' && !between_single_quotes(str, cursor.k))
 			cursor.k++;
 	}
 	new_str[cursor.i] = '\0';

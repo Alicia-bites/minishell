@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sig_hd_set_action.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 14:14:03 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/04 12:39:06 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/12 15:19:04 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
  */
 static void	sig_hd_int(int signum)
 {
-	char *filename;
-	char *fullcmd[2];
+	char	*filename;
+	char	*fullcmd[2];
 
 	filename = HD_BIN_FALSE;
 	fullcmd[0] = HD_BIN_FALSE;

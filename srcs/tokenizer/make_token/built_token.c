@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:57:58 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/10 15:13:29 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/12 15:12:42 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@ static int	check_quote(t_chartype *input_list, int start)
 {
 	if (input_list[start].character == '\''
 		|| input_list[start].character == '\"')
-			return (1);
+		return (1);
 	else
 	{
 		while (is_char_word(input_list[start].character))
 		{
 			start++;
 			if (input_list[start].character == '\''
-			|| input_list[start].character == '\"')
-				return (1);	
+				|| input_list[start].character == '\"')
+				return (1);
 		}
 	}
 	return (0);

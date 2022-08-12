@@ -6,14 +6,13 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 16:07:53 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/11 19:12:54 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/12 14:37:49 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-
-static int *malloc_tab(int n)
+static int	*malloc_tab(int n)
 {
 	int	*tab;
 
@@ -21,11 +20,10 @@ static int *malloc_tab(int n)
 	if (!tab)
 		return (ft_panic_null(-1, __FILE__, ERR_MALLOC));
 	set_minus_one_tab(tab, n + 1);
-	// print_tab(tab, n);
 	return (tab);
 }
 
-static int *fill_tab_index(int pos, int *tab, char *str)
+static int	*fill_tab_index(int pos, int *tab, char *str)
 {
 	static int	i = 0;
 	int			n;
@@ -56,7 +54,7 @@ static void	find_and_save_op_index(char *str, char *new_str,
 	t_expanded *expanded_list, int **tab)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -90,6 +88,5 @@ int	*save_operator_index(char *str, char *new_str, t_expanded *expanded_list)
 	if (!tab)
 		return (0);
 	find_and_save_op_index(str, new_str, expanded_list, &tab);
-	// print_tab(tab, n);
 	return (tab);
 }
