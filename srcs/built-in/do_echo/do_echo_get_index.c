@@ -21,6 +21,8 @@ static int	invalid_arg(char *str)
 		return (1);
 	if (str[i] != '-')
 		return (1);
+	if (str[i] == '-' && str[i + 1] == '\0')
+		return (1);
 	if (str[i] == '-' && i + 1 < ft_strlen(str) && str[i + 1] != 'n')
 		return (1);
 	if (i + 1 < ft_strlen(str) && str[i] == '-' && str[i + 1] == 'n')
