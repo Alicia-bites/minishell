@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/12 15:11:02 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/12 15:39:50 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,16 @@
 # define SMB_NAME "smbash"
 
 # define WRONG_CMD 127
-# define MALLOC_FAILURE -42
-# define MISSING_QUOTES -43
-# define MISPLACED_PIPE -44
-# define MISPLACED_REDIR -45
-# define SPECIAL_CHAR -46
-# define SEMICOLON -47
-# define DOUBLE_PIPE -48
-# define MISSING_BRACKET -49
-# define ERR_DOLLAR -50
-# define BAD_SUB -51
+# define MALLOC_FAILURE 1
+# define MISSING_QUOTES 2
+# define MISPLACED_PIPE 2
+# define MISPLACED_REDIR 2
+# define SPECIAL_CHAR 2
+# define SEMICOLON 2
+# define DOUBLE_PIPE 2
+# define MISSING_BRACKET 2
+# define ERR_DOLLAR 2
+# define BAD_SUB 1
 
 // ARGUMENT DELIMITER AS: cmd -arg1 -arg2
 # define ARG_DEL '-'
