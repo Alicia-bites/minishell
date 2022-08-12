@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 09:05:15 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/12 14:18:55 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/12 14:26:58 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ static int	unclosed_quote_in_brackets(char *str, int pos)
 			d++;
 		pos++;
 	}
-	if (s % 2 || d % 2)
+	if (d && d % 2)
+		return (1);
+	if (s && s % 2)
 		return (1);
 	return (0);
 }
@@ -60,7 +62,9 @@ static int	quotes_in_brackets(char *str, int pos)
 			d++;
 		pos++;
 	}
-	if (!(s % 2) || !(d % 2))
+	if (d && !(d % 2))
+		return (1);
+	if (s && !(s % 2))
 		return (1);
 	return (0);
 }
