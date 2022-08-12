@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 10:51:02 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/22 17:26:00 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/12 16:41:05 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	lex_redir(char *str, int *err)
 		)
 		{
 			*err = MISPLACED_REDIR;
-			printf("smbash: syntax error. Please check redirections.\n");
+			ft_putendl_fd(MSGERR_REDIR, 2);
 			return (*err);
 		}
 		i++;

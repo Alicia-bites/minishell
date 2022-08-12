@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 16:08:41 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/12 14:02:02 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/12 16:40:27 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,7 @@ int	lex_sym(char *str, int *err)
 		if (is_special_character(str[i]) && !between_quotes(str, i))
 		{
 			*err = SPECIAL_CHAR;
-			printf("smbash: syntax error. " \
-			"Please put special characters between quotes.\n");
+			ft_putendl_fd(MSGERR_SYM, 2);
 			return (*err);
 		}
 		i++;

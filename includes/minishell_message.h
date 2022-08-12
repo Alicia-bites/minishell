@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell_message.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 12:19:00 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/11 17:31:40 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/12 16:39:44 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,15 @@
 # define ERR_NOTOK "first no token address"
 # define ERR_SIGACTION "setting up sigaction failed"
 # define ERR_TOK_REDIR "no file after redirection"
+
+# define MSGERR_QUOTE "smbash: syntax error. Please check quotes."
+# define MSGERR_PIPE "smbash: syntax error. Please check pipes."
+# define MSGERR_REDIR "smbash: syntax error. Please check redirections."
+# define MSGERR_BRACKETS "smbash: syntax error. Please check brackets."
+# define MSGERR_SPACE "smbash: syntax error. Please check pipes."
+# define MSGERR_SYM "smbash: syntax error. Please put special characters between quotes."
+# define MSGERR_DOLLAR "smbash: syntax error. Same old story, dollar following dollar."
+# define MSGERR_ONLY_SPACE "smbash: syntax error. No command before pipe."
+# define MSGERR_
 
 #endif

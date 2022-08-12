@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 09:05:15 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/12 14:26:58 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/12 16:40:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static int	quotes_in_brackets(char *str, int pos)
 static int	bad_substitution(int *err)
 {
 	*err = BAD_SUB;
-	printf("smbash: bad substitution.\n");
+	ft_putendl_fd(MSGERR_BRACKETS, 2);
 	return (*err);
 }
 
@@ -93,7 +93,7 @@ int	lex_brackets(char *str, int *err)
 				|| unclosed_quote_in_brackets(str, i + 2))
 			{
 				*err = MISSING_BRACKET;
-				printf("smbash: syntax error. Please check brackets.\n");
+				ft_putendl_fd(MSGERR_BRACKETS, 2);
 				return (*err);
 			}
 			if (quotes_in_brackets(str, i + 2))
