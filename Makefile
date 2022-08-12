@@ -107,7 +107,7 @@ CMD_SRCS	:=	cmd_check_tok_lst.c\
 
 ENV_SRCS	:=	env_char_env.c\
 			env_char_init.c\
-			env_char_loop_envp.c\
+			env_char_loop_env_lst.c\
 			env_char_set.c\
 			env_char_size.c\
 			env_free.c\

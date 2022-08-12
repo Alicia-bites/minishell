@@ -6,12 +6,37 @@
 /*   By: antho <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 17:29:38 by antho             #+#    #+#             */
-/*   Updated: 2022/07/20 14:02:39 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/11 22:54:59 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+/* @BRIEF:
+ * malloc t_env and init its property to NULL first, then to the expected 
+ * value
+ *
+ * @PROPERTY:
+ * env->key: key of the env node
+ * example: 'USER'
+ * env->value: value of the env node
+ * example: 'smbash'
+ * env->var_view: value to define the visibility of the property when using
+ * env or export functions
+ * example:
+ * VAR_ALL = visible for env and export functions
+ * VAR_ENV = only visible for env function
+ * VAR_EXP = only visible for export function
+ *
+ * @PARAM:
+ * char *env_fullname: environment string including the key and the value
+ * example:
+ * USER=smbash
+ *
+ * @RETURN:
+ * !NULL: address of the newly created env node
+ * NULL: error
+ */
 t_env	*env_init(char *env_fullname)
 {
 	t_env	*env;
