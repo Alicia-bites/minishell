@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:09:40 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/10 12:24:12 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/12 09:57:08 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,21 @@
  * POSSIBLE INFILE = -1
  * EXIT FAILURE
  */
-void	do_builtin_dup_fd_in(t_ulist **cmd_lst, t_cmd *cmd)
+int	do_builtin_dup_fd_in(t_ulist **cmd_lst, t_cmd *cmd)
 {
 	errno = 0;
 	if (cmd->fd_r == FD_NOT_INIT && cmd->pfd_r == FD_NOT_INIT)
 		dup2(STDIN_FILENO, STDIN_FILENO);
-	if (cmd->fd_r >= 0 && cmd->pfd_r == FD_NOT_INIT)
+	else if (cmd->fd_r >= 0 && cmd->pfd_r == FD_NOT_INIT)
 		dup2(cmd->fd_r, STDIN_FILENO);
 	else if (cmd->fd_r == FD_NOT_INIT && cmd->pfd_r >= 0)
 		dup2(cmd->pfd_r, STDIN_FILENO);
 	else if (cmd->fd_r >= 0 && cmd->pfd_r >= 0)
 		dup2(cmd->fd_r, STDIN_FILENO);
+	else if (cmd->fd_r < 0 && cmd->pfd_r < 0)
+		errno = do_builtin_exit(EXIT_FAILURE);
+	if (errno)
+		return (do_builtin_exit(errno));
 	else
-		do_builtin_exit(cmd_lst, cmd, errno);
+		return (0);
 }

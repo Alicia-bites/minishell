@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 16:02:20 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/11 22:27:42 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/12 09:39:32 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,34 @@ int	cmd_execution(t_ulist **cmd_lst, int n_cmd)
 			fd_stdout = dup(STDOUT_FILENO);
 			if (fd_stdin < 0 || fd_stdout < 0)
 			{
+				if (fd_stdin)
+					close(fd_stdin);
+				if (fd_stdout)
+					close(fd_stdout);
 				sig_program_set_action();
 				g_msl.exit = 1;
 				return (ft_panic(-1, __FILE__, ERR_PFD));
 			}
-			do_builtin_dup_fd_in(cmd_lst, cmd);
-			do_builtin_dup_fd_out(cmd_lst, cmd);
+			if (do_builtin_dup_fd_in(cmd_lst, cmd))
+			{
+				if (fd_stdin)
+					close(fd_stdin);
+				if (fd_stdout)
+					close(fd_stdout);
+				sig_program_set_action();
+				g_msl.exit = 1;
+				return (ft_panic(-1, __FILE__, ERR_PFD));
+			}
+			if (do_builtin_dup_fd_out(cmd_lst, cmd))
+			{
+				if (cmd->fd_r > 2)
+					dup2(fd_stdin, STDIN_FILENO);
+				if (fd_stdin > 2)
+					close(fd_stdin);
+				sig_program_set_action();
+				g_msl.exit = 1;
+				return (ft_panic(-1, __FILE__, ERR_PFD));
+			}
 			ft_lst_func_lst(cmd_lst, &do_builtin_close_fd);
 			res = do_builtin(cmd_lst, cmd);
 			if (cmd->fd_r > 2)

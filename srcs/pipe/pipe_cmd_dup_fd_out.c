@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:09:40 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/27 14:04:59 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/12 09:00:51 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	pipe_cmd_dup_fd_out(t_ulist **cmd_lst, t_cmd *cmd)
 		dup2(cmd->pfd_w, STDOUT_FILENO);
 	else if (cmd->fd_w >= 0 && cmd->pfd_w >= 0)
 		dup2(cmd->fd_w, STDOUT_FILENO);
-	else
+	else if (cmd->fd_w < 0 && cmd->pfd_w < 0)
+		pipe_exit(cmd_lst, cmd, EXIT_FAILURE);
+	if (errno)
 		pipe_exit(cmd_lst, cmd, errno);
 }
