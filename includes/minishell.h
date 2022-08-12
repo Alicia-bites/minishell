@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/11 23:01:18 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/12 09:31:10 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -225,9 +225,9 @@ void				save_operator_position(char *expanded, t_position position);
 //do
 int					do_builtin(t_ulist **cmd_lst, t_cmd *cmd);
 void				do_builtin_close_fd(void *content);
-void				do_builtin_dup_fd_in(t_ulist **cmd_lst, t_cmd *cmd);
-void				do_builtin_dup_fd_out(t_ulist **cmd_lst, t_cmd *cmd);
-void				do_builtin_exit(t_ulist **cmd_lst, t_cmd *cmd, int err_no);
+int					do_builtin_dup_fd_in(t_ulist **cmd_lst, t_cmd *cmd);
+int					do_builtin_dup_fd_out(t_ulist **cmd_lst, t_cmd *cmd);
+int					do_builtin_exit(int err_no);
 
 void				pipe_cmd_dup_fd_in(t_ulist **cmd_lst, t_cmd *cmd);
 void				pipe_cmd_dup_fd_out(t_ulist **cmd_lst, t_cmd *cmd);
