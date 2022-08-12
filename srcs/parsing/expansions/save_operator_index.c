@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 16:07:53 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/11 19:10:31 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/11 19:12:54 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,6 @@ int	*save_operator_index(char *str, char *new_str, t_expanded *expanded_list)
 	if (!tab)
 		return (0);
 	find_and_save_op_index(str, new_str, expanded_list, &tab);
-	print_tab(tab, n);
+	// print_tab(tab, n);
 	return (tab);
 }
