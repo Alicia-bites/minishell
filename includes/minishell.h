@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/13 10:44:23 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/13 11:22:39 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -454,6 +454,8 @@ char				*hd_create_name(t_list *tok, t_cmd *cmd);
 void				hd_create_name_len(char *index, size_t *len_index, size_t *len_smb, size_t *len_tmp);
 void				hd_create_name_reset(t_cmd *cmd);
 int					hd_init(t_list *tok, t_cmd *cmd, long long *hd_exit);
+int					hd_init_check_binary(void);
+int					hd_init_check_tmp(void);
 int					hd_link(t_list **tok_lst, t_ulist **cmd_lst);
 t_list				*hd_loop_tok(t_list *tok, t_cmd *cmd, long long *hd_exit);
 int					hd_open(t_cmd *cmd);

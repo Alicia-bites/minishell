@@ -144,6 +144,8 @@ HD_SRCS		:=	hd_close.c\
 			hd_create_name_len.c\
 			hd_create_name_reset.c\
 			hd_init.c\
+			hd_init_check_binary.c\
+			hd_init_check_tmp.c\
 			hd_link.c\
 			hd_loop_tok.c\
 			hd_open.c\
