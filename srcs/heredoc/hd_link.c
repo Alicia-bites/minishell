@@ -6,7 +6,7 @@
 /*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:33:32 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/04 15:49:19 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/13 10:22:45 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ int	hd_link(t_list **tok_lst, t_ulist **cmd_lst)
 		cmd = (t_cmd *)obj->content;
 		tok = hd_loop_tok(tok, cmd, &hd_exit);
 		cmd = NULL;
+		if (hd_exit)
+			break ;
 		if (tok)
 			tok = tok->next;
-		if (hd_exit)
-			return (1);
 		obj = obj->next;
 	}
 	sig_program_set_action();
-	return (0);
+	return (hd_exit);
 }

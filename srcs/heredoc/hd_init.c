@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hd_close.c                                         :+:      :+:    :+:   */
+/*   hd_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/04 19:13:52 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/13 09:17:41 by abarrier         ###   ########.fr       */
+/*   Created: 2022/08/13 09:11:15 by abarrier          #+#    #+#             */
+/*   Updated: 2022/08/13 10:29:18 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	hd_close(t_cmd *cmd)
+int	hd_init(t_list *tok, t_cmd *cmd, long long *hd_exit)
 {
-	int	res;
+	extern t_global	g_msl;
 
-	res = 0;
-	if (cmd->hd_r > 2)
-		res = close(cmd->hd_r);
-	if (cmd->hd_name)
+	if (!hd_create_name(tok, cmd))
 	{
-		unlink(cmd->hd_name);
-		free(cmd->hd_name);
-		cmd->hd_name = NULL;
+		g_msl.exit = EXIT_FAILURE;
+		*hd_exit = EXIT_FAILURE;
+		return (EXIT_FAILURE);
 	}
-	return (res);
+	if (hd_open(cmd))
+	{
+		g_msl.exit = EXIT_FAILURE;
+		*hd_exit = EXIT_FAILURE;
+		return (EXIT_FAILURE);
+	}
+	return (0);
 }

@@ -451,12 +451,14 @@ int					fd_stdinout_restore(t_cmd *cmd, int fd_stdin, int fd_stdout);
 //heredoc
 int					hd_close(t_cmd *cmd);
 char				*hd_create_name(t_list *tok, t_cmd *cmd);
+void				hd_create_name_len(char *index, size_t *len_index, size_t *len_smb, size_t *len_tmp);
+void				hd_create_name_reset(t_cmd *cmd);
+int					hd_init(t_list *tok, t_cmd *cmd, long long *hd_exit);
 int					hd_link(t_list **tok_lst, t_ulist **cmd_lst);
 t_list				*hd_loop_tok(t_list *tok, t_cmd *cmd, long long *hd_exit);
 int					hd_open(t_cmd *cmd);
 size_t				hd_size(t_list **tok_lst);
-//int					hd_loop_tok_type(t_list *tok, t_cmd *cmd,
-int					hd_wait(int pid);
+int					hd_wait(int pid, long long *hd_exit);
 int					hd_write(t_list *tok, t_cmd *cmd);
 
 //pipe

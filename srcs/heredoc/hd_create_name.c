@@ -6,14 +6,13 @@
 /*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:54:09 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/04 18:54:46 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/13 09:31:27 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
- * @BRIEF:
+/* @BRIEF:
  * create a string according to a specific input sequence:
  * tmp_directory + / +program_name + _ + index number
  * /tmp/smbash_1
@@ -36,16 +35,8 @@ char	*hd_create_name(t_list *tok, t_cmd *cmd)
 	index = ft_itoa(tok->index);
 	if (!index)
 		return (ft_panic_null(-1, __FILE__, ERR_MALLOC));
-	if (cmd->hd_name)
-	{
-		printf("hd_name already exists\n");
-		unlink(cmd->hd_name);
-		free(cmd->hd_name);
-		cmd->hd_name = NULL;
-	}
-	len_index = ft_strlen(index);
-	len_smb = ft_strlen(SMB_NAME);
-	len_tmp = ft_strlen(HD_TMP_DIR);
+	hd_create_name_reset(cmd);
+	hd_create_name_len(index, &len_index, &len_smb, &len_tmp);
 	cmd->hd_name = (char *)malloc(sizeof(char) + (len_tmp + 1 + len_smb + 1
 				+ len_index + 1));
 	if (!cmd->hd_name)
@@ -59,7 +50,6 @@ char	*hd_create_name(t_list *tok, t_cmd *cmd)
 	ft_memmove(cmd->hd_name + len_tmp + 1 + len_smb, "_", 1);
 	ft_memmove(cmd->hd_name + len_tmp + 1 + len_smb + 1, index, len_index);
 	cmd->hd_name[len_tmp + 1 + len_smb + 1 + len_index] = '\0';
-	printf("cmd->hd_name: %s\n", cmd->hd_name);
 	free(index);
 	return (cmd->hd_name);
 }

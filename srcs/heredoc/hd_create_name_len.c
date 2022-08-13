@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hd_close.c                                         :+:      :+:    :+:   */
+/*   hd_create_name_len.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/04 19:13:52 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/13 09:17:41 by abarrier         ###   ########.fr       */
+/*   Created: 2022/08/13 09:28:09 by abarrier          #+#    #+#             */
+/*   Updated: 2022/08/13 09:30:14 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	hd_close(t_cmd *cmd)
+void	hd_create_name_len(char *index, size_t *len_index, size_t *len_smb,
+		size_t *len_tmp)
 {
-	int	res;
-
-	res = 0;
-	if (cmd->hd_r > 2)
-		res = close(cmd->hd_r);
-	if (cmd->hd_name)
-	{
-		unlink(cmd->hd_name);
-		free(cmd->hd_name);
-		cmd->hd_name = NULL;
-	}
-	return (res);
+	*len_index = ft_strlen(index);
+	*len_smb = ft_strlen(SMB_NAME);
+	*len_tmp = ft_strlen(HD_TMP_DIR);
 }
