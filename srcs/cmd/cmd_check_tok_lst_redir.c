@@ -6,7 +6,7 @@
 /*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 17:27:16 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/12 16:03:26 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/13 08:29:03 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	cmd_check_tok_lst_redir(t_list *tok)
 	if (tok->next)
 		next = tok->next;
 	if (tok->toktype == TOK_L_REDIR || tok->toktype == TOK_R_REDIR
-		|| tok->toktype == TOK_DL_REDIR
 		|| tok->toktype == TOK_DR_REDIR)
 	{
 		if (!next || next->toktype != TOK_FILE)
