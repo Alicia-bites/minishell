@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/13 08:57:35 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/13 10:44:23 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -378,6 +378,7 @@ int					space_after_quote(t_chartype *input_list, int end, int quote);
 
 //signal_handling
 int					sig_hd_set_action(void);
+void				sig_hd_sigint(int signum);
 int					sig_hd_unset_action(void);
 void				sig_pipe_quit(int signum);
 int					sig_pipe_set_action(void);

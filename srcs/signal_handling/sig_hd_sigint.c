@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sig_hd_set_action.c                                :+:      :+:    :+:   */
+/*   sig_hd_sigint.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 14:14:03 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/13 10:44:48 by abarrier         ###   ########.fr       */
+/*   Created: 2022/08/13 10:42:11 by abarrier          #+#    #+#             */
+/*   Updated: 2022/08/13 10:43:31 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
- * @BRIEF:
- * set int signal behaviour to default one to be able to stop the process
- * and do not redisplay prompt bask
- *
- * @PARAM:
- * void
- *
- * @RETURN:
- * 0: ok
- * >= 0: error
- */
-int	sig_hd_set_action(void)
+void	sig_hd_sigint(int signum)
 {
-	signal(SIGINT, &sig_hd_sigint);
-	return (0);
+	char *filename;
+	char *fullcmd[2];
+
+	filename = HD_BIN_FALSE;
+	fullcmd[0] = HD_BIN_FALSE;
+	fullcmd[1] = NULL;
+	execve(filename, fullcmd, NULL);
 }

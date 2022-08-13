@@ -221,6 +221,7 @@ EXP_SRCS	:=	bracket_is_after_dollar.c\
 				set_minus_one_tab.c
 
 SIG_SRCS	:=		sig_hd_set_action.c\
+				sig_hd_sigint.c\
 				sig_hd_unset_action.c\
 				sig_pipe_quit.c\
 				sig_pipe_set_action.c\
