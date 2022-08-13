@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 16:07:53 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/12 14:37:49 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/13 16:07:11 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static void	find_and_save_op_index(char *str, char *new_str,
 				*tab = get_pos(expanded_list->expanded, *tab, j, str);
 			if (expanded_list)
 			{
-				j = i + ft_strlen(expanded_list->expanded);
+				j = j + ft_strlen(expanded_list->expanded);
 				expanded_list = expanded_list->next;
 			}
 			while (str[i] && !ft_isspace(str[i]))
