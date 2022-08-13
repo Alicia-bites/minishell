@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 17:02:58 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/12 15:15:45 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/13 14:46:43 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,7 @@ static char	*malloc_output(char *str, int *len)
 		return (str);
 	output = malloc(sizeof(char) * (*len) + 1);
 	if (!output)
-	{
-		ft_panic(MALLOC_FAILURE, __FILE__, NULL);
-		return (NULL);
-	}
+		return (ft_panic_null(MALLOC_FAILURE, __FILE__, NULL));
 	return (output);
 }
 
@@ -92,12 +89,14 @@ char	*trim_quotes_token(char *str, t_list *token_list)
 	dart.j = 0;
 	dart.i = 0;
 	output = malloc_output(str, &len);
-	while (dart.i <= len)
+	while (dart.i < len)
 	{
 		if (!is_heredoc_delimiter(token_list, str))
 			skip_quotes(str, &dart);
 		output[dart.i++] = str[dart.j++];
 	}
 	output[dart.i] = '\0';
+	if (ft_strcmp(str, output))
+		free(str);
 	return (output);
 }
