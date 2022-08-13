@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/13 08:34:26 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/13 08:57:35 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@
 # define HD_BIN_FALSE "/usr/bin/false"
 # define HD_BIN_TRUE "/usr/bin/true"
 # define HD_TMP_DIR "/tmp"
+# define HD_MSG_EOF "here-document delimited by end-of-file"
 
 // BUILTIN CHARSET TO CHECK ARGUMENT STRUCTURE
 # define CHRSET_EXPORT "`~!@#$%^&*()-[]{}|:;\"\'<,>.?/ "
