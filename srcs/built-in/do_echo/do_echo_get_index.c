@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_echo_get_index                                       :+:      :+:    :+:   */
+/*   do_echo_get_index.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/29 12:33:34 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/29 12:35:10 by amarchan         ###   ########.fr       */
+/*   Created: 2022/08/12 14:33:28 by abarrier          #+#    #+#             */
+/*   Updated: 2022/08/12 14:34:40 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,13 @@ static int	invalid_arg(char *str)
 	return (0);
 }
 
-int do_echo_valid_echo_n(t_list *token_list)
+int	do_echo_valid_echo_n(t_list *token_list)
 {
 	if (!token_list)
 		return (1);
-	if ((token_list)->next && 
-		!ft_strcmp(token_list->token, "echo") && token_list->next->toktype == TOK_ARG)
+	if ((token_list)->next
+		&& !ft_strcmp(token_list->token, "echo")
+		&& token_list->next->toktype == TOK_ARG)
 	{
 		token_list = token_list->next;
 		while (token_list && token_list->toktype == TOK_ARG)
@@ -61,15 +62,16 @@ int do_echo_valid_echo_n(t_list *token_list)
 }
 
 //Return 0 if valid echo -n combination
-int do_echo_get_index(t_list *token_list)
+int	do_echo_get_index(t_list *token_list)
 {
 	int	index;
 
 	index = 0;
 	if (!token_list)
 		return (0);
-	if (token_list->next && 
-		!ft_strcmp(token_list->token, "echo") && token_list->next->toktype == TOK_ARG)
+	if (token_list->next
+		&& !ft_strcmp(token_list->token, "echo")
+		&& token_list->next->toktype == TOK_ARG)
 	{
 		token_list = token_list->next;
 		while (token_list && token_list->toktype == TOK_ARG)

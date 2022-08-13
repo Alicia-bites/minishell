@@ -71,9 +71,11 @@ BUILT_EXIT_SRCS	:=	do_exit.c\
 BUILT_EXPORT_SRCS	:=	do_export.c\
 			do_export_create_env.c\
 			do_export_check_exist.c\
+			do_export_check_exist_len_key.c\
 			do_export_check_str.c\
 			do_export_update_env.c\
 			do_export_update_lst.c\
+			do_export_update_lst_do.c\
 			do_export_show.c
 
 BUILT_PWD_SRCS	:=	do_pwd.c\
@@ -86,9 +88,11 @@ BUILT_UNSET_SRCS	:=	do_unset.c\
 			do_unset_update_lst.c\
 
 CMD_SRCS	:=	cmd_check_tok_lst.c\
+			cmd_check_tok_lst_hd.c\
 			cmd_check_tok_lst_redir.c\
 			cmd_create_lst.c\
-			cmd_execution.c\
+			cmd_exec.c\
+			cmd_exec_only_builtin.c\
 			cmd_free.c\
 			cmd_getvalidpath.c\
 			cmd_getvalidpath_null.c\
@@ -130,10 +134,18 @@ FD_SRCS		:=	fd_access.c\
 			fd_open.c\
 			fd_outfile_open.c\
 			fd_pipe.c\
-			fd_pipe_pfd.c
+			fd_pipe_pfd.c\
+			fd_stdinout_backup.c\
+			fd_stdinout_backup_close.c\
+			fd_stdinout_restore.c
 
 HD_SRCS		:=	hd_close.c\
 			hd_create_name.c\
+			hd_create_name_len.c\
+			hd_create_name_reset.c\
+			hd_init.c\
+			hd_init_check_binary.c\
+			hd_init_check_tmp.c\
 			hd_link.c\
 			hd_loop_tok.c\
 			hd_open.c\
@@ -214,6 +226,7 @@ EXP_SRCS	:=	bracket_is_after_dollar.c\
 				set_minus_one_tab.c
 
 SIG_SRCS	:=		sig_hd_set_action.c\
+				sig_hd_sigint.c\
 				sig_hd_unset_action.c\
 				sig_pipe_quit.c\
 				sig_pipe_set_action.c\

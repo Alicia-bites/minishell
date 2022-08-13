@@ -1,40 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hd_write.c                                         :+:      :+:    :+:   */
+/*   fd_stdinout_backup.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/03 17:57:49 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/13 09:01:43 by abarrier         ###   ########.fr       */
+/*   Created: 2022/08/12 17:26:34 by abarrier          #+#    #+#             */
+/*   Updated: 2022/08/12 18:10:41 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	hd_write(t_list *tok, t_cmd *cmd)
+int	fd_stdinout_backup(int *fd_stdin, int *fd_stdout)
 {
-	char	*str;
-	char	*filename;
-	char	*fullcmd[2];
-
-	sig_hd_set_action();
-	filename = HD_BIN_TRUE;
-	fullcmd[0] = HD_BIN_TRUE;
-	fullcmd[1] = NULL;
-	while (1)
+	*fd_stdin = dup(STDIN_FILENO);
+	*fd_stdout = dup(STDOUT_FILENO);
+	if (*fd_stdin < 0 || *fd_stdout < 0)
 	{
-		str = readline("heredoc: ");
-		if (!str || ft_strcmp(str, tok->token) == 0)
-		{
-			close(cmd->hd_r);
-			if (!str)
-				printf("bash: warning: %s\n", HD_MSG_EOF);
-			execve(filename, fullcmd, NULL);
-		}
-		else
-			ft_putendl_fd(str, cmd->hd_r);
-		free(str);
+		fd_stdinout_backup_close(*fd_stdin, *fd_stdout);
+		return (ft_panic_value(-1, __FILE__, ERR_PFD, EXIT_FAILURE));
 	}
 	return (0);
 }

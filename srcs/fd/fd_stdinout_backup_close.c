@@ -1,42 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_check_tok_lst.c                                :+:      :+:    :+:   */
+/*   fd_stdinout_backup_close.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/11 17:20:18 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/13 08:33:25 by abarrier         ###   ########.fr       */
+/*   Created: 2022/08/12 18:02:49 by abarrier          #+#    #+#             */
+/*   Updated: 2022/08/12 18:05:56 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
- * BRIEF:
- * check each token and its next token structure
- *
- * @PARAM:
- * t_list **tok_lst: token list
- *
- * @RETURN:
- * 0: ok
- * >= 0: error
- */
-int	cmd_check_tok_lst(t_list **tok_lst)
+void	fd_stdinout_backup_close(int fd_stdin, int fd_stdout)
 {
-	t_list	*tok;
-
-	tok = *tok_lst;
-	if (!tok)
-		return (ft_panic(-1, __FILE__, ERR_NOTOK));
-	while (tok)
-	{
-		if (cmd_check_tok_lst_redir(tok))
-			return (1);
-		if (cmd_check_tok_lst_hd(tok))
-			return (1);
-		tok = tok->next;
-	}
-	return (0);
+	if (fd_stdin > 2)
+		close(fd_stdin);
+	if (fd_stdout > 2)
+		close(fd_stdout);
 }

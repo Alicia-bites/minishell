@@ -1,42 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_check_tok_lst.c                                :+:      :+:    :+:   */
+/*   do_export_update_lst_do.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/11 17:20:18 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/13 08:33:25 by abarrier         ###   ########.fr       */
+/*   Created: 2022/08/12 14:41:38 by abarrier          #+#    #+#             */
+/*   Updated: 2022/08/12 14:58:40 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
- * BRIEF:
- * check each token and its next token structure
- *
- * @PARAM:
- * t_list **tok_lst: token list
- *
- * @RETURN:
- * 0: ok
- * >= 0: error
- */
-int	cmd_check_tok_lst(t_list **tok_lst)
+int	do_export_update_lst_do(t_ulist **env_lst, t_ulist *obj, char *str,
+		int sep_pos)
 {
-	t_list	*tok;
+	int	res;
 
-	tok = *tok_lst;
-	if (!tok)
-		return (ft_panic(-1, __FILE__, ERR_NOTOK));
-	while (tok)
+	res = 0;
+	if (obj)
 	{
-		if (cmd_check_tok_lst_redir(tok))
-			return (1);
-		if (cmd_check_tok_lst_hd(tok))
-			return (1);
-		tok = tok->next;
+		if (do_export_update_env(obj, str, sep_pos) != 0)
+			res = 1;
 	}
-	return (0);
+	else if (do_export_create_env(env_lst, str) != 0)
+			res = 1;
+	return (res);
 }

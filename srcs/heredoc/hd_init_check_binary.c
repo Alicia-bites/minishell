@@ -1,42 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_check_tok_lst.c                                :+:      :+:    :+:   */
+/*   hd_init_check_binary.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/11 17:20:18 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/13 08:33:25 by abarrier         ###   ########.fr       */
+/*   Created: 2022/08/13 10:53:50 by abarrier          #+#    #+#             */
+/*   Updated: 2022/08/13 11:05:21 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
- * BRIEF:
- * check each token and its next token structure
- *
- * @PARAM:
- * t_list **tok_lst: token list
- *
- * @RETURN:
- * 0: ok
- * >= 0: error
- */
-int	cmd_check_tok_lst(t_list **tok_lst)
+int	hd_init_check_binary(void)
 {
-	t_list	*tok;
-
-	tok = *tok_lst;
-	if (!tok)
-		return (ft_panic(-1, __FILE__, ERR_NOTOK));
-	while (tok)
-	{
-		if (cmd_check_tok_lst_redir(tok))
-			return (1);
-		if (cmd_check_tok_lst_hd(tok))
-			return (1);
-		tok = tok->next;
-	}
+	if (fd_access(HD_BIN_FALSE, ACCESS_X))
+		return (EXIT_FAILURE);
+	if (fd_access(HD_BIN_TRUE, ACCESS_X))
+		return (EXIT_FAILURE);
 	return (0);
 }

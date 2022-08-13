@@ -1,42 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_check_tok_lst.c                                :+:      :+:    :+:   */
+/*   hd_create_name_reset.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/11 17:20:18 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/13 08:33:25 by abarrier         ###   ########.fr       */
+/*   Created: 2022/08/13 09:23:36 by abarrier          #+#    #+#             */
+/*   Updated: 2022/08/13 09:24:59 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
- * BRIEF:
- * check each token and its next token structure
- *
- * @PARAM:
- * t_list **tok_lst: token list
- *
- * @RETURN:
- * 0: ok
- * >= 0: error
- */
-int	cmd_check_tok_lst(t_list **tok_lst)
+void	hd_create_name_reset(t_cmd *cmd)
 {
-	t_list	*tok;
-
-	tok = *tok_lst;
-	if (!tok)
-		return (ft_panic(-1, __FILE__, ERR_NOTOK));
-	while (tok)
+	if (cmd->hd_name)
 	{
-		if (cmd_check_tok_lst_redir(tok))
-			return (1);
-		if (cmd_check_tok_lst_hd(tok))
-			return (1);
-		tok = tok->next;
+		unlink(cmd->hd_name);
+		free(cmd->hd_name);
+		cmd->hd_name = NULL;
 	}
-	return (0);
 }

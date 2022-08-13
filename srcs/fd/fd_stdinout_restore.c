@@ -1,42 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_check_tok_lst.c                                :+:      :+:    :+:   */
+/*   fd_stdinout_restore.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/11 17:20:18 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/13 08:33:25 by abarrier         ###   ########.fr       */
+/*   Created: 2022/08/12 17:39:44 by abarrier          #+#    #+#             */
+/*   Updated: 2022/08/13 11:54:11 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
- * BRIEF:
- * check each token and its next token structure
- *
- * @PARAM:
- * t_list **tok_lst: token list
- *
- * @RETURN:
- * 0: ok
- * >= 0: error
- */
-int	cmd_check_tok_lst(t_list **tok_lst)
+int	fd_stdinout_restore(t_cmd *cmd, int fd_stdin, int fd_stdout)
 {
-	t_list	*tok;
+	int	err_no;
 
-	tok = *tok_lst;
-	if (!tok)
-		return (ft_panic(-1, __FILE__, ERR_NOTOK));
-	while (tok)
+	err_no = 0;
+	if (cmd->fd_r > 2)
 	{
-		if (cmd_check_tok_lst_redir(tok))
-			return (1);
-		if (cmd_check_tok_lst_hd(tok))
-			return (1);
-		tok = tok->next;
+		dup2(fd_stdin, STDIN_FILENO);
+		cmd->fd_r = FD_NOT_INIT;
 	}
-	return (0);
+	if (cmd->fd_w > 2)
+	{
+		dup2(fd_stdout, STDOUT_FILENO);
+		cmd->fd_w = FD_NOT_INIT;
+	}
+	if (errno)
+	{
+		err_no = errno;
+		ft_panic(-1, __FILE__, ERR_PFD);
+	}
+	fd_stdinout_backup_close(fd_stdin, fd_stdout);
+	if (err_no)
+		return (EXIT_FAILURE);
+	else
+		return (0);
 }

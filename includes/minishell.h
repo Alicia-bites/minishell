@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/12 15:39:50 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/13 12:06:37 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@
 # define HD_BIN_FALSE "/usr/bin/false"
 # define HD_BIN_TRUE "/usr/bin/true"
 # define HD_TMP_DIR "/tmp"
+# define HD_MSG_EOF "here-document delimited by end-of-file"
 
 // BUILTIN CHARSET TO CHECK ARGUMENT STRUCTURE
 # define CHRSET_EXPORT "`~!@#$%^&*()-[]{}|:;\"\'<,>.?/ "
@@ -269,11 +270,14 @@ void				do_exit_clear(t_ulist **envp, t_ulist **cmd_lst, t_cmd *cmd, char *err_m
 //do_export
 int					do_export(t_ulist **env_lst, t_cmd *cmd);
 int					do_export_create_env(t_ulist **list, char *str);
-t_ulist				*do_export_check_exist(t_ulist **envp, char *str,
+t_ulist				*do_export_check_exist(t_ulist **env_lst, char *str,
+						int sep_pos);
+size_t					do_export_check_exist_len_key(char *str,
 						int sep_pos);
 int					do_export_check_str(char *str, int sep_pos);
 int					do_export_update_env(t_ulist *obj, char *str, int sep_pos);
-int					do_export_update_lst(t_ulist **envp, char **str);
+int					do_export_update_lst(t_ulist **env_lst, char **str);
+int					do_export_update_lst_do(t_ulist **env_lst, t_ulist *obj, char *str, int sep_pos);
 void				do_export_show(void *content);
 
 //do_pwd
@@ -374,6 +378,7 @@ int					space_after_quote(t_chartype *input_list, int end, int quote);
 
 //signal_handling
 int					sig_hd_set_action(void);
+void				sig_hd_sigint(int signum);
 int					sig_hd_unset_action(void);
 void				sig_pipe_quit(int signum);
 int					sig_pipe_set_action(void);
@@ -401,10 +406,12 @@ void				env_show(void *content);
 
 //command list
 int					cmd_check_tok_lst(t_list **tok_lst);
+int					cmd_check_tok_lst_hd(t_list *tok);
 int					cmd_check_tok_lst_redir(t_list *tok);
 int					cmd_create_lst(t_list **tok_lst, t_ulist **env_lst,
 						t_ulist **cmd_lst);
-int					cmd_execution(t_ulist **cmd_lst, int n_cmd);
+int					cmd_exec(t_ulist **cmd_lst, int n_cmd);
+int					cmd_exec_only_builtin(t_ulist **cmd_lst, t_cmd *cmd);
 void				cmd_free(void *content);
 char				*cmd_getvalidpath(t_cmd *cmd);
 char				*cmd_getvalidpath_null(t_cmd *cmd);
@@ -437,16 +444,23 @@ int					fd_outfile_open(t_cmd *cmd, char *fd, int mode);
 void				fd_pipe(t_ulist **cmd_lst);
 void				fd_pipe_pfd(t_ulist *obj, t_cmd *cmd1, t_cmd *cmd2,
 						int n_pipe);
+int					fd_stdinout_backup(int *fd_stdin, int *fd_stdout);
+void				fd_stdinout_backup_close(int fd_stdin, int fd_stdout);
+int					fd_stdinout_restore(t_cmd *cmd, int fd_stdin, int fd_stdout);
 
 //heredoc
 int					hd_close(t_cmd *cmd);
 char				*hd_create_name(t_list *tok, t_cmd *cmd);
+void				hd_create_name_len(char *index, size_t *len_index, size_t *len_smb, size_t *len_tmp);
+void				hd_create_name_reset(t_cmd *cmd);
+int					hd_init(t_list *tok, t_cmd *cmd, long long *hd_exit);
+int					hd_init_check_binary(void);
+int					hd_init_check_tmp(void);
 int					hd_link(t_list **tok_lst, t_ulist **cmd_lst);
 t_list				*hd_loop_tok(t_list *tok, t_cmd *cmd, long long *hd_exit);
 int					hd_open(t_cmd *cmd);
 size_t				hd_size(t_list **tok_lst);
-//int					hd_loop_tok_type(t_list *tok, t_cmd *cmd,
-int					hd_wait(int pid);
+int					hd_wait(int pid, long long *hd_exit);
 int					hd_write(t_list *tok, t_cmd *cmd);
 
 //pipe

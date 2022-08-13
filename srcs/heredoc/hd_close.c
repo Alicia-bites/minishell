@@ -6,7 +6,7 @@
 /*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 19:13:52 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/04 19:23:50 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/13 09:17:41 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	hd_close(t_cmd *cmd)
 {
-	int res;
+	int	res;
 
 	res = 0;
 	if (cmd->hd_r > 2)
