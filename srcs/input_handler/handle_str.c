@@ -28,6 +28,7 @@ int	in_ascii(char *str)
 
 void	handle_str(char **str, t_list **token_list, int *err, t_ulist **envp)
 {
+	extern t_global	g_msl;
 	t_ulist	**cmd_list;
 
 	if (!in_ascii(*str))
@@ -46,6 +47,7 @@ void	handle_str(char **str, t_list **token_list, int *err, t_ulist **envp)
 	}
 	if (ft_parse(*str, token_list, err, *envp))
 	{
+		g_msl.exit = 2; //TODO: get ft_parse return value to set this variable correctly
 		ft_lstclear(token_list);
 		ft_lst_free(cmd_list, &cmd_free);
 		return ;
