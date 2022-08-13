@@ -6,11 +6,19 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:49:49 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/12 14:31:59 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/13 16:11:10 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static void	clean_up(t_chartype **input_list, int **tab)
+{
+	if (*input_list)
+		free(*input_list);
+	if (*tab)
+		free(*tab);
+}
 
 int	ft_parse(char *str, t_list **token_list, int *err, t_ulist *envp)
 {
@@ -35,6 +43,6 @@ int	ft_parse(char *str, t_list **token_list, int *err, t_ulist *envp)
 	if (ft_strcmp(str, tmp))
 		free(tmp);
 	tokenize(input_list, token_list, tab);
-	free(input_list);
+	clean_up(&input_list, &tab);
 	return (*err);
 }
