@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 17:02:58 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/13 14:46:43 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/13 17:04:29 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,20 @@ static char	*malloc_output(char *str, int *len)
 	return (output);
 }
 
-static int	is_heredoc_delimiter(t_list *token_list, char *str)
+static int	is_heredoc_separator(t_list *token_list)
 {
 	t_list	*iterator;
 
 	if (!token_list)
 		return (0);
 	iterator = token_list;
-	while (iterator && strcmp(iterator->token, str))
+	while (iterator->next)
 		iterator = iterator->next;
-	if (iterator && iterator->prev && !ft_strcmp(iterator->prev->token, "<<"))
+	if (iterator && !ft_strcmp(iterator->token, "<<"))
+		return (1);
+	if (iterator && iterator->prev
+		&& !only_space_in_str(iterator->token)
+			&& !ft_strcmp(iterator->prev->token, "<<"))
 		return (1);
 	return (0);
 }
@@ -91,7 +95,7 @@ char	*trim_quotes_token(char *str, t_list *token_list)
 	output = malloc_output(str, &len);
 	while (dart.i < len)
 	{
-		if (!is_heredoc_delimiter(token_list, str))
+		if (!is_heredoc_separator(token_list))
 			skip_quotes(str, &dart);
 		output[dart.i++] = str[dart.j++];
 	}
