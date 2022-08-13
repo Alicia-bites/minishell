@@ -6,14 +6,13 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 14:56:06 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/12 15:18:42 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/13 12:20:16 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
- * @BRIEF:
+/*@BRIEF:
  * ignoring int signal behaviour
  * and ignoring quit signal behaviour
  *

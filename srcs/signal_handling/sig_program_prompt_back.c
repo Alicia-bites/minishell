@@ -6,14 +6,13 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 14:47:26 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/12 15:18:51 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/13 12:20:29 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
- * @BRIEF:
+/* @BRIEF:
  * do a carriage return and replace the line to prompt back
  *
  * @PARAM:
