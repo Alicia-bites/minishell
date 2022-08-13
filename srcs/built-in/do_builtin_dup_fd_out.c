@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:09:40 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/12 09:57:19 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/12 14:20:04 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	do_builtin_dup_fd_out(t_ulist **cmd_lst, t_cmd *cmd)
 	else if (cmd->fd_w >= 0 && cmd->pfd_w >= 0)
 		dup2(cmd->fd_w, STDOUT_FILENO);
 	else if (cmd->fd_w < 0 && cmd->pfd_w < 0)
-		errno = do_builtin_exit(EXIT_FAILURE);
+		errno = EXIT_FAILURE;
 	if (errno)
 		return (do_builtin_exit(errno));
 	else
