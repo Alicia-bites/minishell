@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 12:19:00 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/11 17:31:40 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/13 08:30:08 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@
 # define ERR_NOTOK "first no token address"
 # define ERR_SIGACTION "setting up sigaction failed"
 # define ERR_TOK_REDIR "no file after redirection"
+# define ERR_TOK_HERESEP "no heredoc separator after redirection"
 
 #endif

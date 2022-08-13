@@ -1,42 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_check_tok_lst.c                                :+:      :+:    :+:   */
+/*   cmd_check_tok_lst_hd.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/11 17:20:18 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/13 08:33:25 by abarrier         ###   ########.fr       */
+/*   Created: 2022/08/13 08:25:50 by abarrier          #+#    #+#             */
+/*   Updated: 2022/08/13 08:32:59 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
- * BRIEF:
- * check each token and its next token structure
+/* @BRIEF:
+ * check if active token is a redirection token and if its next one is a
+ * heredoc separator token
  *
  * @PARAM:
- * t_list **tok_lst: token list
+ * t_list *tok_lst: token node
  *
  * @RETURN:
  * 0: ok
  * >= 0: error
  */
-int	cmd_check_tok_lst(t_list **tok_lst)
+int	cmd_check_tok_lst_hd(t_list *tok)
 {
-	t_list	*tok;
+	t_list	*next;
 
-	tok = *tok_lst;
-	if (!tok)
-		return (ft_panic(-1, __FILE__, ERR_NOTOK));
-	while (tok)
+	next = NULL;
+	if (tok->next)
+		next = tok->next;
+	if (tok->toktype == TOK_DL_REDIR)
 	{
-		if (cmd_check_tok_lst_redir(tok))
-			return (1);
-		if (cmd_check_tok_lst_hd(tok))
-			return (1);
-		tok = tok->next;
+		if (!next || next->toktype != TOK_HERESEP)
+			return (ft_panic(-1, __FILE__, ERR_TOK_HERESEP));
 	}
 	return (0);
 }
