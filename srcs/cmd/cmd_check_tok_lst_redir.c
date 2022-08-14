@@ -6,14 +6,13 @@
 /*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 17:27:16 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/13 08:29:03 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/13 16:51:36 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
- * BRIEF:
+/* @BRIEF:
  * check if active token is a redirection token and if its next one is a
  * file token
  *
@@ -22,7 +21,7 @@
  *
  * @RETURN:
  * 0: ok
- * >= 0: error
+ * > 0: error
  */
 int	cmd_check_tok_lst_redir(t_list *tok)
 {

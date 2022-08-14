@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_minishell.c                                   :+:      :+:    :+:   */
+/*   hd_write_mode.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/13 16:24:35 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/14 08:52:51 by abarrier         ###   ########.fr       */
+/*   Created: 2022/08/14 09:37:46 by abarrier          #+#    #+#             */
+/*   Updated: 2022/08/14 09:54:58 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	exit_minishell(t_list **token_list, t_ulist **envp)
+int	hd_write_mode(t_list *tok)
 {
-	extern t_global	g_msl;
-
-	rl_clear_history();
-	ft_lstclear(token_list);
-	ft_lst_free(envp, &env_free);
-	printf("exit\n");
-	exit(g_msl.exit);
+	if (ft_strchrset_include(tok->token, HD_CHRSET))
+		return (HD_EXP);
+	else
+		return (HD_NO_EXP);
 }

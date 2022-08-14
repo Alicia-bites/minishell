@@ -6,14 +6,13 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:23:34 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/02 16:54:01 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/13 16:45:12 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
- * @BRIEF:
+/* @BRIEF:
  * loop through all child process to get their exit status and
  * return the exit status of the last command
  *

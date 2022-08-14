@@ -6,7 +6,7 @@
 /*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 17:36:20 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/11 22:50:58 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/14 08:38:22 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 char	**env_char_init(size_t len_env_lst)
 {
 	char	**envp;
-	int		i;
+	size_t	i;
 
 	envp = (char **)malloc(sizeof(char *) * (len_env_lst + 1));
 	if (!envp)

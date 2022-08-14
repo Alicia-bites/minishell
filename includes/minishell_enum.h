@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 12:22:31 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/29 12:31:15 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/14 09:54:20 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,11 @@ typedef enum e_var_view
 	VAR_ENV,
 	VAR_EXP
 }	t_var_view;
+
+typedef enum e_hd_mode
+{
+	HD_NO_EXP,
+	HD_EXP
+}	t_hd_mode;
 
 #endif

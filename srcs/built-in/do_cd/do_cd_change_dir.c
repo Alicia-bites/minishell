@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 14:20:55 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/29 15:48:14 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/14 08:16:52 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	do_cd_change_dir(t_ulist **envp, t_cmd *cmd)
 {
-	t_env	*env;
 	char	*oldpwd;
 
 	oldpwd = do_pwd_getpath();

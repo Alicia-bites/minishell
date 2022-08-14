@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_minishell.c                                   :+:      :+:    :+:   */
+/*   hd_write_expansion.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/13 16:24:35 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/14 08:52:51 by abarrier         ###   ########.fr       */
+/*   Created: 2022/08/14 10:10:45 by abarrier          #+#    #+#             */
+/*   Updated: 2022/08/14 10:12:10 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	exit_minishell(t_list **token_list, t_ulist **envp)
+char	*hd_write_expansion(char *str)
 {
-	extern t_global	g_msl;
+	char *output;
 
-	rl_clear_history();
-	ft_lstclear(token_list);
-	ft_lst_free(envp, &env_free);
-	printf("exit\n");
-	exit(g_msl.exit);
+	printf("ALICIA's EXPANSIONS SKILLS\n");
+	output = str; // In waiting to do the expansion
+	return (output);
 }

@@ -1,41 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_check_tok_lst.c                                :+:      :+:    :+:   */
+/*   hd_write_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/11 17:20:18 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/13 16:51:23 by abarrier         ###   ########.fr       */
+/*   Created: 2022/08/03 17:57:49 by abarrier          #+#    #+#             */
+/*   Updated: 2022/08/14 10:16:29 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/* @BRIEF:
- * check each token and its next token structure
- *
- * @PARAM:
- * t_list **tok_lst: token list
- *
- * @RETURN:
- * 0: ok
- * > 0: error
- */
-int	cmd_check_tok_lst(t_list **tok_lst)
+void	hd_write_str(t_list *tok, t_cmd *cmd, char **fullcmd, int mode)
 {
-	t_list	*tok;
+	char	*str;
 
-	tok = *tok_lst;
-	if (!tok)
-		return (ft_panic(-1, __FILE__, ERR_NOTOK));
-	while (tok)
+	while (1)
 	{
-		if (cmd_check_tok_lst_redir(tok))
-			return (1);
-		if (cmd_check_tok_lst_hd(tok))
-			return (1);
-		tok = tok->next;
+		str = readline(HD_PREFIX);
+		if (!str || ft_strcmp(str, tok->token) == 0)
+		{
+			close(cmd->hd_r);
+			if (!str)
+				printf("%s: warning: %s\n", SMB_NAME,
+					HD_MSG_EOF);
+			execve(fullcmd[0], fullcmd, NULL);
+		}
+		else
+		{
+			if (mode == HD_EXP)
+				str = hd_write_expansion(str);
+			ft_putendl_fd(str, cmd->hd_r);
+		}
+		free(str);
 	}
-	return (0);
 }

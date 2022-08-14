@@ -10,7 +10,8 @@ NORMINETTE_BIN 	:= 	norminette
 NM_BIN		:=	nm
 CC		:=	cc
 #CFLAGS		:=	-MMD -Wall -Wextra -Werror
-CFLAGS		:=	-MMD
+CFLAGS		:=	-MMD -Wall -Wextra
+#CFLAGS		:=	-MMD
 #CFLAGSADD	:=	-g3 -fsanitize=address
 CFLAGSADD	:=	-g3
 
@@ -151,8 +152,10 @@ HD_SRCS		:=	hd_close.c\
 			hd_open.c\
 			hd_size.c\
 			hd_wait.c\
-			hd_write.c
-#			hd_loop_tok_type.c
+			hd_write.c\
+			hd_write_expansion.c\
+			hd_write_mode.c\
+			hd_write_str.c
 
 PIPE_SRCS	:=	pipe_close_pfd.c\
 			pipe_cmd.c\

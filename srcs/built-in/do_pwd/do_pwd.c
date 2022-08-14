@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 18:19:28 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/29 12:54:46 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/14 08:30:33 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
  *
  */
-int	do_pwd(t_ulist **envp, t_cmd *cmd)
+int	do_pwd(t_cmd *cmd)
 {
 	char	*path;
 	int		internal_error;
@@ -27,7 +27,7 @@ int	do_pwd(t_ulist **envp, t_cmd *cmd)
 	{
 		if (cmd->fullcmd[1][0] == ARG_DEL)
 			return (ft_panic_value(-1, __FILE__, ERR_OPT_INVAL, 2));
-		internal_error = do_pwd_loop_arg(envp, &cmd->fullcmd[1]);
+		internal_error = do_pwd_loop_arg(&cmd->fullcmd[1]);
 		if (internal_error)
 			return (internal_error);
 	}
