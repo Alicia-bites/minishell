@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   hd_write.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:57:49 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/14 10:15:51 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/14 16:06:32 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	hd_write(t_list *tok, t_cmd *cmd)
+void	hd_write(t_list *tok, t_cmd *cmd, t_ulist *envp)
 {
 	char	*fullcmd[2];
 	int		mode;
@@ -21,5 +21,5 @@ void	hd_write(t_list *tok, t_cmd *cmd)
 	fullcmd[0] = HD_BIN_TRUE;
 	fullcmd[1] = NULL;
 	mode = hd_write_mode(tok);
-	hd_write_str(tok, cmd, fullcmd, mode);
+	hd_write_str(tok, cmd, fullcmd, mode, envp);
 }

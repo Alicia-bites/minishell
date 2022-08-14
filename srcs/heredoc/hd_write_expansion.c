@@ -6,13 +6,13 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 10:10:45 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/14 15:54:19 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/14 16:06:12 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*hd_write_expansion(char *str)
+char	*hd_write_expansion(char *str, t_ulist *envp)
 {
 	char		*output;
 	t_exp_arg	exp_arg;

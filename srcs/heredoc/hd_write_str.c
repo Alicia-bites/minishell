@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   hd_write_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:57:49 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/14 10:16:29 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/14 16:06:06 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	hd_write_str(t_list *tok, t_cmd *cmd, char **fullcmd, int mode)
+void	hd_write_str(t_list *tok, t_cmd *cmd, char **fullcmd, int mode, t_ulist *envp)
 {
 	char	*str;
 
@@ -30,7 +30,7 @@ void	hd_write_str(t_list *tok, t_cmd *cmd, char **fullcmd, int mode)
 		else
 		{
 			if (mode == HD_EXP)
-				str = hd_write_expansion(str);
+				str = hd_write_expansion(str, envp);
 			ft_putendl_fd(str, cmd->hd_r);
 		}
 		free(str);
