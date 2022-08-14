@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:09:40 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/12 14:20:04 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/14 08:15:48 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
  * POSSIBLE INFILE = -1
  * EXIT FAILURE
  */
-int	do_builtin_dup_fd_out(t_ulist **cmd_lst, t_cmd *cmd)
+int	do_builtin_dup_fd_out(t_cmd *cmd)
 {
 	errno = 0;
 	if (cmd->fd_w == FD_NOT_INIT && cmd->pfd_w == FD_NOT_INIT)

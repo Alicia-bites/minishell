@@ -6,14 +6,13 @@
 /*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 16:15:26 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/02 16:49:28 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/13 16:44:45 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
- * @BRIEF:
+/* @BRIEF:
  * check how last command exited and print a carriage return in case of 
  * then return expected exit value
  *

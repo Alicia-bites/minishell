@@ -6,14 +6,13 @@
 /*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 15:56:59 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/02 16:45:25 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/13 16:44:57 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/*
- * @BRIEF:
+/* @BRIEF:
  * check if command child exited by a signal and return a value
  *
  * @PARAM:

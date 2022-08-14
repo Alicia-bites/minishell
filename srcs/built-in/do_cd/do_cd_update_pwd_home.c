@@ -6,14 +6,13 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:03:36 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/29 14:46:37 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/13 16:41:12 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/**
- * @BRIEF:
+/* @BRIEF:
  * update PWD and OLDPWD environment variable value
  *
  * @PARAM:
@@ -22,8 +21,8 @@
  * char *oldpwd: string of the old pwd value
  *
  * @RETURN (int)
- * 0: Ok
- *  >= 0: error
+ * 0: ok
+ * >= 0: error
  */
 int	do_cd_update_pwd_home(t_ulist **envp, t_ulist *obj, char *oldpwd)
 {

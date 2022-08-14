@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 15:51:54 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/12 14:37:05 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/14 08:26:06 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_list	*do_echo_remove_quotes(t_cmd *cmd)
 	return (cmd->tok_node);
 }
 
-int	do_echo(t_ulist **envp, t_cmd *cmd)
+int	do_echo(t_cmd *cmd)
 {
 	int	res;
 	int	index;
@@ -54,7 +54,7 @@ int	do_echo(t_ulist **envp, t_cmd *cmd)
 		cmd->tok_node = do_echo_remove_quotes(cmd);
 		ft_free_ptrptr_str(cmd->fullcmd);
 		cmd_init_prop_fullcmd(cmd->tok_node, cmd);
-		res += do_echo_n(envp, cmd, index);
+		res += do_echo_n(cmd, index);
 	}
 	if (!do_echo_valid_echo_n((cmd->tok_node)))
 		res += printf("\n");

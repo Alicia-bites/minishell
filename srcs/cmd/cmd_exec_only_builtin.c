@@ -6,7 +6,7 @@
 /*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 16:05:20 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/13 11:37:08 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/14 08:34:39 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ int	cmd_exec_only_builtin(t_ulist **cmd_lst, t_cmd *cmd)
 
 	if (fd_stdinout_backup(&fd_stdin, &fd_stdout))
 		return (EXIT_FAILURE);
-	if (do_builtin_dup_fd_in(cmd_lst, cmd))
+	if (do_builtin_dup_fd_in(cmd))
 	{
 		fd_stdinout_backup_close(fd_stdin, fd_stdout);
 		return (EXIT_FAILURE);
 	}
-	if (do_builtin_dup_fd_out(cmd_lst, cmd))
+	if (do_builtin_dup_fd_out(cmd))
 	{
 		if (cmd->fd_r > 2)
 			dup2(fd_stdin, STDIN_FILENO);

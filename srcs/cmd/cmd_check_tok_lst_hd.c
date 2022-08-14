@@ -6,7 +6,7 @@
 /*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 08:25:50 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/13 08:32:59 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/13 16:51:31 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
  *
  * @RETURN:
  * 0: ok
- * >= 0: error
+ * > 0: error
  */
 int	cmd_check_tok_lst_hd(t_list *tok)
 {

@@ -6,12 +6,21 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:10:12 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/04 18:16:03 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/13 16:53:07 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+/* @BRIEF:
+ * display content of command node structure by casting the content to a t_cmd
+ *
+ * @PARAM:
+ * void *content: content of the command node
+ *
+ * @RETURN:
+ * N/A
+ */
 void	cmd_show(void *content)
 {
 	t_cmd	*cmd;

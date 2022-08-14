@@ -6,7 +6,7 @@
 /*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 14:33:28 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/12 14:34:40 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/14 08:18:41 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,6 @@ int	do_echo_valid_echo_n(t_list *token_list)
 //Return 0 if valid echo -n combination
 int	do_echo_get_index(t_list *token_list)
 {
-	int	index;
-
-	index = 0;
 	if (!token_list)
 		return (0);
 	if (token_list->next

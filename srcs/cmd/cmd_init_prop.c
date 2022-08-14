@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 17:08:21 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/29 15:52:38 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/14 08:37:01 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_list	*cmd_init_prop(t_list *tok, t_cmd *cmd)
 	obj = tok;
 	cmd->tok_node = obj;
 	cmd->toktype = obj->toktype;
-	cmd->n_arg = cmd_init_prop_n_arg(obj, cmd);
+	cmd->n_arg = cmd_init_prop_n_arg(obj);
 	if (cmd->n_arg > 0)
 		obj = cmd_init_prop_fullcmd(obj, cmd);
 	else

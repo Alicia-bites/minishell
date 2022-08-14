@@ -6,13 +6,13 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 16:24:35 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/13 15:22:55 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/14 08:52:51 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	exit_minishell(t_list **token_list, int *err, t_ulist **envp)
+void	exit_minishell(t_list **token_list, t_ulist **envp)
 {
 	extern t_global	g_msl;
 

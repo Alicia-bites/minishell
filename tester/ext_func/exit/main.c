@@ -1,30 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_pwd_loop_arg.c                                  :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/28 17:37:41 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/14 08:28:49 by abarrier         ###   ########.fr       */
+/*   Created: 2022/07/13 14:20:34 by abarrier          #+#    #+#             */
+/*   Updated: 2022/07/26 17:41:09 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include <unistd.h>
+#include <stdio.h>
+#include <fcntl.h>
+#include <string.h>
+#include <errno.h>
 
-int	do_pwd_loop_arg(char **str)
+#define SEP_P "####################"
+
+int	main(int argc, char **argv, char **envp)
 {
-	int		i;
-	int		res;
+	(void)argc;
+	(void)argv;
+	(void)envp;
+
+	int	i;
+	char	*err_msg;
 
 	i = 0;
-	res = 0;
-	while (str[i])
+	err_msg = NULL;
+	while (i <= 255)
 	{
-		res = do_pwd_check_str(str[i]);
-		if (res)
-			return (res);
+		err_msg = strerror(i);
+		printf("error code: %d\tmsg: %s\n", i, err_msg);
 		i++;
+		printf("%s\n", SEP_P);
 	}
-	return (0);
+	return (1);
 }

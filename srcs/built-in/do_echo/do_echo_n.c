@@ -6,13 +6,13 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 09:56:41 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/12 14:35:49 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/14 08:20:48 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	do_echo_n(t_ulist **envp, t_cmd *cmd, int index)
+int	do_echo_n(t_cmd *cmd, int index)
 {
 	int	res;
 	int	i;
@@ -24,7 +24,7 @@ int	do_echo_n(t_ulist **envp, t_cmd *cmd, int index)
 	if (cmd->n_arg == 1)
 		return (0);
 	i = index - cmd->tok_node->index;
-	while (i < (cmd->n_arg -1))
+	while (i < (int)(cmd->n_arg -1))
 	{
 		res += printf("%s ", cmd->fullcmd[i]);
 		i++;
