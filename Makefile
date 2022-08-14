@@ -33,6 +33,7 @@ CMD_PATH				:=	cmd
 ENV_PATH				:=	env
 FD_PATH					:=	fd
 HD_PATH					:=	heredoc
+EXP_HD_PATH				:=	do_expansion_heredoc
 PIPE_PATH				:=	pipe
 INPUT_HANDLER_PATH		:=	input_handler
 LEX_PATH				:=	lexer
@@ -156,6 +157,11 @@ HD_SRCS		:=	hd_close.c\
 			hd_write_expansion.c\
 			hd_write_mode.c\
 			hd_write_str.c
+
+EXP_HD_SRCS	:=	expand_dollar_heredoc.c\
+				find_expansions_heredoc.c\
+				get_expanded_heredoc.c\
+				insert_expansions_heredoc.c
 
 PIPE_SRCS	:=	pipe_close_pfd.c\
 			pipe_cmd.c\
@@ -315,6 +321,7 @@ SRCS		:=	main.c\
 				$(EXEC_SRCS)\
 				$(FD_SRCS)\
 				$(HD_SRCS)\
+				$(EXP_HD_SRCS)\
 				$(PIPE_SRCS)\
 				$(INPUT_HANDLER)\
 				$(LEX_SRCS)\
@@ -344,6 +351,7 @@ vpath %.c $(SRCS_PATH)\
 	$(SRCS_PATH)/$(EXEC_PATH)\
 	$(SRCS_PATH)/$(FD_PATH)\
 	$(SRCS_PATH)/$(HD_PATH)\
+	$(SRCS_PATH)/$(HD_PATH)/$(EXP_HD_PATH)\
 	$(SRCS_PATH)/$(PIPE_PATH)\
 	$(SRCS_PATH)/$(LEX_PATH)\
 	$(SRCS_PATH)/$(INPUT_HANDLER_PATH)\

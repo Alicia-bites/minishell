@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/14 11:11:33 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/14 15:24:36 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,8 +214,7 @@ int					get_full_size(t_expanded *expanded_list);
 void				get_expanded(t_exp_arg exp_arg, t_expanded **expanded_list, int i, int *varsize);
 int					handle_dollar_brackets(t_exp_arg exp_arg, int i,
 						t_expanded **expanded_list, int *index);
-int					handle_dollar_int(t_exp_arg exp_arg, int i, t_expanded **expanded_list,
-						int *index);
+int					handle_dollar_int(t_expanded **expanded_list, int *index);
 char				*handle_dollar_int_expanded(void);
 int 				handle_dollar_name(t_exp_arg exp_arg, int i,
 						t_expanded **expanded_list, int *index);
@@ -299,7 +298,7 @@ void				delete_spaces(t_list **token_list);
 int					seen_equal_last(char *token);
 void				tokenize(t_chartype *input_list, t_list **token_list, int *tab);
 char 				*trim_quotes(char *str);
-char 				*trim_quotes_token(char *str, t_list *token_list);
+char 				*trim_quotes_token(char *str);
 
 //give_chartype
 int					get_chartype(t_chartype **input_list, int *tab);
@@ -451,6 +450,11 @@ void				fd_stdinout_backup_close(int fd_stdin, int fd_stdout);
 int					fd_stdinout_restore(t_cmd *cmd, int fd_stdin, int fd_stdout);
 
 //heredoc
+char				*expand_dollar_heredoc(t_exp_arg exp_arg, int **tab);
+void				find_expansions_heredoc(t_exp_arg exp_arg, t_expanded **expanded_list,
+						int *full_size);
+void				get_expanded_heredoc(t_exp_arg exp_arg, t_expanded **expanded_list,
+						int i, int *varsize);
 int					hd_close(t_cmd *cmd);
 char				*hd_create_name(t_list *tok, t_cmd *cmd);
 void				hd_create_name_len(char *index, size_t *len_index, size_t *len_smb, size_t *len_tmp);
@@ -467,6 +471,8 @@ void				hd_write(t_list *tok, t_cmd *cmd);
 char				*hd_write_expansion(char *str);
 int					hd_write_mode(t_list *tok);
 void				hd_write_str(t_list *tok, t_cmd *cmd, char **fullcmd, int mode);
+char				*insert_expansions_heredoc(int full_size, t_expanded *expanded_list,
+						char *str);
 
 //pipe
 void				pipe_close_pfd(void *content);
