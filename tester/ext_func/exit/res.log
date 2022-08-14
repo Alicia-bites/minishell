@@ -1,0 +1,512 @@
+error code: 0	msg: Success
+####################
+error code: 1	msg: Operation not permitted
+####################
+error code: 2	msg: No such file or directory
+####################
+error code: 3	msg: No such process
+####################
+error code: 4	msg: Interrupted system call
+####################
+error code: 5	msg: Input/output error
+####################
+error code: 6	msg: No such device or address
+####################
+error code: 7	msg: Argument list too long
+####################
+error code: 8	msg: Exec format error
+####################
+error code: 9	msg: Bad file descriptor
+####################
+error code: 10	msg: No child processes
+####################
+error code: 11	msg: Resource temporarily unavailable
+####################
+error code: 12	msg: Cannot allocate memory
+####################
+error code: 13	msg: Permission denied
+####################
+error code: 14	msg: Bad address
+####################
+error code: 15	msg: Block device required
+####################
+error code: 16	msg: Device or resource busy
+####################
+error code: 17	msg: File exists
+####################
+error code: 18	msg: Invalid cross-device link
+####################
+error code: 19	msg: No such device
+####################
+error code: 20	msg: Not a directory
+####################
+error code: 21	msg: Is a directory
+####################
+error code: 22	msg: Invalid argument
+####################
+error code: 23	msg: Too many open files in system
+####################
+error code: 24	msg: Too many open files
+####################
+error code: 25	msg: Inappropriate ioctl for device
+####################
+error code: 26	msg: Text file busy
+####################
+error code: 27	msg: File too large
+####################
+error code: 28	msg: No space left on device
+####################
+error code: 29	msg: Illegal seek
+####################
+error code: 30	msg: Read-only file system
+####################
+error code: 31	msg: Too many links
+####################
+error code: 32	msg: Broken pipe
+####################
+error code: 33	msg: Numerical argument out of domain
+####################
+error code: 34	msg: Numerical result out of range
+####################
+error code: 35	msg: Resource deadlock avoided
+####################
+error code: 36	msg: File name too long
+####################
+error code: 37	msg: No locks available
+####################
+error code: 38	msg: Function not implemented
+####################
+error code: 39	msg: Directory not empty
+####################
+error code: 40	msg: Too many levels of symbolic links
+####################
+error code: 41	msg: Unknown error 41
+####################
+error code: 42	msg: No message of desired type
+####################
+error code: 43	msg: Identifier removed
+####################
+error code: 44	msg: Channel number out of range
+####################
+error code: 45	msg: Level 2 not synchronized
+####################
+error code: 46	msg: Level 3 halted
+####################
+error code: 47	msg: Level 3 reset
+####################
+error code: 48	msg: Link number out of range
+####################
+error code: 49	msg: Protocol driver not attached
+####################
+error code: 50	msg: No CSI structure available
+####################
+error code: 51	msg: Level 2 halted
+####################
+error code: 52	msg: Invalid exchange
+####################
+error code: 53	msg: Invalid request descriptor
+####################
+error code: 54	msg: Exchange full
+####################
+error code: 55	msg: No anode
+####################
+error code: 56	msg: Invalid request code
+####################
+error code: 57	msg: Invalid slot
+####################
+error code: 58	msg: Unknown error 58
+####################
+error code: 59	msg: Bad font file format
+####################
+error code: 60	msg: Device not a stream
+####################
+error code: 61	msg: No data available
+####################
+error code: 62	msg: Timer expired
+####################
+error code: 63	msg: Out of streams resources
+####################
+error code: 64	msg: Machine is not on the network
+####################
+error code: 65	msg: Package not installed
+####################
+error code: 66	msg: Object is remote
+####################
+error code: 67	msg: Link has been severed
+####################
+error code: 68	msg: Advertise error
+####################
+error code: 69	msg: Srmount error
+####################
+error code: 70	msg: Communication error on send
+####################
+error code: 71	msg: Protocol error
+####################
+error code: 72	msg: Multihop attempted
+####################
+error code: 73	msg: RFS specific error
+####################
+error code: 74	msg: Bad message
+####################
+error code: 75	msg: Value too large for defined data type
+####################
+error code: 76	msg: Name not unique on network
+####################
+error code: 77	msg: File descriptor in bad state
+####################
+error code: 78	msg: Remote address changed
+####################
+error code: 79	msg: Can not access a needed shared library
+####################
+error code: 80	msg: Accessing a corrupted shared library
+####################
+error code: 81	msg: .lib section in a.out corrupted
+####################
+error code: 82	msg: Attempting to link in too many shared libraries
+####################
+error code: 83	msg: Cannot exec a shared library directly
+####################
+error code: 84	msg: Invalid or incomplete multibyte or wide character
+####################
+error code: 85	msg: Interrupted system call should be restarted
+####################
+error code: 86	msg: Streams pipe error
+####################
+error code: 87	msg: Too many users
+####################
+error code: 88	msg: Socket operation on non-socket
+####################
+error code: 89	msg: Destination address required
+####################
+error code: 90	msg: Message too long
+####################
+error code: 91	msg: Protocol wrong type for socket
+####################
+error code: 92	msg: Protocol not available
+####################
+error code: 93	msg: Protocol not supported
+####################
+error code: 94	msg: Socket type not supported
+####################
+error code: 95	msg: Operation not supported
+####################
+error code: 96	msg: Protocol family not supported
+####################
+error code: 97	msg: Address family not supported by protocol
+####################
+error code: 98	msg: Address already in use
+####################
+error code: 99	msg: Cannot assign requested address
+####################
+error code: 100	msg: Network is down
+####################
+error code: 101	msg: Network is unreachable
+####################
+error code: 102	msg: Network dropped connection on reset
+####################
+error code: 103	msg: Software caused connection abort
+####################
+error code: 104	msg: Connection reset by peer
+####################
+error code: 105	msg: No buffer space available
+####################
+error code: 106	msg: Transport endpoint is already connected
+####################
+error code: 107	msg: Transport endpoint is not connected
+####################
+error code: 108	msg: Cannot send after transport endpoint shutdown
+####################
+error code: 109	msg: Too many references: cannot splice
+####################
+error code: 110	msg: Connection timed out
+####################
+error code: 111	msg: Connection refused
+####################
+error code: 112	msg: Host is down
+####################
+error code: 113	msg: No route to host
+####################
+error code: 114	msg: Operation already in progress
+####################
+error code: 115	msg: Operation now in progress
+####################
+error code: 116	msg: Stale file handle
+####################
+error code: 117	msg: Structure needs cleaning
+####################
+error code: 118	msg: Not a XENIX named type file
+####################
+error code: 119	msg: No XENIX semaphores available
+####################
+error code: 120	msg: Is a named type file
+####################
+error code: 121	msg: Remote I/O error
+####################
+error code: 122	msg: Disk quota exceeded
+####################
+error code: 123	msg: No medium found
+####################
+error code: 124	msg: Wrong medium type
+####################
+error code: 125	msg: Operation canceled
+####################
+error code: 126	msg: Required key not available
+####################
+error code: 127	msg: Key has expired
+####################
+error code: 128	msg: Key has been revoked
+####################
+error code: 129	msg: Key was rejected by service
+####################
+error code: 130	msg: Owner died
+####################
+error code: 131	msg: State not recoverable
+####################
+error code: 132	msg: Operation not possible due to RF-kill
+####################
+error code: 133	msg: Memory page has hardware error
+####################
+error code: 134	msg: Unknown error 134
+####################
+error code: 135	msg: Unknown error 135
+####################
+error code: 136	msg: Unknown error 136
+####################
+error code: 137	msg: Unknown error 137
+####################
+error code: 138	msg: Unknown error 138
+####################
+error code: 139	msg: Unknown error 139
+####################
+error code: 140	msg: Unknown error 140
+####################
+error code: 141	msg: Unknown error 141
+####################
+error code: 142	msg: Unknown error 142
+####################
+error code: 143	msg: Unknown error 143
+####################
+error code: 144	msg: Unknown error 144
+####################
+error code: 145	msg: Unknown error 145
+####################
+error code: 146	msg: Unknown error 146
+####################
+error code: 147	msg: Unknown error 147
+####################
+error code: 148	msg: Unknown error 148
+####################
+error code: 149	msg: Unknown error 149
+####################
+error code: 150	msg: Unknown error 150
+####################
+error code: 151	msg: Unknown error 151
+####################
+error code: 152	msg: Unknown error 152
+####################
+error code: 153	msg: Unknown error 153
+####################
+error code: 154	msg: Unknown error 154
+####################
+error code: 155	msg: Unknown error 155
+####################
+error code: 156	msg: Unknown error 156
+####################
+error code: 157	msg: Unknown error 157
+####################
+error code: 158	msg: Unknown error 158
+####################
+error code: 159	msg: Unknown error 159
+####################
+error code: 160	msg: Unknown error 160
+####################
+error code: 161	msg: Unknown error 161
+####################
+error code: 162	msg: Unknown error 162
+####################
+error code: 163	msg: Unknown error 163
+####################
+error code: 164	msg: Unknown error 164
+####################
+error code: 165	msg: Unknown error 165
+####################
+error code: 166	msg: Unknown error 166
+####################
+error code: 167	msg: Unknown error 167
+####################
+error code: 168	msg: Unknown error 168
+####################
+error code: 169	msg: Unknown error 169
+####################
+error code: 170	msg: Unknown error 170
+####################
+error code: 171	msg: Unknown error 171
+####################
+error code: 172	msg: Unknown error 172
+####################
+error code: 173	msg: Unknown error 173
+####################
+error code: 174	msg: Unknown error 174
+####################
+error code: 175	msg: Unknown error 175
+####################
+error code: 176	msg: Unknown error 176
+####################
+error code: 177	msg: Unknown error 177
+####################
+error code: 178	msg: Unknown error 178
+####################
+error code: 179	msg: Unknown error 179
+####################
+error code: 180	msg: Unknown error 180
+####################
+error code: 181	msg: Unknown error 181
+####################
+error code: 182	msg: Unknown error 182
+####################
+error code: 183	msg: Unknown error 183
+####################
+error code: 184	msg: Unknown error 184
+####################
+error code: 185	msg: Unknown error 185
+####################
+error code: 186	msg: Unknown error 186
+####################
+error code: 187	msg: Unknown error 187
+####################
+error code: 188	msg: Unknown error 188
+####################
+error code: 189	msg: Unknown error 189
+####################
+error code: 190	msg: Unknown error 190
+####################
+error code: 191	msg: Unknown error 191
+####################
+error code: 192	msg: Unknown error 192
+####################
+error code: 193	msg: Unknown error 193
+####################
+error code: 194	msg: Unknown error 194
+####################
+error code: 195	msg: Unknown error 195
+####################
+error code: 196	msg: Unknown error 196
+####################
+error code: 197	msg: Unknown error 197
+####################
+error code: 198	msg: Unknown error 198
+####################
+error code: 199	msg: Unknown error 199
+####################
+error code: 200	msg: Unknown error 200
+####################
+error code: 201	msg: Unknown error 201
+####################
+error code: 202	msg: Unknown error 202
+####################
+error code: 203	msg: Unknown error 203
+####################
+error code: 204	msg: Unknown error 204
+####################
+error code: 205	msg: Unknown error 205
+####################
+error code: 206	msg: Unknown error 206
+####################
+error code: 207	msg: Unknown error 207
+####################
+error code: 208	msg: Unknown error 208
+####################
+error code: 209	msg: Unknown error 209
+####################
+error code: 210	msg: Unknown error 210
+####################
+error code: 211	msg: Unknown error 211
+####################
+error code: 212	msg: Unknown error 212
+####################
+error code: 213	msg: Unknown error 213
+####################
+error code: 214	msg: Unknown error 214
+####################
+error code: 215	msg: Unknown error 215
+####################
+error code: 216	msg: Unknown error 216
+####################
+error code: 217	msg: Unknown error 217
+####################
+error code: 218	msg: Unknown error 218
+####################
+error code: 219	msg: Unknown error 219
+####################
+error code: 220	msg: Unknown error 220
+####################
+error code: 221	msg: Unknown error 221
+####################
+error code: 222	msg: Unknown error 222
+####################
+error code: 223	msg: Unknown error 223
+####################
+error code: 224	msg: Unknown error 224
+####################
+error code: 225	msg: Unknown error 225
+####################
+error code: 226	msg: Unknown error 226
+####################
+error code: 227	msg: Unknown error 227
+####################
+error code: 228	msg: Unknown error 228
+####################
+error code: 229	msg: Unknown error 229
+####################
+error code: 230	msg: Unknown error 230
+####################
+error code: 231	msg: Unknown error 231
+####################
+error code: 232	msg: Unknown error 232
+####################
+error code: 233	msg: Unknown error 233
+####################
+error code: 234	msg: Unknown error 234
+####################
+error code: 235	msg: Unknown error 235
+####################
+error code: 236	msg: Unknown error 236
+####################
+error code: 237	msg: Unknown error 237
+####################
+error code: 238	msg: Unknown error 238
+####################
+error code: 239	msg: Unknown error 239
+####################
+error code: 240	msg: Unknown error 240
+####################
+error code: 241	msg: Unknown error 241
+####################
+error code: 242	msg: Unknown error 242
+####################
+error code: 243	msg: Unknown error 243
+####################
+error code: 244	msg: Unknown error 244
+####################
+error code: 245	msg: Unknown error 245
+####################
+error code: 246	msg: Unknown error 246
+####################
+error code: 247	msg: Unknown error 247
+####################
+error code: 248	msg: Unknown error 248
+####################
+error code: 249	msg: Unknown error 249
+####################
+error code: 250	msg: Unknown error 250
+####################
+error code: 251	msg: Unknown error 251
+####################
+error code: 252	msg: Unknown error 252
+####################
+error code: 253	msg: Unknown error 253
+####################
+error code: 254	msg: Unknown error 254
+####################
+error code: 255	msg: Unknown error 255
+####################
