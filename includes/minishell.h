@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/14 08:52:15 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/14 10:16:51 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,9 @@
 # define HD_BIN_FALSE "/usr/bin/false"
 # define HD_BIN_TRUE "/usr/bin/true"
 # define HD_TMP_DIR "/tmp"
+# define HD_PREFIX "heredoc :"
 # define HD_MSG_EOF "here-document delimited by end-of-file"
+# define HD_CHRSET "\"\'"
 
 // BUILTIN CHARSET TO CHECK ARGUMENT STRUCTURE
 # define CHRSET_EXPORT "`~!@#$%^&*()-[]{}|:;\"\'<,>.?/ "
@@ -460,7 +462,10 @@ t_list				*hd_loop_tok(t_list *tok, t_cmd *cmd, long long *hd_exit);
 int					hd_open(t_cmd *cmd);
 size_t				hd_size(t_list **tok_lst);
 int					hd_wait(int pid, long long *hd_exit);
-int					hd_write(t_list *tok, t_cmd *cmd);
+void				hd_write(t_list *tok, t_cmd *cmd);
+char				*hd_write_expansion(char *str);
+int					hd_write_mode(t_list *tok);
+void				hd_write_str(t_list *tok, t_cmd *cmd, char **fullcmd, int mode);
 
 //pipe
 void				pipe_close_pfd(void *content);

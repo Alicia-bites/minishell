@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hd_write.c                                         :+:      :+:    :+:   */
+/*   hd_write_mode.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/03 17:57:49 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/14 10:15:51 by abarrier         ###   ########.fr       */
+/*   Created: 2022/08/14 09:37:46 by abarrier          #+#    #+#             */
+/*   Updated: 2022/08/14 09:54:58 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	hd_write(t_list *tok, t_cmd *cmd)
+int	hd_write_mode(t_list *tok)
 {
-	char	*fullcmd[2];
-	int		mode;
-
-	sig_hd_set_action();
-	fullcmd[0] = HD_BIN_TRUE;
-	fullcmd[1] = NULL;
-	mode = hd_write_mode(tok);
-	hd_write_str(tok, cmd, fullcmd, mode);
+	if (ft_strchrset_include(tok->token, HD_CHRSET))
+		return (HD_EXP);
+	else
+		return (HD_NO_EXP);
 }

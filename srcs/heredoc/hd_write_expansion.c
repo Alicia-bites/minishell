@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hd_write.c                                         :+:      :+:    :+:   */
+/*   hd_write_expansion.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/03 17:57:49 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/14 10:15:51 by abarrier         ###   ########.fr       */
+/*   Created: 2022/08/14 10:10:45 by abarrier          #+#    #+#             */
+/*   Updated: 2022/08/14 10:12:10 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	hd_write(t_list *tok, t_cmd *cmd)
+char	*hd_write_expansion(char *str)
 {
-	char	*fullcmd[2];
-	int		mode;
+	char *output;
 
-	sig_hd_set_action();
-	fullcmd[0] = HD_BIN_TRUE;
-	fullcmd[1] = NULL;
-	mode = hd_write_mode(tok);
-	hd_write_str(tok, cmd, fullcmd, mode);
+	printf("ALICIA's EXPANSIONS SKILLS\n");
+	output = str; // In waiting to do the expansion
+	return (output);
 }
