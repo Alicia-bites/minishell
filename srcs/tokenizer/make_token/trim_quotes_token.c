@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 17:02:58 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/13 17:04:29 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/14 10:56:24 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,24 +38,6 @@ static char	*malloc_output(char *str, int *len)
 	if (!output)
 		return (ft_panic_null(MALLOC_FAILURE, __FILE__, NULL));
 	return (output);
-}
-
-static int	is_heredoc_separator(t_list *token_list)
-{
-	t_list	*iterator;
-
-	if (!token_list)
-		return (0);
-	iterator = token_list;
-	while (iterator->next)
-		iterator = iterator->next;
-	if (iterator && !ft_strcmp(iterator->token, "<<"))
-		return (1);
-	if (iterator && iterator->prev
-		&& !only_space_in_str(iterator->token)
-			&& !ft_strcmp(iterator->prev->token, "<<"))
-		return (1);
-	return (0);
 }
 
 static void	skip_quotes(char *str, t_dart *dart)
@@ -95,8 +77,7 @@ char	*trim_quotes_token(char *str, t_list *token_list)
 	output = malloc_output(str, &len);
 	while (dart.i < len)
 	{
-		if (!is_heredoc_separator(token_list))
-			skip_quotes(str, &dart);
+		skip_quotes(str, &dart);
 		output[dart.i++] = str[dart.j++];
 	}
 	output[dart.i] = '\0';

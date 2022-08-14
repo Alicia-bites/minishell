@@ -285,6 +285,7 @@ MAKE_TOK_SRCS	:=	add_token_to_list.c\
 					is_dl_redir.c\
 					is_dr_redir.c\
 					is_envcall.c\
+					is_heredoc_separator.c\
 					is_intpoint.c\
 					is_l_redir.c\
 					is_pipe.c\

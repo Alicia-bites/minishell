@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/13 12:06:37 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/14 10:53:33 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -359,6 +359,7 @@ void				is_dl_redir(t_chartype *input_list, int *start, int *end,
 						t_list **token_list);
 void				is_dr_redir(t_chartype *input_list, int *start, int *end,
 						t_list **token_list);
+int					is_heredoc_separator(t_list *token_list);
 void				is_intpoint(t_chartype *input_list, int *start, int *end,
 						t_list **token_list);
 void				is_l_redir(t_chartype *input_list, int *start, int *end,
