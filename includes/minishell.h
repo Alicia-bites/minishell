@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/14 15:24:36 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/14 15:54:35 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -450,7 +450,7 @@ void				fd_stdinout_backup_close(int fd_stdin, int fd_stdout);
 int					fd_stdinout_restore(t_cmd *cmd, int fd_stdin, int fd_stdout);
 
 //heredoc
-char				*expand_dollar_heredoc(t_exp_arg exp_arg, int **tab);
+char				*expand_dollar_heredoc(t_exp_arg exp_arg);
 void				find_expansions_heredoc(t_exp_arg exp_arg, t_expanded **expanded_list,
 						int *full_size);
 void				get_expanded_heredoc(t_exp_arg exp_arg, t_expanded **expanded_list,

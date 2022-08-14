@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hd_write_expansion.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 10:10:45 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/14 10:12:10 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/14 15:54:19 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,14 @@
 
 char	*hd_write_expansion(char *str)
 {
-	char *output;
-
-	printf("ALICIA's EXPANSIONS SKILLS\n");
-	output = str; // In waiting to do the expansion
+	char		*output;
+	t_exp_arg	exp_arg;
+	
+	exp_arg.envp = envp;
+	exp_arg.str = str;
+	if (ft_strstr(str, "$"))
+		output = expand_dollar_heredoc(exp_arg);
+	else
+		output = str;
 	return (output);
 }
