@@ -6,19 +6,17 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 17:37:41 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/28 17:41:54 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/14 08:28:49 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	do_pwd_loop_arg(t_ulist **envp, char **str)
+int	do_pwd_loop_arg(char **str)
 {
-	t_ulist	*obj;
 	int		i;
 	int		res;
 
-	obj = NULL;
 	i = 0;
 	res = 0;
 	while (str[i])

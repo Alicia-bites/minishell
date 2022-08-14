@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 09:32:48 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/20 13:57:51 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/14 08:35:16 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@
 t_list	*cmd_init_prop_fullcmd(t_list *tok, t_cmd *cmd)
 {
 	t_list	*obj;
-	char	**fullcmd;
 	int		i;
 
 	cmd->fullcmd = (char **)malloc(sizeof(char *) * (cmd->n_arg + 1));

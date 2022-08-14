@@ -6,7 +6,7 @@
 /*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 11:04:39 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/13 16:44:05 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/14 08:43:11 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@
  */
 void	sig_pipe_quit(int signum)
 {
+	(void)signum;
 	return ;
 }

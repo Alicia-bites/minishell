@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/13 11:22:39 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/14 08:40:42 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,8 +159,7 @@ typedef struct s_cmd
 
 //input_handler
 int					get_input(int *err, t_ulist **envp);
-void				exit_minishell(t_list **token_list, int *err,
-						t_ulist **envp);
+void				exit_minishell(t_list **token_list, t_ulist **envp);
 void				handle_str(char **str, t_list **token_list, int *err,
 						t_ulist **envp);
 
@@ -235,8 +234,8 @@ int					*save_operator_index(char *str, char *new_str, t_expanded *expanded_list
 //do
 int					do_builtin(t_ulist **cmd_lst, t_cmd *cmd);
 void				do_builtin_close_fd(void *content);
-int					do_builtin_dup_fd_in(t_ulist **cmd_lst, t_cmd *cmd);
-int					do_builtin_dup_fd_out(t_ulist **cmd_lst, t_cmd *cmd);
+int					do_builtin_dup_fd_in(t_cmd *cmd);
+int					do_builtin_dup_fd_out(t_cmd *cmd);
 int					do_builtin_exit(int err_no);
 
 void				pipe_cmd_dup_fd_in(t_ulist **cmd_lst, t_cmd *cmd);
@@ -253,9 +252,9 @@ int					do_cd_update_pwd_home(t_ulist **envp, t_ulist *obj,
 
 //do_echo
 int					do_echo_get_index(t_list *token_list);
-int					do_echo(t_ulist **envp, t_cmd *cmd);
+int					do_echo(t_cmd *cmd);
 int					do_echo_get_index(t_list *token_list);
-int					do_echo_n(t_ulist **envp, t_cmd *cmd, int index);
+int					do_echo_n(t_cmd *cmd, int index);
 int					do_echo_valid_echo_n(t_list *token_list);
 
 //do_env
@@ -280,10 +279,10 @@ int					do_export_update_lst_do(t_ulist **env_lst, t_ulist *obj, char *str, int 
 void				do_export_show(void *content);
 
 //do_pwd
-int					do_pwd(t_ulist **envp, t_cmd *cmd);
+int					do_pwd(t_cmd *cmd);
 int     				do_pwd_check_str(char *str);
 char				*do_pwd_getpath(void);
-int     				do_pwd_loop_arg(t_ulist **envp, char **str);
+int     				do_pwd_loop_arg(char **str);
 
 //do_unset
 int					do_unset(t_ulist **envp, t_cmd *cmd);
@@ -420,7 +419,7 @@ t_list				*cmd_init_prop(t_list *tok, t_cmd *cmd);
 t_list				*cmd_init_prop_fullcmd(t_list *tok, t_cmd *cmd);
 t_list				*cmd_init_prop_fullcmd_null(t_list *tok, t_cmd *cmd);
 int					cmd_init_prop_fullpath(t_cmd *cmd);
-size_t				cmd_init_prop_n_arg(t_list *tok, t_cmd *cmd);
+size_t				cmd_init_prop_n_arg(t_list *tok);
 char				*cmd_loop_envline(char *cmd, char **envline);
 char				*cmd_loop_envp(char *cmd, t_ulist **envp_lst);
 char				*cmd_loop_envp_str(char *cmd, t_ulist **envp_lst, char *s);

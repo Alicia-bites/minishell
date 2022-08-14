@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 09:36:07 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/21 16:12:41 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/14 08:35:50 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
  * s[11] = " "		--> toktype = 2
  * s[12] = "file1"	--> toktype = ?
  */
-size_t	cmd_init_prop_n_arg(t_list *tok, t_cmd *cmd)
+size_t	cmd_init_prop_n_arg(t_list *tok)
 {
 	t_list	*obj;
 	size_t	len_tok;

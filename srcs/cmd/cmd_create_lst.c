@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 17:45:45 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/13 16:51:17 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/14 08:33:21 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	cmd_create_lst(t_list **tok_lst, t_ulist **env_lst, t_ulist **cmd_lst)
 {
 	t_list	*obj;
 	t_cmd	*cmd;
-	int		j;
 
 	obj = *tok_lst;
 	while (obj)
