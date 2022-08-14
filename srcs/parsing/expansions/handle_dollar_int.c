@@ -6,17 +6,14 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 09:42:30 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/13 15:06:33 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/14 14:58:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	handle_dollar_int(t_exp_arg exp_arg, int i, t_expanded **expanded_list,
-	int *index)
+int	handle_dollar_int(t_expanded **expanded_list, int *index)
 {
-	int			j;
-	char		*var;
 	char		*expanded;
 	int			varsize;
 

@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 17:02:58 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/14 10:56:24 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/14 14:52:24 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	skip_quotes(char *str, t_dart *dart)
 	}
 }
 
-char	*trim_quotes_token(char *str, t_list *token_list)
+char	*trim_quotes_token(char *str)
 {
 	char	*output;
 	t_dart	dart;

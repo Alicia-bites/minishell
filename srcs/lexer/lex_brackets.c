@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 09:05:15 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/12 16:40:52 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/14 14:56:54 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,8 @@ static int	bad_substitution(int *err)
 int	lex_brackets(char *str, int *err)
 {
 	int	i;
-	int	r_bracket;
-	int	l_bracket;
 
 	i = 0;
-	r_bracket = 0;
-	l_bracket = 0;
 	while (str[i])
 	{
 		if (str[i] == '$' && str[i + 1] == '{')

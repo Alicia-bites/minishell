@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 17:47:33 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/26 11:58:59 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/14 14:53:04 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static void	built_new_token_list(t_list **token_list)
 void	concatenate_export_args(t_list **token_list)
 {
 	t_list	*tmp;
-	int		i;
 
 	tmp = *token_list;
 	while (*token_list)

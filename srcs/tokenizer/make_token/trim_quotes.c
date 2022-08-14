@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 17:22:18 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/12 15:14:37 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/14 14:52:56 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,6 @@ static char	*malloc_output(char *str, int *len)
 		return (NULL);
 	}
 	return (output);
-}
-
-static int	is_heredoc_delimiter(t_list *token_list)
-{
-	if (token_list->prev)
-	{
-		if (!ft_strcmp(token_list->prev->token, "<<"))
-			return (1);
-		return (0);
-	}
-	return (0);
 }
 
 static void	skip_quotes(char *str, t_dart *dart)

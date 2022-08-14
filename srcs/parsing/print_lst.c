@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 18:11:16 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/23 11:10:11 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/14 14:54:42 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 void	print_lst(t_list *lst)
 {
 	t_list	*iterator;
-	int		i;
 
 	iterator = lst;
 	while (iterator)

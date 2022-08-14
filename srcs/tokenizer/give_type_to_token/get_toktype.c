@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:58:10 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/11 08:44:08 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/14 15:01:37 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static void	get_toktype_second(t_list **token_list)
 void	get_toktype(t_list **token_list)
 {
 	t_list			*it;
-	static int		tmp;
 	extern t_global	g_msl;
 
 	g_msl.seen_tok_cmd = 0;

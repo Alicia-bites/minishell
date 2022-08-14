@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 16:07:53 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/13 16:07:11 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/14 15:00:54 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	*malloc_tab(int n)
 	return (tab);
 }
 
-static int	*fill_tab_index(int pos, int *tab, char *str)
+static int	*fill_tab_index(int pos, int *tab)
 {
 	static int	i = 0;
 	int			n;
@@ -36,7 +36,7 @@ static int	*fill_tab_index(int pos, int *tab, char *str)
 	return (tab);
 }
 
-static int	*get_pos(char *expanded, int *tab, int j, char *str)
+static int	*get_pos(char *expanded, int *tab, int j)
 {
 	int	pos;
 
@@ -44,7 +44,7 @@ static int	*get_pos(char *expanded, int *tab, int j, char *str)
 	while (expanded[pos])
 	{
 		if (is_operator_in_expansion(expanded[pos]))
-			tab = fill_tab_index(pos + j, tab, str);
+			tab = fill_tab_index(pos + j, tab);
 		pos++;
 	}
 	return (tab);
@@ -65,7 +65,7 @@ static void	find_and_save_op_index(char *str, char *new_str,
 		if (str[i] == '$' && new_str[j] != '$')
 		{
 			if (found_operator(expanded_list->expanded))
-				*tab = get_pos(expanded_list->expanded, *tab, j, str);
+				*tab = get_pos(expanded_list->expanded, *tab, j);
 			if (expanded_list)
 			{
 				j = j + ft_strlen(expanded_list->expanded);

@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:48:34 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/12 14:34:12 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/14 14:59:22 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	get_expanded(t_exp_arg exp_arg, t_expanded **expanded_list,
 	if (!*expanded_list)
 		index = 0;
 	if (exp_arg.str[i + 1] == '?')
-		*varsize = handle_dollar_int(exp_arg, i, expanded_list, &index);
+		*varsize = handle_dollar_int(expanded_list, &index);
 	else if (ft_isdigit(exp_arg.str[i + 1])
 		|| same_with_brackets_number(exp_arg.str, i))
 		handle_dollar_number(exp_arg.str, expanded_list, &index, i);

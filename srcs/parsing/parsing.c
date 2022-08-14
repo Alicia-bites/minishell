@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:49:49 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/13 16:11:10 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/14 15:28:41 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void	clean_up(t_chartype **input_list, int **tab)
 int	ft_parse(char *str, t_list **token_list, int *err, t_ulist *envp)
 {
 	char			*tmp;
-	extern t_global	g_msl;
 	t_chartype		*input_list;
 	t_exp_arg		exp_arg;
 	int				*tab;
