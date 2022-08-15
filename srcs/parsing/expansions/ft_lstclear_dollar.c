@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 16:01:12 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/15 09:18:07 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/15 09:26:41 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ void	ft_lstclear_dollar(t_expanded **lst)
 	{
 		prev = iterator;
 		iterator = iterator->next;
-		if (prev->expanded && ft_strcmp(prev->expanded, "smbash")
-			&& prev->expanded[0] != '\0')
+		if (prev->expanded)
 			free(prev->expanded);
 		free(prev);
 	}
