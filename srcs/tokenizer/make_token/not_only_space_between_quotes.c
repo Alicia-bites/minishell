@@ -19,8 +19,8 @@ int	not_only_space_between_quotes(char *str)
 
 	not_space = 0;
 	i = 1;
-	if (!str[i])
-		return (0);
+	if ((str[0] == '\'' && str[1] == '\0') || (str[0] == '\"' && str[1] == '\0'))
+		return (1);
 	if ((str[0] == '\"' && str[1] == '\"') || (str[0] == '\'' && str[1] == '\''))
 		return (1);
 	if ((str[0] == '"' && str[strlen(str) - 1] == '"')
