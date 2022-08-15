@@ -14,13 +14,13 @@
 
 static void	move_s_and_end(int *s, int *end)
 {
-	(*s)--;
+	(*s)++;
 	(*end)++;
 }
 
 static void	move_d_and_end(int *d, int *end)
 {
-	(*d)--;
+	(*d)++;
 	(*end)++;
 }
 
@@ -35,8 +35,6 @@ void	is_quote(t_chartype *input_list, int *start, int *end,
 	if (input_list[*end].type == CH_D_QUOTE
 		|| input_list[*end].type == CH_S_QUOTE)
 	{
-		d = count_d_quotes(input_list, *end);
-		s = count_s_quotes(input_list, *end);
 		while (empty_string(input_list, *end))
 			*end += 2;
 		while (*end < input_list->length
