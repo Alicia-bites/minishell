@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:47:29 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/10 14:50:36 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/15 15:22:20 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ void	find_expansions(t_exp_arg exp_arg, t_expanded **expanded_list,
 	{
 		if (exp_arg.str[i] == '$' && !found_bad_combo(i, exp_arg.str)
 			&& !between_single_quotes(exp_arg.str, i)
-			&& !is_heredoc_delimiter(exp_arg.str, i))
+			&& !is_heredoc_delimiter(exp_arg.str, i)
+			&& !nothing_follows_follar(exp_arg.str, i))
 		{
 			get_expanded(exp_arg, expanded_list, i, &varsize);
 			*full_size -= varsize;

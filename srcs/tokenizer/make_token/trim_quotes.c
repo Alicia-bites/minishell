@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/26 17:22:18 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/14 14:52:56 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/15 14:54:02 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,12 @@ static void	skip_quotes(char *str, t_dart *dart)
 		dart->d++;
 		dart->j++;
 	}
-	if (str[dart->j] == '\'' && !(dart->d % 2))
+	while (str[dart->j] == '\'' && !(dart->d % 2))
 	{
 		dart->j++;
 		dart->s++;
 	}
-	else if (str[dart->j] == '\"' && !(dart->s % 2))
+	while (str[dart->j] == '\"' && !(dart->s % 2))
 	{
 		dart->j++;
 		dart->d++;

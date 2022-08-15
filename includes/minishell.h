@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/15 09:28:41 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/15 15:21:11 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -225,6 +225,7 @@ char				*insert_expansions(int full_size, t_expanded *expanded_list,
 int					is_operator_in_expansion(char c);
 int					is_varname(char c);
 char				*malloc_varname(char *str, int start, int end);
+int					nothing_follows_follar(char *str, int i);
 void				print_dollar_lst(t_expanded *lst);
 void				print_tab(int *tab, int n);
 char				*remove_dollars( char *str);

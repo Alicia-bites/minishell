@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 16:07:53 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/14 15:00:54 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/15 15:13:41 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	find_and_save_op_index(char *str, char *new_str,
 		j++;
 		if (str[i] == '$' && new_str[j] != '$')
 		{
-			if (found_operator(expanded_list->expanded))
+			if (expanded_list && found_operator(expanded_list->expanded))
 				*tab = get_pos(expanded_list->expanded, *tab, j);
 			if (expanded_list)
 			{

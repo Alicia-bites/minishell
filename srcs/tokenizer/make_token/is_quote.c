@@ -37,7 +37,7 @@ void	is_quote(t_chartype *input_list, int *start, int *end,
 	{
 		d = count_d_quotes(input_list, *end);
 		s = count_s_quotes(input_list, *end);
-		if (empty_string(input_list, *end))
+		while (empty_string(input_list, *end))
 			*end += 2;
 		while (*end < input_list->length
 			&& input_list[*end].type == CH_D_QUOTE)
