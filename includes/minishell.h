@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/15 15:21:11 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/15 18:33:17 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,6 +193,7 @@ int					lex_redir(char *str, int *err);
 int					lex_space(char *str, int *err);
 int					lex_sym(char *str, int *err);
 int					between_quotes(char *str, int pos);
+int					between_double_quotes(char *str, int pos);
 int					between_single_quotes(char *str, int pos);
 
 //expansions
@@ -299,7 +300,7 @@ void				delete_spaces(t_list **token_list);
 int					seen_equal_last(char *token);
 void				tokenize(t_chartype *input_list, t_list **token_list, int *tab);
 char 				*trim_quotes(char *str);
-char 				*trim_quotes_token(char *str);
+// char 				*trim_quotes_token(char *str);
 
 //give_chartype
 int					get_chartype(t_chartype **input_list, int *tab);

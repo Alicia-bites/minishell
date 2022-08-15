@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/26 17:22:18 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/15 14:54:02 by amarchan         ###   ########.fr       */
+/*   Created: 2022/08/09 17:02:58 by amarchan          #+#    #+#             */
+/*   Updated: 2022/08/15 18:45:43 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,53 +36,38 @@ static char	*malloc_output(char *str, int *len)
 		return (str);
 	output = malloc(sizeof(char) * (*len) + 1);
 	if (!output)
-	{
-		ft_panic(MALLOC_FAILURE, __FILE__, NULL);
-		return (NULL);
-	}
+		return (ft_panic_null(MALLOC_FAILURE, __FILE__, NULL));
 	return (output);
 }
 
-static void	skip_quotes(char *str, t_dart *dart)
-{
-	while (str[dart->j] == '\'' && (!dart->d))
-	{
-		dart->s++;
-		dart->j++;
-	}
-	while (str[dart->j] == '\"' && (!dart->s))
-	{
-		dart->d++;
-		dart->j++;
-	}
-	while (str[dart->j] == '\'' && !(dart->d % 2))
-	{
-		dart->j++;
-		dart->s++;
-	}
-	while (str[dart->j] == '\"' && !(dart->s % 2))
-	{
-		dart->j++;
-		dart->d++;
-	}
-}
+// static void	skip_quotes(char *str, t_dart *dart)
+// {
+// 	if (str[dart->j] == '\'' && !between_double_quotes(str, dart->j))
+// 		dart->s++;
+// 	else if (str[dart->j] == '\"' && !between_single_quotes(str, dart->i))
+// 		dart->d++;
+// }
 
 char	*trim_quotes(char *str)
 {
 	char	*output;
-	t_dart	dart;
 	int		len;
+	int		i;
+	int		j;
 
-	dart.s = 0;
-	dart.d = 0;
-	dart.j = 0;
-	dart.i = 0;
+	i= 0;
+	j = 0;
 	output = malloc_output(str, &len);
-	while (dart.i <= len)
+	while (i < len)
 	{
-		skip_quotes(str, &dart);
-		output[dart.i++] = str[dart.j++];
+		if ((str[j] != '\'' && (str[j] != '\"'))
+			|| (str[j] == '\'' && between_double_quotes(str, j))
+			|| (str[j] == '\"' && between_single_quotes(str, j)))
+			output[i++] = str[j];
+		j++;
 	}
-	output[dart.i] = '\0';
+	output[i] = '\0';
+	if (ft_strcmp(str, output))
+		free(str);
 	return (output);
 }
