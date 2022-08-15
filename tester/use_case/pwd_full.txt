@@ -1,0 +1,78 @@
+unset PWD $> env | grep PWD $> pwd
+pwd $> unset PWD $> env | grep PWD $> cd $PWD $> pwd
+unset OLDPWD $> env | grep OLDPWD
+unset $PWD
+unset pwd
+pwd
+pwd hola
+pwd ./hola
+pwd hola que tal
+pwd -p
+pwd --p
+pwd ---p
+pwd -- p
+pwd pwd pwd
+pwd ls
+pwd ls env
+cd // $> pwd
+cd '//' $> pwd
+cd /// $> pwd
+cd //////// $> pwd
+cd '////////' $> pwd
+cd "$PWD/srcs"
+cd '$PWD/srcs'
+   cd / | echo $? $> pwd
+cd ~/ | echo $? $> pwd
+mkdir a $> mkdir a/b $> cd a/b $> rm -r ../../a $> pwd
+mkdir a $> mkdir a/b $> cd a/b $> rm -r ../../a $> echo $PWD $> echo $OLDPWD
+mkdir a $> mkdir a/b $> cd a/b $> rm -r ../../a $> cd $> echo $PWD $> echo $OLDPWD
+mkdir a $> cd a $> rm -r ../a $> echo $PWD $> echo $OLDPWD
+pwd | echo hola
+cd .. | pwd
+pwd && ls
+pwd || ls
+pwd && ls && echo hola
+pwd || ls && echo hola
+pwd && ls || echo hola
+pwd || ls || echo hola
+(ls && pwd)
+( ( ls&&pwd ) )
+( ( ls ) &&pwd )
+(ls && ( ( pwd ) ) )
+(ls && pwd) > hola $> cat hola
+> hola ls && pwd
+> hola (ls && pwd)
+(> pwd) $> ls
+(< pwd) $> ls
+(< pwd)
+( ( ( ( ( pwd) ) ) ) )
+() pwd
+> pwd (ls)
+(ls||pwd)&&(ls||pwd)
+(lss||pwd)&&(lss||pwd)
+(lss&&pwd)&&(lss&&pwd)
+(ls && pwd | wc) > hola $> cat hola
+(ls && pwd | wc) > hola $> (ls && pwd | wc) > hola $> cat hola
+(ls && pwd | wc) >> hola $> echo hey&&(ls && pwd | wc) > hola $> cat hola
+(pwd | wc) < hola
+(ls && pwd | wc) < hola
+(ls -z || pwd | wc) < hola
+echo hey > hola $> (pwd | wc) < hola
+echo hey > hola $> (ls && pwd | wc) < hola
+echo hey > hola $> (ls -z || pwd | wc) < hola
+(ls -z || pwd && ls)
+ls || (cat Makefile|grep srcs) && (pwd|wc)
+ls -z && (ls) && (pwd)
+(ls > Docs/hey && pwd) > hola $> cat hola $> cat Docs/hey
+ls > Docs/hey && pwd > hola $> cat hola $> cat Docs/hey
+cd ../.. && pwd && pwd
+(cd ../.. && pwd) && pwd
+ls -z || cd ../../..&&pwd $> pwd
+ls -z || (cd ../../..&&pwd) $> pwd
+pwd>bonjour $> cat bonjour
+pwd >                     bonjour $> cat bonjour
+> pwd $> ls
+< pwd
+cat <pwd
+cat <srcs/pwd
+cat <../pwd
