@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 17:19:04 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/27 09:22:41 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/15 10:39:48 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	delete_spaces(t_list **token_list)
 {
 	t_list	*tmp;
 
+	if (!*token_list)
+		return ;
 	if (only_spaces_in_list(*token_list))
 	{
 		(*token_list)->toktype = TOK_CMD;
