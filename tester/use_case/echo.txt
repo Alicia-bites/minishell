@@ -1,4 +1,3 @@
-EXPANSIONS;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 echo $TERM
 echo "$TERM"
 echo '$TERM'
@@ -14,7 +13,6 @@ echo "'$TERM'"
 echo ''$TERM''
 echo '"$TERM"'
 echo "Salut" $TERM | cat -e
-FORBIDDEN CHARACTER;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 echo "\""
 echo "\'"
 echo '\"'
@@ -28,10 +26,8 @@ echo "$"
 echo $
 echo \\
 echo \
-TRICKY CASE;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 echo -n "-n         " alicia
 echo "-n" "-n         " alicia
-CHECKING PRINTING OF QUOTES;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 echo "           TERM"
 echo '           TERM'
 echo 'bon"jour"'
@@ -67,7 +63,6 @@ echo "a""b"
 echo "a" "b"
 echo "hey""you"
 echo "outthere" "in the dark"
-VALID 'ECHO -N' COMBINATION;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 echo -n nul ne fait le mal HAPPY DAYS
 echo "-n" nul ne fait le mal HAPPY DAYS
 echo -nnnnn nul ne fait le mal HAPPY DAYS
@@ -84,7 +79,6 @@ echo           -n HAPPY DAYS
 echo -n           HAPPY DAYS
 echo -n "HAPPY DAYS"
 echo -n "-nHAPPY DAYS"
-NON-VALID 'echo -n' combination;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 "echo -n" HAPPY DAYS
 echo-n HAPPY DAYS
 echo - n HAPPY DAYS
@@ -104,3 +98,6 @@ echo "-n" "-n""-nnnnHAPPY DAYS"
 echo "-n" "-n""-nnnnnn"HAPPY DAYS"
 echo "-n""-n" HAPPY DAYS
 echo -n"-n         " HAPPY DAYS
+echo -n - n Antho
+              | cat -e
+			  
