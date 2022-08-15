@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 17:02:58 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/15 18:45:43 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/15 19:14:30 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,6 @@ static char	*malloc_output(char *str, int *len)
 		return (ft_panic_null(MALLOC_FAILURE, __FILE__, NULL));
 	return (output);
 }
-
-// static void	skip_quotes(char *str, t_dart *dart)
-// {
-// 	if (str[dart->j] == '\'' && !between_double_quotes(str, dart->j))
-// 		dart->s++;
-// 	else if (str[dart->j] == '\"' && !between_single_quotes(str, dart->i))
-// 		dart->d++;
-// }
 
 char	*trim_quotes(char *str)
 {

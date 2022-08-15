@@ -13,19 +13,9 @@ echo "'$TERM'"
 echo ''$TERM''
 echo '"$TERM"'
 echo "Salut" $TERM | cat -e
-echo "\""
-echo "\'"
-echo '\"'
-echo '\''
-echo '\\'
-echo "\\"
-echo '\a'
-echo "\a"
 echo '$'
 echo "$"
 echo $
-echo \\
-echo \
 echo -n "-n         " alicia
 echo "-n" "-n         " alicia
 echo "           TERM"
@@ -50,7 +40,6 @@ echo
 echo ""
 echo "'"
 echo '"'
-echo """
 echo """"
 echo "Hello"
 echo "'Hello'"
@@ -58,7 +47,6 @@ echo '"Hello"'
 echo ""Hello""
 echo ''Hello''
 echo '"'Hello'"'
-echo '"''"''"'"'"'"'"'""Hello""'"'"
 echo "a""b"
 echo "a" "b"
 echo "hey""you"
@@ -103,3 +91,15 @@ echo -n - n Antho
 echo "           "h  " "b | cat -e
 echo "           "  " " | cat -e
 ""''echo hola""'''' que""'' tal""''
+
+echo \\
+echo \
+echo "\""
+echo "\'"
+echo '\"'
+echo '\\'
+echo "\\"
+echo '\a'
+echo "\a"
+echo """
+echo '"''"''"'"'"'"'"'""Hello""'"'"
