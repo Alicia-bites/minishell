@@ -6,13 +6,13 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 14:48:01 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/12 14:36:28 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/15 11:36:10 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*remove_dollars( char *str)
+char	*remove_dollars(char *str)
 {
 	int		i;
 	int		j;
