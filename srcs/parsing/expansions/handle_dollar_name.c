@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 15:55:04 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/11 16:20:06 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/15 09:24:35 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	handle_dollar_name(t_exp_arg exp_arg, int i,
 	varsize = ft_strlen(var) + 1;
 	expanded = ft_getenv(var, exp_arg.envp);
 	if (!expanded || (i >= 2 && exp_arg.str[i - 2] == '<'))
-		expanded = "";
+		expanded = ft_strdup("");
 	*expanded_list = create_dollar_list(expanded, (*index)++);
 	free(var);
 	return (varsize);
