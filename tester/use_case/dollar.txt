@@ -43,3 +43,13 @@ echo $USER '$USER'
 echo $'USER' $USER
 echo $""
 echo $''
+echo "'$USER'"
+echo     "         "$USER
+export a="a<b>c"
+cat << $USER
+cat << '$USER'
+cat << "$USER"
+cat << 'EOF'
+cat << "EOF"
+cat << EOF
+echo $USER '$USER'

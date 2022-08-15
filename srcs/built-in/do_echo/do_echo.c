@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 15:51:54 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/14 08:26:06 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/15 13:33:41 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	only_double_quote_in_str(char *str)
 	return (0);
 }
 
-t_list	*do_echo_remove_quotes(t_cmd *cmd)
+static t_list	*do_echo_remove_quotes(t_cmd *cmd)
 {
 	t_list	*save;
 
