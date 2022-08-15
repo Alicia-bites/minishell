@@ -6,13 +6,13 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:33:32 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/14 16:03:03 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/15 09:28:06 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	hd_link(t_list **tok_lst, t_ulist **cmd_lst, t_ulist *envp)
+int	hd_link(t_list **tok_lst, t_ulist **cmd_lst)
 {
 	t_list		*tok;
 	t_ulist		*obj;
@@ -29,7 +29,7 @@ int	hd_link(t_list **tok_lst, t_ulist **cmd_lst, t_ulist *envp)
 	while (obj && tok)
 	{
 		cmd = (t_cmd *)obj->content;
-		tok = hd_loop_tok(tok, cmd, &hd_exit, envp);
+		tok = hd_loop_tok(tok, cmd, &hd_exit);
 		cmd = NULL;
 		if (hd_exit)
 			break ;
