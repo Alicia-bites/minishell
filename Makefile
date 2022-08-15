@@ -227,6 +227,7 @@ EXP_SRCS	:=	bracket_is_after_dollar.c\
 				is_varname.c\
 				lonely_bracket.c \
 				malloc_varname.c \
+				nothing_follows_follar.c\
 				print_dollar_lst.c\
 				print_tab.c\
 				remove_dollars.c\
