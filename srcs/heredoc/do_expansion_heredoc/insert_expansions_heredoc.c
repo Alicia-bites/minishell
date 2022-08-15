@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:49:04 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/14 15:27:04 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/15 12:23:17 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@ static int	interrogation_point_follows_dollar(char *str, int i)
 	return (0);
 }
 
-char	*insert_expansions_heredoc(int full_size, t_expanded *expanded_list, char *str)
+char	*insert_expansions_heredoc(int full_size, t_expanded *expanded_list,
+		char *str)
 {
 	t_cursor	cursor;
 	char		*new_str;
@@ -87,8 +88,8 @@ char	*insert_expansions_heredoc(int full_size, t_expanded *expanded_list, char *
 	{
 		copy_expanded(str, &expanded_list, &cursor, new_str);
 		if ((str[cursor.k] && cursor.i <= full_size
-			&& str[cursor.k] != '$'
-			&& !interrogation_point_follows_dollar(str, cursor.k))
+				&& str[cursor.k] != '$'
+				&& !interrogation_point_follows_dollar(str, cursor.k))
 			|| (str[cursor.k] == '$' && between_single_quotes(str, cursor.k)))
 			new_str[cursor.i++] = str[cursor.k++];
 		else if (str[cursor.k] == '$' && !between_single_quotes(str, cursor.k))
