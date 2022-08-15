@@ -250,7 +250,6 @@ TOK_SRCS	:=	concatenate_export_args.c\
 				seen_equal_last.c\
 				tokenizer.c\
 				trim_quotes.c\
-				trim_quotes_token.c
 				
 GIVE_CHAR_SRCS	:=	get_chartype.c\
 					is_char_space.c\
