@@ -1,27 +1,46 @@
 export
-export antho=test1; echo $? && echo $antho
-export Antho=test2; echo $? && echo $Antho
-export ANTHO=test3; echo $? && echo $ANTHO
-export antho =test4; echo $? && echo $antho || echo "Expected behavior"
-export antho_=test5; echo $? && echo &antho_
-export antho0=test6; echo $? && echo $antho0
-export antho=cia; echo $? && echo $antho; export al$antho=tata; echo $? && echo $al$antho
-export antho=test7; echo $? && echo $antho; export antho=$antho
-#
+export antho=test1
+echo $?
+export Antho=test2
+echo $?
+export ANTHO=test3
+echo $?
+export antho =test4
+echo $?
+export antho_=test5
+echo $?
+export antho0=test6
+echo $?
+export antho=cia
+echo $?
+export antho=test7
 export hey = you
+echo $?
 export hey= you
+echo $?
 export hey=
-#
+echo $?
 export hey
+echo $?
 export hey=you
+echo $?
 export "hey"=you
+echo $?
 export hey="you"
+echo $?
 export hey=" you"
+echo $?
 export hey= "you"
+echo $?
 export hey= " you"
+echo $?
 export hey=you out there
+echo $?
 export hey="you out there"
+echo $?
 export hey="you out there" in the dark
-#
+echo $?
 export hey="you" | export out=there
+echo $?
 export hey=you | export out="there"
+echo $?

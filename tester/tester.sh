@@ -1,12 +1,27 @@
 #!/bin/bash
 
-SEP_P="####################"
-SEP_SP="--------------------"
+## PROGRAM DEFINITION
+BSH_NAME="bash"
+SMB_NAME="minishell"
+
+## TEST VARIABLES
+ORI_P=$(pwd)
+UC_P=${ORI_P}/use_case
+RES_P=${ORI_P}/result
+BSH_RES=${RES_P}/bsh_res
+SMB_RES=${RES_P}/smb_res
+DIFF_RES=${RES_P}/diff_res
+BSH_STDERR=${RES_P}/bsh_stderr
+SMB_STDERR=${RES_P}/smb_stderr
+DIFF_STDERR=${RES_P}/diff_stderr
+COMMENT_CHAR="#"
+
+## CONSTANT ##
+SEP_P="#########################"
+SEP_SP="------------------------"
 RES_PRE="-->"
 
-BK_RD='\033[31;7m'
-BK_GN='\033[32;7m'
-BK_YE='\033[33;7m'
+## COLORS ##
 RD='\033[0;31m'
 GN='\033[0;32m'
 YE='\033[0;33m'
@@ -14,87 +29,158 @@ BU='\033[0;34m'
 MG='\033[0;35m'
 NC='\033[0m'
 
-ORI_P=$(pwd)
-UC_P=${ORI_P}/use_case
-RES_P=${ORI_P}/result
-RES_ORI=${RES_P}/result_ori
-COMMENT_CHAR="#"
-
-function	exec_test
+function	exec_diff
 {
-	echo "exec test"
-	for i in ${1}/*.txt
+	echo -e "${YE}Executing \"${FUNCNAME}: ${1}\"${NC}";
+	diff -y ${2} ${3} > ${4}
+	echo -e "${YE}${SEP_P}${NC}";
+}
+
+function	exec_redir_test
+{
+	echo -e "${YE}Executing \"${FUNCNAME}: ${1}\"${NC}";
+	for i in ${2}/*.txt
 	do
-		if [ ! -z ${3} ] && [ ${i} != ${1}/${3}.txt ]
+		if [ ! -z ${3} ] && [ ${i} != ${2}/${3}.txt ]
 		then
 			continue
 		fi
-		echo "file name: ${i}"
-		while read -r line
-		do
-			if [[ "${line}" =~ ^#.* ]];
-			then
-				echo -e "${MG}${line}${NC}"
-			else
-				echo "command: ${line}"
-				eval ${line}
-				echo "${SEP_SP}"
-			fi
-		done < ${i}
-		echo ""
-		echo "${SEP_P}"
+		echo -e "${VT}file name: ${i}${NC}" >> ${5} 2>>${6}
+		${4} < ${i} >> ${5} 2>>${6}
+
+		echo "${SEP_P}" >> ${5} 2>>${6}
 	done
+	echo -e "${YE}${SEP_P}${NC}";
 }
 
 function	init_dir
 {
-	echo "initialisation of directory"
+	echo -e "${YE}Executing \"${FUNCNAME}\"${NC}";
 	for i in $@
 	do
-		echo "initialisation of the directory: ${i}"
+		echo "initialisation of the directory: ${i}";
 		if [ ! -e ${i} ]
 		then
-			mkdir ${i}
+			mkdir ${i};
 			if [ ! -e ${i} ]
 			then
-				echo "${RES_PRE} error on directory creation"
+				echo "${RES_PRE} error on directory creation";
 			else
-				echo "${RES_PRE} directory created"
+				echo "${RES_PRE} directory created";
 			fi
 		else
-			echo "directory already exists"
+			echo "directory already exists";
 		fi
 	done
-	echo "${SEP_P}"
+	echo -e "${YE}${SEP_P}${NC}";
+	return 0;
 }
 
-function	check_dir
+function	create_dir_res
 {
-	echo "checking directory"
+	local usr_answer=""
+
+	echo -e "${YE}Executing \"${FUNCNAME}\"${NC}";
+	while [ "${usr_answer}" != "y" ] && [ "${usr_answer}" != "n" ]
+	do
+		read -n 1 -p "The process will delete the directory. Do you want to continue [y/n] ? " usr_answer;
+		echo "";
+		echo "Answer: ${usr_answer}";
+	done
+	if [ "${usr_answer}" == "y" ]
+	then
+		rm -rf ${2} && echo "Directory \"${2}\" has been deleted from the current directory \"${1}\"" || echo "Error: impossible to delete the directory \"${2}\" from the current directory \"${1}\"";
+		if [ "$?" != 0 ]; then return 2; fi;
+	else
+		echo -e "${BU}The process has been stopped${NC}";
+		return 3;
+	fi
+	mkdir ${2} && echo "Directory \"${2}\" has been created in the current directory \"${1}\"" || echo "Error: impossible to create the directory \"${2}\" in the current directory \"${1}\"";
+	if [ "$?" != 0 ]; then return 3; fi;
+	echo -e "${YE}${SEP_P}${NC}";
+}
+
+function	check_dir_res
+{
+	echo -e "${YE}Executing \"${FUNCNAME}\"${NC}";
 	for i in $@
 	do
 		if [ ! -e ${i} ]
 		then
-			echo "directory ${i} not existing"
-			exit 1
+			echo "directory ${i} not existing";
+			return 1;
 		else
-			echo "directory ${i} existing"
+			echo "directory ${i} existing";
 		fi
 	done
-	echo "${SEP_P}"
+	echo -e "${YE}${SEP_P}${NC}";
+	return 0;
+}
+
+
+function	check_dir_uc
+{
+	echo -e "${YE}Executing \"${FUNCNAME}\"${NC}";
+	for i in $@
+	do
+		if [ ! -e ${i} ];
+		then
+			echo "directory ${i} not existing";
+			return 1;
+		else
+			echo "directory ${i} existing";
+		fi
+	done
+	echo -e "${YE}${SEP_P}${NC}";
+	return 0;
 }
 
 function	main
 {
-	clear && echo "Terminal cleared"
-	echo "${SEP_P}"
-	if check_dir ${UC_P}; [ $? != 0 ]
+	echo -e "${YE}${SEP_P}${NC}";
+	if check_dir_uc ${UC_P}; [ $? != 0 ]
 	then
-		exit 1
+		return 1;
 	fi
-	init_dir ${RES_P}
-	exec_test ${UC_P} ${RES_ORI} ${1}
-	exit 0
+	check_dir_res ${RES_P};
+	create_dir_res ${ORI_P} ${RES_P};
+	if [ "$?" != 0 ]; then return 2; fi;
+	exec_redir_test "BASH" ${UC_P} ${1} ${BSH_NAME} ${BSH_RES} ${BSH_STDERR};
+	exec_redir_test "SMB" ${UC_P} ${1} ${ORI_P}/.././${SMB_NAME} ${SMB_RES} ${SMB_STDERR};
+	exec_diff "RES" ${BSH_RES} ${SMB_RES} ${DIFF_RES};
+	exec_diff "STDERR" ${BSH_STDERR} ${SMB_STDERR} ${DIFF_STDERR};
+	return 0;
 }
 
+clear;
+echo "Program${0} - Start";
 main ${1}
+echo "Program ${0} - End";
+exit $?
+
+## DEPRICATED FUNCTIONS
+#function	exec_test
+#{
+#	echo -e "${YE}Executing \"${FUNCNAME}\"${NC}";
+#	for i in ${1}/*.txt
+#	do
+#		if [ ! -z ${3} ] && [ ${i} != ${1}/${3}.txt ]
+#		then
+#			continue
+#		fi
+#		echo "file name: ${i}"
+#		while read -r line
+#		do
+#			if [[ "${line}" =~ ^#.* ]];
+#			then
+#				echo -e "${MG}${line}${NC}"
+#			else
+#				echo "command: ${line}"
+#				eval ${line}
+#				echo "${SEP_SP}"
+#			fi
+#		done < ${i}
+#		echo ""
+#		echo "${SEP_P}"
+#	done
+#}

@@ -1,0 +1,25 @@
+< tester/test/dir1/file1 cat
+< tester/test/dir1/file1 < tester/test/dir1/file2 cat
+< tester/test/dir1/file1 < tester/test/dir1/file2 < tester/test/dir1/file3 cat
+#
+< tester/test/dir1/file1 cat | < tester/test/dir1/file1 wc
+< tester/test/dir1/file1 < tester/test/dir1/file2 cat | < tester/test/dir1/file1 < tester/test/dir1/file2 wc
+< tester/test/dir1/file1 < tester/test/dir1/file2 < tester/test/dir1/file3 cat | < tester/test/dir1/file1 < tester/test/dir1/file2 < tester/test/dir1/file3 wc
+#
+< tester/test/dir1/file99 cat
+< tester/test/dir1/file99 < tester/test/dir1/file98 cat
+< tester/test/dir1/file99 < tester/test/dir1/file98 < tester/test/dir1/file97 cat
+#
+< tester/test/dir1/file99 cat | < tester/test/dir1/file99 wc
+< tester/test/dir1/file99 < tester/test/dir1/file98 cat | < tester/test/dir1/file99 < tester/test/dir1/file98 wc
+< tester/test/dir1/file99 < tester/test/dir1/file98 < tester/test/dir1/file97 cat | < tester/test/dir1/file99 < tester/test/dir1/file98 < tester/test/dir1/file97 wc
+#
+< tester/test/dir1/file1 < tester/test/dir1/file99 cat
+< tester/test/dir1/file1 < tester/test/dir1/file99 < tester/test/dir1/file2 cat
+< tester/test/dir1/file99 < tester/test/dir1/file1 cat
+< tester/test/dir1/file99 < tester/test/dir1/file1 < tester/test/dir1/file98 cat
+#
+< tester/test/dir1/file1 < tester/test/dir1/file99 cat | < tester/test/dir1/file1 < tester/test/dir1/file99 wc
+< tester/test/dir1/file1 < tester/test/dir1/file99 < tester/test/dir1/file2 cat | < tester/test/dir1/file1 < tester/test/dir1/file99 < tester/test/dir1/file2 wc
+< tester/test/dir1/file99 < tester/test/dir1/file1 cat | < tester/test/dir1/file99 < tester/test/dir1/file1 wc
+ tester/test/dir1/file99 < tester/test/dir1/file1 < tester/test/dir1/file98 cat | < tester/test/dir1/file99 < tester/test/dir1/file1 < tester/test/dir1/file98 wc
