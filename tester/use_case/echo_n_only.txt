@@ -1,0 +1,80 @@
+echo -n "-n         " alicia
+
+
+echo "-n" "-n         " alicia
+
+
+echo -n nul ne fait le mal HAPPY DAYS
+
+
+echo "-n" nul ne fait le mal HAPPY DAYS
+
+
+echo -nnnnn nul ne fait le mal HAPPY DAYS
+
+
+echo "-nnnnnn" nul ne fait le mal HAPPY DAYS
+
+
+echo -n -n -n nul ne fait le mal HAPPY DAYS
+
+
+echo "-n" "-n" "-n" nul ne fait le mal HAPPY DAYS
+
+
+echo -nnnnn -nnnn -nnnn nul ne fait le mal HAPPY DAYS
+
+
+echo -n     -nnn -nnn nul ne fait le mal HAPPY DAYS
+
+
+echo "-nnnnn" "-nnnn" "-nnnn" nul ne fait le mal HAPPY DAYS
+
+
+echo    -n nul ne fait le mal HAPPY DAYS
+
+
+echo -n   nul ne fait le mal HAPPY DAYS
+
+
+echo "-""n" HAPPY DAYS
+
+
+echo           -n HAPPY DAYS
+
+
+echo -n           HAPPY DAYS
+
+
+echo -n "HAPPY DAYS"
+
+
+echo -n "-nHAPPY DAYS"
+
+
+echo -n
+
+
+
+echo -n Hola
+
+
+echo "-n" Hola
+
+
+echo -n -n
+
+
+echo -n -n Hola Que
+
+
+echo -nnnnn
+
+
+echo -n -nnn -nnnn
+
+
+echo -n -nnn hola -nnnn
+
+
+echo -nnnn $hola
