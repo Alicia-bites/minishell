@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/15 18:33:17 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/16 18:22:54 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -420,6 +420,7 @@ char				*cmd_getvalidpath(t_cmd *cmd);
 char				*cmd_getvalidpath_null(t_cmd *cmd);
 t_cmd				*cmd_init(t_list **tok_lst, t_ulist **env_lst);
 t_list				*cmd_init_prop(t_list *tok, t_cmd *cmd);
+void				cmd_init_prop_access(t_cmd *cmd);
 t_list				*cmd_init_prop_fullcmd(t_list *tok, t_cmd *cmd);
 t_list				*cmd_init_prop_fullcmd_null(t_list *tok, t_cmd *cmd);
 int					cmd_init_prop_fullpath(t_cmd *cmd);

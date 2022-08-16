@@ -100,6 +100,7 @@ CMD_SRCS	:=	cmd_check_tok_lst.c\
 			cmd_getvalidpath_null.c\
 			cmd_init.c\
 			cmd_init_prop.c\
+			cmd_init_prop_access.c\
 			cmd_init_prop_fullcmd.c\
 			cmd_init_prop_fullcmd_null.c\
 			cmd_init_prop_fullpath.c\
