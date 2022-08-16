@@ -6,7 +6,7 @@
 /*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 17:39:44 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/13 11:54:11 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/16 17:45:18 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	fd_stdinout_restore(t_cmd *cmd, int fd_stdin, int fd_stdout)
 {
 	int	err_no;
 
+	errno = 0;
 	err_no = 0;
 	if (cmd->fd_r > 2)
 	{
