@@ -65,8 +65,10 @@ function	exec_redir_test
 		echo -e "${VT}file name: ${i}${NC}" >> ${5} 2>>${5};
 		#${4} < ${i} >> ${5} 2>>${6};
 		${4} < ${i} >> ${5} 2>>${5};
+		#${4} < ${i} >> ${5};
 		#echo "${SEP_P}" >> ${5} 2>>${6};
 		echo "${SEP_P}" >> ${5} 2>>${5};
+		#echo "${SEP_P}" >> ${5};
 	done
 	echo -e "${YE}${SEP_P}${NC}";
 }

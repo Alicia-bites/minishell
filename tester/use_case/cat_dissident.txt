@@ -1,0 +1,24 @@
+cat >> <<
+echo "TESTER EXIT STATUS: " $?
+cat >> > >> << >>
+echo "TESTER EXIT STATUS: " $?
+cat << hola
+echo "TESTER EXIT STATUS: " $?
+cat << 'hola'
+echo "TESTER EXIT STATUS: " $?
+cat << "hola"
+echo "TESTER EXIT STATUS: " $?
+cat << ho"la"
+echo "TESTER EXIT STATUS: " $?
+cat << $HOME
+echo "TESTER EXIT STATUS: " $?
+cat << hola > bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat << hola | rev
+echo "TESTER EXIT STATUS: " $?
+cat <<
+echo "TESTER EXIT STATUS: " $?
+cat << prout << lol << koala
+echo "TESTER EXIT STATUS: " $?
+prout << lol << cat << koala
+echo "TESTER EXIT STATUS: " $?

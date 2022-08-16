@@ -1,4 +1,4 @@
-echo "         " | cat -e
+echo "         " |cat -e
 echo "TESTER EXIT STATUS: " $?
 echo           | cat -e
 echo "TESTER EXIT STATUS: " $?
@@ -448,10 +448,6 @@ cat >>
 echo "TESTER EXIT STATUS: " $?
 cat >>>
 echo "TESTER EXIT STATUS: " $?
-cat >> <<
-echo "TESTER EXIT STATUS: " $?
-cat >> > >> << >>
-echo "TESTER EXIT STATUS: " $?
 cat < ls
 echo "TESTER EXIT STATUS: " $?
 cat < ls > ls
@@ -876,33 +872,15 @@ ls
 echo "TESTER EXIT STATUS: " $?
 rm b d 
 echo "TESTER EXIT STATUS: " $?
-cat << hola
-echo "TESTER EXIT STATUS: " $?
-cat << 'hola'
-echo "TESTER EXIT STATUS: " $?
-cat << "hola"
-echo "TESTER EXIT STATUS: " $?
-cat << ho"la"
-echo "TESTER EXIT STATUS: " $?
-cat << $HOME
-echo "TESTER EXIT STATUS: " $?
-cat << hola > bonjour 
-echo "TESTER EXIT STATUS: " $?
 cat bonjour 
 echo "TESTER EXIT STATUS: " $?
 rm bonjour
-echo "TESTER EXIT STATUS: " $?
-cat << hola | rev
-echo "TESTER EXIT STATUS: " $?
-cat <<
-echo "TESTER EXIT STATUS: " $?
-cat << prout << lol << koala
-echo "TESTER EXIT STATUS: " $?
-prout << lol << cat << koala
 echo "TESTER EXIT STATUS: " $?
 cat M*le
 echo "TESTER EXIT STATUS: " $?
 cat M*ee
 echo "TESTER EXIT STATUS: " $?
 cat Make*file
+echo "TESTER EXIT STATUS: " $?
+rm a b bonjour bonjour\\ c d e hello hey hola hola1 hola2 ls1
 echo "TESTER EXIT STATUS: " $?
