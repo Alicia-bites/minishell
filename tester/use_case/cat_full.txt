@@ -1,133 +1,908 @@
 echo "         " | cat -e
+echo "TESTER EXIT STATUS: " $?
 echo           | cat -e
+echo "TESTER EXIT STATUS: " $?
 echo $:$= | cat -e
+echo "TESTER EXIT STATUS: " $?
 echo " $ " | cat -e
+echo "TESTER EXIT STATUS: " $?
 echo ' $ ' | cat -e
+echo "TESTER EXIT STATUS: " $?
 echo "hola     " | cat -e
-export HOLA="bonjour      "   $> echo $HOLA | cat -e
-export HOLA='"' $> echo " $HOLA " | cat -e
-export HOLA="cat Makefile | grep NAME"   $> echo $HOLA
-export HOLA="  bonjour  hey  "   $> echo $HOLA | cat -e
-export HOLA="  bonjour  hey  "   $> echo """$HOLA""" | cat -e
-export HOLA="  bonjour  hey  "   $> echo wesh"$HOLA" | cat -e
-unset PATH $> cat Makefile
-echo hola > bonjour $> exit | cat -e bonjour
-echo hola > bonjour $> cat -e bonjour | exit
+echo "TESTER EXIT STATUS: " $?
+export HOLA="bonjour      "   
+echo "TESTER EXIT STATUS: " $?
+echo $HOLA | cat -e
+echo "TESTER EXIT STATUS: " $?
+export HOLA='"' 
+echo "TESTER EXIT STATUS: " $?
+echo " $HOLA " | cat -e
+echo "TESTER EXIT STATUS: " $?
+export HOLA="cat Makefile | grep NAME"   
+echo "TESTER EXIT STATUS: " $?
+echo $HOLA
+echo "TESTER EXIT STATUS: " $?
+export HOLA="  bonjour  hey  "   
+echo "TESTER EXIT STATUS: " $?
+echo $HOLA | cat -e
+echo "TESTER EXIT STATUS: " $?
+export HOLA="  bonjour  hey  "   
+echo "TESTER EXIT STATUS: " $?
+echo """$HOLA""" | cat -e
+echo "TESTER EXIT STATUS: " $?
+export HOLA="  bonjour  hey  "   
+echo "TESTER EXIT STATUS: " $?
+echo wesh"$HOLA" | cat -e
+echo "TESTER EXIT STATUS: " $?
+unset PATH 
+echo "TESTER EXIT STATUS: " $?
+cat Makefile
+echo "TESTER EXIT STATUS: " $?
+echo hola > bonjour 
+echo "TESTER EXIT STATUS: " $?
+exit | cat -e bonjour 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour
+echo "TESTER EXIT STATUS: " $?
+echo hola > bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat -e bonjour | exit 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour
+echo "TESTER EXIT STATUS: " $?
 echo oui | cat -e
+echo "TESTER EXIT STATUS: " $?
 echo hola | cat -e | cat -e | cat -e
-whoami | grep $USER > /tmp/bonjour $> cat /tmp/bonjour
-whoami | cat -e | cat -e > /tmp/bonjour $> cat /tmp/bonjour
-whereis ls | cat -e | cat -e > /tmp/bonjour $> cat /tmp/bonjour
+echo "TESTER EXIT STATUS: " $?
+whoami | grep $USER > /tmp/bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat /tmp/bonjour 
+echo "TESTER EXIT STATUS: " $?
+rm /tmp/bonjour
+echo "TESTER EXIT STATUS: " $?
+whoami | cat -e | cat -e > /tmp/bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat /tmp/bonjour 
+echo "TESTER EXIT STATUS: " $?
+rm /tmp/bonjour
+echo "TESTER EXIT STATUS: " $?
+whereis ls | cat -e | cat -e > /tmp/bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat /tmp/bonjour 
+echo "TESTER EXIT STATUS: " $?
+rm /tmp/bonjour
+echo "TESTER EXIT STATUS: " $?
 echo test.c | cat -e| cat -e| cat -e| cat -e| cat -e| cat -e| cat -e| cat -e|cat -e|cat -e|cat -e
+echo "TESTER EXIT STATUS: " $?
 cat Makefile | cat -e | cat -e
+echo "TESTER EXIT STATUS: " $?
 cat Makefile | grep srcs | cat -e
+echo "TESTER EXIT STATUS: " $?
 cat Makefile | grep srcs | grep srcs | cat -e
+echo "TESTER EXIT STATUS: " $?
 cat Makefile | grep pr | head -n 5 | cd file_not_exist
+echo "TESTER EXIT STATUS: " $?
 cat Makefile | grep pr | head -n 5 | hello
+echo "TESTER EXIT STATUS: " $?
 export HOLA=bonjour | cat -e | cat -e
+echo "TESTER EXIT STATUS: " $?
 unset HOLA | cat -e
-(ls && pwd) > hola $> cat hola
-(ls && pwd | wc) > hola $> cat hola
-(ls && pwd | wc) > hola $> (ls && pwd | wc) > hola $> cat hola
-(ls && pwd | wc) >> hola $> echo hey&&(ls && pwd | wc) > hola $> cat hola
+echo "TESTER EXIT STATUS: " $?
+(ls && pwd) > hola 
+echo "TESTER EXIT STATUS: " $?
+cat hola 
+echo "TESTER EXIT STATUS: " $?
+rm hola
+echo "TESTER EXIT STATUS: " $?
+(ls && pwd | wc) > hola 
+echo "TESTER EXIT STATUS: " $?
+cat hola 
+echo "TESTER EXIT STATUS: " $?
+rm hola
+echo "TESTER EXIT STATUS: " $?
+(ls && pwd | wc) > hola 
+echo "TESTER EXIT STATUS: " $?
+(ls && pwd | wc) > hola 
+echo "TESTER EXIT STATUS: " $?
+cat hola 
+echo "TESTER EXIT STATUS: " $?
+rm hola
+echo "TESTER EXIT STATUS: " $?
+(ls && pwd | wc) >> hola 
+echo "TESTER EXIT STATUS: " $?
+echo hey&&(ls && pwd | wc) > hola 
+echo "TESTER EXIT STATUS: " $?
+cat hola 
+echo "TESTER EXIT STATUS: " $?
+rm hola
+echo "TESTER EXIT STATUS: " $?
 ls || (cat Makefile|grep srcs) && (pwd|wc)
-(ls > Docs/hey && pwd) > hola $> cat hola $> cat Docs/hey
-ls > Docs/hey && pwd > hola $> cat hola $> cat Docs/hey
-echo hola > bonjour $> cat bonjour
-echo que tal >> bonjour $> cat bonjour
-echo hola > bonjour $> echo que tal >> bonjour $> cat < bonjour
-echo hola > bonjour $> rm bonjour $> echo que tal >> bonjour $> cat < bonjour
-echo hola que tal > bonjour $> cat bonjour
-echo hola que tal > /tmp/bonjour $> cat -e /tmp/bonjour
-whereis grep > Docs/bonjour $> cat Docs/bonjour
-ls -la > Docs/bonjour $> cat Docs/bonjour
-pwd>bonjour $> cat bonjour
-pwd >                     bonjour $> cat bonjour
-> bonjour echo hola $> cat bonjour
-> bonjour | echo hola $> cat bonjour
-echo hola > hello >> hello >> hello $> ls $> cat hello
-echo hola > hello >> hello >> hello $> echo hola >> hello $> cat < hello
-echo hola > hello >> hello >> hello $> echo hola >> hello $> echo hola > hello >> hello >> hello $> cat < hello
-echo hola >> hello >> hello > hello $> echo hola >> hello $> cat < hello
-echo hola >> hello >> hello > hello $> echo hola >> hello $> echo hola >> hello >> hello > hello $> cat < hello
-echo hola > hello $> echo hola >> hello >> hello >> hello $> echo hola >> hello $> cat < hello
-echo hola > bonjour $> echo hey > hello $> rm bonjour hello $> echo hola > bonjour > hello > bonjour $> cat bonjour $> cat hello
-echo hola > bonjour $> echo hey > hello $> echo hola > bonjour > hello > bonjour $> cat bonjour $> cat hello
-echo hola > bonjour $> echo hey > hello $> rm bonjour hello $> echo hola > bonjour >> hello > bonjour $> cat bonjour $> cat hello
-echo hola > bonjour $> echo hey > hello $> echo hola > bonjour > hello > bonjour $> cat bonjour $> cat hello
-echo hola > bonjour $> echo hey > hello $> rm bonjour hello $> echo hola > bonjour > hello >> bonjour $> cat bonjour $> cat hello
-echo hola > bonjour $> echo hey > hello $> echo hola > bonjour > hello >> bonjour $> cat bonjour $> cat hello
-echo hola > bonjour $> echo hey > hello $> rm bonjour hello $> echo hola >> bonjour > hello > bonjour $> cat bonjour $> cat hello
-echo hola > bonjour $> echo hey > hello $> echo hola >> bonjour > hello > bonjour $> cat bonjour $> cat hello
-echo hola > bonjour $> echo hey > hello $> rm bonjour hello $> echo hola >> bonjour >> hello >> bonjour $> cat bonjour $> cat hello
-echo hola > bonjour $> echo hey > hello $> echo hola >> bonjour >> hello >> bonjour $> cat bonjour $> cat hello
-> bonjour echo hola bonjour $> cat bonjour
->bonjour echo > hola>bonjour>hola>>bonjour>hola hey >bonjour hola >hola $> cat bonjour $> cat hola
-echo bonjour > hola1 $> echo hello > hola2 $> echo 2 >hola1 >> hola2 $> ls $> cat hola1 $> cat hola2
-echo bonjour > hola1 $> echo hello > hola2 $> echo 2 >>hola1 > hola2 $> ls $> cat hola1 $> cat hola2
+echo "TESTER EXIT STATUS: " $?
+(ls > Docs/hey && pwd) > hola 
+echo "TESTER EXIT STATUS: " $?
+cat hola 
+echo "TESTER EXIT STATUS: " $?
+cat Docs/hey 
+echo "TESTER EXIT STATUS: " $?
+rm hola
+echo "TESTER EXIT STATUS: " $?
+ls > Docs/hey && pwd > hola 
+echo "TESTER EXIT STATUS: " $?
+cat hola 
+echo "TESTER EXIT STATUS: " $?
+cat Docs/hey 
+echo "TESTER EXIT STATUS: " $?
+rm hola
+echo "TESTER EXIT STATUS: " $?
+echo hola > bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat bonjour 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour
+echo "TESTER EXIT STATUS: " $?
+echo que tal >> bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat bonjour 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour
+echo "TESTER EXIT STATUS: " $?
+echo hola > bonjour 
+echo "TESTER EXIT STATUS: " $?
+echo que tal >> bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat < bonjour 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour
+echo "TESTER EXIT STATUS: " $?
+echo hola > bonjour 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour 
+echo "TESTER EXIT STATUS: " $?
+echo que tal >> bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat < bonjour 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour
+echo "TESTER EXIT STATUS: " $?
+echo hola que tal > bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat bonjour 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour
+echo "TESTER EXIT STATUS: " $?
+echo hola que tal > /tmp/bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat -e /tmp/bonjour 
+echo "TESTER EXIT STATUS: " $?
+rm /tmp/bonjour
+echo "TESTER EXIT STATUS: " $?
+whereis grep > Docs/bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat Docs/bonjour 
+echo "TESTER EXIT STATUS: " $?
+rm Docs/bonjour
+echo "TESTER EXIT STATUS: " $?
+ls -la > Docs/bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat Docs/bonjour 
+echo "TESTER EXIT STATUS: " $?
+rm Docs/bonjour
+echo "TESTER EXIT STATUS: " $?
+pwd>bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat bonjour 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour
+echo "TESTER EXIT STATUS: " $?
+pwd >                     bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat bonjour 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour
+echo "TESTER EXIT STATUS: " $?
+> bonjour echo hola 
+echo "TESTER EXIT STATUS: " $?
+cat bonjour 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour
+echo "TESTER EXIT STATUS: " $?
+> bonjour | echo hola 
+echo "TESTER EXIT STATUS: " $?
+cat bonjour 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour
+echo "TESTER EXIT STATUS: " $?
+echo hola > hello >> hello >> hello 
+echo "TESTER EXIT STATUS: " $?
+ls 
+echo "TESTER EXIT STATUS: " $?
+cat hello 
+echo "TESTER EXIT STATUS: " $?
+rm hello
+echo "TESTER EXIT STATUS: " $?
+echo hola > hello >> hello >> hello 
+echo "TESTER EXIT STATUS: " $?
+echo hola >> hello 
+echo "TESTER EXIT STATUS: " $?
+cat < hello 
+echo "TESTER EXIT STATUS: " $?
+rm hello
+echo "TESTER EXIT STATUS: " $?
+echo hola > hello >> hello >> hello 
+echo "TESTER EXIT STATUS: " $?
+echo hola >> hello 
+echo "TESTER EXIT STATUS: " $?
+echo hola > hello >> hello >> hello 
+echo "TESTER EXIT STATUS: " $?
+cat < hello 
+echo "TESTER EXIT STATUS: " $?
+rm hello
+echo "TESTER EXIT STATUS: " $?
+echo hola >> hello >> hello > hello 
+echo "TESTER EXIT STATUS: " $?
+echo hola >> hello 
+echo "TESTER EXIT STATUS: " $?
+cat < hello 
+echo "TESTER EXIT STATUS: " $?
+rm hello
+echo "TESTER EXIT STATUS: " $?
+echo hola >> hello >> hello > hello 
+echo "TESTER EXIT STATUS: " $?
+echo hola >> hello 
+echo "TESTER EXIT STATUS: " $?
+echo hola >> hello >> hello > hello 
+echo "TESTER EXIT STATUS: " $?
+cat < hello 
+echo "TESTER EXIT STATUS: " $?
+rm hello
+echo "TESTER EXIT STATUS: " $?
+echo hola > hello 
+echo "TESTER EXIT STATUS: " $?
+echo hola >> hello >> hello >> hello 
+echo "TESTER EXIT STATUS: " $?
+echo hola >> hello 
+echo "TESTER EXIT STATUS: " $?
+cat < hello 
+echo "TESTER EXIT STATUS: " $?
+rm hello
+echo "TESTER EXIT STATUS: " $?
+echo hola > bonjour 
+echo "TESTER EXIT STATUS: " $?
+echo hey > hello 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour hello 
+echo "TESTER EXIT STATUS: " $?
+echo hola > bonjour > hello > bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat hello 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour hello
+echo "TESTER EXIT STATUS: " $?
+echo hola > bonjour 
+echo "TESTER EXIT STATUS: " $?
+echo hey > hello 
+echo "TESTER EXIT STATUS: " $?
+echo hola > bonjour > hello > bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat hello 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour hello
+echo "TESTER EXIT STATUS: " $?
+echo hola > bonjour 
+echo "TESTER EXIT STATUS: " $?
+echo hey > hello 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour hello 
+echo "TESTER EXIT STATUS: " $?
+echo hola > bonjour >> hello > bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat hello 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour hello
+echo "TESTER EXIT STATUS: " $?
+echo hola > bonjour 
+echo "TESTER EXIT STATUS: " $?
+echo hey > hello 
+echo "TESTER EXIT STATUS: " $?
+echo hola > bonjour > hello > bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat hello 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour hello
+echo "TESTER EXIT STATUS: " $?
+echo hola > bonjour 
+echo "TESTER EXIT STATUS: " $?
+echo hey > hello 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour hello 
+echo "TESTER EXIT STATUS: " $?
+echo hola > bonjour > hello >> bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat hello 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour hello
+echo "TESTER EXIT STATUS: " $?
+echo hola > bonjour 
+echo "TESTER EXIT STATUS: " $?
+echo hey > hello 
+echo "TESTER EXIT STATUS: " $?
+echo hola > bonjour > hello >> bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat hello 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour hello
+echo "TESTER EXIT STATUS: " $?
+echo hola > bonjour 
+echo "TESTER EXIT STATUS: " $?
+echo hey > hello 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour hello 
+echo "TESTER EXIT STATUS: " $?
+echo hola >> bonjour > hello > bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat hello 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour hello
+echo "TESTER EXIT STATUS: " $?
+echo hola > bonjour 
+echo "TESTER EXIT STATUS: " $?
+echo hey > hello 
+echo "TESTER EXIT STATUS: " $?
+echo hola >> bonjour > hello > bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat hello 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour hello
+echo "TESTER EXIT STATUS: " $?
+echo hola > bonjour 
+echo "TESTER EXIT STATUS: " $?
+echo hey > hello 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour hello 
+echo "TESTER EXIT STATUS: " $?
+echo hola >> bonjour >> hello >> bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat hello 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour hello
+echo "TESTER EXIT STATUS: " $?
+echo hola > bonjour 
+echo "TESTER EXIT STATUS: " $?
+echo hey > hello 
+echo "TESTER EXIT STATUS: " $?
+echo hola >> bonjour >> hello >> bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat hello 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour hello
+echo "TESTER EXIT STATUS: " $?
+> bonjour echo hola bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat bonjour 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour
+echo "TESTER EXIT STATUS: " $?
+>bonjour echo > hola>bonjour>hola>>bonjour>hola hey >bonjour hola >hola 
+echo "TESTER EXIT STATUS: " $?
+cat bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat hola 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour hola
+echo "TESTER EXIT STATUS: " $?
+echo bonjour > hola1 
+echo "TESTER EXIT STATUS: " $?
+echo hello > hola2 
+echo "TESTER EXIT STATUS: " $?
+echo 2 >hola1 >> hola2 
+echo "TESTER EXIT STATUS: " $?
+ls 
+echo "TESTER EXIT STATUS: " $?
+cat hola1 
+echo "TESTER EXIT STATUS: " $?
+cat hola2 
+echo "TESTER EXIT STATUS: " $?
+rm hola1 hola2
+echo "TESTER EXIT STATUS: " $?
+echo bonjour > hola1 
+echo "TESTER EXIT STATUS: " $?
+echo hello > hola2 
+echo "TESTER EXIT STATUS: " $?
+echo 2 >>hola1 > hola2 
+echo "TESTER EXIT STATUS: " $?
+ls 
+echo "TESTER EXIT STATUS: " $?
+cat hola1 
+echo "TESTER EXIT STATUS: " $?
+cat hola2 
+echo "TESTER EXIT STATUS: " $?
+rm hola1 hola2
+echo "TESTER EXIT STATUS: " $?
 cat <pwd
+echo "TESTER EXIT STATUS: " $?
 cat <srcs/pwd
+echo "TESTER EXIT STATUS: " $?
 cat <../pwd
+echo "TESTER EXIT STATUS: " $?
 cat >>
+echo "TESTER EXIT STATUS: " $?
 cat >>>
+echo "TESTER EXIT STATUS: " $?
 cat >> <<
+echo "TESTER EXIT STATUS: " $?
 cat >> > >> << >>
+echo "TESTER EXIT STATUS: " $?
 cat < ls
+echo "TESTER EXIT STATUS: " $?
 cat < ls > ls
-cat > ls1 < ls2 $> ls
->>hola $> cat hola
-echo hola > bonjour $> cat < bonjour
-echo hola >bonjour $> cat <bonjour
-echo hola>bonjour $> cat<bonjour
-echo hola> bonjour $> cat< bonjour
-echo hola               >bonjour $> cat<                     bonjour
-echo hola          >     bonjour $> cat            <         bonjour
-echo hola > srcs/bonjour $> cat < srcs/bonjour
-echo hola >srcs/bonjour $> cat <srcs/bonjour
-echo hola > bonjour $> echo que tal >> bonjour $> cat < bonjour
-echo hola > bonjour $> rm bonjour $> echo que tal >> bonjour $> cat < bonjour
-e'c'"h"o hola > bonjour $> cat 'bo'"n"jour
-echo hola > bonjour\ 1 $> ls $> cat bonjour\ 1
-echo hola > bonjour hey $> ls $> cat bonjour $> cat hey
-echo hola > srcs/bonjour $> echo hey > srcs/hello $> >srcs/bonjour >srcs/hello <prout $> cat srcs/bonjour srcs/hello
-echo hola > srcs/bonjour $> echo hey > srcs/hello $> rm srcs/bonjour srcs/hello $> >srcs/bonjour >srcs/hello <prout $> ls srcs $> cat srcs/bonjour srcs/hello
-echo hola > srcs/bonjour $> echo hey > srcs/hello $> >srcs/bonjour <prout >srcs/hello  $> cat srcs/bonjour  $> cat srcs/hello
-echo hola > srcs/bonjour $> echo hey > srcs/hello $> rm srcs/bonjour srcs/hello $> >srcs/bonjour <prout >srcs/hello  $> ls srcs $> cat srcs/bonjour
-echo hola > ../bonjour $> echo hey > ../hello $> >../bonjour >../hello <prout $> cat ../bonjour ../hello
-echo hola > ../bonjour $> echo hey > ../hello $> rm ../bonjour ../hello $> >../bonjour >../hello <prout $> ls .. $> cat ../bonjour ../hello
-echo hola > ../bonjour $> echo hey > ../hello $> >../bonjour <prout >../hello  $> cat ../bonjour  $> cat ../hello
-echo hola > ../bonjour $> echo hey > ../hello $> rm ../bonjour ../hello $> >../bonjour <prout >../hello  $> ls .. $> cat ../bonjour
-echo hola > srcs/bonjour $> echo hey > srcs/hello $> >srcs/bonjour >>srcs/hello <prout $> cat srcs/bonjour  $> cat srcs/hello
-echo hola > srcs/bonjour $> echo hey > srcs/hello $> >>srcs/bonjour >srcs/hello <prout $> cat srcs/bonjour  $> cat srcs/hello
-echo hola > srcs/bonjour $> echo hey > srcs/hello $> >>srcs/bonjour >>srcs/hello <prout $> cat srcs/bonjour  $> cat srcs/hello
-echo hola > srcs/bonjour $> echo hey > srcs/hello $> >srcs/bonjour <prout >>srcs/hello $> cat srcs/bonjour  $> cat srcs/hello
-echo hola > srcs/bonjour $> echo hey > srcs/hello $> >>srcs/bonjour <prout >srcs/hello $> cat srcs/bonjour  $> cat srcs/hello
-echo hola > srcs/bonjour $> echo hey > srcs/hello $> >>srcs/bonjour <prout >>srcs/hello $> cat srcs/bonjour  $> cat srcs/hello
-echo hola > srcs/bonjour $> echo hey > srcs/hello $> <prout >>srcs/bonjour >>srcs/hello $> cat srcs/bonjour  $> cat srcs/hello
-echo hola > bonjour $> echo hey > hello $> <bonjour >hello $> cat bonjour  $> cat hello
-echo hola > bonjour $> echo hey > hello $> >bonjour >hello < prout $> cat bonjour  $> cat hello
-echo hola > bonjour $> echo hey > hello $> rm bonjour hello $> >bonjour >hello < prout $> cat bonjour  $> cat hello
-echo hola > bonjour $> echo hey > hello $> >bonjour <prout hello $> cat bonjour  $> cat hello
-echo hola > bonjour $> echo hey > hello $> rm bonjour hello $> >bonjour <prout hello $> cat bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat > ls1 < ls2 
+echo "TESTER EXIT STATUS: " $?
+ls
+echo "TESTER EXIT STATUS: " $?
+>>hola 
+echo "TESTER EXIT STATUS: " $?
+cat hola
+echo "TESTER EXIT STATUS: " $?
+echo hola > bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat < bonjour 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour
+echo "TESTER EXIT STATUS: " $?
+echo hola >bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat <bonjour 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour
+echo "TESTER EXIT STATUS: " $?
+echo hola>bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat<bonjour 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour
+echo "TESTER EXIT STATUS: " $?
+echo hola> bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat< bonjour 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour
+echo "TESTER EXIT STATUS: " $?
+echo hola               >bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat<                     bonjour 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour
+echo "TESTER EXIT STATUS: " $?
+echo hola          >     bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat            <         bonjour 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour
+echo "TESTER EXIT STATUS: " $?
+echo hola > srcs/bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat < srcs/bonjour 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour
+echo "TESTER EXIT STATUS: " $?
+echo hola >srcs/bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat <srcs/bonjour 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour
+echo "TESTER EXIT STATUS: " $?
+echo hola > bonjour 
+echo "TESTER EXIT STATUS: " $?
+echo que tal >> bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat < bonjour 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour
+echo "TESTER EXIT STATUS: " $?
+echo hola > bonjour 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour 
+echo "TESTER EXIT STATUS: " $?
+echo que tal >> bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat < bonjour 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour
+echo "TESTER EXIT STATUS: " $?
+e'c'"h"o hola > bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat 'bo'"n"jour 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour
+echo "TESTER EXIT STATUS: " $?
+echo hola > bonjour\ 1 
+echo "TESTER EXIT STATUS: " $?
+ls 
+echo "TESTER EXIT STATUS: " $?
+cat bonjour\ 1 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour
+echo "TESTER EXIT STATUS: " $?
+echo hola > bonjour hey 
+echo "TESTER EXIT STATUS: " $?
+ls 
+echo "TESTER EXIT STATUS: " $?
+cat bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat hey 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour
+echo "TESTER EXIT STATUS: " $?
+echo hola > srcs/bonjour 
+echo "TESTER EXIT STATUS: " $?
+echo hey > srcs/hello 
+echo "TESTER EXIT STATUS: " $?
+>srcs/bonjour >srcs/hello <prout 
+echo "TESTER EXIT STATUS: " $?
+cat srcs/bonjour srcs/hello 
+echo "TESTER EXIT STATUS: " $?
+rm srcs/bonjour srcs/hello
+echo "TESTER EXIT STATUS: " $?
+echo hola > srcs/bonjour 
+echo "TESTER EXIT STATUS: " $?
+echo hey > srcs/hello 
+echo "TESTER EXIT STATUS: " $?
+rm srcs/bonjour srcs/hello 
+echo "TESTER EXIT STATUS: " $?
+>srcs/bonjour >srcs/hello <prout 
+echo "TESTER EXIT STATUS: " $?
+ls srcs 
+echo "TESTER EXIT STATUS: " $?
+cat srcs/bonjour srcs/hello 
+echo "TESTER EXIT STATUS: " $?
+rm srcs/bonjour srcs/hello
+echo "TESTER EXIT STATUS: " $?
+echo hola > srcs/bonjour 
+echo "TESTER EXIT STATUS: " $?
+echo hey > srcs/hello 
+echo "TESTER EXIT STATUS: " $?
+>srcs/bonjour <prout >srcs/hello  
+echo "TESTER EXIT STATUS: " $?
+cat srcs/bonjour  
+echo "TESTER EXIT STATUS: " $?
+cat srcs/hello 
+echo "TESTER EXIT STATUS: " $?
+rm srcs/bonjour srcs/hello
+echo "TESTER EXIT STATUS: " $?
+echo hola > srcs/bonjour 
+echo "TESTER EXIT STATUS: " $?
+echo hey > srcs/hello 
+echo "TESTER EXIT STATUS: " $?
+rm srcs/bonjour srcs/hello 
+echo "TESTER EXIT STATUS: " $?
+>srcs/bonjour <prout >srcs/hello  
+echo "TESTER EXIT STATUS: " $?
+ls srcs 
+echo "TESTER EXIT STATUS: " $?
+cat srcs/bonjour 
+echo "TESTER EXIT STATUS: " $?
+rm srcs/bonjour srcs/hello
+echo "TESTER EXIT STATUS: " $?
+echo hola > ../bonjour 
+echo "TESTER EXIT STATUS: " $?
+echo hey > ../hello 
+echo "TESTER EXIT STATUS: " $?
+>../bonjour >../hello <prout 
+echo "TESTER EXIT STATUS: " $?
+cat ../bonjour ../hello 
+echo "TESTER EXIT STATUS: " $?
+rm ../bonjour ../hello
+echo "TESTER EXIT STATUS: " $?
+echo hola > ../bonjour 
+echo "TESTER EXIT STATUS: " $?
+echo hey > ../hello 
+echo "TESTER EXIT STATUS: " $?
+rm ../bonjour ../hello 
+echo "TESTER EXIT STATUS: " $?
+>../bonjour >../hello <prout 
+echo "TESTER EXIT STATUS: " $?
+ls .. 
+echo "TESTER EXIT STATUS: " $?
+cat ../bonjour ../hello 
+echo "TESTER EXIT STATUS: " $?
+rm ../bonjour ../hello
+echo "TESTER EXIT STATUS: " $?
+echo hola > ../bonjour 
+echo "TESTER EXIT STATUS: " $?
+echo hey > ../hello 
+echo "TESTER EXIT STATUS: " $?
+>../bonjour <prout >../hello  
+echo "TESTER EXIT STATUS: " $?
+cat ../bonjour  
+echo "TESTER EXIT STATUS: " $?
+cat ../hello 
+echo "TESTER EXIT STATUS: " $?
+rm ../bonjour ../hello
+echo "TESTER EXIT STATUS: " $?
+echo hola > ../bonjour 
+echo "TESTER EXIT STATUS: " $?
+echo hey > ../hello 
+echo "TESTER EXIT STATUS: " $?
+rm ../bonjour ../hello 
+echo "TESTER EXIT STATUS: " $?
+>../bonjour <prout >../hello  
+echo "TESTER EXIT STATUS: " $?
+ls .. 
+echo "TESTER EXIT STATUS: " $?
+cat ../bonjour 
+echo "TESTER EXIT STATUS: " $?
+rm ../bonjour ../hello
+echo "TESTER EXIT STATUS: " $?
+echo hola > srcs/bonjour 
+echo "TESTER EXIT STATUS: " $?
+echo hey > srcs/hello 
+echo "TESTER EXIT STATUS: " $?
+>srcs/bonjour >>srcs/hello <prout 
+echo "TESTER EXIT STATUS: " $?
+cat srcs/bonjour  
+echo "TESTER EXIT STATUS: " $?
+cat srcs/hello 
+echo "TESTER EXIT STATUS: " $?
+rm srcs/bonjour srcs/hello
+echo "TESTER EXIT STATUS: " $?
+echo hola > srcs/bonjour 
+echo "TESTER EXIT STATUS: " $?
+echo hey > srcs/hello 
+echo "TESTER EXIT STATUS: " $?
+>>srcs/bonjour >srcs/hello <prout 
+echo "TESTER EXIT STATUS: " $?
+cat srcs/bonjour  
+echo "TESTER EXIT STATUS: " $?
+cat srcs/hello 
+echo "TESTER EXIT STATUS: " $?
+rm srcs/bonjour srcs/hello
+echo "TESTER EXIT STATUS: " $?
+echo hola > srcs/bonjour 
+echo "TESTER EXIT STATUS: " $?
+echo hey > srcs/hello 
+echo "TESTER EXIT STATUS: " $?
+>>srcs/bonjour >>srcs/hello <prout 
+echo "TESTER EXIT STATUS: " $?
+cat srcs/bonjour  
+echo "TESTER EXIT STATUS: " $?
+cat srcs/hello 
+echo "TESTER EXIT STATUS: " $?
+rm srcs/bonjour srcs/hello
+echo "TESTER EXIT STATUS: " $?
+echo hola > srcs/bonjour 
+echo "TESTER EXIT STATUS: " $?
+echo hey > srcs/hello 
+echo "TESTER EXIT STATUS: " $?
+>srcs/bonjour <prout >>srcs/hello 
+echo "TESTER EXIT STATUS: " $?
+cat srcs/bonjour  
+echo "TESTER EXIT STATUS: " $?
+cat srcs/hello 
+echo "TESTER EXIT STATUS: " $?
+rm srcs/bonjour srcs/hello
+echo "TESTER EXIT STATUS: " $?
+echo hola > srcs/bonjour 
+echo "TESTER EXIT STATUS: " $?
+echo hey > srcs/hello 
+echo "TESTER EXIT STATUS: " $?
+>>srcs/bonjour <prout >srcs/hello 
+echo "TESTER EXIT STATUS: " $?
+cat srcs/bonjour  
+echo "TESTER EXIT STATUS: " $?
+cat srcs/hello 
+echo "TESTER EXIT STATUS: " $?
+rm srcs/bonjour srcs/hello
+echo "TESTER EXIT STATUS: " $?
+echo hola > srcs/bonjour 
+echo "TESTER EXIT STATUS: " $?
+echo hey > srcs/hello 
+echo "TESTER EXIT STATUS: " $?
+>>srcs/bonjour <prout >>srcs/hello 
+echo "TESTER EXIT STATUS: " $?
+cat srcs/bonjour  
+echo "TESTER EXIT STATUS: " $?
+cat srcs/hello 
+echo "TESTER EXIT STATUS: " $?
+rm srcs/bonjour srcs/hello
+echo "TESTER EXIT STATUS: " $?
+echo hola > srcs/bonjour 
+echo "TESTER EXIT STATUS: " $?
+echo hey > srcs/hello 
+echo "TESTER EXIT STATUS: " $?
+<prout >>srcs/bonjour >>srcs/hello 
+echo "TESTER EXIT STATUS: " $?
+cat srcs/bonjour  
+echo "TESTER EXIT STATUS: " $?
+cat srcs/hello 
+echo "TESTER EXIT STATUS: " $?
+rm srcs/bonjour srcs/hello
+echo "TESTER EXIT STATUS: " $?
+echo hola > bonjour 
+echo "TESTER EXIT STATUS: " $?
+echo hey > hello 
+echo "TESTER EXIT STATUS: " $?
+<bonjour >hello 
+echo "TESTER EXIT STATUS: " $?
+cat bonjour  
+echo "TESTER EXIT STATUS: " $?
+cat hello 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour hello
+echo "TESTER EXIT STATUS: " $?
+echo hola > bonjour 
+echo "TESTER EXIT STATUS: " $?
+echo hey > hello 
+echo "TESTER EXIT STATUS: " $?
+>bonjour >hello < prout 
+echo "TESTER EXIT STATUS: " $?
+cat bonjour  
+echo "TESTER EXIT STATUS: " $?
+cat hello 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour hello
+echo "TESTER EXIT STATUS: " $?
+echo hola > bonjour 
+echo "TESTER EXIT STATUS: " $?
+echo hey > hello 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour hello 
+echo "TESTER EXIT STATUS: " $?
+>bonjour >hello < prout 
+echo "TESTER EXIT STATUS: " $?
+cat bonjour  
+echo "TESTER EXIT STATUS: " $?
+cat hello 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour hello
+echo "TESTER EXIT STATUS: " $?
+echo hola > bonjour 
+echo "TESTER EXIT STATUS: " $?
+echo hey > hello 
+echo "TESTER EXIT STATUS: " $?
+>bonjour <prout hello 
+echo "TESTER EXIT STATUS: " $?
+cat bonjour  
+echo "TESTER EXIT STATUS: " $?
+cat hello 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour hello
+echo "TESTER EXIT STATUS: " $?
+echo hola > bonjour 
+echo "TESTER EXIT STATUS: " $?
+echo hey > hello 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour hello 
+echo "TESTER EXIT STATUS: " $?
+>bonjour <prout hello 
+echo "TESTER EXIT STATUS: " $?
+cat bonjour  
+echo "TESTER EXIT STATUS: " $?
+rm bonjour hello
+echo "TESTER EXIT STATUS: " $?
 <a cat <b <c
-<a cat <b <c $> cat a $> cat b $> cat c
->a ls >b >>c >d $> cat a $> cat b $> cat c $> cat d
->a ls >b >>c >d $> cat a $> cat b $> cat c $> cat d
-echo hola > a > b > c $> cat a $> cat b $> cat c
-mkdir dir $> ls -la > dir/bonjour $> cat dir/bonjour
-<a $> cat a
->d cat <a >>e $> cat a $> cat d $> cat e
-< a > b cat > hey >> d $> cat d $> ls
+echo "TESTER EXIT STATUS: " $?
+<a cat <b <c 
+echo "TESTER EXIT STATUS: " $?
+cat a 
+echo "TESTER EXIT STATUS: " $?
+cat b 
+echo "TESTER EXIT STATUS: " $?
+cat c
+echo "TESTER EXIT STATUS: " $?
+>a ls >b >>c >d 
+echo "TESTER EXIT STATUS: " $?
+cat a 
+echo "TESTER EXIT STATUS: " $?
+cat b 
+echo "TESTER EXIT STATUS: " $?
+cat c 
+echo "TESTER EXIT STATUS: " $?
+cat d 
+echo "TESTER EXIT STATUS: " $?
+rm a b c d
+echo "TESTER EXIT STATUS: " $?
+>a ls >b >>c >d 
+echo "TESTER EXIT STATUS: " $?
+cat a 
+echo "TESTER EXIT STATUS: " $?
+cat b 
+echo "TESTER EXIT STATUS: " $?
+cat c 
+echo "TESTER EXIT STATUS: " $?
+cat d 
+echo "TESTER EXIT STATUS: " $?
+rm a b c d
+echo "TESTER EXIT STATUS: " $?
+echo hola > a > b > c 
+echo "TESTER EXIT STATUS: " $?
+cat a 
+echo "TESTER EXIT STATUS: " $?
+cat b 
+echo "TESTER EXIT STATUS: " $?
+cat c 
+echo "TESTER EXIT STATUS: " $?
+rm a b c
+echo "TESTER EXIT STATUS: " $?
+mkdir dir 
+echo "TESTER EXIT STATUS: " $?
+ls -la > dir/bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat dir/bonjour 
+echo "TESTER EXIT STATUS: " $?
+dir/bonjour
+echo "TESTER EXIT STATUS: " $?
+<a 
+echo "TESTER EXIT STATUS: " $?
+cat a 
+echo "TESTER EXIT STATUS: " $?
+a
+echo "TESTER EXIT STATUS: " $?
+>d cat <a >>e 
+echo "TESTER EXIT STATUS: " $?
+cat a 
+echo "TESTER EXIT STATUS: " $?
+cat d 
+echo "TESTER EXIT STATUS: " $?
+cat e 
+echo "TESTER EXIT STATUS: " $?
+rm d e 
+echo "TESTER EXIT STATUS: " $?
+< a > b cat > hey >> d 
+echo "TESTER EXIT STATUS: " $?
+cat d 
+echo "TESTER EXIT STATUS: " $?
+ls 
+echo "TESTER EXIT STATUS: " $?
+rm b d 
+echo "TESTER EXIT STATUS: " $?
 cat << hola
+echo "TESTER EXIT STATUS: " $?
 cat << 'hola'
+echo "TESTER EXIT STATUS: " $?
 cat << "hola"
+echo "TESTER EXIT STATUS: " $?
 cat << ho"la"
+echo "TESTER EXIT STATUS: " $?
 cat << $HOME
-cat << hola > bonjour $> cat bonjour
+echo "TESTER EXIT STATUS: " $?
+cat << hola > bonjour 
+echo "TESTER EXIT STATUS: " $?
+cat bonjour 
+echo "TESTER EXIT STATUS: " $?
+rm bonjour
+echo "TESTER EXIT STATUS: " $?
 cat << hola | rev
+echo "TESTER EXIT STATUS: " $?
 cat <<
+echo "TESTER EXIT STATUS: " $?
 cat << prout << lol << koala
+echo "TESTER EXIT STATUS: " $?
 prout << lol << cat << koala
+echo "TESTER EXIT STATUS: " $?
 cat M*le
+echo "TESTER EXIT STATUS: " $?
 cat M*ee
+echo "TESTER EXIT STATUS: " $?
 cat Make*file
+echo "TESTER EXIT STATUS: " $?

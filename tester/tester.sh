@@ -29,6 +29,16 @@ BU='\033[0;34m'
 MG='\033[0;35m'
 NC='\033[0m'
 
+## SAVE EXPRESION
+# replace new line command charset '$>' by a new line
+# sed -i -e 's/$> /\n/g' xxx.txt
+# OR (to be tested)
+# sed -i -e 's/[^0-9]$> /\n/g' xxx.txt
+#
+#
+# replace every '\n' by new line with echo return status
+# cat xxx.txt | awk -F'\n' '{ print $1 "\necho \"TESTER EXIT STATUS: \" $?" $2 }' >xxx_OK.txt
+
 function	exec_diff
 {
 	local sed_seq="";
