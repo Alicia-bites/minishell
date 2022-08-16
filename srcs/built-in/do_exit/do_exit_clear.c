@@ -3,21 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   do_exit_clear.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 10:53:00 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/11 08:49:59 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/16 17:38:56 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static int	seen_pipe(t_list *tok_node)
+{
+	if (!tok_node)
+		return (0);
+	while (tok_node)
+	{
+		if (!ft_strcmp(tok_node->token, "|"))
+			return (1);
+		tok_node = tok_node->prev;
+	}
+	return (0);
+}
 
 void	do_exit_clear(t_ulist **envp, t_ulist **cmd_lst, t_cmd *cmd,
 		char *err_msg)
 {
 	extern t_global	g_msl;
 
-	printf("exit\n");
+	if (!seen_pipe(cmd->tok_node))
+		printf("exit\n");	
 	if (err_msg)
 		ft_panic(-1, __FILE__, ERR_ARG_NUM);
 	rl_clear_history();

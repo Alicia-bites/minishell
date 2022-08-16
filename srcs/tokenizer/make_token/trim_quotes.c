@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 17:02:58 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/16 15:09:23 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/16 15:23:20 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ static char	*malloc_output(char *str, int *len)
 
 	*len = 0;
 	*len = ft_strlen(str) - get_malloc_size(str);
-	printf("len = %d\n", *len);
 	if (*len == ft_strlen(str))
 		return (str);
 	output = malloc(sizeof(char) * (*len) + 1);
