@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:57:58 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/15 18:01:58 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/16 16:11:09 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,18 @@ static int	check_quote(t_chartype *input_list, int start)
 				|| input_list[start].character == '\"')
 				return (1);
 		}
+	}
+	return (0);
+}
+
+static int	op_was_in_exp(t_chartype *input_list, int pos, char *token)
+{
+	if (ft_strcmp(token, "|") || ft_strcmp(token, "<") || ft_strcmp(token, ">"))
+	{
+		if (input_list[pos].type == CH_WORD)
+			return (1);
+		else
+			return (0);
 	}
 	return (0);
 }
@@ -54,6 +66,6 @@ void	built_token(t_chartype *input_list, int start, int end,
 		|| ft_strstr(token, "\"")) && !is_heredoc_separator(*token_list))
 		token = trim_quotes(token);
 	add_token_to_list(token, token_list);
-	if (seen_quote && token != NULL)
+	if (token != NULL && (seen_quote || op_was_in_exp(input_list, end -1, token)))
 		check_operator_presence(token, token_list);
 }
