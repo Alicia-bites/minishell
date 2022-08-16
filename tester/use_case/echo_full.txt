@@ -130,7 +130,6 @@ echo $PWD
 echo "TESTER EXIT STATUS: " $?
 echo $OLDPWD
 echo "TESTER EXIT STATUS: " $?
-echo "TESTER EXIT STATUS: " $?
 echo hola > bonjour 
 echo "TESTER EXIT STATUS: " $?
 cat -e bonjour | exit
@@ -162,15 +161,11 @@ mkdir a
 echo "TESTER EXIT STATUS: " $?
 echo
 echo "TESTER EXIT STATUS: " $?
-echo -n
-echo "TESTER EXIT STATUS: " $?
+
 echo Hola
 echo "TESTER EXIT STATUS: " $?
 
 
-echo -n Hola
-echo "TESTER EXIT STATUS: " $?
-echo "-n" Hola
 echo "TESTER EXIT STATUS: " $?
 echo -nHola
 echo "TESTER EXIT STATUS: " $?
@@ -188,19 +183,10 @@ echo           | cat -e
 echo "TESTER EXIT STATUS: " $?
 ""''echo hola""'''' que""'' tal""''
 echo "TESTER EXIT STATUS: " $?
-echo -n -n
-echo "TESTER EXIT STATUS: " $?
-echo -n -n Hola Que
-echo "TESTER EXIT STATUS: " $?
 echo -p
 echo "TESTER EXIT STATUS: " $?
-echo -nnnnn
-echo "TESTER EXIT STATUS: " $?
-echo -n -nnn -nnnn
 echo "TESTER EXIT STATUS: " $?
 echo -n-nnn -nnnn
-echo "TESTER EXIT STATUS: " $?
-echo -n -nnn hola -nnnn
 echo "TESTER EXIT STATUS: " $?
 echo -n -nnn-nnnn
 echo "TESTER EXIT STATUS: " $?
@@ -241,9 +227,6 @@ echo "TESTER EXIT STATUS: " $?
 echo $HOME%
 echo "TESTER EXIT STATUS: " $?
 echo Le path de mon HOME est $HOME
-echo "TESTER EXIT STATUS: " $?
-echo -nnnn $hola
-echo "TESTER EXIT STATUS: " $?
 echo "TESTER EXIT STATUS: " $?
 echo '*'
 echo "TESTER EXIT STATUS: " $?
@@ -657,12 +640,7 @@ echo que tal >> bonjour
 echo "TESTER EXIT STATUS: " $?
 cat < bonjour
 echo "TESTER EXIT STATUS: " $?
-echo hola > bonjour\ 1 
-echo "TESTER EXIT STATUS: " $?
-ls 
-echo "TESTER EXIT STATUS: " $?
-cat bonjour\ 1
-echo "TESTER EXIT STATUS: " $?
+
 echo hola > bonjour hey 
 echo "TESTER EXIT STATUS: " $?
 ls 

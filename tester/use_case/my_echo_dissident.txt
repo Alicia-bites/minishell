@@ -1,0 +1,21 @@
+echo "$TERM
+echo $"TERM
+echo 'bon'jour""
+echo 'bon"jour'"
+echo '
+echo "
+echo "bon"'
+echo 'bon'"
+"echo -n" HAPPY DAYS
+echo-n HAPPY DAYS
+echo \\
+echo \
+echo "\""
+echo "\'"
+echo '\"'
+echo '\\'
+echo "\\"
+echo '\a'
+echo "\a"
+echo """
+echo '"''"''"'"'"'"'"'""Hello""'"'"
