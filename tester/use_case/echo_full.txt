@@ -86,10 +86,6 @@ export HOLA="ls        -l    - a"
 echo "TESTER EXIT STATUS: " $?
 echo $HOLA
 echo "TESTER EXIT STATUS: " $?
-export HOLA=-n 
-echo "TESTER EXIT STATUS: " $?
-"echo $HOLA" hey
-echo "TESTER EXIT STATUS: " $?
 export A=1 B=2 C=3 D=4 E=5 F=6 G=7 H=8
 echo "TESTER EXIT STATUS: " $?
 echo "$A'$B"'$C"$D'$E'"$F'"'$G'$H"
