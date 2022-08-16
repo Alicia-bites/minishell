@@ -6,12 +6,17 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 17:02:58 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/15 19:14:30 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/16 15:09:23 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+//The only case len could be equal to 1 is when str only contains one quote.
+//Since we are going to deduct get_malloc_size from ft_strlen(str) we would end
+//up with len = 1 - 1 = 0. Yet, we want len to be 1 because if this quote is lonly,
+//it necessarily means it is out of an expansion and was between quotes before, so
+//we DO want to put it in output and print it.
 static int	get_malloc_size(char *str)
 {
 	int	len;
@@ -23,6 +28,8 @@ static int	get_malloc_size(char *str)
 	len = 0;
 	count_quotes_lexer(&s, &d, str);
 	len = s + d;
+	if (len == 1)
+		len = 0;
 	return (len);
 }
 
@@ -32,6 +39,7 @@ static char	*malloc_output(char *str, int *len)
 
 	*len = 0;
 	*len = ft_strlen(str) - get_malloc_size(str);
+	printf("len = %d\n", *len);
 	if (*len == ft_strlen(str))
 		return (str);
 	output = malloc(sizeof(char) * (*len) + 1);
@@ -47,9 +55,15 @@ char	*trim_quotes(char *str)
 	int		i;
 	int		j;
 
-	i= 0;
+	i = 0;
 	j = 0;
+	if (!str)
+		return (NULL);
 	output = malloc_output(str, &len);
+	if (str[0] == '\'' && str[1] == '\0')
+		output[i++] = '\'';
+	else if (str[0] == '\"' && str[1] == '\0')
+		output[i++] = '\"';
 	while (i < len)
 	{
 		if ((str[j] != '\'' && (str[j] != '\"'))
