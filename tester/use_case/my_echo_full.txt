@@ -24,7 +24,6 @@ echo "bon'jour'"
 echo 'bon'jour''
 echo '"bonjour"'
 echo 'bon'"jour"
-echo "bon'jour"'
 echo 'bon'         jour''
 echo 
 echo ""
@@ -43,7 +42,6 @@ echo "hey""you"
 echo "outthere" "in the dark"
 echo - n HAPPY DAYS
 echo -b HAPPY DAYS
-echo -n -n -b HAPPY DAYS
 echo -n-n-n-n HAPPY DAYS
 echo "-n-n-n-n" HAPPY DAYS
 echo "-n -n -n -n" HAPPY DAYS
@@ -53,13 +51,8 @@ echo "   -n"     HAPPY DAYS
 echo "   -n   " HAPPY DAYS
 echo "-nnnnn""-nnnn" HAPPY DAYS
 echo '-nnnnnnn''-nnnnn' HAPPY DAYS
-echo "-n" "-n""-nHAPPY DAYS"
-echo "-n" "-n""-nnnnHAPPY DAYS"
-echo "-n" "-n""-nnnnnn"HAPPY DAYS"
 echo "-n""-n" HAPPY DAYS
 echo -n"-n         " HAPPY DAYS
-echo -n - n Antho
-              | cat -e
 echo "           "h  " "b | cat -e
 echo "           "  " " | cat -e
 ""''echo hola""'''' que""'' tal""''

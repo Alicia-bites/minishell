@@ -19,3 +19,6 @@ echo '\a'
 echo "\a"
 echo """
 echo '"''"''"'"'"'"'"'""Hello""'"'"
+echo "bon'jour"'
+echo "-n" "-n""-nnnnnn"HAPPY DAYS"
+              | cat -e

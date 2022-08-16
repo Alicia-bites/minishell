@@ -78,3 +78,18 @@ echo -n -nnn hola -nnnn
 
 
 echo -nnnn $hola
+
+
+echo -n -n -b HAPPY DAYS
+
+
+echo "-n" "-n""-nHAPPY DAYS"
+
+
+echo "-n" "-n""-nnnnnn""HAPPY DAYS"
+
+
+echo "-n" "-n""-nnnnHAPPY DAYS"
+
+
+echo -n - n Antho
