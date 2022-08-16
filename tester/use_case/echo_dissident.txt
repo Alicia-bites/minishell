@@ -59,3 +59,5 @@ echo hola <<<< bonjour
 echo "TESTER EXIT STATUS: " $?
 echo hola <<<<< bonjour
 echo "TESTER EXIT STATUS: " $?
+cd ~/ | echo $? 
+echo "TESTER EXIT STATUS: " $?

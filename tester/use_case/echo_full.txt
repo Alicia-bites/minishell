@@ -166,10 +166,8 @@ echo -n
 echo "TESTER EXIT STATUS: " $?
 echo Hola
 echo "TESTER EXIT STATUS: " $?
-echoHola
-echo "TESTER EXIT STATUS: " $?
-echo-nHola
-echo "TESTER EXIT STATUS: " $?
+
+
 echo -n Hola
 echo "TESTER EXIT STATUS: " $?
 echo "-n" Hola
