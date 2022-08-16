@@ -28,3 +28,7 @@ echo "TESTER EXIT STATUS: " $?
 |echo|
 echo "TESTER EXIT STATUS: " $?
 |echo -n hola
+export HOLA=-n 
+echo "TESTER EXIT STATUS: " $?
+"echo $HOLA" hey
+echo "TESTER EXIT STATUS: " $?
