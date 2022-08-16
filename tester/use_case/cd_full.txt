@@ -1,0 +1,217 @@
+pwd
+echo $?
+unset PWD
+echo $?
+env | grep PWD
+echo $?
+cd $PWD
+echo $?
+pwd
+echo $?
+unset cd
+echo $?
+/bin/cd Desktop
+echo $?
+cd
+echo $?
+cd .
+echo ?
+cd ./
+echo ?
+cd ./././.
+echo ?
+cd ././././
+echo ?
+cd ..
+echo ?
+cd ../
+echo ?
+cd ../..
+echo ?
+cd ../.
+echo ?
+cd .././././.
+echo ?
+cd srcs
+echo ?
+cd srcs objs
+echo ?
+cd 'srcs'
+echo ?
+cd "srcs"
+echo ?
+cd '/etc'
+echo ?
+cd /e'tc'
+echo ?
+cd /e"tc"
+echo ?
+cd sr
+echo ?
+cd Makefile
+echo ?
+cd ../minishell
+echo ?
+cd ../../../../../../..
+echo ?
+cd .././../.././../bin/ls
+echo ?
+cd /
+echo ?
+cd '/'
+echo ?
+cd //
+echo $?
+pwd
+echo $?
+cd '//'
+echo $?
+pwd
+echo $?
+cd ///
+echo $?
+pwd
+echo $?
+cd ////////
+echo $?
+pwd
+echo $?
+cd '////////'
+echo $?
+pwd
+echo $?
+cd /minishell
+echo $?
+cd /
+echo $?
+cd ..
+echo $?
+cd _
+echo $?
+cd -
+echo $?
+cd --
+echo $?
+cd ---
+echo $?
+cd $HOME
+echo $?
+cd $HOME $HOME
+echo $?
+cd $HOME/42_works
+echo $?
+cd "$PWD/srcs"
+echo $?
+cd '$PWD/srcs'
+echo $?
+unset HOME
+echo $?
+cd $HOME
+echo $?
+unset HOME
+echo $?
+export HOME=
+echo $?
+cd
+echo $?
+unset HOME
+echo $?
+export HOME
+echo $?
+cd
+echo $?
+cd minishell Docs crashtest.c
+echo $?
+   cd / | echo $?
+echo $?
+pwd
+echo $?
+cd ~
+echo $?
+cd ~/
+echo $?
+cd ~/ | echo $?
+echo $?
+pwd
+echo $?
+cd *
+echo $?
+cd *
+echo $?
+cd *
+echo $?
+mkdir a
+echo $?
+mkdir a/b
+echo $?
+cd a/b
+echo $?
+rm -r ../../a
+echo $?
+cd ..
+mkdir a
+echo $?
+mkdir a/b
+echo $?
+cd a/b
+echo $?
+rm -r ../../a
+echo $?
+pwd
+mkdir a
+echo $?
+mkdir a/b
+echo $?
+cd a/b
+echo $?
+rm -r ../../a 
+echo $?
+echo $PWD 
+echo $?
+echo $OLDPWD
+echo $?
+mkdir a
+echo $?
+mkdir a/b
+echo $?
+cd a/b
+echo $?
+rm -r ../../a
+echo $?
+cd
+echo $?
+echo $PWD
+echo $?
+echo $OLDPWD
+mkdir a
+echo $?
+cd a
+echo $?
+rm -r ../a
+echo $?
+echo $PWD
+echo $?
+echo $OLDPWD
+echo $?
+export CDPATH=/
+echo $?
+cd $HOME/..
+echo $?
+export CDPATH=/
+echo $?
+cd home/vietdu91
+export CDPATH=./
+echo $?
+cd .
+echo $?
+export CDPATH=./ $> cd ..
+env -i ./minishell $> cd
+env -i ./minishell $> cd ~
+cd .. | echo "hola"
+cd / | echo "hola"
+cd .. | pwd
+cat Makefile | grep pr | head -n 5 | cd file_not_exist
+cd ../.. && pwd && pwd
+(cd ../.. && pwd) && pwd
+ls -z || cd ../../..&&pwd $> pwd
+ls -z || (cd ../../..&&pwd) $> pwd

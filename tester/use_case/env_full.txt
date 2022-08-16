@@ -1,0 +1,52 @@
+env
+env hola
+env hola que tal
+env env
+env env env env env
+env ls
+env ./Makefile
+export HOLA=bonjour $> env
+export       HOLA=bonjour $> env
+export HOLA9=bonjour $> env
+export _HOLA=bonjour $> env
+export ___HOLA=bonjour $> env
+export _HO_LA_=bonjour $> env
+export HO$?LA=bonjour $> env
+export HOLA+=bonjour $> env
+export HOLA=bonjour $> export HOLA+=bonjour $> env
+exportHOLA=bonjour $> env
+export HOLA=bon jour $> env
+export HOLA= bonjour $> env
+export HOLA=bonsoir $> export HOLA=bonretour $> export HOLA=bonjour $> env
+export HOLA=$HOME $> env
+export HOLA=bonjour$HOME $> env
+export HOLA=$HOMEbonjour $> env
+export HOLA=bon$jour $> env
+export HOLA=bon\jour $> env
+export HOLA=bon\\jour $> env
+export HOLA=bon@jour $> env
+export HOLA=bon;jour $> env
+export HOLA=bon"jour" $> env
+export HOLA$USER=bonjour $> env
+export $HOLA=bonjour $> env
+export "" HOLA=bonjour $> env
+export HOL=A=bonjour $> env
+export HOL=A="" $> env
+export TE+S=T $> env
+export HOLA=bonjour $> env $> unset HOLA $> env
+export HOLA=bonjour $> env $> unset HOLA $> unset HOLA $> env
+unset PWD $> env | grep PWD $> pwd
+pwd $> unset PWD $> env | grep PWD $> cd $PWD $> pwd
+unset OLDPWD $> env | grep OLDPWD
+unset "" HOLA $> env | grep HOLA
+/bin/env
+pwd ls env
+env | grep SHLVL $> ./minishell $> env | grep SHLVL $> exit $> env | grep SHLVL
+env|"wc" -l
+env|"wc "-l
+env -i ./minishell $> env
+env -i ./minishell $> export
+env -i ./minishell $> cd
+env -i ./minishell $> cd ~
+env | echo hola
+export HOLA | echo hola $> env | grep PROUT

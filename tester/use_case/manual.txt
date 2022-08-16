@@ -1,0 +1,21 @@
+cat (faire Ctlr-C apres avoir fait plusieurs fois [ENTREE])
+cat | rev(faire Ctlr-C apres avoir fait plusieurs fois [ENTREE])
+cat (faire Ctlr-\ apres avoir fait plusieurs fois [ENTREE])
+cat | cat | cat | ls
+echo hola | cat | cat | cat | cat | cat | grep hola
+echo hola | cat
+echo hola| cat
+echo hola |cat
+echo hola|cat
+echo hola || cat
+echo hola ||| cat
+ech|o hola | cat
+echo hola > a $> >>b echo que tal $> cat a | <b cat | cat > c | cat
+cat | echo || ls
+cat | echo && ls
+ls || cat | echo
+ls && cat | echo
+echo hola > bonjour $> <bonjour cat | wc > bonjour $> cat bonjour
+export A=hey $> export A B=Hola D E C="Que Tal" $> echo $PROUT$B$C > /tmp/a > /tmp/b > /tmp/c $> cat /tmp/a $> cat /tmp/b $> cat /tmp/c
+                                        !!!!! Contenu du fichier a : "Amour Tu es Horrible"                                            !!!!! Contenu du fichier b : "0123456789"                                            !!!!! Contenu du fichier c : "Prout"
+

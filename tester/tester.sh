@@ -19,7 +19,7 @@ COMMENT_CHAR="#"
 ## CONSTANT ##
 SEP_P="#########################"
 SEP_SP="------------------------"
-RES_PRE="-->"
+CMD_PREF="----->"
 
 ## COLORS ##
 RD='\033[0;31m'
@@ -31,9 +31,15 @@ NC='\033[0m'
 
 function	exec_diff
 {
+	local sed_seq="";
+
 	echo -e "${YE}Executing \"${FUNCNAME}: ${1}\"${NC}";
-	diff -y ${2} ${3} > ${4}
+	#diff -y ${2} ${3} > ${4} && echo "Diff file \"${4}\" has been created" || echo "Error: impossible to create the diff file \"${4}\"";
+	#if [ "$?" != 0 ]; then return 1; fi;
+	diff -y ${3} ${2} > ${4}
+	sed -i 's/^.*\$: /==========>>> /g' ${4};
 	echo -e "${YE}${SEP_P}${NC}";
+	return 0;
 }
 
 function	exec_redir_test
@@ -43,12 +49,14 @@ function	exec_redir_test
 	do
 		if [ ! -z ${3} ] && [ ${i} != ${2}/${3}.txt ]
 		then
-			continue
+			continue;
 		fi
-		echo -e "${VT}file name: ${i}${NC}" >> ${5} 2>>${6}
-		${4} < ${i} >> ${5} 2>>${6}
-
-		echo "${SEP_P}" >> ${5} 2>>${6}
+		#echo -e "${VT}file name: ${i}${NC}" >> ${5} 2>>${6};
+		echo -e "${VT}file name: ${i}${NC}" >> ${5} 2>>${5};
+		#${4} < ${i} >> ${5} 2>>${6};
+		${4} < ${i} >> ${5} 2>>${5};
+		#echo "${SEP_P}" >> ${5} 2>>${6};
+		echo "${SEP_P}" >> ${5} 2>>${5};
 	done
 	echo -e "${YE}${SEP_P}${NC}";
 }
@@ -61,13 +69,8 @@ function	init_dir
 		echo "initialisation of the directory: ${i}";
 		if [ ! -e ${i} ]
 		then
-			mkdir ${i};
-			if [ ! -e ${i} ]
-			then
-				echo "${RES_PRE} error on directory creation";
-			else
-				echo "${RES_PRE} directory created";
-			fi
+			mkdir ${i} && echo "Directory \"${i}\" has been created" || echo "Error: impossible to create the directory \"${i}\"";
+			if [ "$?" != 0 ]; then return 1; fi;
 		else
 			echo "directory already exists";
 		fi
@@ -148,7 +151,7 @@ function	main
 	exec_redir_test "BASH" ${UC_P} ${1} ${BSH_NAME} ${BSH_RES} ${BSH_STDERR};
 	exec_redir_test "SMB" ${UC_P} ${1} ${ORI_P}/.././${SMB_NAME} ${SMB_RES} ${SMB_STDERR};
 	exec_diff "RES" ${BSH_RES} ${SMB_RES} ${DIFF_RES};
-	exec_diff "STDERR" ${BSH_STDERR} ${SMB_STDERR} ${DIFF_STDERR};
+	#exec_diff "STDERR" ${BSH_STDERR} ${SMB_STDERR} ${DIFF_STDERR};
 	return 0;
 }
 
