@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 10:53:00 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/16 17:37:45 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/16 17:38:56 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static int	seen_pipe(t_list *tok_node)
 {
+	if (!tok_node)
+		return (0);
 	while (tok_node)
 	{
 		if (!ft_strcmp(tok_node->token, "|"))
