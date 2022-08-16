@@ -9,17 +9,22 @@ ORI_P=$(pwd)
 UC_P=${ORI_P}/use_case
 RES_P=${ORI_P}/result
 BSH_RES=${RES_P}/bsh_res
+BSH_EXIT=${RES_P}/bsh_exit
 SMB_RES=${RES_P}/smb_res
+SMB_EXIT=${RES_P}/smb_exit
 DIFF_RES=${RES_P}/diff_res
+DIFF_EXIT=${RES_P}/diff_exit
 BSH_STDERR=${RES_P}/bsh_stderr
 SMB_STDERR=${RES_P}/smb_stderr
 DIFF_STDERR=${RES_P}/diff_stderr
+CMD_LIST=${RES_P}/cmd_list
 COMMENT_CHAR="#"
 
 ## CONSTANT ##
 SEP_P="#########################"
 SEP_SP="------------------------"
-CMD_PREF="----->"
+CMD_PREF="==========>>>"
+EXIT_LINE="TESTER EXIT STATUS: "
 
 ## COLORS ##
 RD='\033[0;31m'
@@ -39,7 +44,41 @@ NC='\033[0m'
 # replace every '\n' by new line with echo return status
 # cat xxx.txt | awk -F'\n' '{ print $1 "\necho \"TESTER EXIT STATUS: \" $?" $2 }' >xxx_OK.txt
 
-function	exec_diff
+function	create_command_list
+{
+	echo -e "${YE}Executing \"${FUNCNAME}: ${1}\"${NC}";
+	for i in ${2}/*.txt
+	do
+		if [ ! -z ${3} ] && [ ${i} != ${2}/${3}.txt ]
+		then
+			continue;
+		fi
+		grep -v -iE 'TESTER EXIT STATUS: ' ${i} | cat -n > ${4};
+	done
+	echo -e "${YE}${SEP_P}${NC}";
+}
+
+function	diff_exit_status
+{
+	local sed_seq="";
+
+	echo -e "${YE}Executing \"${FUNCNAME}: ${1}\"${NC}";
+	diff --suppress-common-lines -y ${3} ${2} > ${4}
+	echo -e "${YE}${SEP_P}${NC}";
+	return 0;
+}
+
+function	check_exit_status
+{
+	echo -e "${YE}Executing \"${FUNCNAME}: ${1}\"${NC}";
+	#grep -B 2 -iE 'TESTER EXIT STATUS: ' ${2} | awk '{ print $4 }' > ${3}
+	#grep -B 1 -iE 'TESTER EXIT STATUS: ' ${2} | awk 'NR%2 !=0 { print $0 } ; NR%2 == 0 { print $4 };' > ${3}
+	grep -iE '^TESTER EXIT STATUS: ' ${2} | awk 'BEGIN{i=1} { printf "command %d: %s\n",i, $4; i+=1 };' > ${3};
+	echo -e "${YE}${SEP_P}${NC}";
+	return 0;
+}
+
+function	diff_full
 {
 	local sed_seq="";
 
@@ -52,7 +91,7 @@ function	exec_diff
 	return 0;
 }
 
-function	exec_redir_test
+function	test_full
 {
 	echo -e "${YE}Executing \"${FUNCNAME}: ${1}\"${NC}";
 	for i in ${2}/*.txt
@@ -160,10 +199,14 @@ function	main
 	check_dir_res ${RES_P};
 	create_dir_res ${ORI_P} ${RES_P};
 	if [ "$?" != 0 ]; then return 2; fi;
-	exec_redir_test "BASH" ${UC_P} ${1} ${BSH_NAME} ${BSH_RES} ${BSH_STDERR};
-	exec_redir_test "SMB" ${UC_P} ${1} ${ORI_P}/.././${SMB_NAME} ${SMB_RES} ${SMB_STDERR};
-	exec_diff "RES" ${BSH_RES} ${SMB_RES} ${DIFF_RES};
-	#exec_diff "STDERR" ${BSH_STDERR} ${SMB_STDERR} ${DIFF_STDERR};
+	create_command_list "CMD" ${UC_P} ${1} ${CMD_LIST};
+	test_full "BASH" ${UC_P} ${1} ${BSH_NAME} ${BSH_RES} ${BSH_STDERR};
+	test_full "SMB" ${UC_P} ${1} ${ORI_P}/.././${SMB_NAME} ${SMB_RES} ${SMB_STDERR};
+	diff_full "RES" ${BSH_RES} ${SMB_RES} ${DIFF_RES};
+	#diff_full "STDERR" ${BSH_STDERR} ${SMB_STDERR} ${DIFF_STDERR};
+ 	check_exit_status "BASH" ${BSH_RES} ${BSH_EXIT};
+	check_exit_status "SMB" ${SMB_RES} ${SMB_EXIT};
+	diff_exit_status "EXIT" ${BSH_EXIT} ${SMB_EXIT} ${DIFF_EXIT};
 	return 0;
 }
 
