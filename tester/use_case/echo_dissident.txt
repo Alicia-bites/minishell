@@ -1,0 +1,61 @@
+echo      \n hola
+echo "TESTER EXIT STATUS: " $?
+echo \$HOME
+echo "TESTER EXIT STATUS: " $?
+echo $UID
+echo "TESTER EXIT STATUS: " $?
+echo $UID$HOME
+echo "TESTER EXIT STATUS: " $?
+echo $USER$var\$USER$USER\$USERtest$USER
+echo "TESTER EXIT STATUS: " $?
+echo $hola*
+echo "TESTER EXIT STATUS: " $?
+echo *
+echo "TESTER EXIT STATUS: " $?
+echo D*
+echo "TESTER EXIT STATUS: " $?
+echo *t hola
+echo "TESTER EXIT STATUS: " $?
+echo *t
+echo "TESTER EXIT STATUS: " $?
+echo $*
+echo "TESTER EXIT STATUS: " $?
+echo hola*hola *
+echo "TESTER EXIT STATUS: " $?
+echo $hola*
+echo "TESTER EXIT STATUS: " $?
+echo $HOME*
+echo hola || echo bonjour
+echo "TESTER EXIT STATUS: " $?
+echo hola && echo bonjour
+echo "TESTER EXIT STATUS: " $?
+echo bonjour || echo hola
+echo "TESTER EXIT STATUS: " $?
+echo bonjour && echo hola
+echo "TESTER EXIT STATUS: " $?
+pwd || ls && echo hola
+echo "TESTER EXIT STATUS: " $?
+pwd && ls || echo hola
+echo "TESTER EXIT STATUS: " $?
+pwd || ls || echo hola
+echo "TESTER EXIT STATUS: " $?
+(ls && pwd | wc) >> hola 
+echo "TESTER EXIT STATUS: " $?
+echo hey&&(ls && pwd | wc) > hola 
+echo "TESTER EXIT STATUS: " $?
+(pwd | wc) < hola
+echo "TESTER EXIT STATUS: " $?
+(ls && pwd | wc) < hola
+echo "TESTER EXIT STATUS: " $?
+(ls -z || pwd | wc) < hola
+echo "TESTER EXIT STATUS: " $?
+echo -n bonjour && echo -n hola
+echo "TESTER EXIT STATUS: " $?
+pwd && ls && echo hola
+echo "TESTER EXIT STATUS: " $?
+echo hola <<< bonjour
+echo "TESTER EXIT STATUS: " $?
+echo hola <<<< bonjour
+echo "TESTER EXIT STATUS: " $?
+echo hola <<<<< bonjour
+echo "TESTER EXIT STATUS: " $?
