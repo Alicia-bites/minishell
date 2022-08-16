@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 16:08:41 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/13 14:58:19 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/16 14:37:12 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 int	is_special_character(char c)
 {
 	int		i;
-	char	special_char[9];
+	char	special_char[11];
 
-	ft_strlcpy(special_char, "`!#&;,{}", 9);
+	ft_strlcpy(special_char, "`~!#&;,{}*", 11);
 	i = 0;
-	while (i <= 9)
+	while (i <= 11)
 	{
 		if (c == special_char[i])
 			return (1);
