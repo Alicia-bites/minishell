@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:01:09 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/16 16:12:27 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/16 18:57:25 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,11 @@ char	*cmd_getvalidpath(t_cmd *cmd)
 	path = cmd_loop_envp(cmd->fullcmd[0], cmd->env_lst);
 	if (path)
 		return (path);
-	if (access(cmd->fullcmd[0], F_OK & X_OK) == 0)
-		path = ft_strdup(cmd->fullcmd[0]);
+	if (access(cmd->fullcmd[0], F_OK) == 0)
+	{
+		if (access(cmd->fullcmd[0], X_OK) == 0)
+			path = ft_strdup(cmd->fullcmd[0]);
+	}
 	if (!path)
 	{
 		path = ft_strdup(cmd->fullcmd[0]);
