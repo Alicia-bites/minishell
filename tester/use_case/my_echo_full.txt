@@ -1,8 +1,6 @@
 echo $TERM
 echo "$TERM"
 echo '$TERM'
-echo "$TERM
-echo $"TERM
 echo $"TERM"
 echo "$TERM'"
 echo '$TERM"'
@@ -16,12 +14,9 @@ echo "Salut" $TERM | cat -e
 echo '$'
 echo "$"
 echo $
-echo -n "-n         " alicia
-echo "-n" "-n         " alicia
 echo "           TERM"
 echo '           TERM'
 echo 'bon"jour"'
-echo 'bon'jour""
 echo 'bon'"jour"
 echo "'bon'jour"
 echo "'bon'jour"
@@ -30,12 +25,7 @@ echo 'bon'jour''
 echo '"bonjour"'
 echo 'bon'"jour"
 echo "bon'jour"'
-echo 'bon"jour'"
 echo 'bon'         jour''
-echo '
-echo "
-echo "bon"'
-echo 'bon'"
 echo 
 echo ""
 echo "'"
@@ -51,24 +41,6 @@ echo "a""b"
 echo "a" "b"
 echo "hey""you"
 echo "outthere" "in the dark"
-echo -n nul ne fait le mal HAPPY DAYS
-echo "-n" nul ne fait le mal HAPPY DAYS
-echo -nnnnn nul ne fait le mal HAPPY DAYS
-echo "-nnnnnn" nul ne fait le mal HAPPY DAYS
-echo -n -n -n nul ne fait le mal HAPPY DAYS
-echo "-n" "-n" "-n" nul ne fait le mal HAPPY DAYS
-echo -nnnnn -nnnn -nnnn nul ne fait le mal HAPPY DAYS
-echo -n     -nnn -nnn nul ne fait le mal HAPPY DAYS
-echo "-nnnnn" "-nnnn" "-nnnn" nul ne fait le mal HAPPY DAYS
-echo    -n nul ne fait le mal HAPPY DAYS
-echo -n   nul ne fait le mal HAPPY DAYS
-echo "-""n" HAPPY DAYS
-echo           -n HAPPY DAYS
-echo -n           HAPPY DAYS
-echo -n "HAPPY DAYS"
-echo -n "-nHAPPY DAYS"
-"echo -n" HAPPY DAYS
-echo-n HAPPY DAYS
 echo - n HAPPY DAYS
 echo -b HAPPY DAYS
 echo -n -n -b HAPPY DAYS
@@ -91,15 +63,3 @@ echo -n - n Antho
 echo "           "h  " "b | cat -e
 echo "           "  " " | cat -e
 ""''echo hola""'''' que""'' tal""''
-
-echo \\
-echo \
-echo "\""
-echo "\'"
-echo '\"'
-echo '\\'
-echo "\\"
-echo '\a'
-echo "\a"
-echo """
-echo '"''"''"'"'"'"'"'""Hello""'"'"
