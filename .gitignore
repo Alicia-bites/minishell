@@ -55,4 +55,13 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
+# Test files
+bsh_exit
+bsh_res
+cmd_list
+diff_exit
+diff_res
+smb_exit
+smb_res
+
 .nfs*
