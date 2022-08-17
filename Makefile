@@ -129,18 +129,27 @@ ENV_SRCS	:=	env_char_env.c\
 FD_SRCS		:=	fd_access.c\
 			fd_close.c\
 			fd_hd_open.c\
-			fd_infile_open.c\
-			fd_link_in_out_file.c\
-			fd_loop_tok.c\
-			fd_loop_tok_secure.c\
-			fd_loop_tok_type.c\
+			fd_init.c\
+			fd_init_tokfile.c\
+			fd_init_tokfile_access.c\
+			fd_init_tokfile_find_cmd.c\
+			fd_init_tokfile_link_cmd.c\
+			fd_init_tokfile_link_cmd_in.c\
+			fd_init_tokfile_link_cmd_out.c\
+			fd_init_tokfile_link_cmd_secure.c\
+			fd_init_tokfile_loop_cmd.c\
 			fd_open.c\
-			fd_outfile_open.c\
 			fd_pipe.c\
 			fd_pipe_pfd.c\
 			fd_stdinout_backup.c\
 			fd_stdinout_backup_close.c\
 			fd_stdinout_restore.c
+#			fd_infile_open.c\
+			fd_link_in_out_file.c\
+			fd_loop_tok.c\
+			fd_loop_tok_secure.c\
+			fd_loop_tok_type.c\
+			fd_outfile_open.c
 
 HD_SRCS		:=	hd_close.c\
 			hd_create_name.c\
