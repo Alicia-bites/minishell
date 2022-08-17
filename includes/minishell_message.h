@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 12:19:00 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/15 11:30:23 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/17 15:57:17 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@
 # define MSGERR_REDIR "smbash: syntax error. Please check redirections."
 # define MSGERR_BRACKETS "smbash: syntax error. Please check brackets."
 # define MSGERR_SPACE "smbash: syntax error. Please check pipes."
-# define MSGERR_SYM "smbash: syntax error. Please put special characters between quotes."
-# define MSGERR_DOLLAR "smbash: syntax error. Same old story, dollar following dollar."
+# define MSGERR_SYM "smbash: syntax error. Put special char between quotes."
+# define MSGERR_DOLLAR "smbash: syntax error. Please check dollar."
 # define MSGERR_ONLY_SPACE "smbash: syntax error. No command before pipe."
 # define MSGERR_
 

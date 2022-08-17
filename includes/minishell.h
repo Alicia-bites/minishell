@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/17 15:21:16 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/17 15:31:36 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,31 +148,33 @@ typedef struct s_cmd
 	t_toktype	toktype;
 	char		*arg;
 	size_t		n_arg;
-	char		**fullcmd; //-> liste chainee de char qui contient la commande + les arguments
-	char		*fullpath; //-> chemin absolu de la ou se trouve la commande
+	char		**fullcmd;
+	char		*fullpath;
 	char		*hd_name;
 	int			hd_r;
-	int			fd_r; //->  file descriptor read
-	int			fd_w; //-> file descriptor write
-	int			pfd_r; //-> pipe file descriptor
-	int			pfd_w; //-> pipe file descriptor
-	int			access; //-> verif que la commande existe, ou est executable, en gros c'est le
-						// -> lfag pour savoir si on peut lancer la commande et sinon, message d'erreur
+	int			fd_r;
+	int			fd_w;
+	int			pfd_r;
+	int			pfd_w;
+	int			access;
 }		t_cmd;
 
 //input_handler
-void				clean_up(t_list **token_list, t_ulist ** cmd_list);
-void				clean_up_ft_parse(int *err, t_list **token_list, t_ulist **cmd_list);
+void				clean_up(t_list **token_list, t_ulist **cmd_list);
+void				clean_up_ft_parse(int *err, t_list **token_list,
+						t_ulist **cmd_list);
 void				execute_command(t_list **token_list, t_ulist **cmd_list);
 void				exit_minishell(t_list **token_list, t_ulist **envp);
 int					get_input(int *err, t_ulist **envp);
 void				handle_str(char **str, t_list **token_list, int *err,
 						t_ulist **envp);
 int					in_ascii(char *str);
-int					init_exec(t_list **token_list, t_ulist	**cmd_list, t_ulist **envp);
+int					init_exec(t_list **token_list, t_ulist	**cmd_list,
+						t_ulist **envp);
 
 //parsing
-int					ft_parse(char *str, t_list **token_list, int *err, t_ulist *envp);
+int					ft_parse(char *str, t_list **token_list, int *err,
+						t_ulist *envp);
 void				create_input_list(t_chartype **input_list, char *str);
 void				sort_inputs(char **inputs);
 char				**store_built_ins(void);
@@ -207,7 +209,8 @@ t_expanded			*create_dollar_list(char *str, int index);
 int					count_op(char *str);
 int					count_op_in_expanded_list(t_expanded *expanded_list);
 char				*expand_dollar(t_exp_arg exp_arg, int **tab);
-void				find_expansions(t_exp_arg exp_arg, t_expanded **expanded_list, int *full_size);
+void				find_expansions(t_exp_arg exp_arg,
+						t_expanded **expanded_list, int *full_size);
 int					find_total_number_op(int *tab);
 int					found_operator(char *str);
 void				set_minus_one_tab(int *tab, size_t n);
@@ -217,14 +220,16 @@ void				ft_lstclear_back_dollar(t_expanded **lst);
 void				ft_lstclear_dollar(t_expanded **lst);
 char				*ft_getenv(char *var, t_ulist *envp);
 int					get_full_size(t_expanded *expanded_list);
-void				get_expanded(t_exp_arg exp_arg, t_expanded **expanded_list, int i, int *varsize);
+void				get_expanded(t_exp_arg exp_arg,
+						t_expanded **expanded_list, int i, int *varsize);
 int					handle_dollar_brackets(t_exp_arg exp_arg, int i,
 						t_expanded **expanded_list, int *index);
 int					handle_dollar_int(t_expanded **expanded_list, int *index);
 char				*handle_dollar_int_expanded(void);
-int 				handle_dollar_name(t_exp_arg exp_arg, int i,
+int					handle_dollar_name(t_exp_arg exp_arg, int i,
 						t_expanded **expanded_list, int *index);
-void				handle_dollar_number(char *str, t_expanded **expanded_list,
+void				handle_dollar_number(char *str,
+						t_expanded **expanded_list,
 						int *index, int i);
 char				*insert_expansions(int full_size, t_expanded *expanded_list,
 						char *str);
@@ -239,7 +244,8 @@ int					count_my_dollars(char *str);
 int					count_dollars_in_str(char *str);
 int					same_with_brackets_number(char *str, int i);
 int					same_with_brackets_zero(char *str, int i);
-int					*save_operator_index(char *str, char *new_str, t_expanded *expanded_list);
+int					*save_operator_index(char *str, char *new_str,
+						t_expanded *expanded_list);
 //do
 int					do_builtin(t_ulist **cmd_lst, t_cmd *cmd);
 void				do_builtin_close_fd(void *content);
@@ -272,26 +278,27 @@ void				do_env_show(void *content);
 
 //do_exit
 int					do_exit(t_ulist **envp, t_ulist **cmd_lst, t_cmd *cmd);
-void				do_exit_clear(t_ulist **envp, t_ulist **cmd_lst, t_cmd *cmd, char *err_msg);
+void				do_exit_clear(t_ulist **envp, t_ulist **cmd_lst,
+						t_cmd *cmd, char *err_msg);
 
 //do_export
 int					do_export(t_ulist **env_lst, t_cmd *cmd);
 int					do_export_create_env(t_ulist **list, char *str);
 t_ulist				*do_export_check_exist(t_ulist **env_lst, char *str,
 						int sep_pos);
-size_t					do_export_check_exist_len_key(char *str,
-						int sep_pos);
+size_t				do_export_check_exist_len_key(char *str, int sep_pos);
 int					do_export_check_str(char *str, int sep_pos);
 int					do_export_update_env(t_ulist *obj, char *str, int sep_pos);
 int					do_export_update_lst(t_ulist **env_lst, char **str);
-int					do_export_update_lst_do(t_ulist **env_lst, t_ulist *obj, char *str, int sep_pos);
+int					do_export_update_lst_do(t_ulist **env_lst, t_ulist *obj,
+						char *str, int sep_pos);
 void				do_export_show(void *content);
 
 //do_pwd
 int					do_pwd(t_cmd *cmd);
-int     				do_pwd_check_str(char *str);
+int					do_pwd_check_str(char *str);
 char				*do_pwd_getpath(void);
-int     				do_pwd_loop_arg(char **str);
+int					do_pwd_loop_arg(char **str);
 
 //do_unset
 int					do_unset(t_ulist **envp, t_cmd *cmd);
@@ -303,8 +310,9 @@ void				concatenate_export_args(t_list **token_list);
 void				delete_content(t_list *token_list);
 void				delete_spaces(t_list **token_list);
 int					seen_equal_last(char *token);
-void				tokenize(t_chartype *input_list, t_list **token_list, int *tab);
-char 				*trim_quotes(char *str);
+void				tokenize(t_chartype *input_list, t_list **token_list,
+						int *tab);
+char				*trim_quotes(char *str);
 // char 				*trim_quotes_token(char *str);
 
 //give_chartype
@@ -355,7 +363,8 @@ int					echo_n(t_chartype *input_list, int *end, int *quote);
 void				echo_special_treatment(t_chartype *input_list,
 						int *end, int *space, int *quote);
 int					empty_string(t_chartype *input_list, int end);
-void				move_while_inside_quote(t_chartype *input_list, int *end, int s, int d);
+void				move_while_inside_quote(t_chartype *input_list, int *end,
+						int s, int d);
 int					not_only_space_between_quotes(char *str);
 void				get_token(t_chartype *input_list, t_list **token_list);
 void				is_bn(t_chartype *input_list, int *start, int *end,
@@ -379,10 +388,11 @@ void				is_space(t_chartype *input_list, int *start, int *end,
 						t_list **token_list);
 void				is_word(t_chartype *input_list, int *start, int *end,
 						t_list **token_list);
-int					no_space_inside_quotes(t_chartype *input_list, int end, int quote);
+int					no_space_inside_quotes(t_chartype *input_list, int end,
+						int quote);
 
-int					space_after_quote(t_chartype *input_list, int end, int quote);
-
+int					space_after_quote(t_chartype *input_list, int end,
+						int quote);
 
 //signal_handling
 int					sig_hd_set_action(void);
@@ -455,17 +465,21 @@ void				fd_pipe_pfd(t_ulist *obj, t_cmd *cmd1, t_cmd *cmd2,
 						int n_pipe);
 int					fd_stdinout_backup(int *fd_stdin, int *fd_stdout);
 void				fd_stdinout_backup_close(int fd_stdin, int fd_stdout);
-int					fd_stdinout_restore(t_cmd *cmd, int fd_stdin, int fd_stdout);
+int					fd_stdinout_restore(t_cmd *cmd, int fd_stdin,
+						int fd_stdout);
 
 //heredoc
 char				*expand_dollar_heredoc(t_exp_arg exp_arg);
-void				find_expansions_heredoc(t_exp_arg exp_arg, t_expanded **expanded_list,
+void				find_expansions_heredoc(t_exp_arg exp_arg,
+						t_expanded **expanded_list,
 						int *full_size);
-void				get_expanded_heredoc(t_exp_arg exp_arg, t_expanded **expanded_list,
+void				get_expanded_heredoc(t_exp_arg exp_arg,
+						t_expanded **expanded_list,
 						int i, int *varsize);
 int					hd_close(t_cmd *cmd);
 char				*hd_create_name(t_list *tok, t_cmd *cmd);
-void				hd_create_name_len(char *index, size_t *len_index, size_t *len_smb, size_t *len_tmp);
+void				hd_create_name_len(char *index, size_t *len_index,
+						size_t *len_smb, size_t *len_tmp);
 void				hd_create_name_reset(t_cmd *cmd);
 int					hd_init(t_list *tok, t_cmd *cmd, long long *hd_exit);
 int					hd_init_check_binary(void);
@@ -478,22 +492,26 @@ int					hd_wait(int pid, long long *hd_exit);
 void				hd_write(t_list *tok, t_cmd *cmd);
 char				*hd_write_expansion(char *str, t_ulist **envp);
 int					hd_write_mode(t_list *tok);
-void				hd_write_str(t_list *tok, t_cmd *cmd, char **fullcmd, int mode);
-char				*insert_expansions_heredoc(int full_size, t_expanded *expanded_list,
-						char *str);
+void				hd_write_str(t_list *tok, t_cmd *cmd, char **fullcmd,
+						int mode);
+char				*insert_expansions_heredoc(int full_size,
+						t_expanded *expanded_list, char *str);
 
 //pipe
 void				pipe_close_pfd(void *content);
 void				pipe_cmd(t_ulist **cmd_lst, t_ulist *obj);
 void				pipe_cmd_dup_fd_in(t_ulist **cmd_lst, t_cmd *cmd);
 void				pipe_cmd_dup_fd_out(t_ulist **cmd_lst, t_cmd *cmd);
-void				pipe_cmd_end(t_ulist **cmd_lst, t_cmd *cmd, int err_no, char **envp);
+void				pipe_cmd_end(t_ulist **cmd_lst, t_cmd *cmd, int err_no,
+						char **envp);
 void				pipe_exit(t_ulist **cmd_lst, t_cmd *cmd, int err_no);
 int					pipe_run(t_ulist **cmd_lst, int n_cmd);
-int					pipe_run_end(t_ulist **cmd_lst, int n_cmd, pid_t pid, int res);
+int					pipe_run_end(t_ulist **cmd_lst, int n_cmd, pid_t pid,
+						int res);
 int					pipe_wait(int n_cmd, int pid);
 int					pipe_wait_check_child(int status);
 int					pipe_wait_check_last(int status);
-int					pipe_wait_return(int status_last, int res_last, int res_child);
+int					pipe_wait_return(int status_last, int res_last,
+						int res_child);
 
 #endif
