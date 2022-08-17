@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/17 14:15:37 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/17 17:00:10 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -440,7 +440,8 @@ void				fd_init(t_list **tok_lst, t_ulist **cmd_lst);
 void				fd_init_tokfile(t_ulist **cmd_lst, t_list *tok, int mode);
 int				fd_init_tokfile_access(int fd, char *fd_name, int mode);
 t_cmd			*fd_init_tokfile_find_cmd(t_ulist **cmd_lst, t_list *tok);
-void			fd_init_tokfile_link_cmd(t_cmd *cmd, int fd, int mode);
+void			fd_init_tokfile_hd(t_ulist **cmd_lst, t_list *tok);
+void			fd_init_tokfile_link_cmd(t_cmd *cmd, int fd, int mode, char *fd_name);
 void			fd_init_tokfile_link_cmd_in(t_cmd *cmd, int fd);
 void			fd_init_tokfile_link_cmd_out(t_cmd *cmd, int fd);
 t_cmd			*fd_init_tokfile_loop_cmd(t_ulist **cmd_lst, t_list *tok);

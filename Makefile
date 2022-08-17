@@ -133,6 +133,7 @@ FD_SRCS		:=	fd_access.c\
 			fd_init_tokfile.c\
 			fd_init_tokfile_access.c\
 			fd_init_tokfile_find_cmd.c\
+			fd_init_tokfile_hd.c\
 			fd_init_tokfile_link_cmd.c\
 			fd_init_tokfile_link_cmd_in.c\
 			fd_init_tokfile_link_cmd_out.c\
