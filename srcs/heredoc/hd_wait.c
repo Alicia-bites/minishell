@@ -6,13 +6,13 @@
 /*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 08:14:17 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/13 10:34:58 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/17 16:08:41 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	hd_wait(int pid, long long *hd_exit)
+int	hd_wait(int pid)
 {
 	extern t_global	g_msl;
 	int				status;
@@ -22,15 +22,9 @@ int	hd_wait(int pid, long long *hd_exit)
 	if (WIFEXITED(status) == 1)
 	{
 		if (WEXITSTATUS(status) == 1)
-		{
 			g_msl.exit = 130;
-			*hd_exit = 130;
-		}
 		else
-		{
 			g_msl.exit = 0;
-			*hd_exit = 0;
-		}
 		return (WEXITSTATUS(status));
 	}
 	return (0);

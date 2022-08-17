@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/17 15:31:36 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/17 17:31:01 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,6 @@ typedef struct s_cmd
 void				clean_up(t_list **token_list, t_ulist **cmd_list);
 void				clean_up_ft_parse(int *err, t_list **token_list,
 						t_ulist **cmd_list);
-void				execute_command(t_list **token_list, t_ulist **cmd_list);
 void				exit_minishell(t_list **token_list, t_ulist **envp);
 int					get_input(int *err, t_ulist **envp);
 void				handle_str(char **str, t_list **token_list, int *err,
@@ -448,18 +447,28 @@ char				*cmd_setpath(char *cmd, char *env);
 void				cmd_show(void *content);
 
 //file_descriptor
-int					fd_access(char *fd, int mode);
+int					fd_access(char *fd_name, int mode);
 int					fd_close(t_cmd *cmd);
 int					fd_hd_open(t_cmd *cmd);
-int					fd_infile_open(t_cmd *cmd, char *fd, int mode);
-void				fd_link_in_out_file(t_list **tok_lst, t_ulist **cmd_lst,
-						int mode);
-t_list				*fd_loop_tok(t_list *tok, t_cmd *cmd, int mode);
-void				fd_loop_tok_secure(t_cmd *cmd, int res_loop);
-int					fd_loop_tok_type(t_list *tok, t_cmd *cmd,
-						enum e_toktype toktype, int mode);
-int					fd_open(char *fd, int mode);
-int					fd_outfile_open(t_cmd *cmd, char *fd, int mode);
+void				fd_init(t_list **tok_lst, t_ulist **cmd_lst);
+void				fd_init_tokfile(t_ulist **cmd_lst, t_list *tok, int mode);
+int				fd_init_tokfile_access(int fd, char *fd_name, int mode);
+t_cmd			*fd_init_tokfile_find_cmd(t_ulist **cmd_lst, t_list *tok);
+void			fd_init_tokfile_hd(t_ulist **cmd_lst, t_list *tok);
+void			fd_init_tokfile_link_cmd(t_cmd *cmd, int fd, int mode, char *fd_name);
+void			fd_init_tokfile_link_cmd_in(t_cmd *cmd, int fd);
+void			fd_init_tokfile_link_cmd_out(t_cmd *cmd, int fd);
+t_cmd			*fd_init_tokfile_loop_cmd(t_ulist **cmd_lst, t_list *tok);
+int					fd_init_tokfile_link_cmd_secure(t_cmd *cmd, int fd);
+//int					fd_infile_open(t_cmd *cmd, char *fd, int mode);
+//void				fd_link_in_out_file(t_list **tok_lst, t_ulist **cmd_lst,
+//						int mode);
+//t_list				*fd_loop_tok(t_list *tok, t_cmd *cmd, int mode);
+//void				fd_loop_tok_secure(t_cmd *cmd, int res_loop);
+//int					fd_loop_tok_type(t_list *tok, t_cmd *cmd,
+///						enum e_toktype toktype, int mode);
+int					fd_open(char *fd_name, int mode);
+//int					fd_outfile_open(t_cmd *cmd, char *fd, int mode);
 void				fd_pipe(t_ulist **cmd_lst);
 void				fd_pipe_pfd(t_ulist *obj, t_cmd *cmd1, t_cmd *cmd2,
 						int n_pipe);
@@ -477,25 +486,27 @@ void				get_expanded_heredoc(t_exp_arg exp_arg,
 						t_expanded **expanded_list,
 						int i, int *varsize);
 int					hd_close(t_cmd *cmd);
-char				*hd_create_name(t_list *tok, t_cmd *cmd);
-void				hd_create_name_len(char *index, size_t *len_index,
-						size_t *len_smb, size_t *len_tmp);
+char				*hd_create_name(t_list *tok);
+void				hd_create_name_len(char *index, size_t *len_index, size_t *len_smb, size_t *len_tmp);
 void				hd_create_name_reset(t_cmd *cmd);
-int					hd_init(t_list *tok, t_cmd *cmd, long long *hd_exit);
+long long			hd_init(t_list *tok, t_cmd *cmd);
+int					hd_init_check(void);
 int					hd_init_check_binary(void);
 int					hd_init_check_tmp(void);
-int					hd_link(t_list **tok_lst, t_ulist **cmd_lst);
-t_list				*hd_loop_tok(t_list *tok, t_cmd *cmd, long long *hd_exit);
-int					hd_open(t_cmd *cmd);
+//int					hd_link(t_list **tok_lst, t_ulist **cmd_lst);
+//t_list				*hd_loop_tok(t_list *tok, t_cmd *cmd, long long *hd_exit);
+int					hd_open(char *hd_name);
 size_t				hd_size(t_list **tok_lst);
-int					hd_wait(int pid, long long *hd_exit);
-void				hd_write(t_list *tok, t_cmd *cmd);
+long long				hd_tokfile(t_list **tok_lst, t_ulist **cmd_lst, t_ulist **env_lst);
+long long				hd_tokfile_link(t_ulist **cmd_lst, t_list *tok_lst, t_ulist **env_lst);
+void				hd_tokfile_link_cmd(t_cmd *cmd, int hd, char *hd_name);
+int					hd_wait(int pid);
+void				hd_write(t_list *tok, int hd, t_ulist **env_lst);
 char				*hd_write_expansion(char *str, t_ulist **envp);
+void				hd_write_str(t_list *tok, char **fullcmd, int hd, t_ulist **env_lst);
 int					hd_write_mode(t_list *tok);
-void				hd_write_str(t_list *tok, t_cmd *cmd, char **fullcmd,
-						int mode);
-char				*insert_expansions_heredoc(int full_size,
-						t_expanded *expanded_list, char *str);
+char				*insert_expansions_heredoc(int full_size, t_expanded *expanded_list,
+						char *str);
 
 //pipe
 void				pipe_close_pfd(void *content);
