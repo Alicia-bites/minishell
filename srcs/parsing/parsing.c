@@ -6,13 +6,13 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:49:49 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/15 11:43:57 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/17 14:18:35 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	clean_up(t_chartype **input_list, int **tab)
+static void	clean_up_input_and_tab(t_chartype **input_list, int **tab)
 {
 	if (*input_list)
 		free(*input_list);
@@ -44,6 +44,6 @@ int	ft_parse(char *str, t_list **token_list, int *err, t_ulist *envp)
 	if (ft_strcmp(str, tmp))
 		free(tmp);
 	tokenize(input_list, token_list, tab);
-	clean_up(&input_list, &tab);
+	clean_up_input_and_tab(&input_list, &tab);
 	return (*err);
 }

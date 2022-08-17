@@ -177,10 +177,13 @@ PIPE_SRCS	:=	pipe_close_pfd.c\
 			pipe_wait_check_last.c\
 			pipe_wait_return.c
 
-INPUT_HANDLER	:=	exit_minishell.c\
+INPUT_HANDLER	:=	clean_up.c\
+					execute_command.c\
+					exit_minishell.c\
 					get_input.c\
 					handle_str.c\
 					in_ascii.c\
+					init_exec.c
 
 LEX_SRCS	:=	between_quotes.c\
 				lexer.c\

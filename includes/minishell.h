@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/17 11:21:38 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/17 14:17:24 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,11 +161,15 @@ typedef struct s_cmd
 }		t_cmd;
 
 //input_handler
-int					get_input(int *err, t_ulist **envp);
+void				clean_up(t_list **token_list, t_ulist ** cmd_list);
+void				clean_up_ft_parse(int *err, t_list **token_list, t_ulist **cmd_list);
+void				execute_command(t_list **token_list, t_ulist **cmd_list);
 void				exit_minishell(t_list **token_list, t_ulist **envp);
+int					get_input(int *err, t_ulist **envp);
 void				handle_str(char **str, t_list **token_list, int *err,
 						t_ulist **envp);
 int					in_ascii(char *str);
+int					init_exec(t_list **token_list, t_ulist	**cmd_list, t_ulist **envp);
 
 //parsing
 int					ft_parse(char *str, t_list **token_list, int *err, t_ulist *envp);
