@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 16:00:11 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/16 22:09:30 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/17 07:53:21 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	fd_open(char *fd, int mode)
 	if (mode == O_RDONLY)
 		res = open(fd, O_RDONLY);
 	else if (mode == O_WRONLY)
-		res = open(fd, O_WRONLY | O_TRUNC | O_CREAT, 0644);
+		res = open(fd, O_CREAT | O_TRUNC | O_WRONLY, 0644);
 	else if (mode == O_APPEND)
-		res = open(fd, O_APPEND | O_WRONLY | O_CREAT, 0644);
+		res = open(fd, O_CREAT | O_APPEND | O_WRONLY, 0644);
 	return (res);
 }
