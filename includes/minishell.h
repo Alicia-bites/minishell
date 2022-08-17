@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/16 18:22:54 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/17 11:21:38 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,7 @@ int					get_input(int *err, t_ulist **envp);
 void				exit_minishell(t_list **token_list, t_ulist **envp);
 void				handle_str(char **str, t_list **token_list, int *err,
 						t_ulist **envp);
+int					in_ascii(char *str);
 
 //parsing
 int					ft_parse(char *str, t_list **token_list, int *err, t_ulist *envp);

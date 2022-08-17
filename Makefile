@@ -179,7 +179,8 @@ PIPE_SRCS	:=	pipe_close_pfd.c\
 
 INPUT_HANDLER	:=	exit_minishell.c\
 					get_input.c\
-					handle_str.c
+					handle_str.c\
+					in_ascii.c\
 
 LEX_SRCS	:=	between_quotes.c\
 				lexer.c\
