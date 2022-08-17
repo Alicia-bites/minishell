@@ -469,21 +469,25 @@ void				find_expansions_heredoc(t_exp_arg exp_arg, t_expanded **expanded_list,
 void				get_expanded_heredoc(t_exp_arg exp_arg, t_expanded **expanded_list,
 						int i, int *varsize);
 int					hd_close(t_cmd *cmd);
-char				*hd_create_name(t_list *tok, t_cmd *cmd);
+char				*hd_create_name(t_list *tok);
 void				hd_create_name_len(char *index, size_t *len_index, size_t *len_smb, size_t *len_tmp);
 void				hd_create_name_reset(t_cmd *cmd);
-int					hd_init(t_list *tok, t_cmd *cmd, long long *hd_exit);
+long long			hd_init(t_list *tok, t_cmd *cmd);
+int					hd_init_check(void);
 int					hd_init_check_binary(void);
 int					hd_init_check_tmp(void);
-int					hd_link(t_list **tok_lst, t_ulist **cmd_lst);
-t_list				*hd_loop_tok(t_list *tok, t_cmd *cmd, long long *hd_exit);
-int					hd_open(t_cmd *cmd);
+//int					hd_link(t_list **tok_lst, t_ulist **cmd_lst);
+//t_list				*hd_loop_tok(t_list *tok, t_cmd *cmd, long long *hd_exit);
+int					hd_open(char *hd_name);
 size_t				hd_size(t_list **tok_lst);
-int					hd_wait(int pid, long long *hd_exit);
-void				hd_write(t_list *tok, t_cmd *cmd);
+long long				hd_tokfile(t_list **tok_lst, t_ulist **cmd_lst, t_ulist **env_lst);
+long long				hd_tokfile_link(t_ulist **cmd_lst, t_list *tok_lst, t_ulist **env_lst);
+void				hd_tokfile_link_cmd(t_cmd *cmd, int hd, char *hd_name);
+int					hd_wait(int pid);
+void				hd_write(t_list *tok, int hd, t_ulist **env_lst);
 char				*hd_write_expansion(char *str, t_ulist **envp);
+void				hd_write_str(t_list *tok, char **fullcmd, int hd, t_ulist **env_lst);
 int					hd_write_mode(t_list *tok);
-void				hd_write_str(t_list *tok, t_cmd *cmd, char **fullcmd, int mode);
 char				*insert_expansions_heredoc(int full_size, t_expanded *expanded_list,
 						char *str);
 

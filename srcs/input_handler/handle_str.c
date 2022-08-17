@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 16:24:51 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/17 12:33:27 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/17 15:56:11 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,20 @@ void	handle_str(char **str, t_list **token_list, int *err, t_ulist **envp)
 //	}
 //	fd_link_in_out_file(token_list, cmd_list, DIR_IN);
 //	fd_pipe(cmd_list);
-//	ft_lst_func_lst(cmd_list, &cmd_show);
 //	cmd_exec(cmd_list, ft_lst_size(cmd_list));
+	ft_lst_func_lst(cmd_list, &cmd_show);
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+	if (hd_tokfile(token_list, cmd_list, envp))
+	{
+		ft_lstclear(token_list);
+		ft_lst_free(cmd_list, &cmd_free);
+		return ;
+	}
+	ft_lst_func_lst(cmd_list, &cmd_show);
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	fd_init(token_list, cmd_list);
+	ft_lst_func_lst(cmd_list, &cmd_show);
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	// TEST: > file99 wc < file1 < file2 | < file3 cat | < file5 ls < file6
 	// TES: echo Salut > file1 | >> file1 echo Toto | < file1 wc < file3
 	fd_pipe(cmd_list);

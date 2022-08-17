@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hd_write.c                                         :+:      :+:    :+:   */
+/*   hd_tokfile_link_cmd.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/03 17:57:49 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/17 15:52:54 by abarrier         ###   ########.fr       */
+/*   Created: 2022/08/17 14:54:43 by abarrier          #+#    #+#             */
+/*   Updated: 2022/08/17 15:36:46 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	hd_write(t_list *tok, int hd, t_ulist **env_lst)
+void	hd_tokfile_link_cmd(t_cmd *cmd, int hd, char *hd_name)
 {
-	char	*fullcmd[2];
-
-	sig_hd_set_action();
-	fullcmd[0] = HD_BIN_TRUE;
-	fullcmd[1] = NULL;
-	hd_write_str(tok, fullcmd, hd, env_lst);
+	if (cmd->hd_r > 2)
+	{
+		close(cmd->hd_r);
+		unlink(cmd->hd_name);
+		cmd->hd_r = FD_NOT_INIT;
+	}
+	hd_create_name_reset(cmd);
+	cmd->hd_name = hd_name;
+	cmd->hd_r = hd;
 }

@@ -157,17 +157,21 @@ HD_SRCS		:=	hd_close.c\
 			hd_create_name_len.c\
 			hd_create_name_reset.c\
 			hd_init.c\
+			hd_init_check.c\
 			hd_init_check_binary.c\
 			hd_init_check_tmp.c\
-			hd_link.c\
-			hd_loop_tok.c\
 			hd_open.c\
 			hd_size.c\
+			hd_tokfile.c\
+			hd_tokfile_link.c\
+			hd_tokfile_link_cmd.c\
 			hd_wait.c\
 			hd_write.c\
 			hd_write_expansion.c\
 			hd_write_mode.c\
 			hd_write_str.c
+#			hd_link.c\
+			hd_loop_tok.c\
 
 EXP_HD_SRCS	:=	expand_dollar_heredoc.c\
 				find_expansions_heredoc.c\
