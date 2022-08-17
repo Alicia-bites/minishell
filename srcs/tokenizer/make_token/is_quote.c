@@ -30,6 +30,8 @@ void	is_quote(t_chartype *input_list, int *start, int *end,
 	int	d;
 	int	s;
 
+	if (*end >= input_list->length)
+		return ;
 	d = 0;
 	s = 0;
 	if (input_list[*end].type == CH_D_QUOTE

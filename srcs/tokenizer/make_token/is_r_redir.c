@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:15:01 by amarchan          #+#    #+#             */
-/*   Updated: 2022/06/27 17:18:07 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/17 14:32:46 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 void	is_r_redir(t_chartype *input_list, int *start, int *end,
 	t_list **token_list)
 {
+	if (*end >= input_list->length)
+		return ;
 	if (input_list[*end].type == CH_R_REDIR
 		&& input_list[*end + 1].type != CH_R_REDIR)
 	{
