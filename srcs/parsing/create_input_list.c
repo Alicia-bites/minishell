@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 14:43:07 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/23 11:11:36 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/17 12:15:00 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	create_input_list(t_chartype **input_list, char *str)
 	int			length;
 	int			i;
 
+	// printf("str = %s\n", str);
 	length = ft_strlen(str);
 	(*input_list) = malloc(sizeof(t_chartype) * (length + 1));
 	if (!(*input_list))
@@ -25,7 +26,6 @@ void	create_input_list(t_chartype **input_list, char *str)
 		return ;
 	}
 	ft_bzero((*input_list), sizeof(t_chartype) * (length + 1));
-	count_quotes(str, (*input_list));
 	i = 0;
 	while (i < length)
 	{
