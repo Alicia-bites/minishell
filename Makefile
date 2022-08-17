@@ -9,7 +9,6 @@ NAME 		:=	minishell
 NORMINETTE_BIN 	:= 	norminette
 NM_BIN		:=	nm
 CC		:=	cc
-#CFLAGS		:=	-MMD -Wall -Wextra -Werror
 CFLAGS		:=	-MMD -Wall -Wextra -Werror
 #CFLAGS		:=	-MMD
 #CFLAGSADD	:=	-g3 -fsanitize=address
