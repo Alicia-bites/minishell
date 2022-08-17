@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 09:47:18 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/17 10:51:14 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/17 16:41:22 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 // Is built-in a token whose name (char *token_list->token) is found in tab of
 // char * built_ins (char **built_ins)
-int	is_built_in(t_list **token_list)
+int	is_built_in(t_list **token_list, int *seen_cmd)
 {
 	int				i;
-	extern t_global	g_msl;
 	char			**built_ins;
 
 	if ((*token_list)->prev && (*token_list)->prev->toktype == TOK_BUILTIN)
@@ -35,7 +34,7 @@ int	is_built_in(t_list **token_list)
 		{
 			(*token_list)->toktype = TOK_BUILTIN;
 			free(built_ins);
-			g_msl.seen_tok_cmd = 1;
+			*seen_cmd = 1;
 			return (1);
 		}
 	}

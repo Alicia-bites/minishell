@@ -6,21 +6,19 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:58:50 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/11 18:29:10 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/17 16:41:19 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_toktype	is_operator(char *str)
+t_toktype	is_operator(char *str, int *seen_cmd)
 {
-	extern t_global	g_msl;
-
 	if (str)
 	{
 		if (!ft_strcmp(str, "|"))
 		{
-			g_msl.seen_tok_cmd = 0;
+			*seen_cmd = 0;
 			return (TOK_PIPE);
 		}
 		if (!ft_strcmp(str, "<<"))

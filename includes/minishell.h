@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/17 15:31:36 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/17 16:34:53 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -322,8 +322,8 @@ int					is_char_word(char c);
 
 //give_type_to_token
 int					arg_dlredir_sep_token(t_list **token_list);
-int					cmd_heredoc(t_list **token_list);
-int					cmd_redir(t_list **token_list);
+int					cmd_heredoc(t_list **token_list, int *seen_cmd);
+int					cmd_redir(t_list **token_list, int *seen_cmd);
 int					combo_heredoc_when_heredoc_index_zero(t_list **token_list);
 int					combo_is_after_pipe(t_list **token_list);
 int					combo_is_at_the_beggining(t_list **token_list);
@@ -331,18 +331,18 @@ int					following_pipe(t_list **token_list);
 void				get_toktype(t_list **token_list);
 int					heredoc_combo_is_at_the_beggining(t_list **token_list);
 int					heredoc_combo_is_after_pipe(t_list **token_list);
-int					is_argument(t_list **token_list);
-int					is_built_in(t_list **token_list);
-int					is_cmd(t_list **token_list);
+int					is_argument(t_list **token_list, int *seen_cmd);
+int					is_built_in(t_list **token_list, int *seen_cmd);
+int					is_cmd(t_list **token_list, int *seen_cmd);
 int					is_combo_heredoc(t_list **token_list);
 int					is_combo_redir(t_list **token_list);
 int					is_combo_redir_when_redir_index_zero(t_list **token_list);
 int					is_filename(t_list **token_list);
 int					is_heredoc_sep(t_list **token_list);
-t_toktype			is_operator(char *str);
+t_toktype			is_operator(char *str, int *seen_cmd);
 int					only_space_in_str(char *str);
 int					pipe_cmd_dlredir_sep_token(t_list **token_list);
-int					not_operator(t_list *token_list);
+int					not_operator(t_list *token_list, int *seen_cmd);
 int					redir_space_token(t_list **token_list);
 int					redir_token(t_list **token_list);
 int					start_cmd_dlredir_sep_token(t_list **token_list);
