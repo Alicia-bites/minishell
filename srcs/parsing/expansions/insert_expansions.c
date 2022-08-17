@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:49:04 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/17 12:27:41 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/17 12:51:33 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ char	*insert_expansions(int full_size, t_expanded *expanded_list, char *str)
 	t_cursor	cursor;
 	char		*new_str;
 
-	printf("full_size = %d\n", full_size);
 	new_str = malloc_newstr(full_size, &expanded_list);
 	cursor.i = 0;
 	cursor.k = 0;
