@@ -6,13 +6,13 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 07:41:35 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/17 10:32:08 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/17 12:49:38 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	fd_init(t_list ** tok_lst, t_ulist **cmd_lst)
+void	fd_init(t_list **tok_lst, t_ulist **cmd_lst)
 {
 	t_list	*tok;
 

@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 07:48:13 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/17 11:32:21 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/17 12:50:17 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	fd_init_tokfile(t_ulist **cmd_lst, t_list *tok, int mode)
 {
-	char		*fd_name;
-	int			fd;
-	int			res_open;
+	char	*fd_name;
+	int		fd;
+	int		res_open;
 	t_cmd	*cmd;
 
 	errno = 0;
@@ -27,7 +27,7 @@ void	fd_init_tokfile(t_ulist **cmd_lst, t_list *tok, int mode)
 	fd = fd_open(fd_name, mode);
 	if (cmd && fd_init_tokfile_link_cmd_secure(cmd, fd))
 		return ;
-	res_open =fd_init_tokfile_access(fd, fd_name, mode);
+	res_open = fd_init_tokfile_access(fd, fd_name, mode);
 	if (res_open == 0)
 		close(fd);
 	fd_init_tokfile_link_cmd(cmd, fd, mode);
