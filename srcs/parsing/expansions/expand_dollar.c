@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:47:06 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/15 12:18:48 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/17 10:49:18 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,15 @@ static int	just_dollar_between_quotes(char *str)
 	return (0);
 }
 
+static char	*handle_dollar_removing(t_exp_arg *exp_arg, int *malloc)
+{
+	exp_arg->str = remove_dollars(exp_arg->str);
+	if (!exp_arg->str)
+		return (ft_panic_null(-1, __FILE__, ERR_MALLOC));
+	(*malloc)++;
+	return (exp_arg->str);
+}
+
 char	*expand_dollar(t_exp_arg exp_arg, int **tab)
 {
 	int					malloc;
@@ -46,12 +55,8 @@ char	*expand_dollar(t_exp_arg exp_arg, int **tab)
 	find_expansions(exp_arg, &expanded_list, &full_size);
 	if ((ft_strstr(exp_arg.str, "$\'") || ft_strstr(exp_arg.str, "$\""))
 		&& !just_dollar_between_quotes(exp_arg.str))
-	{
-		exp_arg.str = remove_dollars(exp_arg.str);
-		if (!exp_arg.str)
+		if (!handle_dollar_removing(&exp_arg, &malloc))
 			return (NULL);
-		malloc++;
-	}
 	if (!expanded_list)
 		return (exp_arg.str);
 	full_size += get_full_size(expanded_list) + ft_strlen(exp_arg.str);

@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 13:56:31 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/23 11:09:53 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/17 12:03:20 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	count_single(char *str)
 	{
 		loc = ft_strstr(str, "'");
 		if (!loc)
-			return (n_single);
+			return (0);
 		if (*loc == '\'')
 			n_single++;
 		str = loc;
@@ -42,7 +42,7 @@ int	count_double(char *str)
 	{
 		loc = ft_strstr(str, "\"");
 		if (!loc)
-			return (n_double);
+			return (0);
 		if (*loc == '\"')
 			n_double++;
 		str = loc;

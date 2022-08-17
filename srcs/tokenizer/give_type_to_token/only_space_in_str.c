@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 15:44:38 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/22 11:49:09 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/17 10:57:57 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	only_space_in_str(char *str)
 
 	not_space = 0;
 	i = 0;
+	if (!str)
+		return (-1);
 	if (!str[i])
 		return (-1);
 	while (str[i])

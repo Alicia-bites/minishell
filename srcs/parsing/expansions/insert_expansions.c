@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:49:04 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/16 10:22:10 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/17 12:27:41 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static char	*malloc_newstr(int full_size, t_expanded **expanded_list)
 	if (!new_str)
 	{
 		ft_lstclear_dollar(expanded_list);
-		return (ft_panic_null(MALLOC_FAILURE, __FILE__, NULL));
+		return (ft_panic_null(-1, __FILE__, ERR_MALLOC));
 	}
 	ft_bzero(new_str, sizeof(char) * (full_size + 1));
 	return (new_str);
@@ -70,7 +70,7 @@ static int	interrogation_point_follows_dollar(char *str, int *i)
 {
 	if (!str)
 		return (0);
-	if (str[*i] == '?' && !between_quotes(str, *i))
+	if (str[*i] == '?' && !between_single_quotes(str, *i))
 	{
 		if (str[*i + 1] != '\0')
 			(*i)++;
@@ -87,22 +87,21 @@ char	*insert_expansions(int full_size, t_expanded *expanded_list, char *str)
 	t_cursor	cursor;
 	char		*new_str;
 
+	printf("full_size = %d\n", full_size);
 	new_str = malloc_newstr(full_size, &expanded_list);
 	cursor.i = 0;
 	cursor.k = 0;
-	// full_size -= count_double(str);
 	while (cursor.i < full_size && cursor.k < ft_strlen(str))
 	{
 		copy_expanded(str, &expanded_list, &cursor, new_str);
 		if ((str[cursor.k] && cursor.i <= full_size
-			&& str[cursor.k] != '$'
-			&& !interrogation_point_follows_dollar(str, &cursor.k))
+				&& str[cursor.k] != '$'
+				&& !interrogation_point_follows_dollar(str, &cursor.k))
 			|| (str[cursor.k] == '$' && nothing_follows_follar(str, cursor.k))
 			|| (str[cursor.k] == '$' && between_single_quotes(str, cursor.k))
-			|| (str[cursor.k] == '$' && cursor.k + 1 < ft_strlen(str) && str[cursor.k + 1] == '>'))
+			|| (str[cursor.k] == '$' && cursor.k + 1 < ft_strlen(str)
+				&& str[cursor.k + 1] == '>'))
 			new_str[cursor.i++] = str[cursor.k++];
-		// else if (str[cursor.k] == '$' && !between_single_quotes(str, cursor.k))
-		// 	cursor.k++;
 	}
 	new_str[cursor.i] = '\0';
 	return (new_str);

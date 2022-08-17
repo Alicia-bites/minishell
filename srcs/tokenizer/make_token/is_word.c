@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 18:10:26 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/15 10:34:37 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/17 11:01:07 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	is_word(t_chartype *input_list, int *start, int *end,
 			(*end)++;
 		}
 		quote = *end;
-		if (/*!empty_string(input_list, *end) &&*/ *end + 1 < input_list->length)
+		if (*end + 1 < input_list->length)
 			is_quote(input_list, start, end, token_list);
 		if (quote == *end)
 		{

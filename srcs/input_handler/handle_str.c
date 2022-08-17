@@ -6,24 +6,20 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 16:24:51 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/15 09:28:22 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/17 11:20:44 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	in_ascii(char *str)
+void	clean_up_ft_parse(int *err, t_list **token_list, t_ulist **cmd_list)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if ((unsigned char)str[i] >= 127)
-			return (0);
-		i++;
-	}
-	return (1);
+	extern t_global	g_msl;
+	
+	g_msl.exit = *err;
+	ft_lstclear(token_list);
+	ft_lst_free(cmd_list, &cmd_free);
+	return ;
 }
 
 void	handle_str(char **str, t_list **token_list, int *err, t_ulist **envp)
@@ -32,26 +28,15 @@ void	handle_str(char **str, t_list **token_list, int *err, t_ulist **envp)
 	t_ulist	**cmd_list;
 
 	if (!in_ascii(*str))
-	{
-		*err = 0;
 		return ;
-	}
 	cmd_list = NULL;
 	cmd_list = ft_lst_init();
 	if (is_not_empty(*str))
 		add_history(*str);
 	if (!cmd_list)
-	{
-		ft_lstclear(token_list);
 		return ;
-	}
 	if (ft_parse(*str, token_list, err, *envp))
-	{
-		g_msl.exit = 2; //TODO: get ft_parse return value to set this variable correctly
-		ft_lstclear(token_list);
-		ft_lst_free(cmd_list, &cmd_free);
-		return ;
-	}
+		return (clean_up_ft_parse(err, token_list, cmd_list));
 	// print_lst(*token_list);
 	if (!*token_list)
 	{
