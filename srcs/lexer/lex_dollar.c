@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 15:45:35 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/17 11:07:28 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/17 15:58:05 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,8 @@ static int	found_bad_dollar_combo(char *str, int len)
 
 int	lex_dollar(char *str, int *err)
 {
-	int	i;
 	int	len;
 
-	i = 0;
 	len = ft_strlen(str);
 	if (found_bad_dollar_combo(str, len)
 		&& !between_quotes(str, found_bad_dollar_combo(str, len)))
