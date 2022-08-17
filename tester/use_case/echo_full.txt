@@ -48,7 +48,7 @@ export HOLA="  bonjour  hey  "
 echo "TESTER EXIT STATUS: " $?
 echo """$HOLA""" | cat -e
 echo "TESTER EXIT STATUS: " $?
-export HOLA="  bonjour  hey  "   
+export HOLA="  bonjour  hey  "
 echo "TESTER EXIT STATUS: " $?
 echo wesh"$HOLA" | cat -e
 echo "TESTER EXIT STATUS: " $?
