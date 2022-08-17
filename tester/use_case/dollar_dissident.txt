@@ -1,0 +1,23 @@
+echo {$USER}
+echo {$USER
+echo $USER}
+echo ${USER} $USER}
+echo {$USER} $USER}
+echo {$USER} {${USER}
+echo ${USER
+echo {$USERA}
+echo {$USERA}
+echo $USERA
+echo ${USERA}
+echo {${USER}
+echo ${LANG
+echo $LANG}
+echo ${LANG} ${TERM} ${PATH}
+echo ${LANG}${TERM}${PATH}
+
+cat << $USER
+cat << '$USER'
+cat << "$USER"
+cat << 'EOF'
+cat << "EOF"
+cat << EOF
