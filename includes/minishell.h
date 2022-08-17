@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/17 10:53:59 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/17 14:15:37 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -433,7 +433,7 @@ char				*cmd_setpath(char *cmd, char *env);
 void				cmd_show(void *content);
 
 //file_descriptor
-int					fd_access(char *fd, int mode);
+int					fd_access(char *fd_name, int mode);
 int					fd_close(t_cmd *cmd);
 int					fd_hd_open(t_cmd *cmd);
 void				fd_init(t_list **tok_lst, t_ulist **cmd_lst);
@@ -452,7 +452,7 @@ int					fd_init_tokfile_link_cmd_secure(t_cmd *cmd, int fd);
 //void				fd_loop_tok_secure(t_cmd *cmd, int res_loop);
 //int					fd_loop_tok_type(t_list *tok, t_cmd *cmd,
 ///						enum e_toktype toktype, int mode);
-int					fd_open(char *fd, int mode);
+int					fd_open(char *fd_name, int mode);
 //int					fd_outfile_open(t_cmd *cmd, char *fd, int mode);
 void				fd_pipe(t_ulist **cmd_lst);
 void				fd_pipe_pfd(t_ulist *obj, t_cmd *cmd1, t_cmd *cmd2,
