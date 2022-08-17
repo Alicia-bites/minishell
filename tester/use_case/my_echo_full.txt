@@ -56,3 +56,8 @@ echo -n"-n         " HAPPY DAYS
 echo "           "h  " "b | cat -e
 echo "           "  " " | cat -e
 ""''echo hola""'''' que""'' tal""''
+echo "|" "|"
+echo "|" "<" "|" "<" "<<"
+echo ">>" "<" "|" ">>" "<<"
+echo "|" "|" "<" "<" ">>" ">>" "<<"
+echo "|" "|" "<" "<" "|" ">>" "<<"
