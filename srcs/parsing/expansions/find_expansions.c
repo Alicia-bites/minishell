@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:47:29 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/15 15:22:20 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/17 14:06:55 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ static int	found_bad_combo(int i, char *str)
 static int	is_heredoc_delimiter(char *str, int pos)
 {
 	if (pos > 1)
+		pos--;
+	while (str[pos] && (str[pos] == '\"' || str[pos] == '\''))
 		pos--;
 	if (pos > 2 && ft_isspace(str[pos]))
 	{
