@@ -312,7 +312,6 @@ MAKE_TOK_SRCS	:=	add_token_to_list.c\
 					space_after_quote.c\
 
 SRCS		:=	main.c\
-			test_antho.c\
 				$(BUILT_SRCS)\
 				$(BUILT_CD_SRCS)\
 				$(BUILT_ECHO_SRCS)\
