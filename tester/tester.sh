@@ -87,7 +87,7 @@ function	diff_full
 	#diff -y ${2} ${3} > ${4} && echo "Diff file \"${4}\" has been created" || echo "Error: impossible to create the diff file \"${4}\"";
 	#if [ "$?" != 0 ]; then return 1; fi;
 	diff -y ${3} ${2} > ${4}
-	sed -i 's/^.*\$: /==========>>> /g' ${4};
+	sed -i 's/^.*\$: /\n\n\n\n\n-------------------------------------------------------------------------------------\n==========>>> /g' ${4};
 	echo -e "${YE}${SEP_P}${NC}";
 	return 0;
 }
