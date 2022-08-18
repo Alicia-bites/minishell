@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 12:19:00 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/18 13:55:01 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/18 17:07:51 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,7 @@
 # define MSGERR_DOLLAR "smbash: syntax error. Please check dollar."
 # define MSGERR_ONLY_SPACE "smbash: syntax error. No command before pipe."
 # define MSGERR_SIGCATCH "Program encountered segmentation fault."
+# define MSGERR_DIR "is a directory."
+# define MSGERR_NOT_DIR "no such file or directory."
 
 #endif
