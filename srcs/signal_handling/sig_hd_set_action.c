@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 14:14:03 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/14 08:53:30 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:33:38 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /* @BRIEF:
  * set int signal behaviour to default one to be able to stop the process
- * and do not redisplay prompt bask
+ * and do not redisplay prompt back
  *
  * @PARAM:
  * void
