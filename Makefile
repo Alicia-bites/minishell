@@ -258,7 +258,9 @@ SIG_SRCS	:=		sig_hd_set_action.c\
 				sig_pipe_quit.c\
 				sig_pipe_set_action.c\
 				sig_program_prompt_back.c\
+				sig_program_prompt_back_hd.c\
 				sig_program_set_action.c\
+				sig_program_set_action_hd.c\
 				sig_program_unset_action.c
 
 TOK_SRCS	:=	concatenate_export_args.c\

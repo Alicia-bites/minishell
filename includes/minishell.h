@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/18 09:30:13 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/18 14:08:01 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -400,7 +400,9 @@ int					sig_hd_unset_action(void);
 void				sig_pipe_quit(int signum);
 int					sig_pipe_set_action(void);
 void				sig_program_prompt_back(int signum);
+void				sig_program_prompt_back_hd(int signum);
 int					sig_program_set_action(void);
+int					sig_program_set_action_hd(void);
 int					sig_program_unset_action(void);
 
 //environment list
