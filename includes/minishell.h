@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/18 14:47:46 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/18 16:19:34 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,13 +94,6 @@ typedef struct s_chartype {
 	int				n_single;
 	t_enum_chartype	type;
 }	t_chartype;
-
-typedef struct s_global {
-	int				readline;
-	int				seen_tok_cmd;
-	int				*saved_pos;
-	long long		exit;
-}	t_global;
 
 typedef struct s_cursor {
 	int			i;
@@ -192,8 +185,6 @@ int					count_single(char *str);
 //lexer
 int					lex_pipe(char *str, int *err);
 int					lex_quote(char *str, int *err);
-// int					count_double_for_lexer(char *str);
-// int					count_single_for_lexer(char *str);
 void				count_quotes_lexer(int *s, int *d, char *str);
 int					lex_brackets(char *str, int *err);
 int					lexer(char *str, int *err);

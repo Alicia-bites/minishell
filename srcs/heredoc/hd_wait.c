@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hd_wait.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 08:14:17 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/17 16:08:41 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 14:52:51 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	hd_wait(int pid)
 {
-	extern t_global	g_msl;
+	extern long long	g_exit;
 	int				status;
 
 	status = 0;
@@ -22,9 +22,9 @@ int	hd_wait(int pid)
 	if (WIFEXITED(status) == 1)
 	{
 		if (WEXITSTATUS(status) == 1)
-			g_msl.exit = 130;
+			g_exit = 130;
 		else
-			g_msl.exit = 0;
+			g_exit = 0;
 		return (WEXITSTATUS(status));
 	}
 	return (0);
@@ -33,7 +33,7 @@ int	hd_wait(int pid)
  *
  *	if (WIFEXITED(status) == 1)
  *	{
- *		g_msl.exit = 130;
+ *		g_exit = 130;
  *		if (WEXITSTATUS(status) == 1)
  *			return (WEXITSTATUS(status));
  *	}

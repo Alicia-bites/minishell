@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 14:47:26 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/14 08:54:23 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 14:52:51 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@
  */
 void	sig_program_prompt_back(int signum)
 {
-	extern t_global	g_msl;
+	extern long long	g_exit;
 
 	(void)signum;
-	g_msl.exit = 130;
+	g_exit = 130;
 	printf("\n");
 	rl_on_new_line();
 	rl_replace_line("", 0);

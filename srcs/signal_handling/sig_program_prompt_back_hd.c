@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 14:05:34 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/18 14:41:55 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/18 14:52:51 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	sig_program_prompt_back_hd(int signum)
 {
-	extern t_global	g_msl;
+	extern long long	g_exit;
 
 	(void)signum;
-	g_msl.exit = 130;
+	g_exit = 130;
 	printf("\n");
 }
