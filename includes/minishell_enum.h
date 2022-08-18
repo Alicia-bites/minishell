@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 12:22:31 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/14 09:54:20 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:12:19 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,26 @@ typedef enum e_redir_open
 	DIR_OUT
 }	t_redir_open;
 
+/* @BRIEF:
+ * enum to set the visibility of minishell environment variable
+ * | enum		| env	| export	|
+ * | --------------------------------------------
+ * | VAR_ALL		| x	| x		|
+ * | VAR_ENV		| x	| 		|
+ * | VAR_EXP		| 	| x		|
+ * | VAR_ENV_I	 	| 	|		|
+ * --------------------------------------
+ * NOTE: VAR_ENV_I is only used at the beginning of the program when it has
+ * been executed with "env -i".
+ * Indeed, PATH variable is not visible but is present because standard linux
+ * binaries are executable
+ */
 typedef enum e_var_view
 {
 	VAR_ALL,
 	VAR_ENV,
-	VAR_EXP
+	VAR_EXP,
+	VAR_ENV_I
 }	t_var_view;
 
 typedef enum e_hd_mode
