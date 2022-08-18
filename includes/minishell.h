@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/18 15:47:51 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 18:07:33 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,6 +178,7 @@ void				handle_str(char **str, t_list **token_list, int *err,
 int					in_ascii(char *str);
 int					init_exec(t_list **token_list, t_ulist	**cmd_list,
 						t_ulist **envp);
+int					init_env_lst(char **envp, t_ulist **env_lst);
 
 //parsing
 int					ft_parse(char *str, t_list **token_list, int *err,
