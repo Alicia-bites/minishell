@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 13:25:28 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/18 13:27:10 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 15:39:52 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 int	env_lst_set_env_i_init(t_ulist **env_lst)
 {
 	char	*default_env[4];
-	
+
 	if (!env_lst)
 		return (EXIT_FAILURE);
-	if (*env_lst)
+	if (!*env_lst)
 		return (0);
 	default_env[0] = ENV_OLDPWD_NAME;
 	default_env[1] = ENV_PATH_NAME;

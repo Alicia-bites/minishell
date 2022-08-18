@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/18 14:18:13 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 15:33:18 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,12 @@
 # define ENV_PWD_NAME "PWD"
 
 // STANDARD ENVIRONMENT VARIABLE VALUE
-# define ENV_PATH_DFT_VAL1 "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
+# define ENV_PATH_DFT_VAL1 "/usr/local/sbin:/usr/local/bin:/usr/sbin"
+# define ENV_PATH_DFT_VAL2 ":/usr/bin:/sbin:/bin:/usr/games"
+# define ENV_PATH_DFT_VAL3 ":/usr/local/games:/snap/bin"
+# define ENV_PATH_DFT_LEN1 41
+# define ENV_PATH_DFT_LEN2 32
+# define ENV_PATH_DFT_LEN3 28
 
 // BUILTIN FLAG
 # define BUILT_CD "cd"
@@ -423,6 +428,7 @@ int					env_init_var_view(t_env *env);
 int					env_lst_set(char **envp, t_ulist **env_lst);
 int					env_lst_set_env_i(t_ulist **env_lst);
 int					env_lst_set_env_i_init(t_ulist **env_lst);
+char				*env_lst_set_env_i_path_value(void);
 int					env_lst_set_env_i_update_lst(t_ulist *obj, char *str);
 int					env_lst_set_env_i_value(t_ulist **env_lst,
 						char *env_key, char *env_value);
