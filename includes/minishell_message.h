@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 12:19:00 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/17 15:57:17 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/18 10:49:42 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@
 # define MSGERR_SYM "smbash: syntax error. Put special char between quotes."
 # define MSGERR_DOLLAR "smbash: syntax error. Please check dollar."
 # define MSGERR_ONLY_SPACE "smbash: syntax error. No command before pipe."
-# define MSGERR_
+# define MSGERR_SIGCATCH "Program encountered segmentation fault."
 
 #endif

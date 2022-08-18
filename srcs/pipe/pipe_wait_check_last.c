@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_wait_check_last.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 15:41:29 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/13 16:45:25 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 11:01:15 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@ int	pipe_wait_check_last(int status)
 		{
 			res = 131;
 			printf("%s\n", ERR_COREDUMP);
+		}
+		if (WTERMSIG(status) == SIGSEGV)
+		{
+			res = 139;
+			ft_putendl_fd(MSGERR_SIGCATCH, 2);
 		}
 	}
 	return (res);
