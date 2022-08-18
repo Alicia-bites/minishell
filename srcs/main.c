@@ -6,13 +6,13 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:17:17 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/18 17:54:32 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 18:11:32 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_global	g_msl;
+long long	g_exit;
 
 int	main(int argc, char **argv, char **envp)
 {
@@ -21,7 +21,7 @@ int	main(int argc, char **argv, char **envp)
 
 	(void)argc;
 	(void)argv;
-	g_msl.exit = 0;
+	g_exit = 0;
 	err = 0;
 	if (sig_program_set_action() == -1)
 		return (ft_panic_value(-1, __func__, ERR_SIGACTION,

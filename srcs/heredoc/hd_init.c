@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hd_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 09:11:15 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/17 16:16:14 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 17:47:15 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 long long	hd_init(t_list *tok, t_cmd *cmd)
 {
-	extern t_global	g_msl;
-	char			*hd_name;
-	int				hd;
+	extern long long	g_exit;
+	char				*hd_name;
+	int					hd;
 
 	hd_name = NULL;
 	hd = 0;
@@ -25,7 +25,7 @@ long long	hd_init(t_list *tok, t_cmd *cmd)
 	hd_name = hd_create_name(tok);
 	if (!hd_name)
 	{
-		g_msl.exit = EXIT_FAILURE;
+		g_exit = EXIT_FAILURE;
 		return (-1);
 	}
 	hd = hd_open(hd_name);

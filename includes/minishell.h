@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/18 18:07:33 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/18 18:08:26 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,13 +100,6 @@ typedef struct s_chartype {
 	t_enum_chartype	type;
 }	t_chartype;
 
-typedef struct s_global {
-	int				readline;
-	int				seen_tok_cmd;
-	int				*saved_pos;
-	long long		exit;
-}	t_global;
-
 typedef struct s_cursor {
 	int			i;
 	int			k;
@@ -198,8 +191,6 @@ int					count_single(char *str);
 //lexer
 int					lex_pipe(char *str, int *err);
 int					lex_quote(char *str, int *err);
-// int					count_double_for_lexer(char *str);
-// int					count_single_for_lexer(char *str);
 void				count_quotes_lexer(int *s, int *d, char *str);
 int					lex_brackets(char *str, int *err);
 int					lexer(char *str, int *err);
@@ -210,6 +201,7 @@ int					lex_sym(char *str, int *err);
 int					between_quotes(char *str, int pos);
 int					between_double_quotes(char *str, int pos);
 int					between_single_quotes(char *str, int pos);
+int					only_this_in_str(char *str, char c);
 
 //expansions
 int					bracket_is_after_dollar(char *str, int pos);
@@ -526,6 +518,9 @@ char				*insert_expansions_heredoc(int full_size, t_expanded *expanded_list,
 						char *str);
 
 //pipe
+void				handle_cmd_return_value(t_cmd *cmd, int res);
+int					is_a_directory(char *str, int i);
+int					only_slash_in_str(char *str);
 void				pipe_close_pfd(void *content);
 void				pipe_cmd(t_ulist **cmd_lst, t_ulist *obj);
 void				pipe_cmd_dup_fd_in(t_ulist **cmd_lst, t_cmd *cmd);

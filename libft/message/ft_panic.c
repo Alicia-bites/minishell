@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 15:33:20 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/18 13:26:30 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/18 17:53:11 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_panic(int errcode, const char *filename, char *msg)
 	res += ft_putendl_fd_const(err_msg, 2);
 	if (filename)
 	{
-		res += ft_putstr_fd_const("file ->  ", 2);
+		res += ft_putstr_fd_const("func ->  ", 2);
 		res += ft_putendl_fd_const(filename, 2);
 	}
 	return (res);

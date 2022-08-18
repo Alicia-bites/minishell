@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hd_open.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 18:14:48 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/17 17:50:43 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 17:47:09 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 int	hd_open(char *hd_name)
 {
-	extern t_global	g_msl;
-	int				res;
+	extern long long	g_exit;
+	int					res;
 
 	res = -1;
 	res = open(hd_name, O_CREAT | O_TRUNC | O_WRONLY, 0664);
 	if (res < 0)
 	{
 		free(hd_name);
-		g_msl.exit = EXIT_FAILURE;
+		g_exit = EXIT_FAILURE;
 	}
 	return (res);
 }

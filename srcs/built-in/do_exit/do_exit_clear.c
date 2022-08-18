@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 10:53:00 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/18 14:52:51 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	seen_pipe(t_list *tok_node)
 void	do_exit_clear(t_ulist **envp, t_ulist **cmd_lst, t_cmd *cmd,
 		char *err_msg)
 {
-	extern t_global	g_msl;
+	extern long long	g_exit;
 
 	if (!seen_pipe(cmd->tok_node))
 		printf("exit\n");
@@ -38,5 +38,5 @@ void	do_exit_clear(t_ulist **envp, t_ulist **cmd_lst, t_cmd *cmd,
 	ft_lstclear(cmd->tok_lst);
 	ft_lst_free(envp, &env_free);
 	ft_lst_free(cmd_lst, &cmd_free);
-	exit(g_msl.exit);
+	exit(g_exit);
 }

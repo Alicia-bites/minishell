@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_exec.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 16:02:20 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/12 17:24:49 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 17:48:28 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	cmd_exec(t_ulist **cmd_lst, int n_cmd)
 {
-	t_cmd			*cmd;
-	int				res;
-	extern t_global	g_msl;
+	t_cmd				*cmd;
+	int					res;
+	extern long long	g_exit;
 
 	cmd = NULL;
 	res = 0;
@@ -35,6 +35,6 @@ int	cmd_exec(t_ulist **cmd_lst, int n_cmd)
 	else
 		res = pipe_run(cmd_lst, n_cmd);
 	sig_program_set_action();
-	g_msl.exit = res;
+	g_exit = res;
 	return (res);
 }

@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:02:19 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/18 14:52:36 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 // static void	copy_pos(t_position position, int place, int n, char *expanded)
 // {
 // 	static int		i = 0;
-// 	extern t_global	global;
+// 	extern long long	global;
 // 	static int		save_pos = 0;
 // 	static int		ex_move_cursor = 0;
 
@@ -56,7 +56,7 @@
 
 // static void	malloc_global_saved_pos(int n)
 // {
-// 	extern t_global	global;
+// 	extern long long	global;
 
 // 	global.saved_pos = malloc(sizeof(int) * (n + 1));
 // 	if (!global.saved_pos)
@@ -71,7 +71,7 @@
 // {
 // 	int				i;
 // 	static int		n = 0;
-// 	extern t_global	global;
+// 	extern long long	global;
 // 	static int		save_pos = 0;
 // 	static int		n_dollars = 0;
 
