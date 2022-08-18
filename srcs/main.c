@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:17:17 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/18 14:22:21 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 17:54:32 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,8 @@ int	main(int argc, char **argv, char **envp)
 	env_lst = ft_lst_init();
 	if (!env_lst)
 		return (EXIT_FAILURE);
-	if (env_lst_set(envp, env_lst))
-	{
-		ft_lst_free(env_lst, &env_free);
+	if (init_env_lst(envp, env_lst))
 		return (EXIT_FAILURE);
-	}
-	if (env_lst_set_env_i(env_lst))
-	{
-		ft_lst_free(env_lst, &env_free);
-		return (EXIT_FAILURE);
-	}
 	get_input(&err, env_lst);
 	ft_lst_free(env_lst, &env_free);
 	return (0);
