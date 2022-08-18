@@ -124,6 +124,7 @@ ENV_SRCS	:=	env_char_env.c\
 			env_lst_set.c\
 			env_lst_set_env_i.c\
 			env_lst_set_env_i_init.c\
+			env_lst_set_env_i_path_value.c\
 			env_lst_set_env_i_update_lst.c\
 			env_lst_set_env_i_value.c\
 			env_lst_show.c\
