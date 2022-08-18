@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 18:22:30 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/11 08:49:38 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	do_exit(t_ulist **envp, t_ulist **cmd_lst, t_cmd *cmd)
 	extern t_global	g_msl;
 
 	if (!cmd && cmd->n_arg == 0)
-		return (ft_panic_value(-1, __FILE__, ERR_NOOBJ, EXIT_FAILURE));
+		return (ft_panic_value(-1, __func__, ERR_NOOBJ, EXIT_FAILURE));
 	if (cmd->n_arg == 1)
 		do_exit_clear(envp, cmd_lst, cmd, NULL);
 	else
@@ -56,7 +56,7 @@ int	do_exit(t_ulist **envp, t_ulist **cmd_lst, t_cmd *cmd)
 				do_exit_clear(envp, cmd_lst, cmd, NULL);
 			}
 			else
-				return (ft_panic_value(-1, __FILE__, ERR_ARG_N, 1));
+				return (ft_panic_value(-1, __func__, ERR_ARG_N, 1));
 		}
 		else
 		{

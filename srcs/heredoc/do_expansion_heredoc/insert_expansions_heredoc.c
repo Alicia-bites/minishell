@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:49:04 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/17 12:18:04 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static char	*malloc_newstr(int full_size, t_expanded **expanded_list)
 	if (!new_str)
 	{
 		ft_lstclear_dollar(expanded_list);
-		return (ft_panic_null(MALLOC_FAILURE, __FILE__, NULL));
+		return (ft_panic_null(MALLOC_FAILURE, __func__, NULL));
 	}
 	ft_bzero(new_str, sizeof(char) * (full_size + 1));
 	return (new_str);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_init_prop_fullcmd.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 09:32:48 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/14 08:35:16 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_list	*cmd_init_prop_fullcmd(t_list *tok, t_cmd *cmd)
 
 	cmd->fullcmd = (char **)malloc(sizeof(char *) * (cmd->n_arg + 1));
 	if (!cmd->fullcmd)
-		return (ft_panic_null(-1, __FILE__, ERR_NOOBJ));
+		return (ft_panic_null(-1, __func__, ERR_NOOBJ));
 	cmd->fullcmd[0] = ft_strdup(tok->token);
 	obj = tok->next;
 	i = 1;

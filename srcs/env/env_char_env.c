@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_char_env.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 18:30:10 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/11 23:03:31 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ int	env_char_env(t_env *env, char **envp, int i)
 
 	len_key = ft_strlen(env->key);
 	if (len_key <= 0)
-		return (ft_panic(-1, __FILE__, ERR_NOOBJ));
+		return (ft_panic(-1, __func__, ERR_NOOBJ));
 	len_value = ft_strlen(env->value);
 	envp[i] = (char *)malloc(sizeof(char) * (len_key + 1 + len_value + 1));
 	if (!envp[i])
-		return (ft_panic(-1, __FILE__, ERR_MALLOC));
+		return (ft_panic(-1, __func__, ERR_MALLOC));
 	envp[i] = ft_memmove(envp[i], env->key, len_key);
 	ft_memmove(envp[i] + len_key, "=", 1);
 	ft_memmove(envp[i] + len_key + 1, env->value, len_value);

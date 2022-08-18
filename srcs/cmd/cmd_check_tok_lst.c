@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_check_tok_lst.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 17:20:18 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/13 16:51:23 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	cmd_check_tok_lst(t_list **tok_lst)
 
 	tok = *tok_lst;
 	if (!tok)
-		return (ft_panic(-1, __FILE__, ERR_NOTOK));
+		return (ft_panic(-1, __func__, ERR_NOTOK));
 	while (tok)
 	{
 		if (cmd_check_tok_lst_redir(tok))

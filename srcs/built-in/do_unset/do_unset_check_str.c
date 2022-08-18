@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 13:19:52 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/18 11:16:49 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ int	do_unset_check_str(char *str)
 		&& !ft_strstr(str, "="))
 		return (0);
 	else
-		return (ft_panic_value(-1, __FILE__, ERR_ID_VAL,
+		return (ft_panic_value(-1, __func__, ERR_ID_VAL,
 				EXIT_FAILURE));
 }

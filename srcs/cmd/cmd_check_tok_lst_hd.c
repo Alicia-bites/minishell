@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_check_tok_lst_hd.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 08:25:50 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/13 16:51:31 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	cmd_check_tok_lst_hd(t_list *tok)
 	if (tok->toktype == TOK_DL_REDIR)
 	{
 		if (!next || next->toktype != TOK_HERESEP)
-			return (ft_panic(-1, __FILE__, ERR_TOK_HERESEP));
+			return (ft_panic(-1, __func__, ERR_TOK_HERESEP));
 	}
 	return (0);
 }

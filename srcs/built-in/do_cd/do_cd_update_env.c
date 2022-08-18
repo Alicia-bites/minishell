@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   do_cd_update_env.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:45:09 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/20 13:54:35 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ int	do_cd_update_env(t_ulist *obj, char *path)
 	if (env->value)
 		env->var_view = VAR_ALL;
 	else
-		return (ft_panic(-1, __FILE__, ERR_MALLOC));
+		return (ft_panic(-1, __func__, ERR_MALLOC));
 	return (0);
 }

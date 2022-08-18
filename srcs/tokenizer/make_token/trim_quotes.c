@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 17:02:58 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/17 10:59:55 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static char	*malloc_output(char *str, int *len)
 		return (str);
 	output = malloc(sizeof(char) * (*len) + 1);
 	if (!output)
-		return (ft_panic_null(MALLOC_FAILURE, __FILE__, NULL));
+		return (ft_panic_null(MALLOC_FAILURE, __func__, NULL));
 	return (output);
 }
 
@@ -68,7 +68,7 @@ char	*trim_quotes(char *str)
 		return (NULL);
 	output = malloc_output(str, &len);
 	if (!output)
-		return (ft_panic_null(-1, __FILE__, ERR_MALLOC));
+		return (ft_panic_null(-1, __func__, ERR_MALLOC));
 	lonely_quote(&output, &i, str);
 	while (i < len)
 	{

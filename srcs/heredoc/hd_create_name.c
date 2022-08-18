@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hd_create_name.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 16:54:09 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/17 15:58:55 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ char	*hd_create_name(t_list *tok)
 
 	index = ft_itoa(tok->index);
 	if (!index)
-		return (ft_panic_null(-1, __FILE__, ERR_MALLOC));
+		return (ft_panic_null(-1, __func__, ERR_MALLOC));
 	hd_create_name_len(index, &len_index, &len_smb, &len_tmp);
 	str = (char *)malloc(sizeof(char) + (len_tmp + 1 + len_smb + 1
 				+ len_index + 1));
 	if (!str)
 	{
 		free(index);
-		return (ft_panic_null(-1, __FILE__, ERR_MALLOC));
+		return (ft_panic_null(-1, __func__, ERR_MALLOC));
 	}
 	str = ft_memmove(str, HD_TMP_DIR, len_tmp);
 	ft_memmove(str + len_tmp, DIR_SEP, 1);

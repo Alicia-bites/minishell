@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_init_value.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antho <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 18:26:17 by antho             #+#    #+#             */
-/*   Updated: 2022/08/11 22:13:47 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	env_init_value(t_env *env, char *fullname)
 	{
 		env->value = ft_strdup(&fullname[sep_pos + 1]);
 		if (!env->value)
-			return (ft_panic(-1, __FILE__, ERR_MALLOC));
+			return (ft_panic(-1, __func__, ERR_MALLOC));
 	}
 	return (0);
 }

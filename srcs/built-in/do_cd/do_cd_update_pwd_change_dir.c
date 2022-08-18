@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   do_cd_update_pwd_change_dir.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 14:50:52 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/16 17:54:14 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	do_cd_update_pwd_change_dir(t_ulist **envp, char *oldpwd)
 
 	pwd = do_pwd_getpath();
 	if (!pwd)
-		return (ft_panic(-1, __FILE__, ERR_PWD));
+		return (ft_panic(-1, __func__, ERR_PWD));
 	pwd_obj = do_export_check_exist(envp, ENV_PWD_NAME, -1);
 	oldpwd_obj = do_export_check_exist(envp, ENV_OLDPWD_NAME, -1);
 	if (oldpwd_obj && oldpwd)

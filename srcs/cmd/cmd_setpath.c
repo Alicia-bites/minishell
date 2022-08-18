@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_setpath.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 17:59:05 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/13 16:55:56 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@ char	*cmd_setpath(char *cmd, char *env)
 	size_t	len_cmd;
 
 	if (!env || !DIR_SEP)
-		return (ft_panic_null(-1, __FILE__, ERR_NOOBJ));
+		return (ft_panic_null(-1, __func__, ERR_NOOBJ));
 	len_env = ft_strlen(env);
 	len_env_sep = ft_strlen(DIR_SEP);
 	len_cmd = ft_strlen(cmd);
 	path = (char *)malloc(sizeof(char) * (len_env + len_env_sep
 				+ len_cmd + 1));
 	if (!path)
-		return (ft_panic_null(-1, __FILE__, ERR_MALLOC));
+		return (ft_panic_null(-1, __func__, ERR_MALLOC));
 	path = ft_memmove(path, env, len_env);
 	ft_memmove(path + len_env, DIR_SEP, len_env_sep);
 	ft_memmove(path + len_env + len_env_sep, cmd, len_cmd);

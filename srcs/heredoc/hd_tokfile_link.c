@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hd_tokfile_link.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 14:03:00 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/17 16:06:49 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ long long	hd_tokfile_link(t_ulist **cmd_lst, t_list *tok,
 		return (EXIT_FAILURE);
 	pid = fork();
 	if (pid < 0)
-		return (ft_panic_value(-1, __FILE__, ERR_FORK, EXIT_FAILURE));
+		return (ft_panic_value(-1, __func__, ERR_FORK, EXIT_FAILURE));
 	if (pid == 0)
 		hd_write(tok_heresep, hd, env_lst);
 	close(hd);

@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 12:02:19 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/11 18:27:54 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@
 // 	global.saved_pos = malloc(sizeof(int) * (n + 1));
 // 	if (!global.saved_pos)
 // 	{
-// 		ft_panic_null(-1, __FILE__, ERR_MALLOC);
+// 		ft_panic_null(-1, __func__, ERR_MALLOC);
 // 		return ;		
 // 	}
 // 	ft_bzero(global.saved_pos, n + 1);

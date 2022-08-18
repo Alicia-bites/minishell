@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lst_new.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 08:47:50 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/20 13:37:02 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_ulist	*ft_lst_new(void *content)
 
 	new = (t_ulist *)malloc(sizeof(t_ulist));
 	if (!new)
-		return (ft_panic_null(-1, __FILE__, ERR_MALLOC));
+		return (ft_panic_null(-1, __func__, ERR_MALLOC));
 	if (!content)
 		new->content = NULL;
 	else

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_init_prop.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 17:08:21 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/16 18:21:11 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_list	*cmd_init_prop(t_list *tok, t_cmd *cmd)
 	t_list	*obj;
 
 	if (!tok || !cmd)
-		return (ft_panic_null(-1, __FILE__, ERR_NOOBJ));
+		return (ft_panic_null(-1, __func__, ERR_NOOBJ));
 	obj = tok;
 	cmd->tok_node = obj;
 	cmd->toktype = obj->toktype;

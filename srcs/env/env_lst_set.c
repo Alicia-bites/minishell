@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_lst_set.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antho <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 17:19:53 by antho             #+#    #+#             */
-/*   Updated: 2022/08/15 09:11:35 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	env_lst_set(char **envp, t_ulist **env_lst)
 	int		i;
 
 	if (!envp)
-		return (ft_panic(-1, __FILE__, ERR_NOOBJ));
+		return (ft_panic(-1, __func__, ERR_NOOBJ));
 	i = 0;
 	while (envp[i])
 	{
@@ -40,7 +40,7 @@ int	env_lst_set(char **envp, t_ulist **env_lst)
 		if (!ft_lst_append(env_lst, (void *)env))
 		{
 			env_free((void *)env);
-			return (ft_panic(-1, __FILE__, ERR_LST_APPEND));
+			return (ft_panic(-1, __func__, ERR_LST_APPEND));
 		}
 		i++;
 	}

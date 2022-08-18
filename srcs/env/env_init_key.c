@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_init_key.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antho <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 17:46:30 by antho             #+#    #+#             */
-/*   Updated: 2022/08/11 22:09:42 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*env_init_key(t_env *env, char *fullname)
 		len_str = sep_pos + 1;
 	env->key = (char *)malloc(sizeof(char) * (len_str + 1));
 	if (!env->key)
-		return (ft_panic_null(-1, __FILE__, ERR_MALLOC));
+		return (ft_panic_null(-1, __func__, ERR_MALLOC));
 	ft_strlcpy(env->key, (const char *)fullname, len_str + 1);
 	env->key[sep_pos] = '\0';
 	return (env->key);

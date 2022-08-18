@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   do_cd_change_dir.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 14:20:55 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/14 08:16:52 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ int	do_cd_change_dir(t_ulist **envp, t_cmd *cmd)
 
 	oldpwd = do_pwd_getpath();
 	if (!oldpwd)
-		return (ft_panic_value(errno, __FILE__, NULL, EXIT_FAILURE));
+		return (ft_panic_value(errno, __func__, NULL, EXIT_FAILURE));
 	if (chdir((const char *)cmd->fullcmd[1]) == 0)
 		do_cd_update_pwd_change_dir(envp, oldpwd);
 	else
 	{
 		free(oldpwd);
-		return (ft_panic_value(errno, __FILE__, NULL, EXIT_FAILURE));
+		return (ft_panic_value(errno, __func__, NULL, EXIT_FAILURE));
 	}
 	free(oldpwd);
 	return (0);

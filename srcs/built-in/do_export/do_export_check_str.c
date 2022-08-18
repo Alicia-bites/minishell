@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   do_export_check_str.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 10:58:15 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/29 12:53:14 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	do_export_check_str(char *str, int sep_pos)
 		len_key = sep_pos;
 	str_key = (char *)malloc(sizeof(char) * (len_key + 1));
 	if (!str_key)
-		return (ft_panic_value(-1, __FILE__, ERR_MALLOC,
+		return (ft_panic_value(-1, __func__, ERR_MALLOC,
 				EXIT_FAILURE));
 	ft_strlcpy(str_key, str, len_key + 1);
 	if ((ft_isalpha(str[0]) || str[0] == '_')
@@ -34,7 +34,7 @@ int	do_export_check_str(char *str, int sep_pos)
 		&& (!ft_strchrset_include(str_key, CHRSET_EXPORT)))
 		res = 0;
 	else
-		res = ft_panic_value(-1, __FILE__, ERR_ID_VAL, EXIT_FAILURE);
+		res = ft_panic_value(-1, __func__, ERR_ID_VAL, EXIT_FAILURE);
 	free(str_key);
 	return (res);
 }

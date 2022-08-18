@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_message.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 15:45:06 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/27 14:38:10 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:16:40 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,13 @@
 /**STRING***/
 # define ERR_MAXLEN_INT "Length string is more than MAX_LEN_INT"
 
-int		ft_panic(int errcode, char *filename, char *msg);
-void	*ft_panic_null(int errcode, char *filename, char *msg);
-int		ft_panic_value(int errcode, char *filename, char *msg,
+int		ft_panic(int errcode, const char *filename, char *msg);
+void	*ft_panic_null(int errcode, const char *filename, char *msg);
+int		ft_panic_value(int errcode, const char *filename, char *msg,
 			int value);
 int		ft_shell_msg(int errcode, char *data);
+int		ft_putchar_fd_const(const char c, int fd);
+int		ft_putendl_fd_const(const char *s, int fd);
+int		ft_putstr_fd_const(const char *s, int fd);
 
 #endif

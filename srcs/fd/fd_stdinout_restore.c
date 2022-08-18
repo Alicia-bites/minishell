@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fd_stdinout_restore.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 17:39:44 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/16 17:45:18 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	fd_stdinout_restore(t_cmd *cmd, int fd_stdin, int fd_stdout)
 	if (errno)
 	{
 		err_no = errno;
-		ft_panic(-1, __FILE__, ERR_PFD);
+		ft_panic(-1, __func__, ERR_PFD);
 	}
 	fd_stdinout_backup_close(fd_stdin, fd_stdout);
 	if (err_no)

@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_getvalidpath_null.c                            :+:      :+:    :+:   */
+/*   ft_putendl_fd_const.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/12 15:52:13 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
+/*   Created: 2022/08/18 13:12:58 by amarchan          #+#    #+#             */
+/*   Updated: 2022/08/18 13:19:22 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "ft_message.h"
 
-char	*cmd_getvalidpath_null(t_cmd *cmd)
+int	ft_putendl_fd_const(const char *s, int fd)
 {
-	cmd->fullpath = ft_strdup("\0");
-	if (!cmd->fullpath)
-		return (ft_panic_null(-1, __func__, ERR_MALLOC));
-	return (cmd->fullpath);
+	int	res;
+
+	res = 0;
+	if (!s)
+		return (res);
+	res += ft_putstr_fd_const(s, fd);
+	res += ft_putchar_fd_const('\n', fd);
+	return (res);
 }

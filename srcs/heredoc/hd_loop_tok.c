@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:34:24 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/15 09:27:49 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_list	*hd_loop_tok(t_list *tok, t_cmd *cmd, long long *hd_exit)
 			if (pid < 0)
 			{
 				*hd_exit = EXIT_FAILURE;
-				return (ft_panic_null(-1, __FILE__, ERR_FORK));
+				return (ft_panic_null(-1, __func__, ERR_FORK));
 			}
 			if (pid == 0)
 				hd_write(tok, cmd);

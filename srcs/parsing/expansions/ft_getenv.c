@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 15:51:19 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/13 15:43:27 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_getenv(char *var, t_ulist *envp)
 				return (NULL);
 			output = ft_strdup(env->value);
 			if (!output)
-				return (ft_panic_null(-1, __FILE__, ERR_MALLOC));
+				return (ft_panic_null(-1, __func__, ERR_MALLOC));
 			return (output);
 		}
 		envp = envp->next;

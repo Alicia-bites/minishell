@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 10:53:00 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/17 11:02:53 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	do_exit_clear(t_ulist **envp, t_ulist **cmd_lst, t_cmd *cmd,
 	if (!seen_pipe(cmd->tok_node))
 		printf("exit\n");
 	if (err_msg)
-		ft_panic(-1, __FILE__, ERR_ARG_NUM);
+		ft_panic(-1, __func__, ERR_ARG_NUM);
 	rl_clear_history();
 	ft_lstclear(cmd->tok_lst);
 	ft_lst_free(envp, &env_free);

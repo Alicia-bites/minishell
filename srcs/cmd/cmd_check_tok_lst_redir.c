@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_check_tok_lst_redir.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 17:27:16 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/13 16:51:36 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	cmd_check_tok_lst_redir(t_list *tok)
 		|| tok->toktype == TOK_DR_REDIR)
 	{
 		if (!next || next->toktype != TOK_FILE)
-			return (ft_panic(-1, __FILE__, ERR_TOK_REDIR));
+			return (ft_panic(-1, __func__, ERR_TOK_REDIR));
 	}
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   do_export_update_env.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antho <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 17:04:25 by antho             #+#    #+#             */
-/*   Updated: 2022/07/20 13:57:09 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ int	do_export_update_env(t_ulist *obj, char *str, int sep_pos)
 	if (env->value)
 		env->var_view = VAR_ALL;
 	else
-		return (ft_panic(-1, __FILE__, ERR_MALLOC));
+		return (ft_panic(-1, __func__, ERR_MALLOC));
 	return (0);
 }

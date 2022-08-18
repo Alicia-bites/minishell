@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 18:21:21 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/29 12:55:17 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@
 int	do_unset(t_ulist **envp, t_cmd *cmd)
 {
 	if (!cmd && cmd->n_arg == 0)
-		return (ft_panic_value(-1, __FILE__, ERR_NOOBJ, EXIT_FAILURE));
+		return (ft_panic_value(-1, __func__, ERR_NOOBJ, EXIT_FAILURE));
 	else if (cmd->n_arg >= 2)
 	{
 		if (cmd->fullcmd[1][0] == '-')
-			return (ft_panic_value(-1, __FILE__, ERR_OPT_INVAL, 2));
+			return (ft_panic_value(-1, __func__, ERR_OPT_INVAL, 2));
 		else
 			return (do_unset_update_lst(envp, &cmd->fullcmd[1]));
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_char_init.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 17:36:20 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/14 08:38:22 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	**env_char_init(size_t len_env_lst)
 
 	envp = (char **)malloc(sizeof(char *) * (len_env_lst + 1));
 	if (!envp)
-		return (ft_panic_null(-1, __FILE__, ERR_MALLOC));
+		return (ft_panic_null(-1, __func__, ERR_MALLOC));
 	i = 0;
 	while (i < len_env_lst)
 	{

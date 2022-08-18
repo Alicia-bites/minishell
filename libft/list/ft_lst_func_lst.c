@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lst_func_lst.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:16:15 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/20 13:36:14 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_lst_func_lst(t_ulist **list, void (*f)(void *))
 
 	if (!list)
 	{
-		ft_panic(-1, __FILE__, ERR_NOOBJ);
+		ft_panic(-1, __func__, ERR_NOOBJ);
 		return ;
 	}
 	obj = *list;

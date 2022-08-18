@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_run.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:17:53 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/02 17:11:55 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	pipe_run(t_ulist **cmd_lst, int n_cmd)
 		pid = fork();
 		if (pid < 0)
 		{
-			res = ft_panic_value(-1, __FILE__, ERR_FORK, 1);
+			res = ft_panic_value(-1, __func__, ERR_FORK, 1);
 			break ;
 		}
 		if (pid == 0)
