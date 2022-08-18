@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execute_command.c                                  :+:      :+:    :+:   */
+/*   hd_tokfile_link_cmd.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/17 14:16:11 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/17 15:19:51 by amarchan         ###   ########.fr       */
+/*   Created: 2022/08/17 14:54:43 by abarrier          #+#    #+#             */
+/*   Updated: 2022/08/17 15:36:46 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	execute_command(t_list **token_list, t_ulist **cmd_list)
+void	hd_tokfile_link_cmd(t_cmd *cmd, int hd, char *hd_name)
 {
-	fd_link_in_out_file(token_list, cmd_list, DIR_IN);
-	fd_pipe(cmd_list);
-	cmd_exec(cmd_list, ft_lst_size(cmd_list));
+	if (cmd->hd_r > 2)
+	{
+		close(cmd->hd_r);
+		unlink(cmd->hd_name);
+		cmd->hd_r = FD_NOT_INIT;
+	}
+	hd_create_name_reset(cmd);
+	cmd->hd_name = hd_name;
+	cmd->hd_r = hd;
 }
