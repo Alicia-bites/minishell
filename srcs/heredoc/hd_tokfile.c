@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:33:32 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/17 15:53:43 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 14:42:31 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,5 @@ long long	hd_tokfile(t_list **tok_lst, t_ulist **cmd_lst,
 			break ;
 		tok = tok->next;
 	}
-	sig_program_set_action();
 	return (hd_exit);
 }
