@@ -6,6 +6,7 @@ SMB_NAME="minishell"
 
 ## TEST VARIABLES
 ORI_P=$(pwd)
+SMB_PATH=${ORI_P}/.././${SMB_NAME}
 UC_P=${ORI_P}/use_case
 RES_P=${ORI_P}/result
 BSH_RES=${RES_P}/bsh_res
@@ -130,6 +131,46 @@ function	init_dir
 	return 0;
 }
 
+function	minishell_path
+{
+	local usr_path="${1}"
+	local usr_answer=""
+
+	echo -e "${YE}Executing \"${FUNCNAME}\"${NC}";
+	while [ "${usr_answer}" != "y" ] && [ "${usr_answer}" != "n" ]
+	do
+		echo "Actual minishell path: ${usr_path}";
+		read -n 200 -p "What is the relative minishell program path ? " usr_path;
+		echo "Answer: ${usr_path}";
+		if check_file ${usr_path}; [ $? != 0 ]
+		then
+			read -n 1 -p "Do you want to retry [y/n] ? " usr_answer;
+			echo "";
+			echo "Answer: ${usr_answer}";
+			if [ "${usr_answer}" == "y" ]
+			then
+				usr_answer="z";
+				usr_path="${1}";
+			fi
+		else
+			while [ "${usr_answer}" != "y" ] && [ "${usr_answer}" != "n" ]
+			do
+				read -n 1 -p "Do you want to continue [y/n] ? " usr_answer;
+				echo "";
+				echo "Answer: ${usr_answer}";
+			done
+		fi
+	done
+	if [ "${usr_answer}" == "n" ]
+	then
+		echo -e "${BU}The process has been stopped${NC}";
+		return 3;
+	fi
+	if [ "$?" != 0 ]; then return 3; fi;
+	echo -e "${YE}${SEP_P}${NC}";
+
+}
+
 function	create_dir_res
 {
 	local usr_answer=""
@@ -143,15 +184,30 @@ function	create_dir_res
 	done
 	if [ "${usr_answer}" == "y" ]
 	then
-		rm -rf ${2} && echo "Directory \"${2}\" has been deleted from the current directory \"${1}\"" || echo "Error: impossible to delete the directory \"${2}\" from the current directory \"${1}\"";
+		rm -rf ${2} && echo -e "${BU}Directory \"${2}\" has been deleted from the current directory \"${1}\"${NC}" || echo -e "${RD}Error: impossible to delete the directory \"${2}\" from the current directory \"${1}\"${NC}";
 		if [ "$?" != 0 ]; then return 2; fi;
 	else
 		echo -e "${BU}The process has been stopped${NC}";
 		return 3;
 	fi
-	mkdir ${2} && echo "Directory \"${2}\" has been created in the current directory \"${1}\"" || echo "Error: impossible to create the directory \"${2}\" in the current directory \"${1}\"";
+	mkdir ${2} && echo -e "${GN}Directory \"${2}\" has been created in the current directory \"${1}\"${NC}" || echo -e "${RD}Error: impossible to create the directory \"${2}\" in the current directory \"${1}\"${NC}";
 	if [ "$?" != 0 ]; then return 3; fi;
 	echo -e "${YE}${SEP_P}${NC}";
+}
+
+function	check_file
+{
+#	echo -e "${YE}Executing \"${FUNCNAME}\"${NC}";
+	echo "check file on string: ${i}";
+	if [ -z ${1} ]
+	then
+		echo -e "${RD}file ${i} not existing${NC}";
+		return 1;
+	else
+		echo -e "${GN}file ${i} existing${NC}";
+	fi
+#	echo -e "${YE}${SEP_P}${NC}";
+	return 0;
 }
 
 function	check_dir_res
@@ -161,16 +217,15 @@ function	check_dir_res
 	do
 		if [ ! -e ${i} ]
 		then
-			echo "directory ${i} not existing";
+			echo -e "${RD}directory ${i} not existing${NC}";
 			return 1;
 		else
-			echo "directory ${i} existing";
+			echo -e "${GN}directory ${i} existing${NC}";
 		fi
 	done
 	echo -e "${YE}${SEP_P}${NC}";
 	return 0;
 }
-
 
 function	check_dir_uc
 {
@@ -179,10 +234,10 @@ function	check_dir_uc
 	do
 		if [ ! -e ${i} ];
 		then
-			echo "directory ${i} not existing";
+			echo -e "${RD}directory ${i} not existing${NC}";
 			return 1;
 		else
-			echo "directory ${i} existing";
+			echo -e "${GN}directory ${i} existing${NC}";
 		fi
 	done
 	echo -e "${YE}${SEP_P}${NC}";
@@ -199,9 +254,11 @@ function	main
 	check_dir_res ${RES_P};
 	create_dir_res ${ORI_P} ${RES_P};
 	if [ "$?" != 0 ]; then return 2; fi;
+#	minishell_path ${SMB_PATH};
+#	if [ "$?" != 0 ]; then return 3; fi;
 	create_command_list "CMD" ${UC_P} ${1} ${CMD_LIST};
 	test_full "BASH" ${UC_P} ${1} ${BSH_NAME} ${BSH_RES} ${BSH_STDERR};
-	test_full "SMB" ${UC_P} ${1} ${ORI_P}/.././${SMB_NAME} ${SMB_RES} ${SMB_STDERR};
+	test_full "SMB" ${UC_P} ${1} ${SMB_PATH} ${SMB_RES} ${SMB_STDERR};
 	diff_full "RES" ${BSH_RES} ${SMB_RES} ${DIFF_RES};
 	#diff_full "STDERR" ${BSH_STDERR} ${SMB_STDERR} ${DIFF_STDERR};
  	check_exit_status "BASH" ${BSH_RES} ${BSH_EXIT};
