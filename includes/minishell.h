@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/18 14:08:01 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/18 14:47:46 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,9 @@
 # define ENV_OLDPWD_NAME "OLDPWD"
 # define ENV_PATH_NAME "PATH"
 # define ENV_PWD_NAME "PWD"
+
+// STANDARD ENVIRONMENT VARIABLE VALUE
+# define ENV_PATH_DFT_VAL1 "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
 
 // BUILTIN FLAG
 # define BUILT_CD "cd"
@@ -420,6 +423,11 @@ int					env_init_value(t_env *env,
 						char *fullname);
 int					env_init_var_view(t_env *env);
 int					env_lst_set(char **envp, t_ulist **env_lst);
+int					env_lst_set_env_i(t_ulist **env_lst);
+int					env_lst_set_env_i_init(t_ulist **env_lst);
+int					env_lst_set_env_i_update_lst(t_ulist *obj, char *str);
+int					env_lst_set_env_i_value(t_ulist **env_lst,
+						char *env_key, char *env_value);
 void				env_lst_show(t_ulist **list);
 void				env_show(void *content);
 
@@ -454,13 +462,13 @@ int					fd_close(t_cmd *cmd);
 int					fd_hd_open(t_cmd *cmd);
 void				fd_init(t_list **tok_lst, t_ulist **cmd_lst);
 void				fd_init_tokfile(t_ulist **cmd_lst, t_list *tok, int mode);
-int				fd_init_tokfile_access(int fd, char *fd_name, int mode);
-t_cmd			*fd_init_tokfile_find_cmd(t_ulist **cmd_lst, t_list *tok);
-void			fd_init_tokfile_hd(t_ulist **cmd_lst, t_list *tok);
-void			fd_init_tokfile_link_cmd(t_cmd *cmd, int fd, int mode, char *fd_name);
-void			fd_init_tokfile_link_cmd_in(t_cmd *cmd, int fd);
-void			fd_init_tokfile_link_cmd_out(t_cmd *cmd, int fd);
-t_cmd			*fd_init_tokfile_loop_cmd(t_ulist **cmd_lst, t_list *tok);
+int					fd_init_tokfile_access(int fd, char *fd_name, int mode);
+t_cmd				*fd_init_tokfile_find_cmd(t_ulist **cmd_lst, t_list *tok);
+void				fd_init_tokfile_hd(t_ulist **cmd_lst, t_list *tok);
+void				fd_init_tokfile_link_cmd(t_cmd *cmd, int fd, int mode, char *fd_name);
+void				fd_init_tokfile_link_cmd_in(t_cmd *cmd, int fd);
+void				fd_init_tokfile_link_cmd_out(t_cmd *cmd, int fd);
+t_cmd				*fd_init_tokfile_loop_cmd(t_ulist **cmd_lst, t_list *tok);
 int					fd_init_tokfile_link_cmd_secure(t_cmd *cmd, int fd);
 //int					fd_infile_open(t_cmd *cmd, char *fd, int mode);
 //void				fd_link_in_out_file(t_list **tok_lst, t_ulist **cmd_lst,

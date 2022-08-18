@@ -122,6 +122,10 @@ ENV_SRCS	:=	env_char_env.c\
 			env_init_value.c\
 			env_init_var_view.c\
 			env_lst_set.c\
+			env_lst_set_env_i.c\
+			env_lst_set_env_i_init.c\
+			env_lst_set_env_i_update_lst.c\
+			env_lst_set_env_i_value.c\
 			env_lst_show.c\
 			env_show.c
 
@@ -422,6 +426,10 @@ comp_vgdb:
 			make
 			$(VALGRIND) --vgdb-error=0 ./$(NAME)
 
+compi_envi:
+			make
+			$(VALGRIND) env -i ./$(NAME)
+
 -include $(DEPS)
 
-.PHONY: all clean fclean re norme sym comp comp_vgdb
+.PHONY: all clean fclean re norme sym comp comp_vgdb comp_envi
