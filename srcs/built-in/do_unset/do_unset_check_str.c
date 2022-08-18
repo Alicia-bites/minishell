@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   do_unset_check_str.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 13:19:52 by abarrier          #+#    #+#             */
-/*   Updated: 2022/07/29 12:51:58 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 11:16:49 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int	do_unset_check_str(char *str)
 		return (0);
 	else if ((ft_isalpha(str[0]) || str[0] == '_')
 		&& (ft_isalnum(str[len_str - 1]) || str[len_str - 1] == '_')
-		&& !ft_strchrset_include(str, CHRSET_UNSET))
+		&& !ft_strchrset_include(str, CHRSET_UNSET)
+		&& !ft_strstr(str, "="))
 		return (0);
 	else
 		return (ft_panic_value(-1, __FILE__, ERR_ID_VAL,
