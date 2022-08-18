@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hd_open.c                                          :+:      :+:    :+:   */
+/*   fd_init_tokfile_link_cmd_in.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/04 18:14:48 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/17 17:50:43 by abarrier         ###   ########.fr       */
+/*   Created: 2022/08/17 10:11:58 by abarrier          #+#    #+#             */
+/*   Updated: 2022/08/17 11:19:01 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	hd_open(char *hd_name)
+void	fd_init_tokfile_link_cmd_in(t_cmd *cmd, int fd)
 {
-	extern t_global	g_msl;
-	int				res;
-
-	res = -1;
-	res = open(hd_name, O_CREAT | O_TRUNC | O_WRONLY, 0664);
-	if (res < 0)
+	if (cmd->fd_r > 2)
 	{
-		free(hd_name);
-		g_msl.exit = EXIT_FAILURE;
+		if (cmd->fd_r == cmd->hd_r)
+		{
+			close(cmd->hd_r);
+			unlink(cmd->hd_name);
+			cmd->hd_r = FD_NOT_INIT;
+		}
+		else
+			close(cmd->fd_r);
 	}
-	return (res);
+	cmd->fd_r = fd;
 }

@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fd_open.c                                          :+:      :+:    :+:   */
+/*   fd_init_tokfile_loop_cmd.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/20 16:00:11 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/17 17:51:13 by abarrier         ###   ########.fr       */
+/*   Created: 2022/08/17 09:07:56 by abarrier          #+#    #+#             */
+/*   Updated: 2022/08/17 09:24:42 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	fd_open(char *fd_name, int mode)
+/* @BRIEF:
+ *
+ * @PARAM:
+ * void *content: content of the command node
+ *
+ * @RETURN:
+ * N/A
+ */
+t_cmd	*fd_init_tokfile_loop_cmd(t_ulist **cmd_lst, t_list *tokcmd)
 {
-	int	res;
+	t_ulist	*obj;
+	t_cmd	*cmd;
 
-	res = -1;
-	if (mode == O_RDONLY)
-		res = open(fd_name, O_RDONLY);
-	else if (mode == O_WRONLY)
-		res = open(fd_name, O_CREAT | O_TRUNC | O_WRONLY, 0664);
-	else if (mode == O_APPEND)
-		res = open(fd_name, O_CREAT | O_APPEND | O_WRONLY, 0664);
-	return (res);
+	if (!cmd_lst || !*cmd_lst)
+		return (NULL);
+	obj = *cmd_lst;
+	while (obj)
+	{
+		cmd = (t_cmd *)obj->content;
+		if (cmd->tok_node == tokcmd)
+			return (cmd);
+		obj = obj->next;
+	}
+	return (NULL);
 }

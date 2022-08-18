@@ -128,35 +128,49 @@ ENV_SRCS	:=	env_char_env.c\
 FD_SRCS		:=	fd_access.c\
 			fd_close.c\
 			fd_hd_open.c\
-			fd_infile_open.c\
-			fd_link_in_out_file.c\
-			fd_loop_tok.c\
-			fd_loop_tok_secure.c\
-			fd_loop_tok_type.c\
+			fd_init.c\
+			fd_init_tokfile.c\
+			fd_init_tokfile_access.c\
+			fd_init_tokfile_find_cmd.c\
+			fd_init_tokfile_hd.c\
+			fd_init_tokfile_link_cmd.c\
+			fd_init_tokfile_link_cmd_in.c\
+			fd_init_tokfile_link_cmd_out.c\
+			fd_init_tokfile_link_cmd_secure.c\
+			fd_init_tokfile_loop_cmd.c\
 			fd_open.c\
-			fd_outfile_open.c\
 			fd_pipe.c\
 			fd_pipe_pfd.c\
 			fd_stdinout_backup.c\
 			fd_stdinout_backup_close.c\
 			fd_stdinout_restore.c
+#			fd_infile_open.c\
+			fd_link_in_out_file.c\
+			fd_loop_tok.c\
+			fd_loop_tok_secure.c\
+			fd_loop_tok_type.c\
+			fd_outfile_open.c
 
 HD_SRCS		:=	hd_close.c\
 			hd_create_name.c\
 			hd_create_name_len.c\
 			hd_create_name_reset.c\
 			hd_init.c\
+			hd_init_check.c\
 			hd_init_check_binary.c\
 			hd_init_check_tmp.c\
-			hd_link.c\
-			hd_loop_tok.c\
 			hd_open.c\
 			hd_size.c\
+			hd_tokfile.c\
+			hd_tokfile_link.c\
+			hd_tokfile_link_cmd.c\
 			hd_wait.c\
 			hd_write.c\
 			hd_write_expansion.c\
 			hd_write_mode.c\
 			hd_write_str.c
+#			hd_link.c\
+			hd_loop_tok.c\
 
 EXP_HD_SRCS	:=	expand_dollar_heredoc.c\
 				find_expansions_heredoc.c\
@@ -177,7 +191,6 @@ PIPE_SRCS	:=	pipe_close_pfd.c\
 			pipe_wait_return.c
 
 INPUT_HANDLER	:=	clean_up.c\
-					execute_command.c\
 					exit_minishell.c\
 					get_input.c\
 					handle_str.c\

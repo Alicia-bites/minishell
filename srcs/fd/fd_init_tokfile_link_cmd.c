@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fd_open.c                                          :+:      :+:    :+:   */
+/*   fd_init_tokfile_link_cmd.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/20 16:00:11 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/17 17:51:13 by abarrier         ###   ########.fr       */
+/*   Created: 2022/08/17 10:41:07 by abarrier          #+#    #+#             */
+/*   Updated: 2022/08/17 17:01:40 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	fd_open(char *fd_name, int mode)
+void	fd_init_tokfile_link_cmd(t_cmd *cmd, int fd, int mode, char *fd_name)
 {
-	int	res;
-
-	res = -1;
-	if (mode == O_RDONLY)
-		res = open(fd_name, O_RDONLY);
-	else if (mode == O_WRONLY)
-		res = open(fd_name, O_CREAT | O_TRUNC | O_WRONLY, 0664);
-	else if (mode == O_APPEND)
-		res = open(fd_name, O_CREAT | O_APPEND | O_WRONLY, 0664);
-	return (res);
+	(void)fd_name;
+	if (cmd)
+	{
+		if (mode == O_RDONLY)
+			fd_init_tokfile_link_cmd_in(cmd, fd);
+		else if (mode == O_WRONLY || mode == O_APPEND)
+			fd_init_tokfile_link_cmd_out(cmd, fd);
+	}
+	else
+	{
+		close(fd);
+		if (fd_name)
+			unlink(fd_name);
+		errno = 0;
+	}
 }
