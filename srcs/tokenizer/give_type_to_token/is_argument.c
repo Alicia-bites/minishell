@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 09:47:14 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/18 11:26:20 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/18 16:14:53 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ int	is_argument(t_list **token_list, int *seen_cmd)
 		(*token_list)->toktype = TOK_ARG;
 	else if (is_combo_heredoc(token_list))
 		(*token_list)->toktype = TOK_ARG;
-	if (following_file_or_sep(token_list) && seen_cmd)
+	if (following_file_or_sep(token_list) && *seen_cmd)
 		(*token_list)->toktype = TOK_ARG;
-	else if (following_file_or_sep(token_list) && !seen_cmd)
+	else if (following_file_or_sep(token_list) && !(*seen_cmd))
 	{
 		*seen_cmd = 1;
 		(*token_list)->toktype = TOK_CMD;
