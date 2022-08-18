@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 17:46:30 by antho             #+#    #+#             */
-/*   Updated: 2022/08/18 15:47:18 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/18 18:27:38 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ char	*env_init_key(t_env *env, char *fullname)
 	if (!env->key)
 		return (ft_panic_null(-1, __func__, ERR_MALLOC));
 	ft_strlcpy(env->key, (const char *)fullname, len_str + 1);
-	env->key[len_str] = '\0';
+	env->key[sep_pos] = '\0';
 	return (env->key);
 }
