@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 08:14:17 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/18 14:52:51 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/18 17:47:03 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	hd_wait(int pid)
 {
 	extern long long	g_exit;
-	int				status;
+	int					status;
 
 	status = 0;
 	waitpid(pid, &status, 0);

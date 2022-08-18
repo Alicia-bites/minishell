@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 16:02:20 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/18 14:52:51 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/18 17:48:28 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	cmd_exec(t_ulist **cmd_lst, int n_cmd)
 {
-	t_cmd			*cmd;
-	int				res;
+	t_cmd				*cmd;
+	int					res;
 	extern long long	g_exit;
 
 	cmd = NULL;

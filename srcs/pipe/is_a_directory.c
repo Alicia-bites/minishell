@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 17:34:19 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/18 17:39:50 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/18 17:48:19 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ int	is_a_directory(char *str, int i)
 	{
 		if (i)
 			write_error_msg(str, 1);
-		return (126);		
+		return (126);
 	}
 	else
 	{
 		if (i)
 			write_error_msg(str, 2);
-		return (127);	
+		return (127);
 	}
 	return (0);
 }

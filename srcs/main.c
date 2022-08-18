@@ -6,13 +6,19 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:17:17 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/18 14:51:33 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/18 17:46:55 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 long long	g_exit;
+
+static int	clean_up_env_list(t_ulist	**env_lst)
+{
+	ft_lst_free(env_lst, &env_free);
+	return (EXIT_FAILURE);
+}
 
 int	main(int argc, char **argv, char **envp)
 {
@@ -30,15 +36,9 @@ int	main(int argc, char **argv, char **envp)
 	if (!env_lst)
 		return (EXIT_FAILURE);
 	if (env_lst_set(envp, env_lst))
-	{
-		ft_lst_free(env_lst, &env_free);
-		return (EXIT_FAILURE);
-	}
+		return (clean_up_env_list(env_lst));
 	if (env_lst_set_env_i(env_lst))
-	{
-		ft_lst_free(env_lst, &env_free);
-		return (EXIT_FAILURE);
-	}
+		return (clean_up_env_list(env_lst));
 	get_input(&err, env_lst);
 	ft_lst_free(env_lst, &env_free);
 	return (0);
