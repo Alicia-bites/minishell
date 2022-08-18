@@ -212,7 +212,8 @@ LEX_SRCS	:=	between_quotes.c\
 				lex_quote.c\
 				lex_redir.c\
 				lex_space.c\
-				lex_sym.c
+				lex_sym.c\
+				only_this_in_str.c\
 
 PARSING_SRCS	:=	count_quotes.c\
 					create_list.c\
