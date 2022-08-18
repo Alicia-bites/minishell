@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/18 17:59:05 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/18 18:49:13 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -357,6 +357,8 @@ int					echo_n(t_chartype *input_list, int *end, int *quote);
 void				echo_special_treatment(t_chartype *input_list,
 						int *end, int *space, int *quote);
 int					empty_string(t_chartype *input_list, int end);
+void				move_d_and_end(int *d, int *end, int s);
+void				move_s_and_end(int *s, int *end, int d);
 void				move_while_inside_quote(t_chartype *input_list, int *end,
 						int s, int d);
 int					not_only_space_between_quotes(char *str);
