@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 09:56:41 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/18 20:16:05 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	do_echo_n(t_cmd *cmd, int index)
 	if (cmd->n_arg == 1)
 		return (0);
 	i = index - cmd->tok_node->index;
+	if (i < 0)
+		i = 0;
 	while (i < (int)(cmd->n_arg -1))
 	{
 		res += printf("%s ", cmd->fullcmd[i]);
