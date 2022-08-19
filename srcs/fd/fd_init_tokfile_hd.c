@@ -6,13 +6,13 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 16:27:05 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/19 10:06:16 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/19 17:18:19 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	fd_init_tokfile_hd(t_ulist **cmd_lst, t_list *tok)
+int	fd_init_tokfile_hd(t_ulist **cmd_lst, t_list *tok)
 {
 	char	*hd_name;
 	int		hd;
@@ -28,14 +28,15 @@ void	fd_init_tokfile_hd(t_ulist **cmd_lst, t_list *tok)
 	{
 		if (cmd)
 			fd_init_tokfile_link_cmd_secure(cmd, hd);
-		return ;
+		return (EXIT_FAILURE);
 	}
 	hd = fd_open(hd_name, O_RDONLY);
 	if (cmd && fd_init_tokfile_link_cmd_secure(cmd, hd))
 	{
 		free(hd_name);
-		return ;
+		return (EXIT_FAILURE);
 	}
 	res_open = fd_init_tokfile_access(hd, hd_name, O_RDONLY);
 	fd_init_tokfile_link_cmd(cmd, hd, O_RDONLY, hd_name);
+	return (0);
 }
