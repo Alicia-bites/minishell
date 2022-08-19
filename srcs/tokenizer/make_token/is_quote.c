@@ -12,15 +12,17 @@
 
 #include "minishell.h"
 
-static void	move_s_and_end(int *s, int *end)
+void	move_s_and_end(int *s, int *end, int d)
 {
-	(*s)++;
+	if (!d || !(d % 2))
+		(*s)++;
 	(*end)++;
 }
 
-static void	move_d_and_end(int *d, int *end)
+void	move_d_and_end(int *d, int *end, int s)
 {
-	(*d)++;
+	if (!s || !(s % 2))
+		(*d)++;
 	(*end)++;
 }
 
@@ -41,10 +43,10 @@ void	is_quote(t_chartype *input_list, int *start, int *end,
 			*end += 2;
 		while (*end < input_list->length
 			&& input_list[*end].type == CH_D_QUOTE)
-			move_d_and_end(&d, end);
+			move_d_and_end(&d, end, s);
 		while (*end < input_list->length
 			&& input_list[*end].type == CH_S_QUOTE)
-			move_s_and_end(&s, end);
+			move_s_and_end(&s, end, d);
 		move_while_inside_quote(input_list, end, s, d);
 		built_token(input_list, *start, *end, token_list);
 		*start = *end;
