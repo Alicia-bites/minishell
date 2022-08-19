@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:39:27 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/19 10:24:45 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/19 16:33:43 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	pipe_cmd(t_ulist **cmd_lst, t_ulist *obj)
 	pipe_cmd_dup_fd_in(cmd_lst, cmd);
 	pipe_cmd_dup_fd_out(cmd_lst, cmd);
 	envp = env_char_set(cmd->env_lst);
-	ft_lst_func_lst(cmd_lst, &pipe_close_pfd_child);
+	pipe_close_pfd_child(cmd_lst, cmd);
 	if (cmd->toktype == TOK_BUILTIN)
 		errno = do_builtin(cmd_lst, cmd);
 	else
