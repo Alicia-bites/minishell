@@ -150,12 +150,6 @@ FD_SRCS		:=	fd_access.c\
 			fd_stdinout_backup.c\
 			fd_stdinout_backup_close.c\
 			fd_stdinout_restore.c
-#			fd_infile_open.c\
-			fd_link_in_out_file.c\
-			fd_loop_tok.c\
-			fd_loop_tok_secure.c\
-			fd_loop_tok_type.c\
-			fd_outfile_open.c
 
 HD_SRCS		:=	hd_close.c\
 			hd_create_name.c\

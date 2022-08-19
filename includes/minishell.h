@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/19 16:46:22 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/19 17:18:30 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -472,15 +472,7 @@ void				fd_init_tokfile_link_cmd_in(t_cmd *cmd, int fd);
 void				fd_init_tokfile_link_cmd_out(t_cmd *cmd, int fd);
 t_cmd				*fd_init_tokfile_loop_cmd(t_ulist **cmd_lst, t_list *tok);
 int					fd_init_tokfile_link_cmd_secure(t_cmd *cmd, int fd);
-//int					fd_infile_open(t_cmd *cmd, char *fd, int mode);
-//void				fd_link_in_out_file(t_list **tok_lst, t_ulist **cmd_lst,
-//						int mode);
-//t_list				*fd_loop_tok(t_list *tok, t_cmd *cmd, int mode);
-//void				fd_loop_tok_secure(t_cmd *cmd, int res_loop);
-//int					fd_loop_tok_type(t_list *tok, t_cmd *cmd,
-///						enum e_toktype toktype, int mode);
 int					fd_open(char *fd_name, int mode);
-//int					fd_outfile_open(t_cmd *cmd, char *fd, int mode);
 void				fd_pipe(t_ulist **cmd_lst);
 void				fd_pipe_pfd(t_ulist *obj, t_cmd *cmd1, t_cmd *cmd2,
 						int n_pipe);
