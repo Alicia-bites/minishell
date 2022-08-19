@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fd_init_tokfile_link_cmd_in.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 10:11:58 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/17 11:19:01 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/19 10:11:30 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	fd_init_tokfile_link_cmd_in(t_cmd *cmd, int fd)
 		{
 			close(cmd->hd_r);
 			unlink(cmd->hd_name);
+			free(cmd->hd_name);
 			cmd->hd_r = FD_NOT_INIT;
 		}
 		else

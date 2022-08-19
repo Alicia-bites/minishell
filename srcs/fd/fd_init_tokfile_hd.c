@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fd_init_tokfile_hd.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 16:27:05 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/17 17:04:36 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/19 10:06:16 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ void	fd_init_tokfile_hd(t_ulist **cmd_lst, t_list *tok)
 	}
 	hd = fd_open(hd_name, O_RDONLY);
 	if (cmd && fd_init_tokfile_link_cmd_secure(cmd, hd))
+	{
+		free(hd_name);
 		return ;
+	}
 	res_open = fd_init_tokfile_access(hd, hd_name, O_RDONLY);
 	fd_init_tokfile_link_cmd(cmd, hd, O_RDONLY, hd_name);
 }
