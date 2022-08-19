@@ -6,33 +6,35 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:30:05 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/19 11:21:32 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/19 16:52:27 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	ft_close(int *fd)
+void	pipe_close_pfd_child(t_ulist **cmd_lst, t_cmd *pipe_active_cmd)
 {
-	close(*fd);
-	*fd = FD_NOT_INIT;
-}
-
-void	pipe_close_pfd_child(void *content)
-{
+	t_ulist	*obj;
 	t_cmd	*cmd;
 
-	if (!content)
-		return ;
-	cmd = (t_cmd *)content;
-	if (!cmd)
-		return ;
-	if (cmd->fd_r > 2)
-		ft_close(&cmd->fd_r);
-	if (cmd->fd_w > 2)
-		ft_close(&cmd->fd_w);
-	if (cmd->pfd_r > 2)
-		ft_close(&cmd->pfd_r);
-	if (cmd->pfd_w > 2)
-		ft_close(&cmd->pfd_w);
+	obj = *cmd_lst;
+	cmd = NULL;
+	while (obj)
+	{
+		cmd = (t_cmd *)obj->content;
+		if (pipe_active_cmd != cmd)
+		{
+			if (cmd->pfd_r > 2)
+				close(cmd->pfd_r);
+			if (cmd->pfd_w > 2)
+				close(cmd->pfd_w);
+		}
+		else
+		{
+			if (cmd->pfd_w > 2)
+				close(cmd->pfd_w);
+		}
+		pipe_close_fd_child(cmd);
+		obj = obj->next;
+	}
 }

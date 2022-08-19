@@ -186,6 +186,7 @@ EXP_HD_SRCS	:=	expand_dollar_heredoc.c\
 PIPE_SRCS	:=	handle_cmd_return_value.c\
 			is_a_directory.c\
 			only_slash_in_str.c\
+			pipe_close_fd_child.c\
 			pipe_close_pfd.c\
 			pipe_close_pfd_child.c\
 			pipe_cmd.c\
