@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipe_close_pfd.c                                   :+:      :+:    :+:   */
+/*   pipe_close_pfd_child.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 19:30:05 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/19 09:27:58 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/19 09:21:14 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	pipe_close_pfd(void *content)
+void	pipe_close_pfd_child(void *content)
 {
 	t_cmd	*cmd;
 
@@ -31,12 +31,12 @@ void	pipe_close_pfd(void *content)
 		close(cmd->fd_w);
 		cmd->fd_w = FD_NOT_INIT;
 	}
-//	if (cmd->pfd_r >= 2)
-//	{
-//		close(cmd->pfd_r);
-//		cmd->pfd_r = FD_NOT_INIT;
-//	}
-	if (cmd->pfd_w >= 2)
+	if (cmd->pfd_r > 2)
+	{
+		close(cmd->pfd_r);
+		cmd->pfd_r = FD_NOT_INIT;
+	}
+	if (cmd->pfd_w > 2)
 	{
 		close(cmd->pfd_w);
 		cmd->pfd_w = FD_NOT_INIT;

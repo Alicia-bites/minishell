@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/19 07:46:53 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/19 09:03:01 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -523,6 +523,7 @@ void				handle_cmd_return_value(t_cmd *cmd, int res);
 int					is_a_directory(char *str, int i);
 int					only_slash_in_str(char *str);
 void				pipe_close_pfd(void *content);
+void				pipe_close_pfd_child(void *content);
 void				pipe_cmd(t_ulist **cmd_lst, t_ulist *obj);
 void				pipe_cmd_dup_fd_in(t_ulist **cmd_lst, t_cmd *cmd);
 void				pipe_cmd_dup_fd_out(t_ulist **cmd_lst, t_cmd *cmd);
