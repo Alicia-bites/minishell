@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/19 10:17:44 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/19 10:18:16 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -266,6 +266,7 @@ int					do_cd_update_pwd_home(t_ulist **envp, t_ulist *obj,
 						char *pwd);
 
 //do_echo
+int					do_echo_get_fullcmd_index(t_cmd *cmd, int index);
 int					do_echo_get_index(t_list *token_list);
 int					do_echo(t_cmd *cmd);
 int					do_echo_get_index(t_list *token_list);

@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 10:51:17 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/18 18:10:35 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/18 19:54:09 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,16 @@ int	env_lst_set_env_i(t_ulist **env_lst)
 
 	if (env_lst_set_env_i_init(env_lst))
 		return (EXIT_FAILURE);
-	if (env_lst_set_env_i_value(env_lst, ENV_PATH_NAME,
-			ENV_PATH_DFT_VAL1))
-		return (EXIT_FAILURE);
+//	env_value = NULL;
+//	env_value = env_lst_set_env_i_path_value();
+//	if (!env_value)
+//		return (EXIT_FAILURE);
+//	if (env_lst_set_env_i_value(env_lst, ENV_PATH_NAME, env_value))
+//	{
+//		free(env_value);
+//		return (EXIT_FAILURE);
+//	}
+//	free(env_value);
 	env_value = NULL;
 	env_value = do_pwd_getpath();
 	if (!env_value)
