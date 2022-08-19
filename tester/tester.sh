@@ -64,7 +64,8 @@ function	diff_exit_status
 	local sed_seq="";
 
 	echo -e "${YE}Executing \"${FUNCNAME}: ${1}\"${NC}";
-	diff --suppress-common-lines -y ${3} ${2} > ${4}
+	#diff --suppress-common-lines -y ${3} ${2} > ${4}
+	diff -y ${3} ${2} > ${4}
 	echo -e "${YE}${SEP_P}${NC}";
 	return 0;
 }

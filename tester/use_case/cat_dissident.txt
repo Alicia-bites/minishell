@@ -22,3 +22,7 @@ cat << prout << lol << koala
 echo "TESTER EXIT STATUS: " $?
 prout << lol << cat << koala
 echo "TESTER EXIT STATUS: " $?
+cat >>
+echo "TESTER EXIT STATUS: " $?
+cat >>>
+echo "TESTER EXIT STATUS: " $?

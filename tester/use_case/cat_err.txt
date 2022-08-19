@@ -1,0 +1,20 @@
+(ls && pwd) > hola
+echo "TESTER EXIT STATUS: " $?
+(ls && pwd | wc) > hola
+echo "TESTER EXIT STATUS: " $?
+(ls && pwd | wc) > hola
+echo "TESTER EXIT STATUS: " $?
+(ls && pwd | wc) > hola
+echo "TESTER EXIT STATUS: " $?
+(ls && pwd | wc) >> hola
+echo "TESTER EXIT STATUS: " $?
+echo hey&&(ls && pwd | wc) > hola
+echo "TESTER EXIT STATUS: " $?
+ls || (cat Makefile|grep srcs) && (pwd|wc)
+echo "TESTER EXIT STATUS: " $?
+(ls > Docs/hey && pwd) > hola
+echo "TESTER EXIT STATUS: " $?
+ls > Docs/hey && pwd > hola
+echo "TESTER EXIT STATUS: " $?
+export HOLA=bonjour | cat -e | cat -e
+echo "TESTER EXIT STATUS: " $?
