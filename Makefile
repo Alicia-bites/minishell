@@ -59,9 +59,10 @@ BUILT_CD_SRCS	:=	do_cd.c\
 			do_cd_update_pwd_change_dir.c\
 			do_cd_update_pwd_home.c
 
-BUILT_ECHO_SRCS	:=	do_echo_get_index.c\
-					do_echo.c\
-					do_echo_n.c
+BUILT_ECHO_SRCS	:=	do_echo_get_fullcmd_index.c\
+			do_echo_get_index.c\
+			do_echo.c\
+			do_echo_n.c
 
 BUILT_ENV_SRCS	:=	do_env.c\
 			do_env_show.c
