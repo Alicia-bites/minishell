@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 18:16:31 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/18 18:03:04 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/19 11:11:50 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	do_cd(t_ulist **envp, t_cmd *cmd)
 	else if (cmd->n_arg >= 2)
 	{
 		if (only_this_in_str(cmd->fullcmd[1], '\'')
-				|| only_this_in_str(cmd->fullcmd[1], '\''))
+			|| only_this_in_str(cmd->fullcmd[1], '\''))
 			return (0);
 		if (cmd->fullcmd[1][0] == '-')
 			return (ft_panic_value(-1, __func__, ERR_OPT_INVAL, 2));

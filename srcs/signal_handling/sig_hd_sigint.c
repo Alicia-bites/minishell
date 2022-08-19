@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sig_hd_sigint.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <abarrier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 10:42:11 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/14 08:42:55 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/19 11:10:52 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	sig_hd_sigint(int signum)
 	char	*fullcmd[2];
 
 	(void)signum;
+	write(2, "\n", 1);
 	filename = HD_BIN_FALSE;
 	fullcmd[0] = HD_BIN_FALSE;
 	fullcmd[1] = NULL;

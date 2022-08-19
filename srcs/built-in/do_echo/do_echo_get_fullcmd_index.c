@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   do_echo_get_fullcmd_index.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 07:37:02 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/19 08:08:28 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/19 11:03:14 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 int	do_echo_get_fullcmd_index(t_cmd *cmd, int index)
 {
 	t_list	*tok;
-	int	i;
+	int		i;
 
 	tok = cmd->tok_node;
 	i = 0;
