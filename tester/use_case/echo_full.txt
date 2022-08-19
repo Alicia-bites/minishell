@@ -1,4 +1,4 @@
-export HOLA=bonjour=casse-toi 
+export HOLA=bonjour=casse-toi
 echo "TESTER EXIT STATUS: " $?
 echo $HOLA
 echo "TESTER EXIT STATUS: " $?
@@ -98,7 +98,7 @@ unset PATH
 echo "TESTER EXIT STATUS: " $?
 echo $PATH
 echo "TESTER EXIT STATUS: " $?
-echo hola > bonjour 
+echo hola > file1 
 echo "TESTER EXIT STATUS: " $?
 exit | cat -e bonjour
 echo "TESTER EXIT STATUS: " $?
@@ -149,8 +149,6 @@ echo bonjour > $HOLA
 echo "TESTER EXIT STATUS: " $?
 echo $HOLA
 echo "TESTER EXIT STATUS: " $?
-cd ~/ | echo $? 
-echo "TESTER EXIT STATUS: " $?
 pwd
 echo "TESTER EXIT STATUS: " $?
    cd / | echo $? 
@@ -161,7 +159,6 @@ mkdir a
 echo "TESTER EXIT STATUS: " $?
 echo
 echo "TESTER EXIT STATUS: " $?
-
 echo Hola
 echo "TESTER EXIT STATUS: " $?
 
@@ -229,8 +226,6 @@ echo "TESTER EXIT STATUS: " $?
 echo Le path de mon HOME est $HOME
 echo "TESTER EXIT STATUS: " $?
 echo '*'
-echo "TESTER EXIT STATUS: " $?
-echo *Z
 echo "TESTER EXIT STATUS: " $?
 echo $""
 echo "TESTER EXIT STATUS: " $?
