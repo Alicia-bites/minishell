@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:47:06 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/19 16:42:43 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static char	*handle_dollar_removing(t_exp_arg *exp_arg, int *malloc)
 	return (exp_arg->str);
 }
 
-char	*expand_dollar(t_exp_arg exp_arg, int **tab)
+char	*expand_dollar(t_exp_arg exp_arg, t_tab *tab)
 {
 	int					malloc;
 	char				*new_str;
@@ -61,7 +61,8 @@ char	*expand_dollar(t_exp_arg exp_arg, int **tab)
 		return (exp_arg.str);
 	full_size += get_full_size(expanded_list) + ft_strlen(exp_arg.str);
 	new_str = insert_expansions(full_size, expanded_list, exp_arg.str);
-	*tab = save_operator_index(exp_arg.str, new_str, expanded_list);
+	tab->tab_op = save_operator_index(exp_arg.str, new_str, expanded_list);
+	tab->tab_quote = save_quote_index(exp_arg.str, new_str, expanded_list);
 	ft_lstclear_dollar(&expanded_list);
 	if (malloc)
 		free(exp_arg.str);

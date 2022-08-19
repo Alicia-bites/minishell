@@ -262,6 +262,7 @@ EXP_SRCS	:=	bracket_is_after_dollar.c\
 				remove_dollars.c\
 				same_with_brackets_number.c\
 				save_operator_index.c\
+				save_quote_index.c\
 				set_minus_one_tab.c
 
 SIG_SRCS	:=		sig_hd_set_action.c\
@@ -281,6 +282,7 @@ TOK_SRCS	:=	concatenate_export_args.c\
 				seen_equal_last.c\
 				tokenizer.c\
 				trim_quotes.c\
+				trim_quotes_token.c
 				
 GIVE_CHAR_SRCS	:=	get_chartype.c\
 					is_char_space.c\
@@ -318,6 +320,9 @@ MAKE_TOK_SRCS	:=	add_token_to_list.c\
 					built_echo.c\
 					built_token.c\
 					check_operator_presence.c\
+					clean_up_trim_quotes_token.c\
+					copy_ok.c\
+					quote_copy_rule.c\
 					empty_string.c\
 					not_only_space_between_quotes.c\
 					get_token.c\

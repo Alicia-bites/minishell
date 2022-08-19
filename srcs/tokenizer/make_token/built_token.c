@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 14:57:58 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/18 13:01:52 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/19 18:38:14 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	built_token(t_chartype *input_list, int start, int end,
 	token[k++] = '\0';
 	if (not_only_space_between_quotes(token) && (ft_strstr(token, "\'")
 			|| ft_strstr(token, "\"")) && !is_heredoc_separator(*token_list))
-		token = trim_quotes(token);
+		token = trim_quotes_token(token, input_list, end - len, end);
 	add_token_to_list(token, token_list);
 	if (token != NULL && (seen_quote
 			|| op_was_in_exp(input_list, end -1, token)))
