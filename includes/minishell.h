@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/19 17:18:30 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/19 17:25:15 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -497,8 +497,6 @@ long long			hd_init(t_list *tok, t_cmd *cmd);
 int					hd_init_check(void);
 int					hd_init_check_binary(void);
 int					hd_init_check_tmp(void);
-//int					hd_link(t_list **tok_lst, t_ulist **cmd_lst);
-//t_list				*hd_loop_tok(t_list *tok, t_cmd *cmd, long long *hd_exit);
 int					hd_open(char *hd_name);
 size_t				hd_size(t_list **tok_lst);
 long long				hd_tokfile(t_list **tok_lst, t_ulist **cmd_lst, t_ulist **env_lst);

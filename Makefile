@@ -169,8 +169,6 @@ HD_SRCS		:=	hd_close.c\
 			hd_write_expansion.c\
 			hd_write_mode.c\
 			hd_write_str.c
-#			hd_link.c\
-			hd_loop_tok.c\
 
 EXP_HD_SRCS	:=	expand_dollar_heredoc.c\
 				find_expansions_heredoc.c\
