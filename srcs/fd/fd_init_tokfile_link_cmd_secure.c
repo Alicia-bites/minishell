@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 10:28:25 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/17 12:48:01 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/19 16:20:46 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	fd_init_tokfile_link_cmd_secure(t_cmd *cmd, int fd)
 {
 	if (cmd->fd_r == -1 || cmd->fd_w == -1)
 	{
+		if (fd > 2)
+			close(fd);
 		fd_close(cmd);
 		cmd->fd_r = -1;
 		cmd->fd_w = -1;
@@ -23,6 +25,8 @@ int	fd_init_tokfile_link_cmd_secure(t_cmd *cmd, int fd)
 	}
 	else if (cmd->fd_r != -1 && cmd->fd_w != -1 && fd == -1)
 	{
+		if (fd > 2)
+			close(fd);
 		fd_close(cmd);
 		cmd->fd_r = -1;
 		cmd->fd_w = -1;
