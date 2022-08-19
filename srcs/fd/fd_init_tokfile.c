@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 07:48:13 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/19 11:23:25 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/19 16:10:17 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,7 @@ void	fd_init_tokfile(t_ulist **cmd_lst, t_list *tok, int mode)
 	cmd = fd_init_tokfile_find_cmd(cmd_lst, tok);
 	fd = fd_open(fd_name, mode);
 	if (cmd && fd_init_tokfile_link_cmd_secure(cmd, fd))
-	{
-		free(fd_name);
 		return ;
-	}
 	res_open = fd_init_tokfile_access(fd, fd_name, mode);
 	fd_init_tokfile_link_cmd(cmd, fd, mode, NULL);
 }
