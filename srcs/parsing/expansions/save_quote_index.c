@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 16:26:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/19 19:30:23 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/21 11:16:42 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ static void	find_and_save_quote_index(char *str, char *new_str,
 		j++;
 		if (str[i] == '$' && new_str[j] != '$')
 		{
-			if (expanded_list && (ft_strstr(str, "\'") || ft_strstr(str, "\"")))
+			if (expanded_list && (ft_strstr(expanded_list->expanded, "\'") 
+				|| ft_strstr(expanded_list->expanded, "\"")))
 				*tab = get_pos_quote(expanded_list->expanded, *tab, j);
 			if (expanded_list)
 			{
@@ -82,9 +83,13 @@ int	*save_quote_index(char *str, char *new_str, t_expanded *expanded_list)
 	int	n;
 	int	*tab;
 
+	tab = 0;
 	n = count_quote_in_expanded_list(expanded_list);
-	tab = malloc_tab_quote(n);
-	tab[n] = '\0';
+	if (n > 0)
+	{
+		tab = malloc_tab_quote(n);
+		tab[n] = '\0';
+	}
 	if (!tab)
 		return (0);
 	find_and_save_quote_index(str, new_str, expanded_list, &tab);

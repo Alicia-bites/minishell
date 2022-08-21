@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_minus_one_tab.c                                :+:      :+:    :+:   */
+/*   handle_dollar_first_char.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/11 15:35:10 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/20 19:03:39 by amarchan         ###   ########.fr       */
+/*   Created: 2022/08/20 19:19:44 by amarchan          #+#    #+#             */
+/*   Updated: 2022/08/20 19:32:21 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	set_minus_one_tab(int *tab, size_t n)
+void	handlle_dollar_first_char(t_string string, t_cursor cursor
+	t_expanded *expanded_list, int **tab)
 {
-	size_t	i;
-
-	i = 0;
-	if (!tab || n == 0)
-		return ;
-	while (i < n)
-	{
-		tab[i] = -1;
-		i++;
-	}
+	
 }

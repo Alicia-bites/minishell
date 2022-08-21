@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 16:08:34 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/12 15:17:10 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/20 18:22:27 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	print_tab(int *tab, int n)
 	int	i;
 
 	i = 0;
+	if (!tab || n == 0)
+		return ;
 	while (i < n)
 	{
 		printf("tab[%d] = %d\n", i, tab[i]);

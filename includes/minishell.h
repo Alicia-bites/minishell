@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/19 19:24:12 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/20 19:30:55 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,11 @@ typedef struct s_tab {
 	int			*tab_op;
 	int			*tab_quote;
 }	t_tab;
+
+typedef struct s_string {
+	char	*str;
+	char	*new_str;
+}	t_string;
 
 typedef struct s_dart {
 	int			i;
@@ -328,7 +333,7 @@ void				tokenize(t_chartype *input_list, t_list **token_list,
 char				*trim_quotes(char *str);
 char 				*trim_quotes_token(char *str, t_chartype *input_list, 
 						int start, int end);
-int 				*check_quote_exp(t_chartype *input_list, int start, int end);
+int 				*check_quote_exp(t_chartype *input_list, int start, int end, int *n);
 
 //give_chartype
 int					get_chartype(t_chartype **input_list, int *tab);
@@ -373,7 +378,7 @@ void				built_token(t_chartype *input_list, int start, int end,
 						t_list **token_list);
 void				check_operator_presence(char *token, t_list **token_list);
 void				clean_up_trim_quotes_token(char **str, int **tab, char *output);
-int					copy_ok(char *str, int j, int *tab);
+int					copy_ok(char *str, int j, int *tab, int n);
 int					count_d_quotes(t_chartype *input_list, int end);
 int					count_s_quotes(t_chartype *input_list, int end);
 int					echo_n(t_chartype *input_list, int *end, int *quote);
