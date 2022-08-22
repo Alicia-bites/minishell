@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 16:26:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/21 11:16:42 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/22 09:09:15 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ static void	find_and_save_quote_index(char *str, char *new_str,
 		j++;
 		if (str[i] == '$' && new_str[j] != '$')
 		{
-			if (expanded_list && (ft_strstr(expanded_list->expanded, "\'") 
-				|| ft_strstr(expanded_list->expanded, "\"")))
+			if (expanded_list && (ft_strstr(expanded_list->expanded, "\'")
+					|| ft_strstr(expanded_list->expanded, "\"")))
 				*tab = get_pos_quote(expanded_list->expanded, *tab, j);
 			if (expanded_list)
 			{
