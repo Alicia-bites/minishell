@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 09:56:41 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/19 08:05:31 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/19 14:53:47 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,12 @@ int	do_echo_n(t_cmd *cmd, int index)
 		i = 1;
 	else
 		i++;
-	while (i < (int)(cmd->n_arg))
+	while (i < ((int)(cmd->n_arg) - 1))
 	{
 		res += printf("%s ", cmd->fullcmd[i]);
 		i++;
 	}
+	if (i <= (int)(cmd->n_arg))
+		res += printf("%s", cmd->fullcmd[i]);
 	return (res);
 }

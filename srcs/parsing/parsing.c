@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:49:49 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/17 14:18:35 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/19 16:40:23 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@ int	ft_parse(char *str, t_list **token_list, int *err, t_ulist *envp)
 	char			*tmp;
 	t_chartype		*input_list;
 	t_exp_arg		exp_arg;
-	int				*tab;
+	t_tab			tab;
 
-	tab = NULL;
+	tab.tab_op = NULL;
+	tab.tab_quote = NULL;
 	if (!only_space_in_str(str))
 		return (*err);
 	tmp = str;
@@ -40,10 +41,10 @@ int	ft_parse(char *str, t_list **token_list, int *err, t_ulist *envp)
 		tmp = expand_dollar(exp_arg, &tab);
 	if (!tmp)
 		return (MALLOC_FAILURE);
-	create_input_list(&input_list, tmp);
+	create_input_list(&input_list, tmp, &tab.tab_quote);
 	if (ft_strcmp(str, tmp))
 		free(tmp);
-	tokenize(input_list, token_list, tab);
-	clean_up_input_and_tab(&input_list, &tab);
+	tokenize(input_list, token_list, tab.tab_op);
+	clean_up_input_and_tab(&input_list, &tab.tab_op);
 	return (*err);
 }

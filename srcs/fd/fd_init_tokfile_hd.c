@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 16:27:05 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/19 17:18:19 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/22 09:05:45 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	fd_init_tokfile_hd(t_ulist **cmd_lst, t_list *tok)
 {
 	char	*hd_name;
 	int		hd;
-	int		res_open;
 	t_cmd	*cmd;
 
 	errno = 0;
@@ -36,7 +35,7 @@ int	fd_init_tokfile_hd(t_ulist **cmd_lst, t_list *tok)
 		free(hd_name);
 		return (EXIT_FAILURE);
 	}
-	res_open = fd_init_tokfile_access(hd, hd_name, O_RDONLY);
+	fd_init_tokfile_access(hd, hd_name, O_RDONLY);
 	fd_init_tokfile_link_cmd(cmd, hd, O_RDONLY, hd_name);
 	return (0);
 }

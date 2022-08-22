@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/22 14:37:18 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/22 15:26:25 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,16 @@ typedef struct s_cursor {
 	int			k;
 }	t_cursor;
 
+typedef struct s_tab {
+	int			*tab_op;
+	int			*tab_quote;
+}	t_tab;
+
+typedef struct s_string {
+	char	*str;
+	char	*new_str;
+}	t_string;
+
 typedef struct s_dart {
 	int			i;
 	int			j;
@@ -180,7 +190,8 @@ int					init_hd_fd(t_list **token_list, t_ulist	**cmd_list,
 //parsing
 int					ft_parse(char *str, t_list **token_list, int *err,
 						t_ulist *envp);
-void				create_input_list(t_chartype **input_list, char *str);
+void				create_input_list(t_chartype **input_list, char *str,
+						int **tab_quote);
 void				sort_inputs(char **inputs);
 char				**store_built_ins(void);
 t_list				*create_list(char *str, int i, t_toktype e_toktype);
@@ -211,12 +222,15 @@ int					only_this_in_str(char *str, char c);
 int					bracket_is_after_dollar(char *str, int pos);
 t_expanded			*create_dollar_list(char *str, int index);
 int					count_op(char *str);
+int					count_quote(char *str);
 int					count_op_in_expanded_list(t_expanded *expanded_list);
-char				*expand_dollar(t_exp_arg exp_arg, int **tab);
+int					count_quote_in_expanded_list(t_expanded *expanded_list);
+char				*expand_dollar(t_exp_arg exp_arg, t_tab *tab);
 void				find_expansions(t_exp_arg exp_arg,
 						t_expanded **expanded_list, int *full_size);
 int					find_total_number_op(int *tab);
 int					found_operator(char *str);
+int					found_quote(char *str);
 void				set_minus_one_tab(int *tab, size_t n);
 void				ft_lstadd_back_dollar(t_expanded **alst, t_expanded *new);
 t_expanded			*ft_lstnew_dollar(char *str, int i);
@@ -250,6 +264,9 @@ int					same_with_brackets_number(char *str, int i);
 int					same_with_brackets_zero(char *str, int i);
 int					*save_operator_index(char *str, char *new_str,
 						t_expanded *expanded_list);
+int					*save_quote_index(char *str, char *new_str,
+						t_expanded *expanded_list);
+
 //do
 int					do_builtin(t_ulist **cmd_lst, t_cmd *cmd);
 void				do_builtin_close_fd(void *content);
@@ -318,7 +335,10 @@ int					seen_equal_last(char *token);
 void				tokenize(t_chartype *input_list, t_list **token_list,
 						int *tab);
 char				*trim_quotes(char *str);
-// char 				*trim_quotes_token(char *str);
+char				*trim_quotes_token(char *str, t_chartype *input_list,
+						int start, int end);
+int					*check_quote_exp(t_chartype *input_list, int start,
+						int end, int *n);
 
 //give_chartype
 int					get_chartype(t_chartype **input_list, int *tab);
@@ -362,6 +382,9 @@ void				built_echo(t_list **token_list, int space);
 void				built_token(t_chartype *input_list, int start, int end,
 						t_list **token_list);
 void				check_operator_presence(char *token, t_list **token_list);
+void				clean_up_trim_quotes_token(char **str, int **tab,
+						char *output);
+int					copy_ok(char *str, int j, int *tab, int n);
 int					count_d_quotes(t_chartype *input_list, int end);
 int					count_s_quotes(t_chartype *input_list, int end);
 int					echo_n(t_chartype *input_list, int *end, int *quote);
@@ -474,8 +497,8 @@ int					fd_init_tokfile(t_ulist **cmd_lst,
 int					fd_init_tokfile_access(int fd, char *fd_name, int mode);
 t_cmd				*fd_init_tokfile_find_cmd(t_ulist **cmd_lst, t_list *tok);
 int					fd_init_tokfile_hd(t_ulist **cmd_lst, t_list *tok);
-void				fd_init_tokfile_link_cmd(t_cmd *cmd, int fd,
-						int mode, char *fd_name);
+void				fd_init_tokfile_link_cmd(t_cmd *cmd, int fd, int mode,
+						char *fd_name);
 void				fd_init_tokfile_link_cmd_in(t_cmd *cmd, int fd);
 void				fd_init_tokfile_link_cmd_out(t_cmd *cmd, int fd);
 t_cmd				*fd_init_tokfile_loop_cmd(t_ulist **cmd_lst, t_list *tok);
@@ -499,8 +522,8 @@ void				get_expanded_heredoc(t_exp_arg exp_arg,
 						int i, int *varsize);
 int					hd_close(t_cmd *cmd);
 char				*hd_create_name(t_list *tok);
-void				hd_create_name_len(char *index,
-						size_t *len_index, size_t *len_smb, size_t *len_tmp);
+void				hd_create_name_len(char *index, size_t *len_index,
+						size_t *len_smb, size_t *len_tmp);
 void				hd_create_name_reset(t_cmd *cmd);
 long long			hd_init(t_list *tok, t_cmd *cmd);
 int					hd_init_check(void);
@@ -516,12 +539,11 @@ void				hd_tokfile_link_cmd(t_cmd *cmd, int hd, char *hd_name);
 int					hd_wait(int pid);
 void				hd_write(t_list *tok, int hd, t_ulist **env_lst);
 char				*hd_write_expansion(char *str, t_ulist **envp);
-void				hd_write_str(t_list *tok, char **fullcmd,
-						int hd, t_ulist **env_lst);
+void				hd_write_str(t_list *tok, char **fullcmd, int hd,
+						t_ulist **env_lst);
 int					hd_write_mode(t_list *tok);
 char				*insert_expansions_heredoc(int full_size,
-						t_expanded *expanded_list,
-						char *str);
+						t_expanded *expanded_list, char *str);
 
 //pipe
 void				handle_cmd_return_value(t_cmd *cmd, int res);
