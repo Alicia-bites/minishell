@@ -10,7 +10,6 @@ cd a/b
 echo "TESTER EXIT STATUS: " $?
 rm -r ../../a 
 echo "TESTER EXIT STATUS: " $?
-
 echo > <
 echo "TESTER EXIT STATUS: " $?
 echo | |
@@ -35,6 +34,8 @@ echo "TESTER EXIT STATUS: " $?
 echoHola
 echo "TESTER EXIT STATUS: " $?
 echo-nHola
+echo "TESTER EXIT STATUS: " $?
+echo"'hola'"
 echo "TESTER EXIT STATUS: " $?
 echo"'hola'"
 echo "TESTER EXIT STATUS: " $?

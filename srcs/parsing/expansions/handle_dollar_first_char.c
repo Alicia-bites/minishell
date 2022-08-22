@@ -1,37 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fd_init_tokfile_link_cmd.c                         :+:      :+:    :+:   */
+/*   handle_dollar_first_char.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/17 10:41:07 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/22 09:05:53 by amarchan         ###   ########.fr       */
+/*   Created: 2022/08/20 19:19:44 by amarchan          #+#    #+#             */
+/*   Updated: 2022/08/20 19:32:21 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	fd_init_tokfile_link_cmd(t_cmd *cmd, int fd, int mode, char *fd_name)
+void	handlle_dollar_first_char(t_string string, t_cursor cursor
+	t_expanded *expanded_list, int **tab)
 {
-	if (cmd)
-	{
-		if (mode == O_RDONLY)
-			fd_init_tokfile_link_cmd_in(cmd, fd);
-		else if (mode == O_WRONLY || mode == O_APPEND)
-			fd_init_tokfile_link_cmd_out(cmd, fd);
-		if (fd_name)
-			free(fd_name);
-	}
-	else
-	{
-		if (fd > 2)
-			close(fd);
-		if (fd_name)
-		{	
-			unlink(fd_name);
-			free(fd_name);
-		}
-		errno = 0;
-	}
+	
 }

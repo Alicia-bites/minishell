@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 16:24:51 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/19 16:25:07 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/22 09:06:13 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ void	handle_str(char **str, t_list **token_list, int *err, t_ulist **envp)
 		return ;
 	cmd_list = NULL;
 	cmd_list = ft_lst_init();
-	if (is_not_empty(*str))
-		add_history(*str);
+	add_history(*str);
 	if (!cmd_list)
 		return ;
 	if (ft_parse(*str, token_list, err, *envp))
