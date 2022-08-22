@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 07:48:13 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/22 09:09:40 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/22 10:10:15 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	fd_init_tokfile(t_ulist **cmd_lst, t_list *tok, int mode)
 	res = 0;
 	fd_name = tok->next->token;
 	cmd = fd_init_tokfile_find_cmd(cmd_lst, tok);
+	if (cmd && (cmd->fd_r == -1 || cmd->fd_w == -1))
+		return (EXIT_FAILURE);
 	fd = fd_open(fd_name, mode);
 	if (cmd && fd_init_tokfile_link_cmd_secure(cmd, fd))
 		return (EXIT_FAILURE);
