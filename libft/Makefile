@@ -6,7 +6,7 @@
 #    By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/30 09:51:13 by amarchan          #+#    #+#              #
-#    Updated: 2022/08/18 13:19:10 by amarchan         ###   ########.fr        #
+#    Updated: 2022/08/22 17:23:10 by amarchan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ MEM_PATH	:=	memory
 MSG_PATH	:=	message
 PUT_PATH	:=	put
 STR_PATH	:=	string
+GNL_PATH	:=	get_next_line
 
 CHAR_SRCS	:=	ft_isalnum.c\
 			ft_isalpha.c\
@@ -44,6 +45,9 @@ CONV_SRCS	:=	ft_atoi.c\
 			ft_tolower.c\
 			ft_toupper.c
 
+GNL_SRCS	:= 	get_next_line.c\
+				get_next_line_utils.c
+			
 LIST_SRCS	:=	ft_lst_append.c\
 			ft_lst_clear.c\
 			ft_lst_delbyobj.c\
@@ -117,7 +121,8 @@ SRCS		=	$(CHAR_SRCS)\
 			$(MEM_SRCS)\
 			$(MSG_SRCS)\
 			$(PUT_SRCS)\
-			$(STR_SRCS)
+			$(STR_SRCS)\
+			$(GNL_SRCS)
 
 OBJS		=	$(addprefix $(OPATH)/, $(SRCS:.c=.o))
 DEPS		=	$(OBJS:.o=.d)
@@ -129,7 +134,8 @@ vpath %.c =	$(CHAR_PATH)\
 		$(MEM_PATH)\
 		$(MSG_PATH)\
 		$(PUT_PATH)\
-		$(STR_PATH)
+		$(STR_PATH)\
+		$(GNL_PATH)
 vpath %.o =	$(OPATH)
 
 all:		$(NAME)
