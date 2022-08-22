@@ -76,9 +76,9 @@ echo test.c | cat -e| cat -e| cat -e| cat -e| cat -e| cat -e| cat -e| cat -e|cat
 echo "TESTER EXIT STATUS: " $?
 cat Makefile | cat -e | cat -e
 echo "TESTER EXIT STATUS: " $?
-cat Makefile | grep srcs | cat -e
+cat Makefile | grep repo | cat -e
 echo "TESTER EXIT STATUS: " $?
-cat Makefile | grep srcs | grep srcs | cat -e
+cat Makefile | grep repo | grep repo | cat -e
 echo "TESTER EXIT STATUS: " $?
 cat Makefile | grep pr | head -n 5 | cd file_not_exist
 echo "TESTER EXIT STATUS: " $?
@@ -86,33 +86,19 @@ cat Makefile | grep pr | head -n 5 | hello
 echo "TESTER EXIT STATUS: " $?
 unset HOLA | cat -e
 echo "TESTER EXIT STATUS: " $?
-cat hola 
+mkdir repo
 echo "TESTER EXIT STATUS: " $?
-rm hola
+echo hey > repo/file1
 echo "TESTER EXIT STATUS: " $?
-cat hola 
+cat repo/file1
 echo "TESTER EXIT STATUS: " $?
-rm hola
+rm file1
 echo "TESTER EXIT STATUS: " $?
-cat hola 
+cat file1 
 echo "TESTER EXIT STATUS: " $?
-rm hola
+cat repo/file1 
 echo "TESTER EXIT STATUS: " $?
-cat hola 
-echo "TESTER EXIT STATUS: " $?
-rm hola
-echo "TESTER EXIT STATUS: " $?
-cat hola 
-echo "TESTER EXIT STATUS: " $?
-cat Docs/hey 
-echo "TESTER EXIT STATUS: " $?
-rm hola
-echo "TESTER EXIT STATUS: " $?
-cat hola 
-echo "TESTER EXIT STATUS: " $?
-cat Docs/hey 
-echo "TESTER EXIT STATUS: " $?
-rm hola
+rm file1
 echo "TESTER EXIT STATUS: " $?
 echo hola > bonjour 
 echo "TESTER EXIT STATUS: " $?
@@ -420,7 +406,7 @@ rm hola1 hola2
 echo "TESTER EXIT STATUS: " $?
 cat <pwd
 echo "TESTER EXIT STATUS: " $?
-cat <srcs/pwd
+cat <repo/pwd
 echo "TESTER EXIT STATUS: " $?
 cat <../pwd
 echo "TESTER EXIT STATUS: " $?
@@ -470,19 +456,21 @@ echo hola          >     bonjour
 echo "TESTER EXIT STATUS: " $?
 cat            <         bonjour 
 echo "TESTER EXIT STATUS: " $?
-rm bonjour
+rm bonjour hola
 echo "TESTER EXIT STATUS: " $?
-echo hola > srcs/bonjour 
+mkdir repo
 echo "TESTER EXIT STATUS: " $?
-cat < srcs/bonjour 
+echo hola > repo/bonjour 
 echo "TESTER EXIT STATUS: " $?
-rm bonjour
+cat < repo/bonjour 
 echo "TESTER EXIT STATUS: " $?
-echo hola >srcs/bonjour 
+rm repo/bonjour
 echo "TESTER EXIT STATUS: " $?
-cat <srcs/bonjour 
+echo hola >repo/bonjour 
 echo "TESTER EXIT STATUS: " $?
-rm bonjour
+cat <repo/bonjour 
+echo "TESTER EXIT STATUS: " $?
+rm repo/bonjour
 echo "TESTER EXIT STATUS: " $?
 echo hola > bonjour 
 echo "TESTER EXIT STATUS: " $?
@@ -508,14 +496,7 @@ cat 'bo'"n"jour
 echo "TESTER EXIT STATUS: " $?
 rm bonjour
 echo "TESTER EXIT STATUS: " $?
-echo hola > bonjour\ 1 
-echo "TESTER EXIT STATUS: " $?
 ls 
-echo "TESTER EXIT STATUS: " $?
-cat bonjour\ 1 
-echo "TESTER EXIT STATUS: " $?
-rm bonjour
-echo "TESTER EXIT STATUS: " $?
 echo hola > bonjour hey 
 echo "TESTER EXIT STATUS: " $?
 ls 
@@ -526,55 +507,57 @@ cat hey
 echo "TESTER EXIT STATUS: " $?
 rm bonjour
 echo "TESTER EXIT STATUS: " $?
-echo hola > srcs/bonjour 
+mkdir repo
 echo "TESTER EXIT STATUS: " $?
-echo hey > srcs/hello 
+echo hola > repo/bonjour 
 echo "TESTER EXIT STATUS: " $?
->srcs/bonjour >srcs/hello <prout 
+echo hey > repo/hello 
 echo "TESTER EXIT STATUS: " $?
-cat srcs/bonjour srcs/hello 
+>repo/bonjour >repo/hello <prout 
 echo "TESTER EXIT STATUS: " $?
-rm srcs/bonjour srcs/hello
+cat repo/bonjour repo/hello 
 echo "TESTER EXIT STATUS: " $?
-echo hola > srcs/bonjour 
+rm repo/bonjour repo/hello
 echo "TESTER EXIT STATUS: " $?
-echo hey > srcs/hello 
+echo hola > repo/bonjour 
 echo "TESTER EXIT STATUS: " $?
-rm srcs/bonjour srcs/hello 
+echo hey > repo/hello 
 echo "TESTER EXIT STATUS: " $?
->srcs/bonjour >srcs/hello <prout 
+rm repo/bonjour repo/hello 
 echo "TESTER EXIT STATUS: " $?
-ls srcs 
+>repo/bonjour >repo/hello <prout 
 echo "TESTER EXIT STATUS: " $?
-cat srcs/bonjour srcs/hello 
+ls repo 
 echo "TESTER EXIT STATUS: " $?
-rm srcs/bonjour srcs/hello
+cat repo/bonjour repo/hello
 echo "TESTER EXIT STATUS: " $?
-echo hola > srcs/bonjour 
+rm repo/bonjour repo/hello
 echo "TESTER EXIT STATUS: " $?
-echo hey > srcs/hello 
+echo hola > repo/bonjour 
 echo "TESTER EXIT STATUS: " $?
->srcs/bonjour <prout >srcs/hello  
+echo hey > repo/hello 
 echo "TESTER EXIT STATUS: " $?
-cat srcs/bonjour  
+>repo/bonjour <prout >repo/hello  
 echo "TESTER EXIT STATUS: " $?
-cat srcs/hello 
+cat repo/bonjour  
 echo "TESTER EXIT STATUS: " $?
-rm srcs/bonjour srcs/hello
+cat repo/hello 
 echo "TESTER EXIT STATUS: " $?
-echo hola > srcs/bonjour 
+rm repo/bonjour repo/hello
 echo "TESTER EXIT STATUS: " $?
-echo hey > srcs/hello 
+echo hola > repo/bonjour 
 echo "TESTER EXIT STATUS: " $?
-rm srcs/bonjour srcs/hello 
+echo hey > repo/hello 
 echo "TESTER EXIT STATUS: " $?
->srcs/bonjour <prout >srcs/hello  
+rm repo/bonjour repo/hello 
 echo "TESTER EXIT STATUS: " $?
-ls srcs 
+>repo/bonjour <prout >repo/hello  
 echo "TESTER EXIT STATUS: " $?
-cat srcs/bonjour 
+ls repo 
 echo "TESTER EXIT STATUS: " $?
-rm srcs/bonjour srcs/hello
+cat repo/bonjour 
+echo "TESTER EXIT STATUS: " $?
+rm repo/bonjour repo/hello
 echo "TESTER EXIT STATUS: " $?
 echo hola > ../bonjour 
 echo "TESTER EXIT STATUS: " $?
@@ -586,27 +569,27 @@ cat ../bonjour ../hello
 echo "TESTER EXIT STATUS: " $?
 rm ../bonjour ../hello
 echo "TESTER EXIT STATUS: " $?
-echo hola > ../bonjour 
+echo hola > ../bonjour
 echo "TESTER EXIT STATUS: " $?
-echo hey > ../hello 
-echo "TESTER EXIT STATUS: " $?
-rm ../bonjour ../hello 
-echo "TESTER EXIT STATUS: " $?
->../bonjour >../hello <prout 
-echo "TESTER EXIT STATUS: " $?
-ls .. 
-echo "TESTER EXIT STATUS: " $?
-cat ../bonjour ../hello 
+echo hey > ../hello
 echo "TESTER EXIT STATUS: " $?
 rm ../bonjour ../hello
 echo "TESTER EXIT STATUS: " $?
-echo hola > ../bonjour 
+>../bonjour >../hello <prout
+echo "TESTER EXIT STATUS: " $?
+ls ..
+echo "TESTER EXIT STATUS: " $?
+cat ../bonjour ../hello
+echo "TESTER EXIT STATUS: " $?
+rm ../bonjour ../hello
+echo "TESTER EXIT STATUS: " $?
+echo hola > ../bonjour
 echo "TESTER EXIT STATUS: " $?
 echo hey > ../hello 
 echo "TESTER EXIT STATUS: " $?
 >../bonjour <prout >../hello  
 echo "TESTER EXIT STATUS: " $?
-cat ../bonjour  
+cat ../bonjour 
 echo "TESTER EXIT STATUS: " $?
 cat ../hello 
 echo "TESTER EXIT STATUS: " $?
@@ -626,89 +609,89 @@ cat ../bonjour
 echo "TESTER EXIT STATUS: " $?
 rm ../bonjour ../hello
 echo "TESTER EXIT STATUS: " $?
-echo hola > srcs/bonjour 
+echo hola > repo/bonjour 
 echo "TESTER EXIT STATUS: " $?
-echo hey > srcs/hello 
+echo hey > repo/hello 
 echo "TESTER EXIT STATUS: " $?
->srcs/bonjour >>srcs/hello <prout 
+>repo/bonjour >>repo/hello <prout 
 echo "TESTER EXIT STATUS: " $?
-cat srcs/bonjour  
+cat repo/bonjour  
 echo "TESTER EXIT STATUS: " $?
-cat srcs/hello 
+cat repo/hello 
 echo "TESTER EXIT STATUS: " $?
-rm srcs/bonjour srcs/hello
+rm repo/bonjour repo/hello
 echo "TESTER EXIT STATUS: " $?
-echo hola > srcs/bonjour 
+echo hola > repo/bonjour 
 echo "TESTER EXIT STATUS: " $?
-echo hey > srcs/hello 
+echo hey > repo/hello 
 echo "TESTER EXIT STATUS: " $?
->>srcs/bonjour >srcs/hello <prout 
+>>repo/bonjour >repo/hello <prout 
 echo "TESTER EXIT STATUS: " $?
-cat srcs/bonjour  
+cat repo/bonjour  
 echo "TESTER EXIT STATUS: " $?
-cat srcs/hello 
+cat repo/hello 
 echo "TESTER EXIT STATUS: " $?
-rm srcs/bonjour srcs/hello
+rm repo/bonjour repo/hello
 echo "TESTER EXIT STATUS: " $?
-echo hola > srcs/bonjour 
+echo hola > repo/bonjour 
 echo "TESTER EXIT STATUS: " $?
-echo hey > srcs/hello 
+echo hey > repo/hello 
 echo "TESTER EXIT STATUS: " $?
->>srcs/bonjour >>srcs/hello <prout 
+>>repo/bonjour >>repo/hello <prout 
 echo "TESTER EXIT STATUS: " $?
-cat srcs/bonjour  
+cat repo/bonjour  
 echo "TESTER EXIT STATUS: " $?
-cat srcs/hello 
+cat repo/hello 
 echo "TESTER EXIT STATUS: " $?
-rm srcs/bonjour srcs/hello
+rm repo/bonjour repo/hello
 echo "TESTER EXIT STATUS: " $?
-echo hola > srcs/bonjour 
+echo hola > repo/bonjour 
 echo "TESTER EXIT STATUS: " $?
-echo hey > srcs/hello 
+echo hey > repo/hello 
 echo "TESTER EXIT STATUS: " $?
->srcs/bonjour <prout >>srcs/hello 
+>repo/bonjour <prout >>repo/hello 
 echo "TESTER EXIT STATUS: " $?
-cat srcs/bonjour  
+cat repo/bonjour  
 echo "TESTER EXIT STATUS: " $?
-cat srcs/hello 
+cat repo/hello 
 echo "TESTER EXIT STATUS: " $?
-rm srcs/bonjour srcs/hello
+rm repo/bonjour repo/hello
 echo "TESTER EXIT STATUS: " $?
-echo hola > srcs/bonjour 
+echo hola > repo/bonjour 
 echo "TESTER EXIT STATUS: " $?
-echo hey > srcs/hello 
+echo hey > repo/hello 
 echo "TESTER EXIT STATUS: " $?
->>srcs/bonjour <prout >srcs/hello 
+>>repo/bonjour <prout >repo/hello 
 echo "TESTER EXIT STATUS: " $?
-cat srcs/bonjour  
+cat repo/bonjour  
 echo "TESTER EXIT STATUS: " $?
-cat srcs/hello 
+cat repo/hello 
 echo "TESTER EXIT STATUS: " $?
-rm srcs/bonjour srcs/hello
+rm repo/bonjour repo/hello
 echo "TESTER EXIT STATUS: " $?
-echo hola > srcs/bonjour 
+echo hola > repo/bonjour 
 echo "TESTER EXIT STATUS: " $?
-echo hey > srcs/hello 
+echo hey > repo/hello 
 echo "TESTER EXIT STATUS: " $?
->>srcs/bonjour <prout >>srcs/hello 
+>>repo/bonjour <prout >>repo/hello 
 echo "TESTER EXIT STATUS: " $?
-cat srcs/bonjour  
+cat repo/bonjour  
 echo "TESTER EXIT STATUS: " $?
-cat srcs/hello 
+cat repo/hello 
 echo "TESTER EXIT STATUS: " $?
-rm srcs/bonjour srcs/hello
+rm repo/bonjour repo/hello
 echo "TESTER EXIT STATUS: " $?
-echo hola > srcs/bonjour 
+echo hola > repo/bonjour 
 echo "TESTER EXIT STATUS: " $?
-echo hey > srcs/hello 
+echo hey > repo/hello 
 echo "TESTER EXIT STATUS: " $?
-<prout >>srcs/bonjour >>srcs/hello 
+<prout >>repo/bonjour >>repo/hello 
 echo "TESTER EXIT STATUS: " $?
-cat srcs/bonjour  
+cat repo/bonjour  
 echo "TESTER EXIT STATUS: " $?
-cat srcs/hello 
+cat repo/hello 
 echo "TESTER EXIT STATUS: " $?
-rm srcs/bonjour srcs/hello
+rm repo/bonjour repo/hello
 echo "TESTER EXIT STATUS: " $?
 echo hola > bonjour 
 echo "TESTER EXIT STATUS: " $?
@@ -820,7 +803,7 @@ mkdir dir
 echo "TESTER EXIT STATUS: " $?
 ls -la > dir/bonjour 
 echo "TESTER EXIT STATUS: " $?
-cat dir/bonjour 
+cat dir/bonjour
 echo "TESTER EXIT STATUS: " $?
 dir/bonjour
 echo "TESTER EXIT STATUS: " $?
