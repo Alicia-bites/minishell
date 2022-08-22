@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/19 17:25:15 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/22 14:37:18 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,11 +167,15 @@ void				clean_up_ft_parse(int *err, t_list **token_list,
 void				exit_minishell(t_list **token_list, t_ulist **envp);
 int					get_input(int *err, t_ulist **envp);
 void				handle_str(char **str, t_list **token_list, int *err,
-						t_ulist **envp);
+						t_ulist **env_list);
 int					in_ascii(char *str);
 int					init_exec(t_list **token_list, t_ulist	**cmd_list,
-						t_ulist **envp);
+						t_ulist **env_list);
 int					init_env_lst(char **envp, t_ulist **env_lst);
+int					init_exec(t_list **token_list, t_ulist	**cmd_list,
+						t_ulist **env_list);
+int					init_hd_fd(t_list **token_list, t_ulist	**cmd_list,
+						t_ulist **env_list);
 
 //parsing
 int					ft_parse(char *str, t_list **token_list, int *err,
@@ -463,11 +467,15 @@ int					fd_access(char *fd_name, int mode);
 int					fd_close(t_cmd *cmd);
 int					fd_hd_open(t_cmd *cmd);
 int					fd_init(t_list **tok_lst, t_ulist **cmd_lst);
-int					fd_init_tokfile(t_ulist **cmd_lst, t_list *tok, int mode);
+int					fd_init_sentinel(t_ulist **cmd_lst, t_list *tok,
+						int sentinel);
+int					fd_init_tokfile(t_ulist **cmd_lst,
+						t_list *tok, int mode, int sentinel);
 int					fd_init_tokfile_access(int fd, char *fd_name, int mode);
 t_cmd				*fd_init_tokfile_find_cmd(t_ulist **cmd_lst, t_list *tok);
 int					fd_init_tokfile_hd(t_ulist **cmd_lst, t_list *tok);
-void				fd_init_tokfile_link_cmd(t_cmd *cmd, int fd, int mode, char *fd_name);
+void				fd_init_tokfile_link_cmd(t_cmd *cmd, int fd,
+						int mode, char *fd_name);
 void				fd_init_tokfile_link_cmd_in(t_cmd *cmd, int fd);
 void				fd_init_tokfile_link_cmd_out(t_cmd *cmd, int fd);
 t_cmd				*fd_init_tokfile_loop_cmd(t_ulist **cmd_lst, t_list *tok);
@@ -491,7 +499,8 @@ void				get_expanded_heredoc(t_exp_arg exp_arg,
 						int i, int *varsize);
 int					hd_close(t_cmd *cmd);
 char				*hd_create_name(t_list *tok);
-void				hd_create_name_len(char *index, size_t *len_index, size_t *len_smb, size_t *len_tmp);
+void				hd_create_name_len(char *index,
+						size_t *len_index, size_t *len_smb, size_t *len_tmp);
 void				hd_create_name_reset(t_cmd *cmd);
 long long			hd_init(t_list *tok, t_cmd *cmd);
 int					hd_init_check(void);
@@ -499,15 +508,19 @@ int					hd_init_check_binary(void);
 int					hd_init_check_tmp(void);
 int					hd_open(char *hd_name);
 size_t				hd_size(t_list **tok_lst);
-long long				hd_tokfile(t_list **tok_lst, t_ulist **cmd_lst, t_ulist **env_lst);
-long long				hd_tokfile_link(t_ulist **cmd_lst, t_list *tok_lst, t_ulist **env_lst);
+long long			hd_tokfile(t_list **tok_lst, t_ulist **cmd_lst,
+						t_ulist **env_lst);
+long long			hd_tokfile_link(t_ulist **cmd_lst, t_list *tok_lst,
+						t_ulist **env_lst);
 void				hd_tokfile_link_cmd(t_cmd *cmd, int hd, char *hd_name);
 int					hd_wait(int pid);
 void				hd_write(t_list *tok, int hd, t_ulist **env_lst);
 char				*hd_write_expansion(char *str, t_ulist **envp);
-void				hd_write_str(t_list *tok, char **fullcmd, int hd, t_ulist **env_lst);
+void				hd_write_str(t_list *tok, char **fullcmd,
+						int hd, t_ulist **env_lst);
 int					hd_write_mode(t_list *tok);
-char				*insert_expansions_heredoc(int full_size, t_expanded *expanded_list,
+char				*insert_expansions_heredoc(int full_size,
+						t_expanded *expanded_list,
 						char *str);
 
 //pipe
@@ -516,7 +529,8 @@ int					is_a_directory(char *str, int i);
 int					only_slash_in_str(char *str);
 void				pipe_close_fd_child(t_cmd *cmd);
 void				pipe_close_pfd(void *content);
-void				pipe_close_pfd_child(t_ulist **cmd_lst, t_cmd *pipe_active_cmd);
+void				pipe_close_pfd_child(t_ulist **cmd_lst,
+						t_cmd *pipe_active_cmd);
 void				pipe_cmd(t_ulist **cmd_lst, t_ulist *obj);
 void				pipe_cmd_dup_fd_in(t_ulist **cmd_lst, t_cmd *cmd);
 void				pipe_cmd_dup_fd_out(t_ulist **cmd_lst, t_cmd *cmd);

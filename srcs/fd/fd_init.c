@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 07:41:35 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/19 18:28:47 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/22 14:32:45 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,25 @@ int	fd_init(t_list **tok_lst, t_ulist **cmd_lst)
 {
 	t_list	*tok;
 	int		res;
+	int		sentinel;
 
 	tok = *tok_lst;
 	res = 0;
+	sentinel = 0;
 	while (tok)
 	{
+		sentinel = fd_init_sentinel(cmd_lst, tok, sentinel);
 		if (tok->toktype == TOK_L_REDIR)
-			res += fd_init_tokfile(cmd_lst, tok, O_RDONLY);
+			res += fd_init_tokfile(cmd_lst, tok, O_RDONLY, sentinel);
 		else if (tok->toktype == TOK_R_REDIR)
-			res += fd_init_tokfile(cmd_lst, tok, O_WRONLY);
+			res += fd_init_tokfile(cmd_lst, tok, O_WRONLY, sentinel);
 		else if (tok->toktype == TOK_DR_REDIR)
-			res += fd_init_tokfile(cmd_lst, tok, O_APPEND);
+			res += fd_init_tokfile(cmd_lst, tok, O_APPEND, sentinel);
 		else if (tok->toktype == TOK_DL_REDIR)
 			res += fd_init_tokfile_hd(cmd_lst, tok);
+		if (sentinel == 0)
+			sentinel = res;
 		tok = tok->next;
 	}
-	return (res);
+	return (sentinel);
 }

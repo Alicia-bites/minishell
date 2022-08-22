@@ -135,6 +135,7 @@ FD_SRCS		:=	fd_access.c\
 			fd_close.c\
 			fd_hd_open.c\
 			fd_init.c\
+			fd_init_sentinel.c\
 			fd_init_tokfile.c\
 			fd_init_tokfile_access.c\
 			fd_init_tokfile_find_cmd.c\
@@ -199,7 +200,8 @@ INPUT_HANDLER	:=	clean_up.c\
 					handle_str.c\
 					in_ascii.c\
 					init_exec.c\
-					init_env_lst.c
+					init_env_lst.c\
+					init_hd_fd.c
 
 LEX_SRCS	:=	between_quotes.c\
 				lexer.c\
