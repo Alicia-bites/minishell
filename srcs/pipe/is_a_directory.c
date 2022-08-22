@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 17:34:19 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/18 17:48:19 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/22 12:36:49 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static void	write_error_msg(char *str, int i)
 int	is_a_directory(char *str, int i)
 {
 	if (!str)
+		return (0);
+	if (!str[0])
 		return (0);
 	if (str[0] && str[0] != '/')
 		return (0);

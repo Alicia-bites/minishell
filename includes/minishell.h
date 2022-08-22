@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/22 15:26:25 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/22 18:42:12 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <stdlib.h>
 # include <sys/types.h>
 # include <sys/wait.h>
+# include <termios.h>
 
 # include "libft.h"
 # include "minishell_enum.h"
@@ -182,10 +183,7 @@ int					in_ascii(char *str);
 int					init_exec(t_list **token_list, t_ulist	**cmd_list,
 						t_ulist **env_list);
 int					init_env_lst(char **envp, t_ulist **env_lst);
-int					init_exec(t_list **token_list, t_ulist	**cmd_list,
-						t_ulist **env_list);
-int					init_hd_fd(t_list **token_list, t_ulist	**cmd_list,
-						t_ulist **env_list);
+int					is_interactive(void);
 
 //parsing
 int					ft_parse(char *str, t_list **token_list, int *err,

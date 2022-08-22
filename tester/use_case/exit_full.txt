@@ -48,7 +48,9 @@ exit -9223372036854775809
 ls | exit
 ls | exit 42
 exit | ls
-echo hola > bonjour $> exit | cat -e bonjour
-echo hola > bonjour $> cat -e bonjour | exit
+echo hola > bonjour
+exit | cat -e bonjour
+echo hola > bonjour
+cat -e bonjour | exit
 sleep 3 | exit
 exit | sleep 3

@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:50:31 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/20 18:57:02 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/22 11:57:38 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,6 @@ static char	*malloc_output_token(char *str, int *len, int n)
 	return (output);
 }
 
-static void	lonely_quote_token(char **output, int *i, char *str)
-{
-	if (str[0] == '\'' && str[1] == '\0')
-		(*output)[(*i)++] = '\'';
-	else if (str[0] == '\"' && str[1] == '\0')
-		(*output)[(*i)++] = '\"';
-}
-
 char	*trim_quotes_token(char *str, t_chartype *input_list,
 	int start, int end)
 {
@@ -72,7 +64,6 @@ char	*trim_quotes_token(char *str, t_chartype *input_list,
 	output = malloc_output_token(str, &len, n);
 	if (!output)
 		return (ft_panic_null(-1, __func__, ERR_MALLOC));
-	lonely_quote_token(&output, &cursor.i, str);
 	while (cursor.i < len)
 	{
 		if (copy_ok(str, cursor.k, tab, n))

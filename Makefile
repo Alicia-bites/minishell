@@ -201,7 +201,7 @@ INPUT_HANDLER	:=	clean_up.c\
 					in_ascii.c\
 					init_exec.c\
 					init_env_lst.c\
-					init_hd_fd.c
+					is_interactive.c
 
 LEX_SRCS	:=	between_quotes.c\
 				lexer.c\
