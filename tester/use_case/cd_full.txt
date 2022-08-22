@@ -416,7 +416,6 @@ cd ..
 
 env -i ./minishell 
 cd
-cd .
 echo $?
 env -i ./minishell 
 cd .. | echo "hola"
@@ -434,14 +433,8 @@ echo $?
 cd ../.. && pwd && pwd
 cd .
 echo $?
-(cd ../.. && pwd) && pwd
-cd .
-echo $?
-ls -z || cd ../../..&&pwd 
+ls -z || cd ../../..&&pwd
 cd .
 echo $?
 pwd
-ls -z || (cd ../../..&&pwd)
-cd .
 echo $?
-pwd
