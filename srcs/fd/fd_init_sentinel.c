@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 13:53:55 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/22 14:03:09 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/22 14:48:45 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	fd_init_sentinel(t_ulist **cmd_lst, t_list *tok, int sentinel)
 
 	cmd = fd_init_tokfile_find_cmd(cmd_lst, tok);
 	if (cmd)
+		sentinel = 0;
+	if (tok->toktype == TOK_PIPE)
 		sentinel = 0;
 	return (sentinel);
 }

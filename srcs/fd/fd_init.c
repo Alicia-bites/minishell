@@ -6,7 +6,7 @@
 /*   By: abarrier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 07:41:35 by abarrier          #+#    #+#             */
-/*   Updated: 2022/08/22 14:32:45 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/22 14:51:57 by abarrier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	fd_init(t_list **tok_lst, t_ulist **cmd_lst)
 			res += fd_init_tokfile(cmd_lst, tok, O_APPEND, sentinel);
 		else if (tok->toktype == TOK_DL_REDIR)
 			res += fd_init_tokfile_hd(cmd_lst, tok);
-		if (sentinel == 0)
+		if (!fd_init_tokfile_find_cmd(cmd_lst, tok) && sentinel == 0)
 			sentinel = res;
 		tok = tok->next;
 	}
