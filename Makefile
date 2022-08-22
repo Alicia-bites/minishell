@@ -14,7 +14,8 @@ CFLAGS		:=	-MMD -Wall -Wextra -Werror
 #CFLAGSADD	:=	-g3 -fsanitize=address
 CFLAGSADD	:=	-g3
 
-VALGRIND	:=	valgrind -s --suppressions=ignoreliberror --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes
+# VALGRIND	:=	valgrind -s --suppressions=ignoreliberror --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes
+VALGRIND	:=	valgrind -s --leak-check=full --show-leak-kinds=all --track-origins=yes --track-fds=yes
 
 IPATH		:=	includes
 OPATH		:=	obj
@@ -200,7 +201,8 @@ INPUT_HANDLER	:=	clean_up.c\
 					in_ascii.c\
 					init_exec.c\
 					init_env_lst.c\
-					is_interactive.c
+					is_interactive.c\
+					init_hd_fd.c
 
 LEX_SRCS	:=	between_quotes.c\
 				lexer.c\

@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:49:23 by amarchan          #+#    #+#             */
-/*   Updated: 2022/07/22 17:29:12 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/22 18:53:13 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	print_dollar_lst(t_expanded *lst)
 	{
 		printf("index = %d\n", iterator->index);
 		printf("expanded = %s\n", iterator->expanded);
-		puts("-----------------------------------------");
+		printf("-----------------------------------------");
 		iterator = iterator->next;
 	}
 }

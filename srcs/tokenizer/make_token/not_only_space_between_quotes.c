@@ -27,8 +27,8 @@ int	not_only_space_between_quotes(char *str)
 	if ((str[0] == '\"' && str[1] == '\"')
 		|| (str[0] == '\'' && str[1] == '\''))
 		return (1);
-	if ((str[0] == '"' && str[strlen(str) - 1] == '"')
-		|| (str[0] == '\'' && str[strlen(str) - 1] == '\''))
+	if ((str[0] == '"' && str[ft_strlen(str) - 1] == '"')
+		|| (str[0] == '\'' && str[ft_strlen(str) - 1] == '\''))
 	{
 		while (i < ft_strlen(str) - 1)
 		{

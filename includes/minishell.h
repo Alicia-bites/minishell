@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 10:28:47 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/22 18:47:57 by abarrier         ###   ########.fr       */
+/*   Updated: 2022/08/22 18:56:11 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,6 +176,7 @@ int					init_exec(t_list **token_list, t_ulist	**cmd_list,
 						t_ulist **env_list);
 int					init_env_lst(char **envp, t_ulist **env_lst);
 int					is_interactive(void);
+int					init_hd_fd(t_list **token_list, t_ulist **cmd_list, t_ulist **env_list);
 
 //parsing
 int					ft_parse(char *str, t_list **token_list, int *err,
