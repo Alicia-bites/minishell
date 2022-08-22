@@ -67,14 +67,3 @@ ls
 echo "TESTER EXIT STATUS: " $?
 cat bonjour\ 1
 echo "TESTER EXIT STATUS: " $?
-
-
-
->>>>> A TESTER AVEC Antho
-
-		$: /bin/echo
-
-		/bin/echo Hola Que Tal
-
-		echo hey > file1
-		file1 | echo hola
