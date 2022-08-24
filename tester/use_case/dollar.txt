@@ -53,10 +53,9 @@ echo $c $d $c $a
 echo $d $c $b $a
 echo $a $c $b $d
 echo $d $b $c $a
-
 echo $USER '$USER'
-
 echo $USER $'USER' "$?" $0 "$USER" '$USER' $"USER"
+echo $USER$?$USER
 echo "$"0
 echo "$"USER
 echo '$'USER

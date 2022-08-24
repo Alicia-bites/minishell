@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 19:49:04 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/19 15:22:55 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/24 12:49:53 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ static char	*malloc_newstr(int full_size, t_expanded **expanded_list)
 
 static void	travel_to_next_str(int *k, char *str)
 {
-	while (ft_isalnum(str[*k]) || str[*k] == '{' || str[*k] == '}')
+	while (ft_isalnum(str[*k]) || str[*k] == '{' || str[*k] == '}'
+		|| str[*k] == '?')
 	{
 		if (str[*k] == '}' && !bracket_is_after_dollar(str, *k))
 			break ;
@@ -66,22 +67,6 @@ static void	copy_expanded(char *str, t_expanded **expanded_list,
 	}
 }
 
-static int	interrogation_point_follows_dollar(char *str, int *i)
-{
-	if (!str)
-		return (0);
-	if (str[*i] == '?' && !between_single_quotes(str, *i))
-	{
-		if (str[*i + 1] != '\0')
-			(*i)++;
-		if (*i >= 1 && str[*i - 1] == '$')
-			return (1);
-		else
-			return (0);
-	}
-	return (0);
-}
-
 char	*insert_expansions(int full_size, t_expanded *expanded_list, char *str)
 {
 	t_cursor	cursor;
@@ -94,8 +79,7 @@ char	*insert_expansions(int full_size, t_expanded *expanded_list, char *str)
 	{
 		copy_expanded(str, &expanded_list, &cursor, new_str);
 		if ((str[cursor.k] && cursor.i <= full_size
-				&& str[cursor.k] != '$'
-				&& !interrogation_point_follows_dollar(str, &cursor.k))
+				&& str[cursor.k] != '$')
 			|| (str[cursor.k] == '$' && nothing_follows_follar(str, cursor.k))
 			|| (str[cursor.k] == '$' && between_single_quotes(str, cursor.k))
 			|| (str[cursor.k] == '$' && cursor.k + 1 < ft_strlen(str)
