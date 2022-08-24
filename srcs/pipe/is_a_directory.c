@@ -6,7 +6,7 @@
 /*   By: amarchan <amarchan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 17:34:19 by amarchan          #+#    #+#             */
-/*   Updated: 2022/08/22 12:36:49 by amarchan         ###   ########.fr       */
+/*   Updated: 2022/08/24 13:03:55 by amarchan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	is_a_directory(char *str, int i)
 	if (!str[0])
 		return (0);
 	if (str[0] && str[0] != '/')
+		return (0);
+	if (ft_strstr(str, "/bin/"))
 		return (0);
 	if (only_slash_in_str(str))
 	{
