@@ -1,6 +1,10 @@
 # minishell
 This project is about creating a simple shell.
 
+### How to use
+-   In a terminal, type in "make"
+-   Then, type in "./minishell"
+- Use it like you would use **bash**!
 
 ## Team name  
 **SMBASH**  
