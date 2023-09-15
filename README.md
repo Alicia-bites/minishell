@@ -1,5 +1,5 @@
 # minishell
-This project is about creating a simple shell.
+This project is about creating a simple shell. Well it's not that simple!
 
 ### How to use
 -   In a terminal, type in "make"
